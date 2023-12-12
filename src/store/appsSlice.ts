@@ -16,9 +16,8 @@ const initialState: AppsState = {
 			type: "app",
 			appState: {
 				isOpen: false,
-				isMinimized: false,
-				isFullscreen: false,
 				isPinned: false,
+				isSelected: false,
 			},
 		},
 		{
@@ -29,9 +28,8 @@ const initialState: AppsState = {
 			type: "app",
 			appState: {
 				isOpen: false,
-				isMinimized: false,
-				isFullscreen: false,
 				isPinned: true,
+				isSelected: false,
 			},
 		},
 	],
@@ -55,9 +53,8 @@ export const appsSlice = createSlice({
 				(app) => app.id === action.payload.id,
 			);
 			state.apps[index].appState.isOpen = true;
-			state.apps[index].appState.isMinimized = false;
-			state.apps[index].appState.isFullscreen = false;
 			state.apps[index].windowState = {
+				isMinimized: false,
 				isMaximized: false,
 				position: {
 					x: screen.width / 2 - 400,
@@ -79,25 +76,39 @@ export const appsSlice = createSlice({
 			const index = state.apps.findIndex(
 				(app) => app.id === action.payload.id,
 			);
-			state.apps[index].appState.isMinimized = true;
+			state.apps[index].windowState = {
+				...state.apps[index].windowState!,
+				isMinimized: true,
+			};
+		},
+		unMinimizeApp(state, action: PayloadAction<TApp>) {
+			const index = state.apps.findIndex(
+				(app) => app.id === action.payload.id,
+			);
+			state.apps[index].windowState = {
+				...state.apps[index].windowState!,
+				isMinimized: false,
+			};
 		},
 		maximizeApp(state, action: PayloadAction<TApp>) {
 			const index = state.apps.findIndex(
 				(app) => app.id === action.payload.id,
 			);
-			state.apps[index].appState.isMinimized = false;
+			state.apps[index].windowState = {
+				...state.apps[index].windowState!,
+				isMaximized: true,
+				isMinimized: false,
+			};
 		},
-		fullscreenApp(state, action: PayloadAction<TApp>) {
+		unMaximizeApp(state, action: PayloadAction<TApp>) {
 			const index = state.apps.findIndex(
 				(app) => app.id === action.payload.id,
 			);
-			state.apps[index].appState.isFullscreen = true;
-		},
-		unfullscreenApp(state, action: PayloadAction<TApp>) {
-			const index = state.apps.findIndex(
-				(app) => app.id === action.payload.id,
-			);
-			state.apps[index].appState.isFullscreen = false;
+			state.apps[index].windowState = {
+				...state.apps[index].windowState!,
+				isMaximized: false,
+				isMinimized: false,
+			};
 		},
 		pinApp(state, action: PayloadAction<TApp>) {
 			const index = state.apps.findIndex(
@@ -110,6 +121,24 @@ export const appsSlice = createSlice({
 				(app) => app.id === action.payload.id,
 			);
 			state.apps[index].appState.isPinned = false;
+		},
+		selectApp(state, action: PayloadAction<TApp>) {
+			const index = state.apps.findIndex(
+				(app) => app.id === action.payload.id,
+			);
+			state.apps[index].appState.isSelected = true;
+		},
+		unSelectApp(state, action: PayloadAction<TApp>) {
+			const index = state.apps.findIndex(
+				(app) => app.id === action.payload.id,
+			);
+			state.apps[index].appState.isSelected = false;
+		},
+		unSelectAllApps(state) {
+			state.apps = state.apps.map((app) => {
+				app.appState.isSelected = false;
+				return app;
+			});
 		},
 		removeApp(state, action: PayloadAction<TApp>) {
 			state.apps = state.apps.filter(
@@ -127,6 +156,40 @@ export const appsSlice = createSlice({
 			const [removed] = state.apps.splice(oldIndex, 1);
 			state.apps.splice(newIndex, 0, removed);
 		},
+		reLocateApp(
+			state,
+			action: PayloadAction<{
+				app: TApp;
+				position: { x: number; y: number };
+			}>,
+		) {
+			const { app, position } = action.payload;
+			if (
+				state.apps.filter(
+					(app) =>
+						app.position.x === position.x &&
+						app.position.y === position.y,
+				).length > 0
+			) {
+				return;
+			}
+			const index = state.apps.findIndex((a) => a.id === app.id);
+			state.apps[index].position = position;
+		},
+		reLocateWindow(
+			state,
+			action: PayloadAction<{
+				app: TApp;
+				position: { x: number; y: number };
+			}>,
+		) {
+			state.apps[
+				state.apps.findIndex((a) => a.id === action.payload.app.id)
+			].position = {
+				x: action.payload.position.x,
+				y: action.payload.position.y,
+			};
+		},
 	},
 });
 
@@ -135,14 +198,19 @@ export const {
 	editApp,
 	removeApp,
 	closeApp,
-	fullscreenApp,
-	maximizeApp,
+	unMinimizeApp,
 	minimizeApp,
+	unMaximizeApp,
+	maximizeApp,
 	openApp,
 	pinApp,
-	unfullscreenApp,
 	unpinApp,
 	reOrderApps,
+	reLocateApp,
+	reLocateWindow,
+	selectApp,
+	unSelectApp,
+	unSelectAllApps,
 } = appsSlice.actions;
 
 export const selectApps = (state: RootState) => state.apps.apps;
@@ -153,6 +221,13 @@ export const selectPinnedApps = (state: RootState) =>
 export const selectedPinnedorOpenApps = (state: RootState) =>
 	state.apps.apps.filter(
 		(app) => app.appState.isPinned || app.appState.isOpen,
+	);
+export const selectOpenWindows = (state: RootState) =>
+	state.apps.apps.filter(
+		(app) =>
+			app.windowState &&
+			app.appState.isOpen &&
+			!app.windowState.isMinimized,
 	);
 
 export default appsSlice.reducer;

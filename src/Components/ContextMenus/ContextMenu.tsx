@@ -32,13 +32,16 @@ export default function ContextMenu({
 				e.preventDefault();
 				onContextMenuClose();
 			}}
-			onClick={onContextMenuClose}
+			onClick={(e) => {
+				e.preventDefault();
+				onContextMenuClose();
+			}}
 		>
 			<div
-				className={`bg-ternary absolute flex w-56 translate-y-0 transform flex-col gap-1 rounded-md border border-solid border-black p-1 shadow-md`}
+				className={`bg-secondary absolute flex w-56 translate-y-0 transform flex-col gap-1 rounded-md border border-solid border-black p-1 shadow-md`}
 				style={{
 					bottom: position.y,
-					left: position.x - 80,
+					left: position.x,
 				}}
 			>
 				{categories?.map((category) => (

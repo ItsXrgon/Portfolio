@@ -1,6 +1,6 @@
 import { X, PinOffIcon, PinIcon } from "lucide-react";
 import { TApp } from "../../types";
-import Icon from "../Utils/Icon";
+import Icon from "../Desktop/Icon";
 import { useAppDispatch } from "../../store/hooks";
 import {
 	closeApp,
@@ -12,7 +12,7 @@ import {
 import { useCallback, useEffect, useState } from "react";
 import ContextMenu, { ContextMenuAction } from "./ContextMenu";
 
-interface BottomBarAppsContextMenuProps {
+interface BottomBarAppContextMenuProps {
 	isOpen: boolean;
 	onContextMenuClose: () => void;
 	app: TApp | null;
@@ -22,12 +22,12 @@ interface BottomBarAppsContextMenuProps {
 	};
 }
 
-export default function BottomBarAppsContextMenu({
+export default function BottomBarAppContextMenu({
 	isOpen,
 	onContextMenuClose,
 	app,
 	position,
-}: BottomBarAppsContextMenuProps): JSX.Element {
+}: BottomBarAppContextMenuProps): JSX.Element {
 	const dispatch = useAppDispatch();
 
 	if (!isOpen || !app) return <></>;
@@ -54,7 +54,7 @@ export default function BottomBarAppsContextMenu({
 
 	const onOpenApp = useCallback(
 		(app: TApp) => {
-			if (app.appState.isOpen && app.appState.isMinimized) {
+			if (app.appState.isOpen && app.windowState?.isMaximized) {
 				dispatch(maximizeApp(app));
 			} else if (!app.appState.isOpen) {
 				dispatch(openApp(app));
@@ -104,26 +104,18 @@ export default function BottomBarAppsContextMenu({
 	}, [app, onOpenApp, onCloseApp, onPinToTaskbar, onUnpinFromTaskbar]);
 
 	return (
-		<div
-			className="fixed left-0 top-0 h-full w-full"
-			onContextMenu={(e) => {
-				e.preventDefault();
-				onContextMenuClose();
+		<ContextMenu
+			categories={[
+				{
+					label: "Actions",
+					actions: ContextMenuActions,
+				},
+			]}
+			position={{
+				x: position.x,
+				y: position.y,
 			}}
-		>
-			<ContextMenu
-				categories={[
-					{
-						label: "Actions",
-						actions: ContextMenuActions,
-					},
-				]}
-				position={{
-					x: position.x,
-					y: position.y,
-				}}
-				onContextMenuClose={onContextMenuClose}
-			/>
-		</div>
+			onContextMenuClose={onContextMenuClose}
+		/>
 	);
 }

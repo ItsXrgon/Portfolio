@@ -9,11 +9,11 @@ export type TApp = {
 	};
 	appState: {
 		isOpen: boolean;
-		isMinimized: boolean;
-		isFullscreen: boolean;
 		isPinned: boolean;
+		isSelected: boolean;
 	};
 	windowState?: {
+		isMinimized: boolean;
 		isMaximized: boolean;
 		position: {
 			x: number;
@@ -26,21 +26,8 @@ export type TApp = {
 	};
 };
 
-export type TFolder = {
-	id: string;
-	name: string;
-	icon: string;
+export type TFolder = TApp & {
 	type: "folder";
-	position: {
-		x: number;
-		y: number;
-	};
-	appState: {
-		isOpen: boolean;
-		isMinimized: boolean;
-		isFullscreen: boolean;
-		isPinned: boolean;
-	};
 	children: TApp[];
 };
 

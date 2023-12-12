@@ -1,16 +1,15 @@
 import React, { createRef, useCallback, useState } from "react";
 import {
-	DropResult,
-	DragDropContext,
-	Droppable,
-	Draggable,
-} from "react-beautiful-dnd";
-import { reOrderApps, selectedPinnedorOpenApps } from "../../store/appsSlice";
+	reOrderApps,
+	selectedPinnedorOpenApps,
+	unMinimizeApp,
+} from "../../store/appsSlice";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { TApp } from "../../types";
-import Icon from "../Utils/Icon";
-import BottomBarAppsContextMenu from "../ContextMenus/BottomBarAppsContextMenu";
+import Icon from "../Desktop/Icon";
+import BottomBarAppContextMenu from "../ContextMenus/BottomBarAppContextMenu";
 import { maximizeApp, minimizeApp, openApp } from "../../store/appsSlice";
+import { useDrag, useDrop } from "react-dnd";
 
 export default function AppSection() {
 	const apps = useAppSelector(selectedPinnedorOpenApps);
@@ -43,8 +42,8 @@ export default function AppSection() {
 			setContextMenu({
 				isOpen: true,
 				position: {
-					x: ref?.offsetLeft ?? e.clientX,
-					y: contextMenu.position.y,
+					x: ref?.offsetLeft - 80 ?? e.clientX,
+					y: ref.offsetTop + 70,
 				},
 				app,
 			});
@@ -58,18 +57,18 @@ export default function AppSection() {
 			app: null,
 			position: {
 				x: 0,
-				y: 70,
+				y: 0,
 			},
 		});
 	}, [contextMenu, appIconRefs]);
 
 	const onAppIconClick = useCallback(
 		(app: TApp) => {
-			if (app.appState.isOpen && app.appState.isMinimized) {
-				dispatch(maximizeApp(app));
+			if (app.appState.isOpen && app.windowState?.isMinimized) {
+				dispatch(unMinimizeApp(app));
 				return;
 			}
-			if (app.appState.isOpen && !app.appState.isMinimized) {
+			if (app.appState.isOpen && !app.windowState?.isMinimized) {
 				dispatch(minimizeApp(app));
 				return;
 			}
@@ -80,81 +79,77 @@ export default function AppSection() {
 		[dispatch],
 	);
 
-	function onDragEnd(result: DropResult) {
-		const { destination, source } = result;
+	const [, drop] = useDrop(() => ({ accept: "APPICON" }));
 
-		if (!destination || destination.index === source.index) return;
-
-		dispatch(
-			reOrderApps({
-				oldIndex: source.index,
-				newIndex: destination.index,
+	function BottomBarAppIcon({ app, index }: { app: TApp; index: number }) {
+		const dispatch = useAppDispatch();
+		const [{}, drag] = useDrag(() => ({
+			type: "APPICON",
+			item: {
+				app: app,
+				index: index,
+			},
+			collect: (monitor) => ({
+				isDragging: monitor.isDragging(),
 			}),
+		}));
+
+		const [, drop] = useDrop(
+			() => ({
+				accept: "APPICON",
+				hover(item: any) {
+					if (item.app.id !== app.id) {
+						dispatch(
+							reOrderApps({
+								oldIndex: item.index,
+								newIndex: index,
+							}),
+						);
+					}
+				},
+			}),
+			[],
+		);
+
+		return (
+			<div
+				ref={(node) => drag(drop(node))}
+				className={
+					`flex flex-col items-center justify-center rounded-sm p-1 hover:bg-slate-50 hover:bg-opacity-60` +
+					` ${
+						contextMenu.app?.id === app.id
+							? "bg-slate-50 bg-opacity-60"
+							: ""
+					} ${
+						app.appState.isOpen
+							? "border-b-2 border-solid border-gray-500	"
+							: ``
+					}`
+				}
+				onContextMenu={(e) => {
+					e.preventDefault();
+					onContextMenu(e, app, appIconRefs[index].current!);
+				}}
+				onClick={() => {
+					onAppIconClick(app);
+				}}
+				key={app.id}
+			>
+				<div className="h-10 w-10" ref={appIconRefs[index]}>
+					<Icon icon={app.icon} />
+				</div>
+			</div>
 		);
 	}
 
 	return (
 		<>
-			<DragDropContext onDragEnd={onDragEnd}>
-				<Droppable droppableId="bottombar" direction="horizontal">
-					{(provided) => (
-						<div
-							ref={provided.innerRef}
-							className="flex flex-row gap-8"
-							{...provided.droppableProps}
-						>
-							{apps.map((app, index) => (
-								<Draggable
-									key={app.id}
-									draggableId={app.id}
-									index={index}
-								>
-									{(provided) => (
-										<div
-											ref={provided.innerRef}
-											{...provided.draggableProps}
-											{...provided.dragHandleProps}
-											className={
-												`flex flex-col items-center justify-center rounded-sm p-1 hover:bg-slate-50 hover:bg-opacity-60` +
-												` ${
-													contextMenu.app?.id ===
-													app.id
-														? "bg-slate-50 bg-opacity-60"
-														: ""
-												} ${
-													app.appState.isOpen
-														? "border-b-2 border-solid border-gray-500	"
-														: ``
-												}`
-											}
-											onContextMenu={(e) => {
-												e.preventDefault();
-												onContextMenu(
-													e,
-													app,
-													appIconRefs[index].current!,
-												);
-											}}
-											onClick={() => {
-												onAppIconClick(app);
-											}}
-										>
-											<div
-												className="h-10 w-10"
-												ref={appIconRefs[index]}
-											>
-												<Icon icon={app.icon} />
-											</div>
-										</div>
-									)}
-								</Draggable>
-							))}
-							{provided.placeholder}
-						</div>
-					)}
-				</Droppable>
-			</DragDropContext>
-			<BottomBarAppsContextMenu
+			<div ref={drop} className="flex flex-row gap-8">
+				{apps.map((app, index) => (
+					<BottomBarAppIcon app={app} index={index} key={app.id} />
+				))}
+			</div>
+			<BottomBarAppContextMenu
 				onContextMenuClose={onContextMenuClose}
 				{...contextMenu}
 			/>
