@@ -1,12 +1,12 @@
-import { useEffect } from "react";
-import { HTML5Backend } from "react-dnd-html5-backend";
-import { DndProvider } from "react-dnd";
-import "./App.css";
-import BottomBar from "./Components/BottomBar/BottomBar";
-import { useSettingsDispatch, useSettingsSelector } from "./store/hooks";
-import { selectTheme } from "./store/settingsSlice";
-import applyDynamicStyles from "./Components/Utils/dynamicStyles";
-import Desktop from "./Components/Desktop/Desktop";
+import { useEffect } from 'react';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { DndProvider } from 'react-dnd';
+import './App.css';
+import TaskBar from './Components/TaskBar/TaskBar';
+import { useSettingsDispatch, useSettingsSelector } from './store/hooks';
+import { selectTheme } from './store/settingsSlice';
+import applyDynamicStyles from './Utils/dynamicStyles';
+import Desktop from './Components/Desktop/Desktop';
 
 function App() {
 	const settingsDispatch = useSettingsDispatch();
@@ -17,21 +17,17 @@ function App() {
 	}, [settingsDispatch, palette]);
 
 	return (
-		<>
+		<DndProvider backend={HTML5Backend}>
 			<div
-				className="bg-primary"
+				className="w-full h-full flex flex-col bg-primary"
 				onContextMenu={(e) => {
 					e.preventDefault();
 				}}
 			>
-				<DndProvider backend={HTML5Backend}>
-					<Desktop />
-				</DndProvider>
+				<Desktop />
+				<TaskBar />
 			</div>
-			<DndProvider backend={HTML5Backend}>
-				<BottomBar />
-			</DndProvider>
-		</>
+		</DndProvider>
 	);
 }
 

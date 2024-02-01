@@ -1,19 +1,14 @@
-import { useDrop } from "react-dnd";
-import { TApp } from "../../types";
-import DesktopApp from "./DesktopApp";
-import { useAppDispatch } from "../../store/hooks";
-import { reLocateApp } from "../../store/appsSlice";
-import { useCallback, useState } from "react";
-import DesktopContextMenu from "../ContextMenus/DesktopContextMenu";
+import { useDrop } from 'react-dnd';
+import { TApp } from '../../types';
+import DesktopApp from './DesktopApp';
+import { useAppDispatch } from '../../store/hooks';
+import { relocateApp } from '../../store/appsSlice';
+import DesktopContextMenu from '../ContextMenus/DesktopContextMenu';
+import DesktopAppContextMenu from '../ContextMenus/DesktopAppContextMenu';
 
 interface DesktopGridSlotProps {
 	xCoordinate: number;
 	yCoordinate: number;
-	onContextMenu?: (
-		e: React.MouseEvent<HTMLDivElement>,
-		app: TApp | null,
-		ref: HTMLDivElement,
-	) => void;
 	app?: TApp;
 }
 
@@ -24,50 +19,9 @@ export default function DesktopGridSlot({
 }: DesktopGridSlotProps): JSX.Element {
 	const dispatch = useAppDispatch();
 
-	const [contextMenu, setContextMenu] = useState<{
-		position: {
-			x: number;
-			y: number;
-		};
-		isOpen: boolean;
-		app: TApp | null;
-	}>({
-		position: {
-			x: 0,
-			y: 0,
-		},
-		isOpen: false,
-		app: null,
-	});
-
-	const onContextMenu = useCallback(
-		(e: React.MouseEvent<HTMLDivElement>, app: TApp | null) => {
-			setContextMenu({
-				isOpen: true,
-				position: {
-					x: e.clientX,
-					y: e.clientY,
-				},
-				app,
-			});
-		},
-		[contextMenu],
-	);
-
-	const onContextMenuClose = useCallback(() => {
-		setContextMenu({
-			isOpen: false,
-			app: null,
-			position: {
-				x: 0,
-				y: 0,
-			},
-		});
-	}, [contextMenu]);
-
 	const [, drop] = useDrop(
 		() => ({
-			accept: "APP",
+			accept: 'APP',
 			drop(item: any) {
 				if (
 					(item.app?.position.x === xCoordinate &&
@@ -77,34 +31,35 @@ export default function DesktopGridSlot({
 					return;
 				}
 				dispatch(
-					reLocateApp({
+					relocateApp({
 						app: item.app,
 						position: {
 							x: xCoordinate,
 							y: yCoordinate,
 						},
-					}),
+					})
 				);
 			},
 		}),
-		[],
+		[]
 	);
 
+	if (!app) {
+		return (
+			<DesktopContextMenu key={`${xCoordinate}-${yCoordinate}`}>
+				<div
+					ref={drop}
+					className="flex h-24 flex-col items-center justify-center"
+				/>
+			</DesktopContextMenu>
+		);
+	}
+
 	return (
-		<div
-			ref={drop}
-			onContextMenu={(e) => {
-				if (onContextMenu) {
-					onContextMenu(e, app ?? null);
-				}
-			}}
-			className="flex h-24 flex-col items-center justify-center"
-		>
-			{app && <DesktopApp index={0} app={app} />}
-			<DesktopContextMenu
-				onContextMenuClose={onContextMenuClose}
-				{...contextMenu}
-			/>
-		</div>
+		<DesktopAppContextMenu appId={app.id}>
+			<div className="flex h-24 flex-col items-center justify-center">
+				{app && <DesktopApp index={0} app={app} />}
+			</div>
+		</DesktopAppContextMenu>
 	);
 }

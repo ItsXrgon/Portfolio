@@ -2,19 +2,22 @@ export type TApp = {
 	id: string;
 	name: string;
 	icon: string;
-	type: "app" | "folder";
+	type: 'app' | 'folder';
 	position: {
 		x: number;
 		y: number;
 	};
-	appState: {
-		isOpen: boolean;
-		isPinned: boolean;
-		isSelected: boolean;
-	};
-	windowState?: {
+};
+
+export type TWindow = {
+	id: string;
+	name: string;
+	icon: string;
+	type: 'app' | 'folder';
+	windowState: {
 		isMinimized: boolean;
 		isMaximized: boolean;
+		zIndex: number;
 		position: {
 			x: number;
 			y: number;
@@ -26,8 +29,15 @@ export type TApp = {
 	};
 };
 
+export type TTaskBar = {
+	id: string;
+	name: string;
+	icon: string;
+	pinned: boolean;
+};
+
 export type TFolder = TApp & {
-	type: "folder";
+	type: 'folder';
 	children: TApp[];
 };
 
@@ -40,7 +50,7 @@ export type TTheme = {
 		secondary_accent: string;
 		ternary: string;
 		ternary_accent: string;
-		bottomBar: string;
+		TaskBar: string;
 	};
 	text: {
 		primary: string;

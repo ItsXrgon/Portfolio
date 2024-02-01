@@ -1,4 +1,4 @@
-import { TTheme } from "../../types";
+import { TTheme } from '../types';
 
 const applyDynamicStyles = (theme: TTheme) => {
 	const dynamicStyles = `
@@ -29,11 +29,11 @@ const applyDynamicStyles = (theme: TTheme) => {
     .bg-ternary-hover:hover {
       background-color: ${theme.colors.ternary_accent};
     }
-    .bg-bottomBar-hover:hover {
-      background-color: ${theme.colors.bottomBar};
+    .bg-TaskBar-hover:hover {
+      background-color: ${theme.colors.TaskBar};
     }
-    .bg-bottomBar {
-      background-color: ${theme.colors.bottomBar};
+    .bg-TaskBar {
+      background-color: ${theme.colors.TaskBar};
     }
     .text-primary {
       color: ${theme.colors.primary};
@@ -50,7 +50,7 @@ const applyDynamicStyles = (theme: TTheme) => {
 
   `;
 
-	const styleTag = document.createElement("style");
+	const styleTag = document.createElement('style');
 	styleTag.innerHTML = dynamicStyles;
 
 	document.head.appendChild(styleTag);

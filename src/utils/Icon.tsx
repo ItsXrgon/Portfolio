@@ -1,13 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export default function Icon({ icon }: { icon: string }) {
-	const [iconUrl, setIconUrl] = useState<string>("");
+	const [iconUrl, setIconUrl] = useState<string>('');
 
 	useEffect(() => {
 		const loadImages = async () => {
-			const { default: url } = await import(
-				`../../assets/icons/${icon}.svg`
-			);
+			const { default: url } = await import(`../apps/icons/${icon}.svg`);
 
 			setIconUrl(url);
 		};

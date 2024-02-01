@@ -23,6 +23,7 @@ export default function getTerminalOuput(
 		case "color":
 			return switchColor(input, setFontColor);
 		default:
+			console.log(input)
 			return `Command not found`;
 	}
 }

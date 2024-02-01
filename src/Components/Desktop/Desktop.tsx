@@ -1,19 +1,13 @@
-import { useMemo } from "react";
-import {
-	reLocateWindow,
-	selectApps,
-	selectOpenWindows,
-} from "../../store/appsSlice";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { TApp } from "../../types";
-import DesktopGridSlot from "./DesktopGridSlot";
-import { useDrop } from "react-dnd";
-import Window from "../Desktop/Window";
+import { useMemo } from 'react';
+import { getApps, getShownWindows } from '../../store/appsSlice';
+import { useAppSelector } from '../../store/hooks';
+import { TApp, TWindow } from '../../types';
+import DesktopGridSlot from './DesktopGridSlot';
+import Window from './Window';
 
 export default function Desktop() {
-	const apps = useAppSelector(selectApps);
-	const openWindows = useAppSelector(selectOpenWindows);
-	const dispatch = useAppDispatch();
+	const apps = useAppSelector(getApps);
+	const windows = useAppSelector(getShownWindows);
 
 	// Grid for desktop apps
 	// X is vertical, Y is horizontal
@@ -23,48 +17,25 @@ export default function Desktop() {
 				<DesktopGridSlot
 					xCoordinate={i}
 					yCoordinate={j}
-					app={apps.find(
-						(app: TApp) =>
-							app.position.x === i && app.position.y === j,
-					)}
+					app={
+						(apps.find(
+							(app: TApp) => app.position.x === i && app.position.y === j
+						) as TApp) ?? undefined
+					}
 					key={`${i}-${j}`}
 				/>
-			)),
+			))
 		);
 	}, [apps]);
 
-	const [, drop] = useDrop(
-		() => ({
-			accept: "WINDOW",
-			drop(item: any, monitor: any) {
-				const delta = monitor.getDifferenceFromInitialOffset() as {
-					x: number;
-					y: number;
-				};
-
-				dispatch(
-					reLocateWindow({
-						app: item,
-						position: {
-							x: item.app.windowState.position.x + delta.x,
-							y: item.app.windowState.position.y + delta.y,
-						},
-					}),
-				);
-			},
-		}),
-		[dispatch],
-	);
-
 	return (
 		<div
-			ref={drop}
-			className="h-full w-full"
+			className="h-[93%] w-full relative bg-transparent bg-black"
 			onSelectCapture={(e) => e.stopPropagation()}
 		>
 			<div className="grid grid-cols-20">{...gridElements}</div>
-			{openWindows.map((app: TApp) => (
-				<Window app={app} />
+			{windows.map((app: TWindow, index: number) => (
+				<Window app={app} key={index} />
 			))}
 		</div>
 	);
