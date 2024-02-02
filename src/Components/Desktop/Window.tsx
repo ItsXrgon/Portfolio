@@ -14,6 +14,9 @@ import {
 } from '../../store/appsSlice';
 import TopBarContextMenu from '../ContextMenus/TopBarContextMenu';
 import { Maximize, Minimize, Minus, X } from 'lucide-react';
+import Settings from '../../apps/Settings/Settings';
+import Github from '../../apps/Github/Github';
+import About from '../../apps/About/About';
 
 interface WindowProps {
 	app: TWindow;
@@ -28,19 +31,13 @@ export default function Window({ app, zIndex }: WindowProps) {
 	function renderApp() {
 		switch (app.name) {
 			case 'Terminal':
-				return <Terminal />;
+				return <Terminal app={app} />;
+			case 'Settings':
+				return <Settings app={app} />;
 			case 'Github':
-				return (
-					<div className="bg-black">
-						<div className="text-white">This is a Github page!</div>
-					</div>
-				);
+				return <Github app={app} />;
 			case 'About':
-				return (
-					<div className="bg-black">
-						<div className="text-white">This is an about page!</div>
-					</div>
-				);
+				return <About app={app} />;
 			default:
 				return (
 					<div className="bg-black">
@@ -200,8 +197,8 @@ export default function Window({ app, zIndex }: WindowProps) {
 					!app.windowState.isMaximized && 'rounded-md'
 				}`}
 				style={{ zIndex: dragging ? 999 : zIndex }}
-				minWidth={app.windowState.isMaximized ? '100%' : '400px'}
-				minHeight={app.windowState.isMaximized ? '100%' : '400px'}
+				minWidth={app.windowState.isMaximized ? '100%' : '500px'}
+				minHeight={app.windowState.isMaximized ? '100%' : '500px'}
 				position={{
 					x: app.windowState.isMaximized ? 0 : app.windowState.position.x,
 					y: app.windowState.isMaximized ? 0 : app.windowState.position.y,
@@ -210,16 +207,15 @@ export default function Window({ app, zIndex }: WindowProps) {
 				onDrag={onDrag}
 				onDragStop={onDragStop}
 				dragHandleClassName="dragHandle"
-				enableResizing
+				enableResizing={!app.windowState.isMaximized}
 				bounds={'parent'}
 				onResize={onResize}
 				key={app.id}
-				onClick={() => {}}
 			>
 				<TopBarContextMenu appId={app.id}>
 					<div
 						className={`dragHandle bg-TaskBar flex flex-row items-center justify-between px-2 py-[2px] ${
-							!app.windowState.isMaximized && 'rounded-md'
+							!app.windowState.isMaximized && 'rounded-t-md'
 						}`}
 					>
 						<div className="h-9 w-9">
@@ -249,7 +245,7 @@ export default function Window({ app, zIndex }: WindowProps) {
 						</div>
 					</div>
 				</TopBarContextMenu>
-				<div className="h-full w-full">{renderApp()}</div>
+				{renderApp()}
 			</Rnd>
 			{/*app.windowState.position.x === 0 && (
 				<div className="w-[49%] absolute left-[1%] top-[1%] rounded-lg bg-gray-400 opacity-50 h-[98%]" />

@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TApp, TTaskBar, TWindow } from '../types';
 
 export interface AppsState {
@@ -21,6 +21,13 @@ const initialState: AppsState = {
 			name: 'Github',
 			icon: 'github',
 			position: { x: 1, y: 0 },
+			type: 'app',
+		},
+		{
+			id: '2',
+			name: 'Settings',
+			icon: 'settings',
+			position: { x: 2, y: 0 },
 			type: 'app',
 		},
 	],
@@ -57,7 +64,7 @@ export const appsSlice = createSlice({
 					isMinimized: false,
 					zIndex: 0,
 					position: { x: 350, y: 150 },
-					size: { width: 800, height: 400 },
+					size: { width: 800, height: 500 },
 				},
 			});
 
@@ -250,25 +257,6 @@ export const appsSlice = createSlice({
 			}
 		},
 	},
-	selectors: {
-		getApps: (state: AppsState) => state.apps,
-		getWindows: (state: AppsState) => state.windows,
-		getShownWindows: (state: AppsState) =>
-			state.windows.filter((w) => !w.windowState?.isMinimized),
-		getTaskBar: (state: AppsState) => state.taskBar,
-		getAppById: (state: AppsState, id: string) =>
-			state.apps.find((app) => app.id === id),
-		getWindowById: (state: AppsState, id: string) =>
-			state.windows.find((app) => app.id === id),
-		getTaskBarById: (state: AppsState, id: string) =>
-			state.taskBar.find((app) => app.id === id),
-		isAppOpen: (state: AppsState, id: string) =>
-			state.windows.findIndex((w) => w.id === id) !== -1,
-		isAppMinimized: (state: AppsState, id: string) =>
-			state.windows.find((w) => w.id === id)?.windowState?.isMinimized,
-		isAppPinned: (state: AppsState, id: string) =>
-			state.taskBar.findIndex((w) => w.id === id) !== -1,
-	},
 });
 
 export const {
@@ -290,17 +278,48 @@ export const {
 	handleTaskBarAppClick,
 } = appsSlice.actions;
 
-export const {
-	getAppById,
-	getWindowById,
-	getTaskBarById,
-	getApps,
-	getWindows,
-	getShownWindows,
-	getTaskBar,
-	isAppOpen,
-	isAppMinimized,
-	isAppPinned,
-} = appsSlice.selectors;
+export const selectApps = (state: { apps: AppsState }) => state.apps.apps;
+
+export const selectWindows = (state: { apps: AppsState }) => state.apps.windows;
+
+export const selectShownWindows = createSelector([selectWindows], (windows) =>
+	windows.filter((w) => !w.windowState?.isMinimized)
+);
+
+export const selectTaskBar = (state: { apps: AppsState }) => state.apps.taskBar;
+
+export const selectAppById = (id: string) =>
+	createSelector([selectApps], (apps) => apps?.find((app) => app.id === id));
+
+export const selectWindowById = (id: string) =>
+	createSelector(
+		[selectWindows],
+		(windows) => windows?.find((app) => app.id === id)
+	);
+
+export const selectTaskBarById = (id: string) =>
+	createSelector(
+		[selectTaskBar],
+		(taskBar) => taskBar?.find((app) => app.id === id)
+	);
+
+export const isAppOpen = (id: string) =>
+	createSelector(
+		[selectWindows],
+		(windows) => windows.findIndex((w) => w.id === id) !== -1
+	);
+
+export const isAppMinimized = (id: string) =>
+	createSelector(
+		[selectWindows],
+		(windows) =>
+			windows.findIndex((w) => w.id === id && w.windowState?.isMinimized) !== -1
+	);
+
+export const isAppPinned = (id: string) =>
+	createSelector(
+		[selectTaskBar],
+		(taskBar) => taskBar.findIndex((w) => w.id === id) !== -1
+	);
 
 export default appsSlice.reducer;

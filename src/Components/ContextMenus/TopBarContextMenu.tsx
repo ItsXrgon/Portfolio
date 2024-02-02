@@ -13,7 +13,7 @@ import {
 	maximizeApp,
 	minimizeApp,
 	unMaximizeApp,
-	getWindowById,
+	selectWindowById,
 } from '../../store/appsSlice';
 import { Maximize, Minimize, Minus, X } from 'lucide-react';
 
@@ -29,7 +29,7 @@ export default function TopBarContextMenu({
 	const { t } = useTranslation();
 
 	const dispatch = useAppDispatch();
-	const app = useAppSelector((state) => getWindowById(state, appId));
+	const app = useAppSelector(selectWindowById(appId));
 
 	const handleMaximize = useCallback(() => {
 		dispatch(

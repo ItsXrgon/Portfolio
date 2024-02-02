@@ -1,5 +1,14 @@
 {
-	"settings": { "select_language": "Select Language" },
+	"settings": {
+		"select_language": "Select Language",
+		"home": "Home",
+		"personalization": "Personalization",
+		"timeAndDate": "Time and Date",
+		"about": "About",
+		"contact": "Contact",
+		"settings": "Settings",
+		"exit": "Exit"
+	},
 	"context_menu": {
 		"maximize": "Maximize",
 		"minimize": "Minimize",

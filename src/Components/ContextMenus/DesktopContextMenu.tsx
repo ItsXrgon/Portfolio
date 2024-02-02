@@ -20,7 +20,7 @@ import {
 	maximizeApp,
 	minimizeApp,
 	unMaximizeApp,
-	getWindowById,
+	selectWindowById,
 } from '../../store/appsSlice';
 
 export default function DesktopContextMenu({

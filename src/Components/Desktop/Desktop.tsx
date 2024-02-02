@@ -1,13 +1,13 @@
 import { useMemo } from 'react';
-import { getApps, getShownWindows } from '../../store/appsSlice';
+import { selectApps, selectShownWindows } from '../../store/appsSlice';
 import { useAppSelector } from '../../store/hooks';
 import { TApp, TWindow } from '../../types';
 import DesktopGridSlot from './DesktopGridSlot';
 import Window from './Window';
 
 export default function Desktop() {
-	const apps = useAppSelector(getApps);
-	const windows = useAppSelector(getShownWindows);
+	const apps = useAppSelector(selectApps);
+	const windows = useAppSelector(selectShownWindows);
 
 	// Grid for desktop apps
 	// X is vertical, Y is horizontal

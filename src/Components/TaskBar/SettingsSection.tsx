@@ -1,9 +1,9 @@
 import { Globe2, Settings } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import i18n, { languageOptions } from '../../i18n';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { selectTheme } from '../../store/settingsSlice';
-import { useSettingsSelector } from '../../store/hooks';
+import { useAppDispatch, useSettingsSelector } from '../../store/hooks';
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -14,9 +14,12 @@ import {
 	DropdownMenuTrigger,
 } from '../../globalComponents/DropDownMenu';
 import Clock from './Clock';
+import { openApp } from '../../store/appsSlice';
 
 export default function SettingsSection() {
 	const { t } = useTranslation();
+	const dispatch = useAppDispatch();
+	
 	const theme = useSettingsSelector(selectTheme);
 
 	const [time, setTime] = useState(new Date());
@@ -33,17 +36,26 @@ export default function SettingsSection() {
 		return () => clearInterval(interval);
 	}, []);
 
+	const handleOpenSettings = useCallback(() => {
+		dispatch(
+			openApp({
+				id: '3',
+			})
+		);
+	}, [dispatch]);
+
 	return (
 		<div className="flex items-center gap-1">
 			<DropdownMenu>
 				<DropdownMenuTrigger className="text-accent flex flex-col items-center rounded-lg px-3 hover:bg-slate-50 hover:bg-opacity-60">
-					<label className="text-sm">{time.toLocaleTimeString()}</label>
-					<label className="text-sm">{new Date().toLocaleDateString()}</label>
+					<label className="text-sm select-none">
+						{time.toLocaleTimeString()}
+					</label>
+					<label className="text-sm select-none">
+						{new Date().toLocaleDateString()}
+					</label>
 				</DropdownMenuTrigger>
-				<DropdownMenuContent
-					className="w-[320px] h-[320px]"
-					sideOffset={15}
-				>
+				<DropdownMenuContent className="w-[320px] h-[320px]" sideOffset={15}>
 					<Clock time={time} />
 				</DropdownMenuContent>
 			</DropdownMenu>
@@ -73,7 +85,10 @@ export default function SettingsSection() {
 				</DropdownMenuContent>
 			</DropdownMenu>
 			<div className="h-8 w-px bg-white" />
-			<div className="text-accent px-3 py-2 rounded-lg hover:bg-slate-50 hover:bg-opacity-60 ">
+			<div
+				className="text-accent px-3 py-2 rounded-lg hover:bg-slate-50 hover:bg-opacity-60"
+				onClick={handleOpenSettings}
+			>
 				<Settings color={theme.text.accent} />
 			</div>
 		</div>

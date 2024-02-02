@@ -2,18 +2,17 @@ import { createRef, useCallback } from 'react';
 import {
 	reOrderApps,
 	isAppOpen,
-	getTaskBar,
+	selectTaskBar,
 	handleTaskBarAppClick,
 } from '../../store/appsSlice';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { TTaskBar } from '../../types';
 import Icon from '../../utils/Icon';
 import { useDrag, useDrop } from 'react-dnd';
-import { RootState } from '../../store/store';
 import TaskBarAppContextMenu from '../ContextMenus/TaskBarAppContextMenu';
 
 export default function AppSection() {
-	const apps = useAppSelector(getTaskBar);
+	const apps = useAppSelector(selectTaskBar);
 	const dispatch = useAppDispatch();
 
 	const appIconRefs = apps.map(() => createRef<HTMLDivElement>());
@@ -68,7 +67,7 @@ export default function AppSection() {
 					ref={(node) => drag(drop(node))}
 					className={`flex flex-col items-center justify-center rounded-sm p-1 hover:bg-slate-50 hover:bg-opacity-60
 					${
-						useAppSelector((state: RootState) => isAppOpen(state, app.id)) &&
+						useAppSelector(isAppOpen(app.id)) &&
 						'border-b-2 border-solid border-gray-500	shadow-lg'
 					}`}
 					key={app.id}

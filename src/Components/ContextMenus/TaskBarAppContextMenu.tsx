@@ -13,8 +13,8 @@ import {
 	pinApp,
 	unpinApp,
 	openApp,
-	getWindowById,
-	getTaskBarById,
+	selectWindowById,
+	selectTaskBarById,
 } from '../../store/appsSlice';
 import { Pin, PinOff, X } from 'lucide-react';
 import Icon from '../../utils/Icon';
@@ -33,8 +33,8 @@ export default function TaskBarAppContextMenu({
 	const { t } = useTranslation();
 
 	const dispatch = useAppDispatch();
-	const window = useAppSelector((state) => getWindowById(state, appId));
-	const app = useAppSelector((state) => getTaskBarById(state, appId));
+	const window = useAppSelector(selectWindowById(appId));
+	const app = useAppSelector(selectTaskBarById(appId));
 	const [isOpen, setOpen] = useState(false);
 
 	const handleUnpin = useCallback(() => {
