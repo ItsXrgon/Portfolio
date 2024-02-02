@@ -1,4 +1,5 @@
 import { ReactNode, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
 	ContextMenu,
 	ContextMenuContent,
@@ -28,6 +29,8 @@ export default function DesktopAppContextMenu({
 	appId: string;
 	extraOptions?: ReactNode;
 }) {
+	const { t } = useTranslation();
+
 	const dispatch = useAppDispatch();
 	const window = useAppSelector((state) => getWindowById(state, appId));
 	const app = useAppSelector((state) => getAppById(state, appId));
@@ -77,7 +80,7 @@ export default function DesktopAppContextMenu({
 						onClick={handleUnpin}
 					>
 						<PinOff size={18} />
-						Unpin from taskbar
+						{t('context_menu.unpin_from_taskbar')}
 					</ContextMenuItem>
 				)}
 				{!taskBarApp?.pinned && (
@@ -86,7 +89,7 @@ export default function DesktopAppContextMenu({
 						onClick={handlePin}
 					>
 						<Pin size={18} />
-						Pin to taskbar
+						{t('context_menu.pin_to_taskbar')}
 					</ContextMenuItem>
 				)}
 				{!window && (
@@ -97,7 +100,7 @@ export default function DesktopAppContextMenu({
 						<div className="h-5 w-5">
 							<Icon icon={app?.icon ?? ''} />
 						</div>
-						Open {app?.name}
+						{t('context_menu.open')} {app?.name}
 					</ContextMenuItem>
 				)}
 				{window && (
@@ -106,7 +109,7 @@ export default function DesktopAppContextMenu({
 						onClick={handleClose}
 					>
 						<X size={18} />
-						Close {app?.name}
+						{t('context_menu.close')} {app?.name}
 					</ContextMenuItem>
 				)}
 			</ContextMenuContent>

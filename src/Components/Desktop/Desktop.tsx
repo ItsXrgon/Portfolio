@@ -35,7 +35,7 @@ export default function Desktop() {
 		>
 			<div className="grid grid-cols-20">{...gridElements}</div>
 			{windows.map((app: TWindow, index: number) => (
-				<Window app={app} key={index} />
+				<Window app={app} zIndex={index} key={index} />
 			))}
 		</div>
 	);

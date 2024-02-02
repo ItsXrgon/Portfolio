@@ -83,7 +83,7 @@ export default function AppSection() {
 
 	return (
 		<>
-			<div ref={drop} className="flex flex-row gap-8">
+			<div ref={drop} className="flex flex-row gap-3">
 				{apps.map((app, index) => (
 					<TaskBarAppIcon app={app} index={index} key={app.id} />
 				))}

@@ -5,8 +5,9 @@ import './App.css';
 import TaskBar from './Components/TaskBar/TaskBar';
 import { useSettingsDispatch, useSettingsSelector } from './store/hooks';
 import { selectTheme } from './store/settingsSlice';
-import applyDynamicStyles from './Utils/dynamicStyles';
+import applyDynamicStyles from './utils/dynamicStyles';
 import Desktop from './Components/Desktop/Desktop';
+import './i18n';
 
 function App() {
 	const settingsDispatch = useSettingsDispatch();

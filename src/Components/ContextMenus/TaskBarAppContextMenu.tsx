@@ -1,4 +1,5 @@
 import { ReactNode, useCallback, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -29,6 +30,8 @@ export default function TaskBarAppContextMenu({
 	extraOptions?: ReactNode;
 	appId: string;
 }) {
+	const { t } = useTranslation();
+
 	const dispatch = useAppDispatch();
 	const window = useAppSelector((state) => getWindowById(state, appId));
 	const app = useAppSelector((state) => getTaskBarById(state, appId));
@@ -82,7 +85,7 @@ export default function TaskBarAppContextMenu({
 			>
 				{children}
 			</DropdownMenuTrigger>
-			<DropdownMenuContent className="w-56">
+			<DropdownMenuContent className="w-56" sideOffset={15}>
 				{extraOptions && <DropdownMenuSeparator />}
 				{app?.pinned && (
 					<DropdownMenuItem
@@ -90,7 +93,7 @@ export default function TaskBarAppContextMenu({
 						onClick={handleUnpin}
 					>
 						<PinOff size={18} />
-						Unpin from taskbar
+						{t('context_menu.unpin_from_taskbar')}
 					</DropdownMenuItem>
 				)}
 				{!app?.pinned && (
@@ -99,7 +102,7 @@ export default function TaskBarAppContextMenu({
 						onClick={handlePin}
 					>
 						<Pin size={18} />
-						Pin to taskbar
+						{t('context_menu.pin_to_taskbar')}
 					</DropdownMenuItem>
 				)}
 				{!window && (
@@ -110,7 +113,7 @@ export default function TaskBarAppContextMenu({
 						<div className="h-5 w-5">
 							<Icon icon={app?.icon ?? ''} />
 						</div>
-						Open {app?.name}
+						{t('context_menu.open')} {app?.name}
 					</DropdownMenuItem>
 				)}
 				{window && (
@@ -119,7 +122,7 @@ export default function TaskBarAppContextMenu({
 						onClick={handleClose}
 					>
 						<X size={18} />
-						Close {app?.name}
+						{t('context_menu.close')} {app?.name}
 					</DropdownMenuItem>
 				)}
 			</DropdownMenuContent>

@@ -41,7 +41,7 @@ export default function Terminal() {
 
 	return (
 		<div
-			className="scrollbar-hidden h-full w-full overflow-y-scroll bg-black p-2"
+			className="scrollbar-hidden  overflow-y-scroll bg-black p-2"
 			onClick={() => focusInput()}
 			style={{
 				color: fontColor,

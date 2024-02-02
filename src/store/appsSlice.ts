@@ -99,6 +99,7 @@ export const appsSlice = createSlice({
 				...state.windows[windowIndex].windowState,
 				isMinimized: false,
 			};
+			pushToFront({ id: action.payload.id });
 		},
 		maximizeApp(state, action: PayloadAction<{ id: string }>) {
 			const index = state.windows.findIndex(
@@ -190,17 +191,26 @@ export const appsSlice = createSlice({
 				size: size || state.windows[index].windowState?.size,
 			};
 		},
-		pushToFront(state, action: PayloadAction<TApp | TWindow>) {
+		pushToFront(
+			state,
+			action: PayloadAction<{
+				id: string;
+			}>
+		) {
 			const index = state.windows.findIndex(
 				(app) => app.id === action.payload.id
 			);
-			const zIndex = Math.max(
-				...state.windows.map((w) => w.windowState?.zIndex || 0)
-			);
-			state.windows[index].windowState = {
-				...state.windows[index].windowState!,
-				zIndex: zIndex + 1,
-			};
+			state.windows = [
+				...state.windows.slice(0, index),
+				...state.windows.slice(index + 1),
+				{
+					...state.windows[index],
+					windowState: {
+						...state.windows[index].windowState,
+						isMinimized: false,
+					},
+				},
+			];
 		},
 		handleTaskBarAppClick(state, action: PayloadAction<TTaskBar>) {
 			const index = state.windows.findIndex(
@@ -219,10 +229,24 @@ export const appsSlice = createSlice({
 					},
 				});
 			} else {
-				state.windows[index].windowState = {
-					...state.windows[index].windowState!,
-					isMinimized: !state.windows[index].windowState?.isMinimized,
-				};
+				if (state.windows[index].windowState?.isMinimized) {
+					state.windows = [
+						...state.windows.slice(0, index),
+						...state.windows.slice(index + 1),
+						{
+							...state.windows[index],
+							windowState: {
+								...state.windows[index].windowState,
+								isMinimized: false,
+							},
+						},
+					];
+				} else {
+					state.windows[index].windowState = {
+						...state.windows[index].windowState!,
+						isMinimized: true,
+					};
+				}
 			}
 		},
 	},

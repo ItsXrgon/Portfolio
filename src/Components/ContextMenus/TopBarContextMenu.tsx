@@ -1,4 +1,5 @@
 import { ReactNode, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
 	ContextMenu,
 	ContextMenuContent,
@@ -25,6 +26,8 @@ export default function TopBarContextMenu({
 	extraOptions?: ReactNode;
 	appId: string;
 }) {
+	const { t } = useTranslation();
+
 	const dispatch = useAppDispatch();
 	const app = useAppSelector((state) => getWindowById(state, appId));
 
@@ -66,19 +69,19 @@ export default function TopBarContextMenu({
 			<ContextMenuContent className="w-64">
 				<ContextMenuItem
 					className="flex items-center gap-3"
-					onClick={handleMaximize}
+					onClick={() => {
+						app?.windowState?.isMaximized ? handleRestore() : handleMaximize();
+					}}
 					disabled={app?.windowState?.isMaximized}
 				>
-					<Maximize size={18} />
-					Maximize
-				</ContextMenuItem>
-				<ContextMenuItem
-					className="flex items-center gap-3"
-					onClick={handleRestore}
-					disabled={!app?.windowState?.isMaximized}
-				>
-					<Minimize size={18} />
-					Restore
+					{app?.windowState?.isMaximized ? (
+						<Minimize size={18} />
+					) : (
+						<Maximize size={18} />
+					)}
+					{app?.windowState?.isMaximized
+						? t('context_menu.restore')
+						: t('context_menu.maximize')}
 				</ContextMenuItem>
 				<ContextMenuItem
 					className="flex items-center gap-3"
@@ -86,7 +89,7 @@ export default function TopBarContextMenu({
 					disabled={app?.windowState?.isMinimized}
 				>
 					<Minus size={18} />
-					Minimize
+					{t('context_menu.minimize')}
 				</ContextMenuItem>
 				{extraOptions && <ContextMenuSeparator />}
 				{extraOptions}
@@ -96,7 +99,7 @@ export default function TopBarContextMenu({
 					onClick={handleClose}
 				>
 					<X size={18} />
-					Close
+					{t('context_menu.close')}
 				</ContextMenuItem>
 			</ContextMenuContent>
 		</ContextMenu>

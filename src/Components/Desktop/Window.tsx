@@ -1,4 +1,5 @@
-import { Rnd } from 'react-rnd';
+import { Position, ResizableDelta, Rnd, DraggableData } from 'react-rnd';
+import { useCallback, useState } from 'react';
 import Terminal from '../../apps/Terminal/Terminal';
 import { TWindow } from '../../types';
 import Icon from '../../utils/Icon';
@@ -9,15 +10,20 @@ import {
 	minimizeApp,
 	unMaximizeApp,
 	relocateWindow,
+	pushToFront,
 } from '../../store/appsSlice';
 import TopBarContextMenu from '../ContextMenus/TopBarContextMenu';
+import { Maximize, Minimize, Minus, X } from 'lucide-react';
 
 interface WindowProps {
 	app: TWindow;
+	zIndex: number;
 }
 
-export default function Window({ app }: WindowProps) {
+export default function Window({ app, zIndex }: WindowProps) {
 	const dispatch = useAppDispatch();
+
+	const [dragging, setDragging] = useState(false);
 
 	function renderApp() {
 		switch (app.name) {
@@ -44,126 +50,202 @@ export default function Window({ app }: WindowProps) {
 		}
 	}
 
-	function onDragStop() {
-		if (app.windowState.position.x === 0) {
+	const onDragStart = useCallback(
+		(_: any, {}: DraggableData) => {
+			setDragging(true);
+		},
+		[app.id, dispatch]
+	);
+
+	const onDrag = useCallback(
+		(_: any, { x, y }: DraggableData) => {
 			dispatch(
 				relocateWindow({
 					windowId: app.id,
 					position: {
-						x: 1,
-						y: app.windowState.position.y,
-					},
-					size: {
-						width: 400,
-						height: app.windowState.size.height,
+						x: x,
+						y: y,
 					},
 				})
 			);
-		}
-		if (app.windowState.position.y === 0) {
+		},
+		[app.id, dispatch]
+	);
+
+	const onDragStop = useCallback(
+		(_: any, {}: DraggableData) => {
+			dispatch(
+				pushToFront({
+					id: app.id,
+				})
+			);
+			setDragging(false);
+			if (app.windowState.position.x === 0) {
+				dispatch(
+					relocateWindow({
+						windowId: app.id,
+						position: {
+							x: 1,
+							y: app.windowState.position.y,
+						},
+						size: {
+							width: 400,
+							height: app.windowState.size.height,
+						},
+					})
+				);
+			}
+			if (app.windowState.position.y === 0) {
+				dispatch(
+					relocateWindow({
+						windowId: app.id,
+						position: {
+							x: app.windowState.position.x,
+							y: 1,
+						},
+						size: {
+							width: app.windowState.size.width,
+							height: 400,
+						},
+					})
+				);
+			}
+			if (app.windowState.position.x === window.innerWidth - 400) {
+				dispatch(
+					relocateWindow({
+						windowId: app.id,
+						position: {
+							x: window.innerWidth - 401,
+							y: app.windowState.position.y,
+						},
+						size: {
+							width: 400,
+							height: app.windowState.size.height,
+						},
+					})
+				);
+			}
+		},
+		[
+			app.id,
+			app.windowState.position.x,
+			app.windowState.position.y,
+			app.windowState.size.height,
+			app.windowState.size.width,
+			dispatch,
+		]
+	);
+
+	const onResize = useCallback(
+		(
+			_: MouseEvent | TouchEvent,
+			__: any,
+			ref: HTMLElement,
+			___: ResizableDelta,
+			position: Position
+		) => {
 			dispatch(
 				relocateWindow({
 					windowId: app.id,
 					position: {
-						x: app.windowState.position.x,
-						y: 1,
+						x: position.x,
+						y: position.y,
 					},
 					size: {
-						width: app.windowState.size.width,
-						height: 400,
+						width: ref.offsetWidth,
+						height: ref.offsetHeight,
 					},
 				})
 			);
-		}
-		if (app.windowState.position.x === window.innerWidth - 400) {
-			dispatch(
-				relocateWindow({
-					windowId: app.id,
-					position: {
-						x: window.innerWidth - 401,
-						y: app.windowState.position.y,
-					},
-					size: {
-						width: 400,
-						height: app.windowState.size.height,
-					},
-				})
-			);
-		}
-	}
+		},
+		[app.id, dispatch]
+	);
+
+	const handleMaximize = useCallback(() => {
+		dispatch(
+			maximizeApp({
+				id: app.id,
+			})
+		);
+	}, [dispatch, app]);
+
+	const handleRestore = useCallback(() => {
+		dispatch(
+			unMaximizeApp({
+				id: app.id,
+			})
+		);
+	}, [dispatch, app]);
+
+	const handleMinimize = useCallback(() => {
+		dispatch(
+			minimizeApp({
+				id: app.id,
+			})
+		);
+	}, [dispatch, app]);
+
+	const handleClose = useCallback(() => {
+		dispatch(
+			closeApp({
+				id: app.id,
+			})
+		);
+	}, [dispatch, app]);
 
 	return (
 		<>
 			<Rnd
-				className={`fixed border-2 border-gray-700 bg-black`}
+				className={`fixed border-2 border-gray-700 bg-black ${
+					!app.windowState.isMaximized && 'rounded-md'
+				}`}
+				style={{ zIndex: dragging ? 999 : zIndex }}
 				minWidth={app.windowState.isMaximized ? '100%' : '400px'}
 				minHeight={app.windowState.isMaximized ? '100%' : '400px'}
 				position={{
 					x: app.windowState.isMaximized ? 0 : app.windowState.position.x,
 					y: app.windowState.isMaximized ? 0 : app.windowState.position.y,
 				}}
-				onDrag={(_, d) => {
-					dispatch(
-						relocateWindow({
-							windowId: app.id,
-							position: {
-								x: d.x,
-								y: d.y,
-							},
-						})
-					);
-				}}
-				key={app.id}
+				onDragStart={onDragStart}
+				onDrag={onDrag}
 				onDragStop={onDragStop}
 				dragHandleClassName="dragHandle"
 				enableResizing
 				bounds={'parent'}
+				onResize={onResize}
+				key={app.id}
 				onClick={() => {}}
 			>
 				<TopBarContextMenu appId={app.id}>
-					<div className="dragHandle bg-TaskBar flex flex-row items-center justify-between px-2 py-[2px]">
+					<div
+						className={`dragHandle bg-TaskBar flex flex-row items-center justify-between px-2 py-[2px] ${
+							!app.windowState.isMaximized && 'rounded-md'
+						}`}
+					>
 						<div className="h-9 w-9">
 							<Icon icon={app.icon} />
 						</div>
 						<div className="flex gap-2">
+							<div className="cursor-pointer py-2">
+								<Minus size={24} onClick={handleMinimize} />
+							</div>
 							<div
-								className="h-4 w-4 cursor-pointer rounded-full bg-red-500"
+								className="cursor-pointer py-2"
 								onClick={() => {
-									dispatch(
-										closeApp({
-											id: app.id,
-										})
-									);
+									app?.windowState?.isMaximized
+										? handleRestore()
+										: handleMaximize();
 								}}
-							/>
-							<div
-								className="h-4 w-4 cursor-pointer rounded-full bg-yellow-500"
-								onClick={() => {
-									dispatch(
-										minimizeApp({
-											id: app.id,
-										})
-									);
-								}}
-							/>
-							<div
-								className="h-4 w-4 cursor-pointer rounded-full bg-green-500 "
-								onClick={() => {
-									if (app.windowState.isMaximized) {
-										dispatch(
-											unMaximizeApp({
-												id: app.id,
-											})
-										);
-									} else {
-										dispatch(
-											maximizeApp({
-												id: app.id,
-											})
-										);
-									}
-								}}
-							/>
+							>
+								{app?.windowState?.isMaximized ? (
+									<Minimize size={24} />
+								) : (
+									<Maximize size={24} />
+								)}
+							</div>
+							<div className="cursor-pointer py-2" onClick={handleClose}>
+								<X size={24} />
+							</div>
 						</div>
 					</div>
 				</TopBarContextMenu>

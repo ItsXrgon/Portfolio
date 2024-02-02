@@ -1,0 +1,12 @@
+{
+	"settings": { "select_language": "Select Language" },
+	"context_menu": {
+		"maximize": "Maximize",
+		"minimize": "Minimize",
+		"restore": "Restore",
+		"pin_to_taskbar": "Pin to Taskbar",
+		"unpin_from_taskbar": "Unpin from Taskbar",
+		"open": "Open",
+		"close": "Close"
+	}
+}
