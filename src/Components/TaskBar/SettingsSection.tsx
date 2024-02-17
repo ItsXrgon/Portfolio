@@ -19,7 +19,7 @@ import { openApp } from '../../store/appsSlice';
 export default function SettingsSection() {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
-	
+
 	const theme = useSettingsSelector(selectTheme);
 
 	const [time, setTime] = useState(new Date());
@@ -47,7 +47,7 @@ export default function SettingsSection() {
 	return (
 		<div className="flex items-center gap-1">
 			<DropdownMenu>
-				<DropdownMenuTrigger className="text-accent flex flex-col items-center rounded-lg px-3 hover:bg-slate-50 hover:bg-opacity-60">
+				<DropdownMenuTrigger className="label-primary flex flex-col items-center rounded-lg px-3 tb-subdued-hover hover:bg-opacity-60">
 					<label className="text-sm select-none">
 						{time.toLocaleTimeString()}
 					</label>
@@ -59,10 +59,10 @@ export default function SettingsSection() {
 					<Clock time={time} />
 				</DropdownMenuContent>
 			</DropdownMenu>
-			<div className="h-8 w-px bg-white" />
+			<div className="h-8 w-px tb-accent" />
 			<DropdownMenu>
-				<DropdownMenuTrigger className="text-accent px-3 py-2 rounded-lg hover:bg-slate-50 hover:bg-opacity-60 ">
-					<Globe2 color={theme.text.accent} />
+				<DropdownMenuTrigger className="label-primary px-3 py-2 rounded-lg tb-subdued-hover hover:bg-opacity-60">
+					<Globe2 color={theme.icon.primary} />
 				</DropdownMenuTrigger>
 				<DropdownMenuContent className="w-56" sideOffset={15}>
 					<DropdownMenuLabel>{t('settings.select_language')}</DropdownMenuLabel>
@@ -84,12 +84,12 @@ export default function SettingsSection() {
 					</DropdownMenuRadioGroup>
 				</DropdownMenuContent>
 			</DropdownMenu>
-			<div className="h-8 w-px bg-white" />
+			<div className="h-8 w-px tb-accent" />
 			<div
-				className="text-accent px-3 py-2 rounded-lg hover:bg-slate-50 hover:bg-opacity-60"
+				className="text-accent px-3 py-2 rounded-lg tb-subdued-hover hover:bg-opacity-60"
 				onClick={handleOpenSettings}
 			>
-				<Settings color={theme.text.accent} />
+				<Settings color={theme.icon.primary} />
 			</div>
 		</div>
 	);

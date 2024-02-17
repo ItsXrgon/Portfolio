@@ -6,8 +6,13 @@ import About from './Tabs/About';
 import { Brush, Calendar, HomeIcon, Info } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { TWindow } from '../../types';
+import { TabListItem } from './Components/TabListItem';
 
-type SettingsTabs = 'Home' | 'Personalization' | 'TimeAndLanguage' | 'About';
+export type SettingsTabs =
+	| 'Home'
+	| 'Personalization'
+	| 'TimeAndLanguage'
+	| 'About';
 
 export default function Settings({ app }: { app: TWindow }) {
 	const { t } = useTranslation();
@@ -20,55 +25,41 @@ export default function Settings({ app }: { app: TWindow }) {
 		About: <About />,
 	};
 
-	function TabListItem({
-		tab,
-		icon,
-		label,
-	}: {
-		tab: SettingsTabs;
-		icon: JSX.Element;
-		label: string;
-	}) {
-		return (
-			<div
-				className={`flex items-center gap-2 p-2 cursor-pointer border border-slate-50 hover:bg-slate-200 last-of-type:rounded-br-lg first-of-type:rounded-tr-lg ${
-					tab === activeTab && 'bg-slate-200'
-				}`}
-				onClick={() => setActiveTab(tab)}
-			>
-				{icon}
-				<div className="text-base whitespace-nowrap">{label}</div>
-			</div>
-		);
-	}
-
 	return (
-		<div className="text-black bg-slate-100 flex w-full h-full">
-			<div className="flex flex-col max-w-[30%] justify-between shadow-lg rounded-l-lg">
+		<>
+			<div className="flex flex-col max-w-[30%] bg-white shadow-lg">
 				<TabListItem
 					tab="Home"
 					icon={<HomeIcon size="1rem" />}
 					label={t('settings.home')}
+					activeTab={activeTab}
+					setActiveTab={setActiveTab}
 				/>
 				<TabListItem
 					tab="Personalization"
 					icon={<Brush size="1rem" />}
-					label={t('settings.personalization')}
+					label={t('settings.personalization.personalization')}
+					activeTab={activeTab}
+					setActiveTab={setActiveTab}
 				/>
 				<TabListItem
 					tab="TimeAndLanguage"
 					icon={<Calendar size="1rem" />}
-					label={t('settings.timeAndDate')}
+					label={t('settings.languageAndTime.languageAndTime')}
+					activeTab={activeTab}
+					setActiveTab={setActiveTab}
 				/>
 				<TabListItem
 					tab="About"
 					icon={<Info size="1rem" />}
 					label={t('settings.about')}
+					activeTab={activeTab}
+					setActiveTab={setActiveTab}
 				/>
 			</div>
-			<div className="min-w-[70%] h-full flex items-center justify-center">
+			<div className="flex flex-col gap-5 p-5 w-full bg-white overflow-y-scroll">
 				{settingsTabsMap[activeTab as SettingsTabs]}
 			</div>
-		</div>
+		</>
 	);
 }

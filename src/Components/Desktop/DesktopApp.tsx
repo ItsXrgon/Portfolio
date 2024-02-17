@@ -37,14 +37,14 @@ export default function DesktopApp({ app }: AppProps): JSX.Element {
 				);
 			}}
 			role="dragabbleBox"
-			className={`flex h-24 w-20 flex-col items-center justify-center gap-1 text-white hover:bg-slate-50 hover:bg-opacity-60 hover:text-black ${
+			className={`flex h-24 w-20 flex-col items-center justify-center gap-1 label-secondary bg-subdued-hover hover:bg-opacity-60 hover:label-primary ${
 				isDragging && 'opacity-50'
 			}`}
 		>
 			<div ref={ref} className="h-12 w-12">
 				<Icon icon={app.icon} />
 			</div>
-			<label className="text-md select-none">{app.name}</label>
+			<label className="text-md">{app.name}</label>
 		</div>
 	);
 }

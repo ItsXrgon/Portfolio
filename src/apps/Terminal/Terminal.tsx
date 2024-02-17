@@ -42,7 +42,7 @@ export default function Terminal({ app }: { app: TWindow }) {
 
 	return (
 		<div
-			className="scrollbar-hidden  overflow-y-scroll bg-black p-2"
+			className="scrollbar-hidden overflow-y-scroll bg-black p-2 w-full"
 			onClick={() => focusInput()}
 			style={{
 				color: fontColor,

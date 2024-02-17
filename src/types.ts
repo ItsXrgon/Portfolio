@@ -43,19 +43,30 @@ export type TFolder = TApp & {
 
 export type TTheme = {
 	name: string;
-	colors: {
-		primary: string;
-		primary_accent: string;
-		secondary: string;
-		secondary_accent: string;
-		ternary: string;
-		ternary_accent: string;
-		TaskBar: string;
-	};
-	text: {
+	surface: {
 		primary: string;
 		secondary: string;
-		ternary: string;
+		tertiary: string;
+		subdued: string;
 		accent: string;
 	};
+	taskBar: {
+		primary: string;
+		subdued: string;
+		accent: string;
+		hover: string;
+	};
+	icon: {
+		primary: string;
+		interactive: string;
+		hover: string;
+		pressed: string;
+	};
+	label: {
+		primary: string;
+		secondary: string;
+		tertiary: string;
+		subdued: string;
+	};
+	wallpaper: string;
 };

@@ -4,29 +4,38 @@ import { TTheme } from '../types';
 
 export interface settingsState {
 	theme: TTheme;
-	wallpaper: string;
 }
 
 const initialState: settingsState = {
 	theme: {
 		name: 'Xrgon',
-		colors: {
+		surface: {
 			primary: '#231c59',
-			primary_accent: '#560BAD',
-			secondary: '#c466ff',
-			secondary_accent: '#3A0CA3',
-			ternary: '#010b29',
-			ternary_accent: '#637CEE',
-			TaskBar: '#c685ff',
+			secondary: '#2c2c2c',
+			tertiary: '#3c3c3c',
+			subdued: '#4c4c4c',
+			accent: '#5c5c5c',
 		},
-		text: {
-			primary: '#010b29',
-			secondary: '#FFFFFF',
-			ternary: '#FFFFFF',
-			accent: '#F72585',
+		taskBar: {
+			primary: '#c685ff',
+			subdued: '#4c4c4c',
+			accent: '#5c5c5c',
+			hover: '#6c6c6c',
 		},
+		icon: {
+			primary: '#ffffff',
+			interactive: '#ffffff',
+			hover: '#ffffff',
+			pressed: '#ffffff',
+		},
+		label: {
+			primary: '#000000',
+			secondary: '#ffffff',
+			tertiary: '#ffffff',
+			subdued: '#ffffff',
+		},
+		wallpaper: '',
 	},
-	wallpaper: '',
 };
 
 export const settingsSlice = createSlice({
@@ -37,15 +46,29 @@ export const settingsSlice = createSlice({
 			state.theme = action.payload;
 		},
 		changeWallpaper(state, action: PayloadAction<any>) {
-			state.wallpaper = action.payload;
+			state.theme.wallpaper = action.payload;
+		},
+		changeColour(
+			state,
+			action: PayloadAction<{
+				target: string;
+				variant: string;
+				colour: string;
+			}>
+		) {
+			// @ts-ignore
+			state.theme[action.payload.target][action.payload.variant] =
+				action.payload.colour;
 		},
 	},
 });
 
-export const { changeTheme, changeWallpaper } = settingsSlice.actions;
+export const { changeTheme, changeWallpaper, changeColour } =
+	settingsSlice.actions;
 
 export const selectSettings = (state: RootState) => state.settings;
 export const selectTheme = (state: RootState) => state.settings.theme;
-export const selectWallpaper = (state: RootState) => state.settings.wallpaper;
+export const selectWallpaper = (state: RootState) =>
+	state.settings.theme.wallpaper;
 
 export default settingsSlice.reducer;

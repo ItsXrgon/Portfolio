@@ -199,6 +199,10 @@ export default function Window({ app, zIndex }: WindowProps) {
 				style={{ zIndex: dragging ? 999 : zIndex }}
 				minWidth={app.windowState.isMaximized ? '100%' : '500px'}
 				minHeight={app.windowState.isMaximized ? '100%' : '500px'}
+				size={{
+					width: app.windowState.size.width,
+					height: app.windowState.size.height,
+				}}
 				position={{
 					x: app.windowState.isMaximized ? 0 : app.windowState.position.x,
 					y: app.windowState.isMaximized ? 0 : app.windowState.position.y,
@@ -214,7 +218,7 @@ export default function Window({ app, zIndex }: WindowProps) {
 			>
 				<TopBarContextMenu appId={app.id}>
 					<div
-						className={`dragHandle bg-TaskBar flex flex-row items-center justify-between px-2 py-[2px] ${
+						className={`dragHandle tb-primary flex flex-row items-center justify-between px-2 py-[2px] ${
 							!app.windowState.isMaximized && 'rounded-t-md'
 						}`}
 					>
@@ -245,7 +249,19 @@ export default function Window({ app, zIndex }: WindowProps) {
 						</div>
 					</div>
 				</TopBarContextMenu>
-				{renderApp()}
+				<div
+					className="flex"
+					style={{
+						height: app.windowState.isMaximized
+							? '94%'
+							: app.windowState.size.height - 46,
+						width: app.windowState.isMaximized
+							? '100%'
+							: app.windowState.size.width - 3,
+					}}
+				>
+					{renderApp()}
+				</div>
 			</Rnd>
 			{/*app.windowState.position.x === 0 && (
 				<div className="w-[49%] absolute left-[1%] top-[1%] rounded-lg bg-gray-400 opacity-50 h-[98%]" />
