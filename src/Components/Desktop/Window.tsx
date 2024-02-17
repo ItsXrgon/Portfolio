@@ -50,6 +50,11 @@ export default function Window({ app, zIndex }: WindowProps) {
 	const onDragStart = useCallback(
 		(_: any, {}: DraggableData) => {
 			setDragging(true);
+			dispatch(
+				pushToFront({
+					id: app.id,
+				})
+			);
 		},
 		[app.id, dispatch]
 	);
@@ -206,6 +211,13 @@ export default function Window({ app, zIndex }: WindowProps) {
 				position={{
 					x: app.windowState.isMaximized ? 0 : app.windowState.position.x,
 					y: app.windowState.isMaximized ? 0 : app.windowState.position.y,
+				}}
+				onMouseDown={() => {
+					dispatch(
+						pushToFront({
+							id: app.id,
+						})
+					);
 				}}
 				onDragStart={onDragStart}
 				onDrag={onDrag}
