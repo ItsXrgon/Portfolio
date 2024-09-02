@@ -1,13 +1,13 @@
-import { ReactNode, useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
+import { ReactNode, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import {
 	ContextMenu,
 	ContextMenuContent,
 	ContextMenuItem,
 	ContextMenuSeparator,
 	ContextMenuTrigger,
-} from '../../globalComponents/ContextMenu';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
+} from "../../globalComponents/ContextMenu";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
 	closeApp,
 	selectWindowById,
@@ -16,9 +16,9 @@ import {
 	openApp,
 	pinApp,
 	unpinApp,
-} from '../../store/appsSlice';
-import { PinOff, Pin, X } from 'lucide-react';
-import Icon from '../../utils/Icon';
+} from "../../store/appsSlice";
+import { PinOff, Pin, X } from "lucide-react";
+import Icon from "../../utils/Icon";
 
 export default function DesktopAppContextMenu({
 	children,
@@ -40,7 +40,7 @@ export default function DesktopAppContextMenu({
 		dispatch(
 			unpinApp({
 				id: appId,
-			})
+			}),
 		);
 	}, [dispatch, appId]);
 
@@ -48,7 +48,7 @@ export default function DesktopAppContextMenu({
 		dispatch(
 			pinApp({
 				id: appId,
-			})
+			}),
 		);
 	}, [dispatch, appId]);
 
@@ -56,7 +56,7 @@ export default function DesktopAppContextMenu({
 		dispatch(
 			openApp({
 				id: appId,
-			})
+			}),
 		);
 	}, [dispatch, appId]);
 
@@ -64,7 +64,7 @@ export default function DesktopAppContextMenu({
 		dispatch(
 			closeApp({
 				id: appId,
-			})
+			}),
 		);
 	}, [dispatch, appId]);
 
@@ -80,7 +80,7 @@ export default function DesktopAppContextMenu({
 						onClick={handleUnpin}
 					>
 						<PinOff size={18} />
-						{t('context_menu.unpin_from_taskbar')}
+						{t("context_menu.unpin_from_taskbar")}
 					</ContextMenuItem>
 				)}
 				{!taskBarApp?.pinned && (
@@ -89,7 +89,7 @@ export default function DesktopAppContextMenu({
 						onClick={handlePin}
 					>
 						<Pin size={18} />
-						{t('context_menu.pin_to_taskbar')}
+						{t("context_menu.pin_to_taskbar")}
 					</ContextMenuItem>
 				)}
 				{!window && (
@@ -98,9 +98,9 @@ export default function DesktopAppContextMenu({
 						onClick={handleOpen}
 					>
 						<div className="h-5 w-5">
-							<Icon icon={app?.icon ?? ''} />
+							<Icon icon={app?.icon ?? ""} />
 						</div>
-						{t('context_menu.open')} {app?.name}
+						{t("context_menu.open")} {app?.name}
 					</ContextMenuItem>
 				)}
 				{window && (
@@ -109,7 +109,7 @@ export default function DesktopAppContextMenu({
 						onClick={handleClose}
 					>
 						<X size={18} />
-						{t('context_menu.close')} {app?.name}
+						{t("context_menu.close")} {app?.name}
 					</ContextMenuItem>
 				)}
 			</ContextMenuContent>

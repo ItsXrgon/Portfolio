@@ -1,9 +1,9 @@
-import { useMemo } from 'react';
-import { selectApps, selectShownWindows } from '../../store/appsSlice';
-import { useAppSelector } from '../../store/hooks';
-import { TApp, TWindow } from '../../types';
-import DesktopGridSlot from './DesktopGridSlot';
-import Window from './Window';
+import { useMemo } from "react";
+import { selectApps, selectShownWindows } from "../../store/appsSlice";
+import { useAppSelector } from "../../store/hooks";
+import { TApp, TWindow } from "../../types";
+import DesktopGridSlot from "./DesktopGridSlot";
+import Window from "./Window";
 
 export default function Desktop() {
 	const apps = useAppSelector(selectApps);
@@ -19,18 +19,19 @@ export default function Desktop() {
 					yCoordinate={j}
 					app={
 						(apps.find(
-							(app: TApp) => app.position.x === i && app.position.y === j
+							(app: TApp) =>
+								app.position.x === i && app.position.y === j,
 						) as TApp) ?? undefined
 					}
 					key={`${i}-${j}`}
 				/>
-			))
+			)),
 		);
 	}, [apps]);
 
 	return (
 		<div
-			className="h-full w-full relative p-2 bg-desktop-background"
+			className="relative h-full w-full bg-desktop-background p-2"
 			onSelectCapture={(e) => e.stopPropagation()}
 		>
 			<div className="grid grid-cols-20">{...gridElements}</div>

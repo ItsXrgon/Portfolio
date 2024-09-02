@@ -165,8 +165,8 @@
 	body {
 		@apply bg-background text-foreground;
 		font-feature-settings:
-			'rlig' 1,
-			'calt' 1;
+			"rlig" 1,
+			"calt" 1;
 	}
 }
 
@@ -261,7 +261,7 @@
 html,
 body {
 	height: 100%;
-	font-family: 'Space Mono', sans-serif;
+	font-family: "Space Mono", sans-serif;
 }
 
 body {

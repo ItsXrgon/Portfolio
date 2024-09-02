@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TTheme } from '../types';
-import { RootState } from './store';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { TTheme } from "../types";
+import { RootState } from "./store";
 
 export interface settingsState {
 	activeTheme: string;
@@ -8,17 +8,17 @@ export interface settingsState {
 }
 
 const defaultTheme: TTheme = {
-	name: 'Default',
-	wallpaper: '',
+	name: "Default",
+	wallpaper: "",
 };
 
 const loadThemesFromStorage = (): TTheme[] => {
-	const storedThemes = localStorage.getItem('themes');
+	const storedThemes = localStorage.getItem("themes");
 	return storedThemes ? JSON.parse(storedThemes) : [defaultTheme];
 };
 
 const loadActiveThemeFromStorage = (): string => {
-	return localStorage.getItem('activeTheme') || 'Default';
+	return localStorage.getItem("activeTheme") || "Default";
 };
 
 const initialState: settingsState = {
@@ -27,15 +27,15 @@ const initialState: settingsState = {
 };
 
 const saveThemesToStorage = (themes: TTheme[]) => {
-	localStorage.setItem('themes', JSON.stringify(themes));
+	localStorage.setItem("themes", JSON.stringify(themes));
 };
 
 const saveActiveThemeToStorage = (activeTheme: string) => {
-	localStorage.setItem('activeTheme', activeTheme);
+	localStorage.setItem("activeTheme", activeTheme);
 };
 
 export const settingsSlice = createSlice({
-	name: 'settings',
+	name: "settings",
 	initialState,
 	reducers: {
 		setActiveTheme(state, action: PayloadAction<string>) {
@@ -48,7 +48,7 @@ export const settingsSlice = createSlice({
 		},
 		updateTheme(state, action: PayloadAction<TTheme>) {
 			const index = state.themes.findIndex(
-				(theme) => theme.name === action.payload.name
+				(theme) => theme.name === action.payload.name,
 			);
 			if (index !== -1) {
 				state.themes[index] = action.payload;
@@ -57,21 +57,21 @@ export const settingsSlice = createSlice({
 		},
 		deleteTheme(state, action: PayloadAction<string>) {
 			state.themes = state.themes.filter(
-				(theme) => theme.name !== action.payload
+				(theme) => theme.name !== action.payload,
 			);
 			if (state.activeTheme === action.payload) {
-				state.activeTheme = 'Default';
-				saveActiveThemeToStorage('Default');
+				state.activeTheme = "Default";
+				saveActiveThemeToStorage("Default");
 			}
 			saveThemesToStorage(state.themes);
 		},
 		changeColour(
 			state,
-			action: PayloadAction<{ path: string[]; colour: string }>
+			action: PayloadAction<{ path: string[]; colour: string }>,
 		) {
 			document.documentElement.style.setProperty(
-				`--${action.payload.path.join('-')}`,
-				action.payload.colour
+				`--${action.payload.path.join("-")}`,
+				action.payload.colour,
 			);
 			saveThemesToStorage(state.themes);
 		},
@@ -89,7 +89,7 @@ export const {
 export const selectSettings = (state: RootState) => state.settings;
 export const selectActiveTheme = (state: RootState) =>
 	state.settings.themes.find(
-		(theme) => theme.name === state.settings.activeTheme
+		(theme) => theme.name === state.settings.activeTheme,
 	) || defaultTheme;
 export const selectThemes = (state: RootState) => state.settings.themes;
 

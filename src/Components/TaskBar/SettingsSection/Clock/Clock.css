@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap");
 .App {
 	font-family: sans-serif;
 }
@@ -19,7 +19,7 @@
 
 .clock::after {
 	background: var(--taskbar-clock-foreground);
-	content: '';
+	content: "";
 	width: 12px;
 	height: 12px;
 	border-radius: 50%;
@@ -63,7 +63,7 @@
 
 .clock span {
 	position: absolute;
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: "Source Sans Pro", sans-serif;
 	font-weight: 700;
 }
 

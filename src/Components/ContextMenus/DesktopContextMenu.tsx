@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 import {
 	ContextMenu,
 	ContextMenuCheckboxItem,
@@ -13,15 +13,15 @@ import {
 	ContextMenuSubContent,
 	ContextMenuSubTrigger,
 	ContextMenuTrigger,
-} from '../../globalComponents/ContextMenu';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
+} from "../../globalComponents/ContextMenu";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
 	closeApp,
 	maximizeApp,
 	minimizeApp,
 	unMaximizeApp,
 	selectWindowById,
-} from '../../store/appsSlice';
+} from "../../store/appsSlice";
 
 export default function DesktopContextMenu({
 	children,

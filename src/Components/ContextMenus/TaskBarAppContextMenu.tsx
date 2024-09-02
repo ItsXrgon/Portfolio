@@ -1,13 +1,13 @@
-import { ReactNode, useCallback, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { ReactNode, useCallback, useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from '../../globalComponents/DropDownMenu';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
+} from "../../globalComponents/DropDownMenu";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
 	closeApp,
 	pinApp,
@@ -15,9 +15,9 @@ import {
 	openApp,
 	selectWindowById,
 	selectTaskbarById,
-} from '../../store/appsSlice';
-import { Pin, PinOff, X } from 'lucide-react';
-import Icon from '../../utils/Icon';
+} from "../../store/appsSlice";
+import { Pin, PinOff, X } from "lucide-react";
+import Icon from "../../utils/Icon";
 
 export default function TaskbarAppContextMenu({
 	children,
@@ -41,7 +41,7 @@ export default function TaskbarAppContextMenu({
 		dispatch(
 			unpinApp({
 				id: appId,
-			})
+			}),
 		);
 	}, [dispatch, appId]);
 
@@ -49,7 +49,7 @@ export default function TaskbarAppContextMenu({
 		dispatch(
 			pinApp({
 				id: appId,
-			})
+			}),
 		);
 	}, [dispatch, appId]);
 
@@ -57,7 +57,7 @@ export default function TaskbarAppContextMenu({
 		dispatch(
 			openApp({
 				id: appId,
-			})
+			}),
 		);
 	}, [dispatch, appId]);
 
@@ -65,7 +65,7 @@ export default function TaskbarAppContextMenu({
 		dispatch(
 			closeApp({
 				id: appId,
-			})
+			}),
 		);
 	}, [dispatch, appId]);
 
@@ -93,7 +93,7 @@ export default function TaskbarAppContextMenu({
 						onClick={handleUnpin}
 					>
 						<PinOff size={18} />
-						{t('context_menu.unpin_from_taskbar')}
+						{t("context_menu.unpin_from_taskbar")}
 					</DropdownMenuItem>
 				)}
 				{!app?.pinned && (
@@ -102,7 +102,7 @@ export default function TaskbarAppContextMenu({
 						onClick={handlePin}
 					>
 						<Pin size={18} />
-						{t('context_menu.pin_to_taskbar')}
+						{t("context_menu.pin_to_taskbar")}
 					</DropdownMenuItem>
 				)}
 				{!window && (
@@ -111,9 +111,9 @@ export default function TaskbarAppContextMenu({
 						onClick={handleOpen}
 					>
 						<div className="h-5 w-5">
-							<Icon icon={app?.icon ?? ''} />
+							<Icon icon={app?.icon ?? ""} />
 						</div>
-						{t('context_menu.open')} {app?.name}
+						{t("context_menu.open")} {app?.name}
 					</DropdownMenuItem>
 				)}
 				{window && (
@@ -122,7 +122,7 @@ export default function TaskbarAppContextMenu({
 						onClick={handleClose}
 					>
 						<X size={18} />
-						{t('context_menu.close')} {app?.name}
+						{t("context_menu.close")} {app?.name}
 					</DropdownMenuItem>
 				)}
 			</DropdownMenuContent>

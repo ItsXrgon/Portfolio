@@ -1,16 +1,16 @@
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import en from './locales/en.json';
-import ar from './locales/ar.json';
-import fr from './locales/fr.json';
-import de from './locales/de.json';
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import en from "./locales/en.json";
+import ar from "./locales/ar.json";
+import fr from "./locales/fr.json";
+import de from "./locales/de.json";
 
 // the translations
 // (tip move them in a JSON file and import them,
 // or even better, manage them separated from your code: https://react.i18next.com/guides/multiple-translation-files)
 i18n.use(initReactI18next).init({
-	fallbackLng: 'en',
-	lng: 'en', // TODO: Change to browser language
+	fallbackLng: "en",
+	lng: "en", // TODO: Change to browser language
 	interpolation: {
 		escapeValue: false,
 	},
@@ -31,15 +31,15 @@ i18n.use(initReactI18next).init({
 });
 
 // Check if language preference is stored in local storage
-const storedLanguage = localStorage.getItem('language');
+const storedLanguage = localStorage.getItem("language");
 
 if (storedLanguage) {
 	i18n.changeLanguage(storedLanguage);
 	document.documentElement.lang = storedLanguage;
 }
 
-i18n.on('languageChanged', (lng: string) => {
-	localStorage.setItem('language', lng);
+i18n.on("languageChanged", (lng: string) => {
+	localStorage.setItem("language", lng);
 });
 
 export function localiseNumber(number: number) {
@@ -47,67 +47,67 @@ export function localiseNumber(number: number) {
 }
 
 export const languageOptions = [
-	{ value: 'en', label: 'English' },
-	{ value: 'ar', label: 'عربي' },
-	{ value: 'fr', label: 'Français' },
-	{ value: 'de', label: 'Deutsch' },
+	{ value: "en", label: "English" },
+	{ value: "ar", label: "عربي" },
+	{ value: "fr", label: "Français" },
+	{ value: "de", label: "Deutsch" },
 ];
 
 export const timeZoneOptions = [
 	{
-		label: 'North America',
+		label: "North America",
 		options: [
-			{ value: 'PST', label: 'Pacific Standard Time (PST)' },
-			{ value: 'MST', label: 'Mountain Standard Time (MST)' },
-			{ value: 'CST', label: 'Central Standard Time (CST)' },
-			{ value: 'EST', label: 'Eastern Standard Time (EST)' },
-			{ value: 'AST', label: 'Atlantic Standard Time (AST)' },
-			{ value: 'HST', label: 'Hawaii Standard Time (HST)' },
+			{ value: "PST", label: "Pacific Standard Time (PST)" },
+			{ value: "MST", label: "Mountain Standard Time (MST)" },
+			{ value: "CST", label: "Central Standard Time (CST)" },
+			{ value: "EST", label: "Eastern Standard Time (EST)" },
+			{ value: "AST", label: "Atlantic Standard Time (AST)" },
+			{ value: "HST", label: "Hawaii Standard Time (HST)" },
 		],
 	},
 	{
-		label: 'Europe & Africa',
+		label: "Europe & Africa",
 		options: [
-			{ value: 'GMT', label: 'Greenwich Mean Time (GMT)' },
-			{ value: 'CET', label: 'Central European Time (CET)' },
-			{ value: 'EET', label: 'Eastern European Time (EET)' },
-			{ value: 'WEST', label: 'Western European Summer Time (WEST)' },
-			{ value: 'CAT', label: 'Central Africa Time (CAT)' },
-			{ value: 'EAT', label: 'East Africa Time (EAT)' },
+			{ value: "GMT", label: "Greenwich Mean Time (GMT)" },
+			{ value: "CET", label: "Central European Time (CET)" },
+			{ value: "EET", label: "Eastern European Time (EET)" },
+			{ value: "WEST", label: "Western European Summer Time (WEST)" },
+			{ value: "CAT", label: "Central Africa Time (CAT)" },
+			{ value: "EAT", label: "East Africa Time (EAT)" },
 		],
 	},
 	{
-		label: 'Asia',
+		label: "Asia",
 		options: [
-			{ value: 'MSK', label: 'Moscow Time (MSK)' },
-			{ value: 'IST', label: 'India Standard Time (IST)' },
-			{ value: 'CST', label: 'China Standard Time (CST)' },
-			{ value: 'JST', label: 'Japan Standard Time (JST)' },
-			{ value: 'KST', label: 'Korea Standard Time (KST)' },
-			{ value: 'SGT', label: 'Singapore Time (SGT)' },
+			{ value: "MSK", label: "Moscow Time (MSK)" },
+			{ value: "IST", label: "India Standard Time (IST)" },
+			{ value: "CST", label: "China Standard Time (CST)" },
+			{ value: "JST", label: "Japan Standard Time (JST)" },
+			{ value: "KST", label: "Korea Standard Time (KST)" },
+			{ value: "SGT", label: "Singapore Time (SGT)" },
 		],
 	},
 	{
-		label: 'Australia & Pacific',
+		label: "Australia & Pacific",
 		options: [
-			{ value: 'AEST', label: 'Australian Eastern Standard Time (AEST)' },
-			{ value: 'ACST', label: 'Australian Central Standard Time (ACST)' },
-			{ value: 'AWST', label: 'Australian Western Standard Time (AWST)' },
-			{ value: 'NZST', label: 'New Zealand Standard Time (NZST)' },
-			{ value: 'FJT', label: 'Fiji Time (FJT)' },
+			{ value: "AEST", label: "Australian Eastern Standard Time (AEST)" },
+			{ value: "ACST", label: "Australian Central Standard Time (ACST)" },
+			{ value: "AWST", label: "Australian Western Standard Time (AWST)" },
+			{ value: "NZST", label: "New Zealand Standard Time (NZST)" },
+			{ value: "FJT", label: "Fiji Time (FJT)" },
 		],
 	},
 	{
-		label: 'South America',
+		label: "South America",
 		options: [
-			{ value: 'ART', label: 'Argentina Time (ART)' },
-			{ value: 'BOT', label: 'Bolivia Time (BOT)' },
-			{ value: 'BRT', label: 'Brasilia Time (BRT)' },
-			{ value: 'CLT', label: 'Chile Standard Time (CLT)' },
-			{ value: 'COT', label: 'Colombia Time (COT)' },
-			{ value: 'ECT', label: 'Ecuador Time (ECT)' },
+			{ value: "ART", label: "Argentina Time (ART)" },
+			{ value: "BOT", label: "Bolivia Time (BOT)" },
+			{ value: "BRT", label: "Brasilia Time (BRT)" },
+			{ value: "CLT", label: "Chile Standard Time (CLT)" },
+			{ value: "COT", label: "Colombia Time (COT)" },
+			{ value: "ECT", label: "Ecuador Time (ECT)" },
 		],
-	}
+	},
 ];
 
 export default i18n;

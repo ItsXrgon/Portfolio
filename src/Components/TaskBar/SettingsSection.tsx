@@ -1,10 +1,10 @@
-import { Settings } from 'lucide-react';
-import { useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
-import { openApp } from '../../store/appsSlice';
-import { useAppDispatch } from '../../store/hooks';
-import LanguageSelector from './SettingsSection/LanguageSelector';
-import Clock from './SettingsSection/Clock/Clock';
+import { Settings } from "lucide-react";
+import { useCallback } from "react";
+import { useTranslation } from "react-i18next";
+import { openApp } from "../../store/appsSlice";
+import { useAppDispatch } from "../../store/hooks";
+import LanguageSelector from "./SettingsSection/LanguageSelector";
+import Clock from "./SettingsSection/Clock/Clock";
 
 export default function SettingsSection() {
 	useTranslation();
@@ -13,8 +13,8 @@ export default function SettingsSection() {
 	const handleOpenSettings = useCallback(() => {
 		dispatch(
 			openApp({
-				id: '3',
-			})
+				id: "3",
+			}),
 		);
 	}, [dispatch]);
 
@@ -25,7 +25,7 @@ export default function SettingsSection() {
 			<LanguageSelector />
 			<div className="h-8 w-px bg-taskbar-separator" />
 			<div
-				className="px-3 py-2 rounded-lg text-taskbar-icon"
+				className="rounded-lg px-3 py-2 text-taskbar-icon"
 				onClick={handleOpenSettings}
 			>
 				<Settings />

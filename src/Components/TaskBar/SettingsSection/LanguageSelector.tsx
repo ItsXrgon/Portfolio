@@ -1,4 +1,4 @@
-import { Globe2 } from 'lucide-react';
+import { Globe2 } from "lucide-react";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -7,9 +7,9 @@ import {
 	DropdownMenuRadioItem,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from '../../../globalComponents/DropDownMenu';
-import i18n, { languageOptions } from '../../../i18n';
-import { useTranslation } from 'react-i18next';
+} from "../../../globalComponents/DropDownMenu";
+import i18n, { languageOptions } from "../../../i18n";
+import { useTranslation } from "react-i18next";
 
 export default function LanguageSelector() {
 	const { t } = useTranslation();
@@ -21,11 +21,13 @@ export default function LanguageSelector() {
 
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger className="px-3 py-2 rounded-lg">
+			<DropdownMenuTrigger className="rounded-lg px-3 py-2">
 				<Globe2 className="text-taskbar-icon" />
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className="w-56" sideOffset={15}>
-				<DropdownMenuLabel>{t('settings.select_language')}</DropdownMenuLabel>
+				<DropdownMenuLabel>
+					{t("settings.select_language")}
+				</DropdownMenuLabel>
 				<DropdownMenuSeparator />
 				<DropdownMenuRadioGroup
 					value={i18n.language}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 interface IconProps extends React.HTMLAttributes<HTMLImageElement> {
 	icon: string;
@@ -7,7 +7,7 @@ interface IconProps extends React.HTMLAttributes<HTMLImageElement> {
 }
 
 export default function Icon({ icon, width, height, draggable }: IconProps) {
-	const [iconUrl, setIconUrl] = useState<string>('');
+	const [iconUrl, setIconUrl] = useState<string>("");
 
 	useEffect(() => {
 		const loadImages = async () => {
@@ -20,6 +20,11 @@ export default function Icon({ icon, width, height, draggable }: IconProps) {
 	}, [icon]);
 
 	return (
-		<img src={iconUrl} draggable={draggable} width={width} height={height} />
+		<img
+			src={iconUrl}
+			draggable={draggable}
+			width={width}
+			height={height}
+		/>
 	);
 }

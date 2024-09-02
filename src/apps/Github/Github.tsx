@@ -1,7 +1,7 @@
-import { TGithubRepo } from '../../types';
-import Repository from './Components/Repository';
-import { useProfile } from './Components/useProfile';
-import { useRepositories } from './Components/useRepositories';
+import { TGithubRepo } from "../../types";
+import Repository from "./Components/Repository";
+import { useProfile } from "./Components/useProfile";
+import { useRepositories } from "./Components/useRepositories";
 
 export default function Github() {
 	const { profile } = useProfile();

@@ -1,16 +1,16 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from "react";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuTrigger,
-} from '../../../../globalComponents/DropDownMenu';
-import { localiseNumber } from '../../../../i18n';
-import './Clock.css';
+} from "../../../../globalComponents/DropDownMenu";
+import { localiseNumber } from "../../../../i18n";
+import "./Clock.css";
 import {
 	formatDate,
 	localeDateFormatter,
 	localeTimeFormatter,
-} from '../../../../utils/formatting';
+} from "../../../../utils/formatting";
 
 export default function Clock() {
 	const [time, setTime] = useState(new Date());
@@ -24,19 +24,22 @@ export default function Clock() {
 
 	const formattedDate = useMemo(() => {
 		return localeDateFormatter(time);
-	}, [formatDate(time, 'DD')]);
+	}, [formatDate(time, "DD")]);
 
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger className="flex flex-col items-center rounded-lg px-3">
-				<label className="text-sm select-none text-taskbar-text">
+				<label className="select-none text-sm text-taskbar-text">
 					{localeTimeFormatter(time)}
 				</label>
-				<label className="text-sm select-none text-taskbar-text">
+				<label className="select-none text-sm text-taskbar-text">
 					{formattedDate}
 				</label>
 			</DropdownMenuTrigger>
-			<DropdownMenuContent className="w-[320px] h-[320px]" sideOffset={15}>
+			<DropdownMenuContent
+				className="h-[320px] w-[320px]"
+				sideOffset={15}
+			>
 				<div className="clock">
 					<div
 						className="hour"

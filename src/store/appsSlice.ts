@@ -1,5 +1,5 @@
-import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TApp, TTaskbar, TWindow } from '../types';
+import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { TApp, TTaskbar, TWindow } from "../types";
 
 export interface AppsState {
 	apps: TApp[];
@@ -10,25 +10,25 @@ export interface AppsState {
 const initialState: AppsState = {
 	apps: [
 		{
-			id: '0',
-			name: 'Terminal',
-			icon: 'terminal',
+			id: "0",
+			name: "Terminal",
+			icon: "terminal",
 			position: { x: 0, y: 0 },
-			type: 'app',
+			type: "app",
 		},
 		{
-			id: '1',
-			name: 'Github',
-			icon: 'github',
+			id: "1",
+			name: "Github",
+			icon: "github",
 			position: { x: 1, y: 0 },
-			type: 'app',
+			type: "app",
 		},
 		{
-			id: '2',
-			name: 'Settings',
-			icon: 'settings',
+			id: "2",
+			name: "Settings",
+			icon: "settings",
 			position: { x: 2, y: 0 },
-			type: 'app',
+			type: "app",
 		},
 	],
 	windows: [],
@@ -36,24 +36,31 @@ const initialState: AppsState = {
 };
 
 export const appsSlice = createSlice({
-	name: 'apps',
+	name: "apps",
 	initialState,
 	reducers: {
 		addApp(state, action: PayloadAction<TApp>) {
 			state.apps.push(action.payload);
 		},
 		editApp(state, action: PayloadAction<TApp>) {
-			const index = state.apps.findIndex((app) => app.id === action.payload.id);
+			const index = state.apps.findIndex(
+				(app) => app.id === action.payload.id,
+			);
 			state.apps[index] = action.payload;
 		},
 		openApp(
 			state,
 			action: PayloadAction<{
 				id: string;
-			}>
+			}>,
 		) {
-			const index = state.apps.findIndex((app) => app.id === action.payload.id);
-			if (state.windows.findIndex((w) => w.id === action.payload.id) !== -1) {
+			const index = state.apps.findIndex(
+				(app) => app.id === action.payload.id,
+			);
+			if (
+				state.windows.findIndex((w) => w.id === action.payload.id) !==
+				-1
+			) {
 				return;
 			}
 
@@ -69,7 +76,7 @@ export const appsSlice = createSlice({
 			});
 
 			const taskBarIndex = state.taskBar.findIndex(
-				(app) => app.id === action.payload.id
+				(app) => app.id === action.payload.id,
 			);
 
 			if (taskBarIndex === -1) {
@@ -83,15 +90,15 @@ export const appsSlice = createSlice({
 		},
 		closeApp(state, action: PayloadAction<{ id: string }>) {
 			state.windows = state.windows.filter(
-				(app) => app.id !== action.payload.id
+				(app) => app.id !== action.payload.id,
 			);
 			state.taskBar = state.taskBar.filter(
-				(app) => !(app.id === action.payload.id && !app.pinned)
+				(app) => !(app.id === action.payload.id && !app.pinned),
 			);
 		},
 		minimizeApp(state, action: PayloadAction<{ id: string }>) {
 			const index = state.windows.findIndex(
-				(app) => app.id === action.payload.id
+				(app) => app.id === action.payload.id,
 			);
 			state.windows[index].windowState = {
 				...state.windows[index].windowState,
@@ -100,7 +107,7 @@ export const appsSlice = createSlice({
 		},
 		unMinimizeApp(state, action: PayloadAction<{ id: string }>) {
 			const windowIndex = state.windows.findIndex(
-				(app) => app.id === action.payload.id
+				(app) => app.id === action.payload.id,
 			);
 			state.windows[windowIndex].windowState = {
 				...state.windows[windowIndex].windowState,
@@ -110,7 +117,7 @@ export const appsSlice = createSlice({
 		},
 		maximizeApp(state, action: PayloadAction<{ id: string }>) {
 			const index = state.windows.findIndex(
-				(app) => app.id === action.payload.id
+				(app) => app.id === action.payload.id,
 			);
 			state.windows[index].windowState = {
 				...state.windows[index].windowState,
@@ -120,7 +127,7 @@ export const appsSlice = createSlice({
 		},
 		unMaximizeApp(state, action: PayloadAction<{ id: string }>) {
 			const index = state.windows.findIndex(
-				(app) => app.id === action.payload.id
+				(app) => app.id === action.payload.id,
 			);
 			state.windows[index].windowState = {
 				...state.windows[index].windowState,
@@ -129,9 +136,11 @@ export const appsSlice = createSlice({
 			};
 		},
 		pinApp(state, action: PayloadAction<{ id: string }>) {
-			const index = state.apps.findIndex((app) => app.id === action.payload.id);
+			const index = state.apps.findIndex(
+				(app) => app.id === action.payload.id,
+			);
 			const taskBarIndex = state.taskBar.findIndex(
-				(app) => app.id === action.payload.id
+				(app) => app.id === action.payload.id,
 			);
 			if (taskBarIndex === -1) {
 				state.taskBar.push({
@@ -144,19 +153,21 @@ export const appsSlice = createSlice({
 		},
 		unpinApp(state, action: PayloadAction<{ id: string }>) {
 			const index = state.taskBar.findIndex(
-				(app) => app.id === action.payload.id
+				(app) => app.id === action.payload.id,
 			);
 			state.taskBar[index].pinned = false;
 		},
 		removeApp(state, action: PayloadAction<TApp>) {
-			state.apps = state.apps.filter((app) => app.id !== action.payload.id);
+			state.apps = state.apps.filter(
+				(app) => app.id !== action.payload.id,
+			);
 		},
 		reOrderApps(
 			state,
 			action: PayloadAction<{
 				oldIndex: number;
 				newIndex: number;
-			}>
+			}>,
 		) {
 			const { oldIndex, newIndex } = action.payload;
 			const [removed] = state.apps.splice(oldIndex, 1);
@@ -167,13 +178,14 @@ export const appsSlice = createSlice({
 			action: PayloadAction<{
 				app: TApp;
 				position: { x: number; y: number };
-			}>
+			}>,
 		) {
 			const { app, position } = action.payload;
 			if (
 				state.apps.filter(
 					(app) =>
-						app.position.x === position.x && app.position.y === position.y
+						app.position.x === position.x &&
+						app.position.y === position.y,
 				).length > 0
 			) {
 				return;
@@ -187,7 +199,7 @@ export const appsSlice = createSlice({
 				windowId: string;
 				position: { x: number; y: number };
 				size?: { width: number; height: number };
-			}>
+			}>,
 		) {
 			const { windowId, position, size } = action.payload;
 			const index = state.windows.findIndex((a) => a.id === windowId);
@@ -202,10 +214,10 @@ export const appsSlice = createSlice({
 			state,
 			action: PayloadAction<{
 				id: string;
-			}>
+			}>,
 		) {
 			const index = state.windows.findIndex(
-				(app) => app.id === action.payload.id
+				(app) => app.id === action.payload.id,
 			);
 			state.windows = [
 				...state.windows.slice(0, index),
@@ -221,12 +233,12 @@ export const appsSlice = createSlice({
 		},
 		handleTaskbarAppClick(state, action: PayloadAction<TTaskbar>) {
 			const index = state.windows.findIndex(
-				(app) => app.id === action.payload.id
+				(app) => app.id === action.payload.id,
 			);
 			if (index === -1) {
 				state.windows.push({
 					...action.payload,
-					type: 'app',
+					type: "app",
 					windowState: {
 						isMaximized: false,
 						isMinimized: false,
@@ -283,7 +295,7 @@ export const selectApps = (state: { apps: AppsState }) => state.apps.apps;
 export const selectWindows = (state: { apps: AppsState }) => state.apps.windows;
 
 export const selectShownWindows = createSelector([selectWindows], (windows) =>
-	windows.filter((w) => !w.windowState?.isMinimized)
+	windows.filter((w) => !w.windowState?.isMinimized),
 );
 
 export const selectTaskbar = (state: { apps: AppsState }) => state.apps.taskBar;
@@ -294,32 +306,34 @@ export const selectAppById = (id: string) =>
 export const selectWindowById = (id: string) =>
 	createSelector(
 		[selectWindows],
-		(windows) => windows?.find((app) => app.id === id)
+		(windows) => windows?.find((app) => app.id === id),
 	);
 
 export const selectTaskbarById = (id: string) =>
 	createSelector(
 		[selectTaskbar],
-		(taskBar) => taskBar?.find((app) => app.id === id)
+		(taskBar) => taskBar?.find((app) => app.id === id),
 	);
 
 export const isAppOpen = (id: string) =>
 	createSelector(
 		[selectWindows],
-		(windows) => windows.findIndex((w) => w.id === id) !== -1
+		(windows) => windows.findIndex((w) => w.id === id) !== -1,
 	);
 
 export const isAppMinimized = (id: string) =>
 	createSelector(
 		[selectWindows],
 		(windows) =>
-			windows.findIndex((w) => w.id === id && w.windowState?.isMinimized) !== -1
+			windows.findIndex(
+				(w) => w.id === id && w.windowState?.isMinimized,
+			) !== -1,
 	);
 
 export const isAppPinned = (id: string) =>
 	createSelector(
 		[selectTaskbar],
-		(taskBar) => taskBar.findIndex((w) => w.id === id) !== -1
+		(taskBar) => taskBar.findIndex((w) => w.id === id) !== -1,
 	);
 
 export default appsSlice.reducer;

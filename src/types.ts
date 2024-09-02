@@ -1,10 +1,10 @@
-import palette from './palette';
+import palette from "./palette";
 
 export type TApp = {
 	id: string;
 	name: string;
 	icon: string;
-	type: 'app' | 'folder';
+	type: "app" | "folder";
 	position: {
 		x: number;
 		y: number;
@@ -15,7 +15,7 @@ export type TWindow = {
 	id: string;
 	name: string;
 	icon: string;
-	type: 'app' | 'folder';
+	type: "app" | "folder";
 	windowState: {
 		isMinimized: boolean;
 		isMaximized: boolean;
@@ -39,7 +39,7 @@ export type TTaskbar = {
 };
 
 export type TFolder = TApp & {
-	type: 'folder';
+	type: "folder";
 	children: TApp[];
 };
 

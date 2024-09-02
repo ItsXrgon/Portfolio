@@ -1,4 +1,4 @@
-import { SettingsTabs } from '../Settings';
+import { SettingsTabs } from "../Settings";
 
 export function TabListItem({
 	tab,
@@ -15,13 +15,13 @@ export function TabListItem({
 }) {
 	return (
 		<div
-			className={`flex items-center gap-2 p-2 h-1/2 cursor-pointer border border-slate-400 hover:bg-slate-200 last-of-type:rounded-br-lg first-of-type:rounded-tr-lg ${
-				tab === activeTab ? 'bg-slate-200' : 'bg-white'
+			className={`flex h-1/2 cursor-pointer items-center gap-2 border border-slate-400 p-2 first-of-type:rounded-tr-lg last-of-type:rounded-br-lg hover:bg-slate-200 ${
+				tab === activeTab ? "bg-slate-200" : "bg-white"
 			}`}
 			onClick={() => setActiveTab(tab)}
 		>
 			{icon}
-			<div className="text-base whitespace-nowrap">{label}</div>
+			<div className="whitespace-nowrap text-base">{label}</div>
 		</div>
 	);
 }
