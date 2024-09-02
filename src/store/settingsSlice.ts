@@ -67,11 +67,11 @@ export const settingsSlice = createSlice({
 		},
 		changeColour(
 			state,
-			action: PayloadAction<{ path: string[]; colour: string }>,
+			action: PayloadAction<{ path: string[]; color: string }>,
 		) {
 			document.documentElement.style.setProperty(
 				`--${action.payload.path.join("-")}`,
-				action.payload.colour,
+				action.payload.color,
 			);
 			saveThemesToStorage(state.themes);
 		},

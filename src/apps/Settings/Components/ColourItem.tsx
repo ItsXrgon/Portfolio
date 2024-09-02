@@ -1,8 +1,9 @@
-import { useCallback, useMemo, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useSettingsDispatch } from '../../../store/hooks';
-import { changeColour } from '../../../store/settingsSlice';
-import ColourPickerPopup from './ColourPicker';
+import { useCallback, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useSettingsDispatch } from "../../../store/hooks";
+import { changeColour } from "../../../store/settingsSlice";
+import ColourPickerPopup from "./ColourPicker";
+import { hexToHSL } from "../../../utils/conversion";
 
 export default function ColourItem({ path }: { path: string[] }) {
 	const { t } = useTranslation();
@@ -10,21 +11,21 @@ export default function ColourItem({ path }: { path: string[] }) {
 	const settingsDispatch = useSettingsDispatch();
 
 	const [value, setValue] = useState(
-		document.documentElement.style.getPropertyValue(`--${path.join('-')}`)
+		document.documentElement.style.getPropertyValue(`--${path.join("-")}`),
 	);
 
 	const handleColourChange = useCallback(
-		(path: string[], colour: string) => {
-			settingsDispatch(changeColour({ path, colour }));
-			setValue(colour);
+		(path: string[], color: string) => {
+			settingsDispatch(changeColour({ path, color: hexToHSL(color) }));
+			setValue(color);
 		},
-		[settingsDispatch]
+		[settingsDispatch],
 	);
 
 	const key = useMemo(() => path[path.length - 1], [path]);
 
 	return (
-		<div className="flex items-center gap-5 ml-2" key={path.join('-')}>
+		<div className="ml-2 flex items-center gap-5" key={path.join("-")}>
 			<div className="w-[15%] ">
 				{t(`settings.personalization.${key}`, { defaultValue: key })}
 			</div>
@@ -38,8 +39,8 @@ export default function ColourItem({ path }: { path: string[] }) {
 				{value}
 			</div>
 			<ColourPickerPopup
-				colour={value}
-				setColour={(colour: string) => handleColourChange(path, colour)}
+				color={value}
+				setColour={(color: string) => handleColourChange(path, color)}
 			/>
 		</div>
 	);

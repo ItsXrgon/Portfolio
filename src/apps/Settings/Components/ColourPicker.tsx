@@ -8,11 +8,11 @@ import {
 import { Paintbrush } from "lucide-react";
 
 export default function ColourPickerPopup({
-	colour,
+	color,
 	setColour,
 }: {
-	colour: string;
-	setColour: (colour: string) => void;
+	color: string;
+	setColour: (color: string) => void;
 }) {
 	return (
 		<Popover>
@@ -21,7 +21,7 @@ export default function ColourPickerPopup({
 			</PopoverTrigger>
 			<PopoverContent className="border-none bg-transparent shadow-none">
 				<Chrome
-					color={colour}
+					color={color}
 					style={{ float: "left" }}
 					placement={GithubPlacement.Right}
 					onChange={(color) => {
