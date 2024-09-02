@@ -5,7 +5,6 @@ import TimeAndLanguage from './Tabs/TimeAndLanguage';
 import About from './Tabs/About';
 import { Brush, Calendar, HomeIcon, Info } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { TWindow } from '../../types';
 import { TabListItem } from './Components/TabListItem';
 
 export type SettingsTabs =
@@ -14,7 +13,7 @@ export type SettingsTabs =
 	| 'TimeAndLanguage'
 	| 'About';
 
-export default function Settings({ app }: { app: TWindow }) {
+export default function Settings() {
 	const { t } = useTranslation();
 	const [activeTab, setActiveTab] = useState('Home');
 

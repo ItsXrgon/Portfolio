@@ -35,6 +35,93 @@
 		--ring: 215 20.2% 65.1%;
 
 		--radius: 0.5rem;
+
+		--surface-subtle: 0 0% 100%;
+
+		/* Desktop */
+		--desktop-background: 222.2 50.4% 50.2%;
+		--desktop-app-background: #ffffff;
+		--desktop-app-text: #333333;
+		--desktop-app-hover-background: #e0e0e0;
+		--desktop-app-hover-text: #111111;
+		--desktop-app-drag-background: #d0d0d0;
+		--desktop-app-drag-text: #000000;
+
+		/* Taskbar */
+		--taskbar-background: #222222;
+		--taskbar-border: #333333;
+		--taskbar-separator: #333333;
+		--taskbar-app-background: #333333;
+		--taskbar-app-open-background: #444444;
+		--taskbar-app-open-indicator: #ff4500;
+		--taskbar-app-drag-background: #555555;
+		--taskbar-text: #ffffff;
+		--taskbar-icon: #ffffff;
+		--taskbar-clock-background: #000000;
+		--taskbar-clock-foreground: #ffffff;
+		--taskbar-clock-hands-hour: #ff4500;
+		--taskbar-clock-hands-minute: #ffffff;
+		--taskbar-clock-hands-second: #ff4500;
+		--taskbar-clock-number: #ffffff;
+
+		/* Window */
+		--window-background: #f8f8f8;
+		--window-header-background: #0066cc;
+		--window-header-text: #ffffff;
+		--window-header-icon-default: #cccccc;
+		--window-header-icon-hovered: #ffffff;
+		--window-header-icon-pressed: #ff4500;
+
+		/* Button */
+		--action-primary-default: #007bff;
+		--action-primary-hovered: #0056b3;
+		--action-primary-pressed: #003f7f;
+		--action-primary-disabled: #cccccc;
+		--action-primary-icon-default: #ffffff;
+		--action-primary-icon-hovered: #ffffff;
+		--action-primary-icon-pressed: #ffffff;
+		--action-primary-icon-disabled: #999999;
+
+		--action-white-default: #ffffff;
+		--action-white-hovered: #f0f0f0;
+		--action-white-pressed: #e0e0e0;
+		--action-white-disabled: #cccccc;
+		--action-white-icon-default: #333333;
+		--action-white-icon-hovered: #333333;
+		--action-white-icon-pressed: #333333;
+		--action-white-icon-disabled: #999999;
+
+		--action-success-default: #28a745;
+		--action-success-hovered: #218838;
+		--action-success-pressed: #1e7e34;
+		--action-success-disabled: #cccccc;
+		--action-success-icon-default: #ffffff;
+		--action-success-icon-hovered: #ffffff;
+		--action-success-icon-pressed: #ffffff;
+		--action-success-icon-disabled: #999999;
+
+		--action-warning-default: #ffc107;
+		--action-warning-hovered: #e0a800;
+		--action-warning-pressed: #d39e00;
+		--action-warning-disabled: #cccccc;
+		--action-warning-icon-default: #333333;
+		--action-warning-icon-hovered: #333333;
+		--action-warning-icon-pressed: #333333;
+		--action-warning-icon-disabled: #999999;
+
+		--action-critical-default: #dc3545;
+		--action-critical-hovered: #c82333;
+		--action-critical-pressed: #bd2130;
+		--action-critical-disabled: #cccccc;
+		--action-critical-icon-default: #ffffff;
+		--action-critical-icon-hovered: #ffffff;
+		--action-critical-icon-pressed: #ffffff;
+		--action-critical-icon-disabled: #999999;
+
+		/* Shadow */
+		--shadow-dim-light: rgba(0, 0, 0, 0.2);
+		--shadow-ambient-light: rgba(0, 0, 0, 0.1);
+		--shadow-direct-light: rgba(0, 0, 0, 0.3);
 	}
 
 	.dark {

@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import getTerminalOuput from './Commands';
-import { TWindow } from '../../types';
 
-export default function Terminal({ app }: { app: TWindow }) {
+export default function Terminal() {
 	const [input, setInput] = useState('');
 	const [history, setHistory] = useState<string[]>([]);
 	const [cursor, setCursor] = useState(0);

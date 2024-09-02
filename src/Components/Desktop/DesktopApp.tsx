@@ -37,7 +37,7 @@ export default function DesktopApp({ app }: AppProps): JSX.Element {
 				);
 			}}
 			role="dragabbleBox"
-			className={`flex h-24 w-20 flex-col items-center justify-center gap-1 label-secondary bg-subdued-hover hover:bg-opacity-60 hover:label-primary ${
+			className={`flex h-24 w-20 flex-col items-center justify-center text-white gap-1 bg-none ${
 				isDragging && 'opacity-50'
 			}`}
 		>

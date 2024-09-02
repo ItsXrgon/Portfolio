@@ -1,10 +1,10 @@
 import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TApp, TTaskBar, TWindow } from '../types';
+import { TApp, TTaskbar, TWindow } from '../types';
 
 export interface AppsState {
 	apps: TApp[];
 	windows: TWindow[];
-	taskBar: TTaskBar[];
+	taskBar: TTaskbar[];
 }
 
 const initialState: AppsState = {
@@ -219,7 +219,7 @@ export const appsSlice = createSlice({
 				},
 			];
 		},
-		handleTaskBarAppClick(state, action: PayloadAction<TTaskBar>) {
+		handleTaskbarAppClick(state, action: PayloadAction<TTaskbar>) {
 			const index = state.windows.findIndex(
 				(app) => app.id === action.payload.id
 			);
@@ -275,7 +275,7 @@ export const {
 	relocateApp,
 	relocateWindow,
 	pushToFront,
-	handleTaskBarAppClick,
+	handleTaskbarAppClick,
 } = appsSlice.actions;
 
 export const selectApps = (state: { apps: AppsState }) => state.apps.apps;
@@ -286,7 +286,7 @@ export const selectShownWindows = createSelector([selectWindows], (windows) =>
 	windows.filter((w) => !w.windowState?.isMinimized)
 );
 
-export const selectTaskBar = (state: { apps: AppsState }) => state.apps.taskBar;
+export const selectTaskbar = (state: { apps: AppsState }) => state.apps.taskBar;
 
 export const selectAppById = (id: string) =>
 	createSelector([selectApps], (apps) => apps?.find((app) => app.id === id));
@@ -297,9 +297,9 @@ export const selectWindowById = (id: string) =>
 		(windows) => windows?.find((app) => app.id === id)
 	);
 
-export const selectTaskBarById = (id: string) =>
+export const selectTaskbarById = (id: string) =>
 	createSelector(
-		[selectTaskBar],
+		[selectTaskbar],
 		(taskBar) => taskBar?.find((app) => app.id === id)
 	);
 
@@ -318,7 +318,7 @@ export const isAppMinimized = (id: string) =>
 
 export const isAppPinned = (id: string) =>
 	createSelector(
-		[selectTaskBar],
+		[selectTaskbar],
 		(taskBar) => taskBar.findIndex((w) => w.id === id) !== -1
 	);
 

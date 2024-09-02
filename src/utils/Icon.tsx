@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react';
 
-export default function Icon({ icon }: { icon: string }) {
+interface IconProps extends React.HTMLAttributes<HTMLImageElement> {
+	icon: string;
+	width?: number;
+	height?: number;
+}
+
+export default function Icon({ icon, width, height, draggable }: IconProps) {
 	const [iconUrl, setIconUrl] = useState<string>('');
 
 	useEffect(() => {
@@ -13,5 +19,7 @@ export default function Icon({ icon }: { icon: string }) {
 		loadImages();
 	}, [icon]);
 
-	return <img src={iconUrl} draggable={false} />;
+	return (
+		<img src={iconUrl} draggable={draggable} width={width} height={height} />
+	);
 }

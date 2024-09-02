@@ -30,7 +30,7 @@ export default function Desktop() {
 
 	return (
 		<div
-			className="h-[93%] w-full relative bg-transparent bg-black"
+			className="h-full w-full relative p-2 bg-desktop-background"
 			onSelectCapture={(e) => e.stopPropagation()}
 		>
 			<div className="grid grid-cols-20">{...gridElements}</div>

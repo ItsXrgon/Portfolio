@@ -11,7 +11,7 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
 	closeApp,
 	selectWindowById,
-	selectTaskBarById,
+	selectTaskbarById,
 	selectAppById,
 	openApp,
 	pinApp,
@@ -34,7 +34,7 @@ export default function DesktopAppContextMenu({
 	const dispatch = useAppDispatch();
 	const window = useAppSelector(selectWindowById(appId));
 	const app = useAppSelector(selectAppById(appId));
-	const taskBarApp = useAppSelector(selectTaskBarById(appId));
+	const taskBarApp = useAppSelector(selectTaskbarById(appId));
 
 	const handleUnpin = useCallback(() => {
 		dispatch(

@@ -1,74 +1,96 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from './store';
 import { TTheme } from '../types';
+import { RootState } from './store';
 
 export interface settingsState {
-	theme: TTheme;
+	activeTheme: string;
+	themes: TTheme[];
 }
 
+const defaultTheme: TTheme = {
+	name: 'Default',
+	wallpaper: '',
+};
+
+const loadThemesFromStorage = (): TTheme[] => {
+	const storedThemes = localStorage.getItem('themes');
+	return storedThemes ? JSON.parse(storedThemes) : [defaultTheme];
+};
+
+const loadActiveThemeFromStorage = (): string => {
+	return localStorage.getItem('activeTheme') || 'Default';
+};
+
 const initialState: settingsState = {
-	theme: {
-		name: 'Xrgon',
-		surface: {
-			primary: '#231c59',
-			secondary: '#2c2c2c',
-			tertiary: '#3c3c3c',
-			subdued: '#4c4c4c',
-			accent: '#5c5c5c',
-		},
-		taskBar: {
-			primary: '#c685ff',
-			subdued: '#4c4c4c',
-			accent: '#5c5c5c',
-			hover: '#6c6c6c',
-		},
-		icon: {
-			primary: '#ffffff',
-			interactive: '#ffffff',
-			hover: '#ffffff',
-			pressed: '#ffffff',
-		},
-		label: {
-			primary: '#000000',
-			secondary: '#ffffff',
-			tertiary: '#ffffff',
-			subdued: '#ffffff',
-		},
-		wallpaper: '',
-	},
+	activeTheme: loadActiveThemeFromStorage(),
+	themes: loadThemesFromStorage(),
+};
+
+const saveThemesToStorage = (themes: TTheme[]) => {
+	localStorage.setItem('themes', JSON.stringify(themes));
+};
+
+const saveActiveThemeToStorage = (activeTheme: string) => {
+	localStorage.setItem('activeTheme', activeTheme);
 };
 
 export const settingsSlice = createSlice({
 	name: 'settings',
 	initialState,
 	reducers: {
-		changeTheme(state, action: PayloadAction<any>) {
-			state.theme = action.payload;
+		setActiveTheme(state, action: PayloadAction<string>) {
+			state.activeTheme = action.payload;
+			saveActiveThemeToStorage(action.payload);
 		},
-		changeWallpaper(state, action: PayloadAction<any>) {
-			state.theme.wallpaper = action.payload;
+		addTheme(state, action: PayloadAction<TTheme>) {
+			state.themes.push(action.payload);
+			saveThemesToStorage(state.themes);
+		},
+		updateTheme(state, action: PayloadAction<TTheme>) {
+			const index = state.themes.findIndex(
+				(theme) => theme.name === action.payload.name
+			);
+			if (index !== -1) {
+				state.themes[index] = action.payload;
+				saveThemesToStorage(state.themes);
+			}
+		},
+		deleteTheme(state, action: PayloadAction<string>) {
+			state.themes = state.themes.filter(
+				(theme) => theme.name !== action.payload
+			);
+			if (state.activeTheme === action.payload) {
+				state.activeTheme = 'Default';
+				saveActiveThemeToStorage('Default');
+			}
+			saveThemesToStorage(state.themes);
 		},
 		changeColour(
 			state,
-			action: PayloadAction<{
-				target: string;
-				variant: string;
-				colour: string;
-			}>
+			action: PayloadAction<{ path: string[]; colour: string }>
 		) {
-			// @ts-ignore
-			state.theme[action.payload.target][action.payload.variant] =
-				action.payload.colour;
+			document.documentElement.style.setProperty(
+				`--${action.payload.path.join('-')}`,
+				action.payload.colour
+			);
+			saveThemesToStorage(state.themes);
 		},
 	},
 });
 
-export const { changeTheme, changeWallpaper, changeColour } =
-	settingsSlice.actions;
+export const {
+	setActiveTheme,
+	addTheme,
+	updateTheme,
+	deleteTheme,
+	changeColour,
+} = settingsSlice.actions;
 
 export const selectSettings = (state: RootState) => state.settings;
-export const selectTheme = (state: RootState) => state.settings.theme;
-export const selectWallpaper = (state: RootState) =>
-	state.settings.theme.wallpaper;
+export const selectActiveTheme = (state: RootState) =>
+	state.settings.themes.find(
+		(theme) => theme.name === state.settings.activeTheme
+	) || defaultTheme;
+export const selectThemes = (state: RootState) => state.settings.themes;
 
 export default settingsSlice.reducer;

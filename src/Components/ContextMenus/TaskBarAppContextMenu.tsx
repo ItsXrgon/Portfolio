@@ -14,12 +14,12 @@ import {
 	unpinApp,
 	openApp,
 	selectWindowById,
-	selectTaskBarById,
+	selectTaskbarById,
 } from '../../store/appsSlice';
 import { Pin, PinOff, X } from 'lucide-react';
 import Icon from '../../utils/Icon';
 
-export default function TaskBarAppContextMenu({
+export default function TaskbarAppContextMenu({
 	children,
 	onClick,
 	extraOptions,
@@ -34,7 +34,7 @@ export default function TaskBarAppContextMenu({
 
 	const dispatch = useAppDispatch();
 	const window = useAppSelector(selectWindowById(appId));
-	const app = useAppSelector(selectTaskBarById(appId));
+	const app = useAppSelector(selectTaskbarById(appId));
 	const [isOpen, setOpen] = useState(false);
 
 	const handleUnpin = useCallback(() => {

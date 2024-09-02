@@ -1,8 +1,9 @@
 const { fontFamily } = require('tailwindcss/defaultTheme');
+import palette from './src/palette';
 
 /** @type {import('tailwindcss').Config} */
 export default {
-	darkMode: ['class'],
+	darkMode: 'class',
 	content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
 	theme: {
 		container: {
@@ -18,6 +19,7 @@ export default {
 				20: 'repeat(20, minmax(0, 1fr))',
 			},
 			colors: {
+				...palette,
 				danger: '#f04438',
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
