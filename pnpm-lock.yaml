@@ -17,6 +17,9 @@ importers:
       react-router-dom:
         specifier: ^6.26.1
         version: 6.26.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      tailwind-styled-components:
+        specifier: ^2.2.0
+        version: 2.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
       '@babel/preset-env':
         specifier: ^7.23.5
@@ -45,6 +48,9 @@ importers:
       '@reduxjs/toolkit':
         specifier: ^2.0.1
         version: 2.0.1(react-redux@9.0.2(@types/react-dom@18.2.17)(@types/react@18.2.42)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(redux@5.0.0))(react@18.3.1)
+      '@types/lodash':
+        specifier: ^4.17.7
+        version: 4.17.7
       '@types/node':
         specifier: ^22.5.1
         version: 22.5.1
@@ -96,6 +102,9 @@ importers:
       i18next:
         specifier: ^23.8.2
         version: 23.8.2
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
       lucide-react:
         specifier: ^0.294.0
         version: 0.294.0(react@18.3.1)
@@ -1479,6 +1488,9 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
+  '@types/lodash@4.17.7':
+    resolution: {integrity: sha512-8wTvZawATi/lsmNu10/j2hk1KEP0IvjubqPE3cu1Xz7xfXXt5oCq3SNUz4fMIP4XGF9Ky+Ue2tBA3hcS7LSBlA==}
+
   '@types/node@22.5.1':
     resolution: {integrity: sha512-KkHsxej0j9IW1KKOOAA/XBA0z08UFSrRQHErzEfA3Vgq57eXIMYboIlHJuYIfd+lwCQjtKqUu3UnmKbtUc9yRw==}
 
@@ -2269,6 +2281,9 @@ packages:
   lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
 
+  lodash@4.17.21:
+    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
+
   loose-envify@1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
     hasBin: true
@@ -2818,6 +2833,12 @@ packages:
 
   tailwind-merge@1.14.0:
     resolution: {integrity: sha512-3mFKyCo/MBcgyOTlrY8T7odzZFx+w+qKSMAmdFzRvqBfLlSigU6TZnlFHK0lkMwj9Bj8OYU+9yW9lmGuS0QEnQ==}
+
+  tailwind-styled-components@2.2.0:
+    resolution: {integrity: sha512-Ogemwk0p69aU8WE/ooJZHjqstdJgT5R6HGU6TFz2uSnveSEtvW+C6aWOjGCvCr5H/bREv0IbbQ4yODknRrLBRQ==}
+    peerDependencies:
+      react: '>= 16.8.0'
+      react-dom: '>= 16.8.0'
 
   tailwindcss-animate@1.0.7:
     resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
@@ -4452,6 +4473,8 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
+  '@types/lodash@4.17.7': {}
+
   '@types/node@22.5.1':
     dependencies:
       undici-types: 6.19.8
@@ -5323,6 +5346,8 @@ snapshots:
 
   lodash.merge@4.6.2: {}
 
+  lodash@4.17.21: {}
+
   loose-envify@1.4.0:
     dependencies:
       js-tokens: 4.0.0
@@ -5777,6 +5802,12 @@ snapshots:
   supports-preserve-symlinks-flag@1.0.0: {}
 
   tailwind-merge@1.14.0: {}
+
+  tailwind-styled-components@2.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      tailwind-merge: 1.14.0
 
   tailwindcss-animate@1.0.7(tailwindcss@3.3.6):
     dependencies:

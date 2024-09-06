@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { TGithubError, TGithubProfile } from "../../../types";
+import { TGithubProfile } from "../../../types";
 
 export function useProfile() {
 	const {
@@ -8,12 +8,14 @@ export function useProfile() {
 		error: isProfileError,
 	} = useQuery("profile_data", () =>
 		fetch("https://api.github.com/users/itsXrgon").then(
-			(res) => res.json() as Promise<TGithubProfile | TGithubError>,
+			(res) => res.json() as Promise<TGithubProfile>,
 		),
 	);
 
 	const profile =
-		isProfileError || isProfileLoading || !data ? hardCodedProfile : data;
+		isProfileError || isProfileLoading || !data || data?.message
+			? hardCodedProfile
+			: data;
 
 	return {
 		profile,

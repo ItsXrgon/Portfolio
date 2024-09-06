@@ -45,6 +45,7 @@ export type TFolder = TApp & {
 
 export type TTheme = {
 	name: string;
+	theme: typeof palette;
 	wallpaper: string;
 };
 

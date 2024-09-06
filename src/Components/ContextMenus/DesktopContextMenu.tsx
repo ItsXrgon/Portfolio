@@ -1,27 +1,10 @@
 import { ReactNode } from "react";
 import {
 	ContextMenu,
-	ContextMenuCheckboxItem,
 	ContextMenuContent,
-	ContextMenuItem,
-	ContextMenuLabel,
-	ContextMenuRadioGroup,
-	ContextMenuRadioItem,
 	ContextMenuSeparator,
-	ContextMenuShortcut,
-	ContextMenuSub,
-	ContextMenuSubContent,
-	ContextMenuSubTrigger,
 	ContextMenuTrigger,
 } from "../../globalComponents/ContextMenu";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import {
-	closeApp,
-	maximizeApp,
-	minimizeApp,
-	unMaximizeApp,
-	selectWindowById,
-} from "../../store/appsSlice";
 
 export default function DesktopContextMenu({
 	children,

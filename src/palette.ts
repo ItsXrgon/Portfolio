@@ -1,157 +1,129 @@
 const palette = {
 	desktop: {
-		background: "rgba(var(--desktop-background) / <alpha-value>)",
+		background: "var(--desktop-background)",
 		app: {
-			background: "rgba(var(--desktop-app-background) / <alpha-value>)",
-			text: "rgba(var(--desktop-app-text) / <alpha-value>)",
+			background: "var(--desktop-app-background)",
+			text: "var(--desktop-app-text)",
 			hover: {
-				background:
-					"rgba(var(--desktop-app-hover-background) / <alpha-value>)",
-				text: "rgba(var(--desktop-app-hover-text) / <alpha-value>)",
+				background: "var(--desktop-app-hover-background)",
+				text: "var(--desktop-app-hover-text)",
 			},
 			drag: {
-				background:
-					"rgba(var(--desktop-app-drag-background) / <alpha-value>)",
-				text: "rgba(var(--desktop-app-drag-text) / <alpha-value>)",
+				background: "var(--desktop-app-drag-background)",
+				text: "var(--desktop-app-drag-text)",
 			},
 		},
 	},
 	taskbar: {
-		background: "rgba(var(--taskbar-background) / <alpha-value>)",
-		border: "rgba(var(--taskbar-border) / <alpha-value>)",
-		separator: "rgba(var(--taskbar-separator) / <alpha-value>)",
+		background: "var(--taskbar-background)",
+		border: "var(--taskbar-border)",
+		separator: "var(--taskbar-separator)",
 		app: {
-			background: "rgba(var(--taskbar-app-background) / <alpha-value>)",
+			background: "var(--taskbar-app-background)",
 			open: {
-				background:
-					"rgba(var(--taskbar-app-open-background) / <alpha-value>)",
-				indicator:
-					"rgba(var(--taskbar-app-open-indicator) / <alpha-value>)",
+				background: "var(--taskbar-app-open-background)",
+				indicator: "var(--taskbar-app-open-indicator)",
 			},
 			drag: {
-				background:
-					"rgba(var(--taskbar-app-drag-background) / <alpha-value>)",
+				background: "var(--taskbar-app-drag-background)",
 			},
 		},
-		text: "rgba(var(--taskbar-text) / <alpha-value>)",
-		icon: "rgba(var(--taskbar-icon) / <alpha-value>)",
+		text: "var(--taskbar-text)",
+		icon: "var(--taskbar-icon)",
 		clock: {
-			background: "rgba(var(--taskbar-clock-background) / <alpha-value>)",
-			foreground: "rgba(var(--taskbar-clock-foreground) / <alpha-value>)",
+			background: "var(--taskbar-clock-background)",
+			foreground: "var(--taskbar-clock-foreground)",
 			hands: {
-				hour: "rgba(var(--taskbar-clock-hands-hour) / <alpha-value>)",
-				minute: "rgba(var(--taskbar-clock-hands-minute) / <alpha-value>)",
-				second: "rgba(var(--taskbar-clock-hands-second) / <alpha-value>)",
+				hour: "var(--taskbar-clock-hands-hour)",
+				minute: "var(--taskbar-clock-hands-minute)",
+				second: "var(--taskbar-clock-hands-second)",
 			},
-			number: "rgba(var(--taskbar-clock-number) / <alpha-value>)",
+			number: "var(--taskbar-clock-number)",
 		},
 	},
 	window: {
-		background: "rgba(var(--window-background) / <alpha-value>)",
+		background: "var(--window-background)",
 		header: {
-			background: "rgba(var(--window-header-background) / <alpha-value>)",
-			text: "rgba(var(--window-header-text) / <alpha-value>)",
+			background: "var(--window-header-background)",
+			text: "var(--window-header-text)",
 			icon: {
-				default:
-					"rgba(var(--window-header-icon-default) / <alpha-value>)",
-				hovered:
-					"rgba(var(--window-header-icon-hovered) / <alpha-value>)",
-				pressed:
-					"rgba(var(--window-header-icon-pressed) / <alpha-value>)",
+				default: "var(--window-header-icon-default)",
+				hovered: "var(--window-header-icon-hovered)",
+				pressed: "var(--window-header-icon-pressed)",
 			},
 		},
 	},
 	button: {
 		primary: {
-			default: "rgba(var(--action-primary-default) / <alpha-value>)",
-			hovered: "rgba(var(--action-primary-hovered) / <alpha-value>)",
-			pressed: "rgba(var(--action-primary-pressed) / <alpha-value>)",
-			disabled: "rgba(var(--action-primary-disabled) / <alpha-value>)",
+			default: "var(--action-primary-default)",
+			hovered: "var(--action-primary-hovered)",
+			pressed: "var(--action-primary-pressed)",
+			disabled: "var(--action-primary-disabled)",
 			icon: {
-				default:
-					"rgba(var(--action-primary-icon-default) / <alpha-value>)",
-				hovered:
-					"rgba(var(--action-primary-icon-hovered) / <alpha-value>)",
-				pressed:
-					"rgba(var(--action-primary-icon-pressed) / <alpha-value>)",
-				disabled:
-					"rgba(var(--action-primary-icon-disabled) / <alpha-value>)",
+				default: "var(--action-primary-icon-default)",
+				hovered: "var(--action-primary-icon-hovered)",
+				pressed: "var(--action-primary-icon-pressed)",
+				disabled: "var(--action-primary-icon-disabled)",
 			},
 		},
 		white: {
-			default: "rgba(var(--action-white-default) / <alpha-value>)",
-			hovered: "rgba(var(--action-white-hovered) / <alpha-value>)",
-			pressed: "rgba(var(--action-white-pressed) / <alpha-value>)",
-			disabled: "rgba(var(--action-white-disabled) / <alpha-value>)",
+			default: "var(--action-white-default)",
+			hovered: "var(--action-white-hovered)",
+			pressed: "var(--action-white-pressed)",
+			disabled: "var(--action-white-disabled)",
 			icon: {
-				default:
-					"rgba(var(--action-white-icon-default) / <alpha-value>)",
-				hovered:
-					"rgba(var(--action-white-icon-hovered) / <alpha-value>)",
-				pressed:
-					"rgba(var(--action-white-icon-pressed) / <alpha-value>)",
-				disabled:
-					"rgba(var(--action-white-icon-disabled) / <alpha-value>)",
+				default: "var(--action-white-icon-default)",
+				hovered: "var(--action-white-icon-hovered)",
+				pressed: "var(--action-white-icon-pressed)",
+				disabled: "var(--action-white-icon-disabled)",
 			},
 		},
 		success: {
-			default: "rgba(var(--action-success-default) / <alpha-value>)",
-			hovered: "rgba(var(--action-success-hovered) / <alpha-value>)",
-			pressed: "rgba(var(--action-success-pressed) / <alpha-value>)",
-			disabled: "rgba(var(--action-success-disabled) / <alpha-value>)",
+			default: "var(--action-success-default)",
+			hovered: "var(--action-success-hovered)",
+			pressed: "var(--action-success-pressed)",
+			disabled: "var(--action-success-disabled)",
 			icon: {
-				default:
-					"rgba(var(--action-success-icon-default) / <alpha-value>)",
-				hovered:
-					"rgba(var(--action-success-icon-hovered) / <alpha-value>)",
-				pressed:
-					"rgba(var(--action-success-icon-pressed) / <alpha-value>)",
-				disabled:
-					"rgba(var(--action-success-icon-disabled) / <alpha-value>)",
+				default: "var(--action-success-icon-default)",
+				hovered: "var(--action-success-icon-hovered)",
+				pressed: "var(--action-success-icon-pressed)",
+				disabled: "var(--action-success-icon-disabled)",
 			},
 		},
 		warning: {
-			default: "rgba(var(--action-warning-default) / <alpha-value>)",
-			hovered: "rgba(var(--action-warning-hovered) / <alpha-value>)",
-			pressed: "rgba(var(--action-warning-pressed) / <alpha-value>)",
-			disabled: "rgba(var(--action-warning-disabled) / <alpha-value>)",
+			default: "var(--action-warning-default)",
+			hovered: "var(--action-warning-hovered)",
+			pressed: "var(--action-warning-pressed)",
+			disabled: "var(--action-warning-disabled)",
 			icon: {
-				default:
-					"rgba(var(--action-warning-icon-default) / <alpha-value>)",
-				hovered:
-					"rgba(var(--action-warning-icon-hovered) / <alpha-value>)",
-				pressed:
-					"rgba(var(--action-warning-icon-pressed) / <alpha-value>)",
-				disabled:
-					"rgba(var(--action-warning-icon-disabled) / <alpha-value>)",
+				default: "var(--action-warning-icon-default)",
+				hovered: "var(--action-warning-icon-hovered)",
+				pressed: "var(--action-warning-icon-pressed)",
+				disabled: "var(--action-warning-icon-disabled)",
 			},
 		},
 		critical: {
-			default: "rgba(var(--action-critical-default) / <alpha-value>)",
-			hovered: "rgba(var(--action-critical-hovered) / <alpha-value>)",
-			pressed: "rgba(var(--action-critical-pressed) / <alpha-value>)",
-			disabled: "rgba(var(--action-critical-disabled) / <alpha-value>)",
+			default: "var(--action-critical-default)",
+			hovered: "var(--action-critical-hovered)",
+			pressed: "var(--action-critical-pressed)",
+			disabled: "var(--action-critical-disabled)",
 			icon: {
-				default:
-					"rgba(var(--action-critical-icon-default) / <alpha-value>)",
-				hovered:
-					"rgba(var(--action-critical-icon-hovered) / <alpha-value>)",
-				pressed:
-					"rgba(var(--action-critical-icon-pressed) / <alpha-value>)",
-				disabled:
-					"rgba(var(--action-critical-icon-disabled) / <alpha-value>)",
+				default: "var(--action-critical-icon-default)",
+				hovered: "var(--action-critical-icon-hovered)",
+				pressed: "var(--action-critical-icon-pressed)",
+				disabled: "var(--action-critical-icon-disabled)",
 			},
 		},
 	},
 	shadow: {
 		dim: {
-			light: "rgba(var(--shadow-dim-light) / <alpha-value>)",
+			light: "var(--shadow-dim-light)",
 		},
 		ambient: {
-			light: "rgba(var(--shadow-ambient-light) / <alpha-value>)",
+			light: "var(--shadow-ambient-light)",
 		},
 		direct: {
-			light: "rgba(var(--shadow-direct-light) / <alpha-value>)",
+			light: "var(--shadow-direct-light)",
 		},
 	},
 };

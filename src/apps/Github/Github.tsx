@@ -9,10 +9,19 @@ export default function Github() {
 	const { repos } = useRepositories();
 
 	return (
-		<div className="flex w-full flex-col overflow-y-scroll bg-white">
-			{repos?.map((repo: TGithubRepo) => (
-				<Repository repository={repo} key={repo?.node_id} />
-			))}
+		<div className="flex overflow-y-scroll bg-white">
+			<div className="flex w-72 flex-col overflow-y-scroll">
+				<img
+					src={profile?.avatar_url}
+					alt="avatar"
+					className="h-20 w-20 rounded-full"
+				/>
+			</div>
+			<div className="flex flex-col overflow-y-scroll">
+				{repos?.map((repo: TGithubRepo) => (
+					<Repository repository={repo} key={repo?.node_id} />
+				))}
+			</div>
 		</div>
 	);
 }

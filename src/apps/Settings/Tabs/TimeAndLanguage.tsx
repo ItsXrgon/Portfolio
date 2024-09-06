@@ -18,7 +18,10 @@ export default function TimeAndLanguage() {
 		document.documentElement.lang = selectedOption;
 	}
 
-	function handleTimezoneChange(selectedOption: string) {}
+	function handleTimezoneChange(selectedOption: string) {
+		// Set the timezone
+		console.log(selectedOption);
+	}
 
 	return (
 		<>

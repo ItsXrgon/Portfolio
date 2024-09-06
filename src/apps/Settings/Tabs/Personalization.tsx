@@ -20,6 +20,7 @@ import {
 	setActiveTheme,
 } from "../../../store/settingsSlice";
 import ColourItem from "../Components/ColourItem";
+import palette from "../../../palette";
 
 type ColorObject = { [key: string]: string | ColorObject };
 
@@ -54,7 +55,7 @@ export default function Personalization() {
 										: "0px",
 							}}
 						>
-							<AccordionTrigger>
+							<AccordionTrigger className="text-base">
 								{t(`settings.personalization.${key}`, {
 									defaultValue: key,
 								})}
@@ -71,7 +72,7 @@ export default function Personalization() {
 	);
 
 	const colorItems = useMemo(
-		() => renderColorItems(activeTheme?.theme ?? {}),
+		() => renderColorItems(palette),
 		[renderColorItems, activeTheme],
 	);
 

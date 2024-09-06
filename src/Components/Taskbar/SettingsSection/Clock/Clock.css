@@ -13,12 +13,12 @@
 	transform: translate(-50%, -50%);
 	box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
 	font-size: 24px;
-	color: var(--taskbar-clock-number);
+	color: hsl(var(--taskbar-clock-number));
 	text-align: center;
 }
 
 .clock::after {
-	background: var(--taskbar-clock-foreground);
+	background: hsl(var(--taskbar-clock-foreground));
 	content: "";
 	width: 12px;
 	height: 12px;
@@ -35,7 +35,7 @@
 	position: absolute;
 	width: 6px;
 	height: 60px;
-	background: var(--taskbar-clock-hands-hour);
+	background: hsl(var(--taskbar-clock-hands-hour));
 	top: 30%;
 	left: 49%;
 	transform-origin: bottom;
@@ -45,7 +45,7 @@
 	position: absolute;
 	width: 4px;
 	height: 80px;
-	background: var(--taskbar-clock-hands-minute);
+	background: hsl(var(--taskbar-clock-hands-minute));
 	top: 22.5%;
 	left: 49%;
 	transform-origin: bottom;
@@ -55,7 +55,7 @@
 	position: absolute;
 	width: 2px;
 	height: 118px;
-	background: var(--taskbar-clock-hands-second);
+	background: hsl(var(--taskbar-clock-hands-second));
 	top: 10.5%;
 	left: 50%;
 	transform-origin: bottom;

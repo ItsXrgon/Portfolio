@@ -16,8 +16,6 @@ export default function getTerminalOuput(
 					\n- clear
 					\n- exit
 					`;
-		case "about":
-			return `I am a Full Stack Developer with a passion for creating web applications that are both functional and beautiful. I am a quick learner and a team player who is always looking to learn new skills and technologies. I have experience working with JavaScript, TypeScript, React, Redux, Node.js, Express, MongoDB, HTML, CSS, SCSS, Bootstrap, Material UI, and more.`;
 		case "contact":
 			return `Email:`;
 		case "color":

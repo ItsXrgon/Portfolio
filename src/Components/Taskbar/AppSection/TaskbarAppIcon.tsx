@@ -7,7 +7,7 @@ import {
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { TTaskbar } from "../../../types";
 import TaskbarAppContextMenu from "../../ContextMenus/TaskbarAppContextMenu";
-import { useCallback, useMemo } from "react";
+import { useCallback } from "react";
 import Icon from "../../../utils/Icon";
 
 export function TaskbarAppIcon({

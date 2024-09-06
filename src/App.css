@@ -39,84 +39,84 @@
 		--surface-subtle: 0 0% 100%;
 
 		/* Desktop */
-		--desktop-background: 222.2 50.4% 50.2%;
-		--desktop-app-background: 0 0% 100%; /* #ffffff */
-		--desktop-app-text: 0 0% 20%; /* #333333 */
-		--desktop-app-hover-background: 0 0% 87.8%; /* #e0e0e0 */
-		--desktop-app-hover-text: 0 0% 6.7%; /* #111111 */
-		--desktop-app-drag-background: 0 0% 81.6%; /* #d0d0d0 */
-		--desktop-app-drag-text: 0 0% 0%; /* #000000 */
+		--desktop-background: #4f7cac;
+		--desktop-app-background: #ffffff;
+		--desktop-app-text: #333333;
+		--desktop-app-hover-background: #e0e0e0;
+		--desktop-app-hover-text: #111111;
+		--desktop-app-drag-background: #d0d0d0;
+		--desktop-app-drag-text: #000000;
 
 		/* Taskbar */
-		--taskbar-background: 0 0% 13.3%; /* #222222 */
-		--taskbar-border: 0 0% 20%; /* #333333 */
-		--taskbar-separator: 0 0% 20%; /* #333333 */
-		--taskbar-app-background: 0 0% 20%; /* #333333 */
-		--taskbar-app-open-background: 0 0% 26.7%; /* #444444 */
-		--taskbar-app-open-indicator: 16.5 100% 50%; /* #ff4500 */
-		--taskbar-app-drag-background: 0 0% 33.3%; /* #555555 */
-		--taskbar-text: 0 0% 100%; /* #ffffff */
-		--taskbar-icon: 0 0% 100%; /* #ffffff */
-		--taskbar-clock-background: 0 0% 0%; /* #000000 */
-		--taskbar-clock-foreground: 0 0% 100%; /* #ffffff */
-		--taskbar-clock-hands-hour: 16.5 100% 50%; /* #ff4500 */
-		--taskbar-clock-hands-minute: 0 0% 100%; /* #ffffff */
-		--taskbar-clock-hands-second: 16.5 100% 50%; /* #ff4500 */
-		--taskbar-clock-number: 0 0% 100%; /* #ffffff */
+		--taskbar-background: #222222;
+		--taskbar-border: #333333;
+		--taskbar-separator: #333333;
+		--taskbar-app-background: #333333;
+		--taskbar-app-open-background: #444444;
+		--taskbar-app-open-indicator: #ff4500;
+		--taskbar-app-drag-background: #555555;
+		--taskbar-text: #ffffff;
+		--taskbar-icon: #ffffff;
+		--taskbar-clock-background: #000000;
+		--taskbar-clock-foreground: #ffffff;
+		--taskbar-clock-hands-hour: #ff4500;
+		--taskbar-clock-hands-minute: #ffffff;
+		--taskbar-clock-hands-second: #ff4500;
+		--taskbar-clock-number: #ffffff;
 
 		/* Window */
-		--window-background: 0 0% 97.3%; /* #f8f8f8 */
-		--window-header-background: 210 100% 40%; /* #0066cc */
-		--window-header-text: 0 0% 100%; /* #ffffff */
-		--window-header-icon-default: 0 0% 80%; /* #cccccc */
-		--window-header-icon-hovered: 0 0% 100%; /* #ffffff */
-		--window-header-icon-pressed: 16.5 100% 50%; /* #ff4500 */
+		--window-background: #f8f8f8;
+		--window-header-background: #0066cc;
+		--window-header-text: #ffffff;
+		--window-header-icon-default: #cccccc;
+		--window-header-icon-hovered: #ffffff;
+		--window-header-icon-pressed: #ff4500;
 
 		/* Button */
-		--action-primary-default: 210 100% 50%; /* #007bff */
-		--action-primary-hovered: 210 100% 40%; /* #0056b3 */
-		--action-primary-pressed: 210 100% 31.4%; /* #003f7f */
-		--action-primary-disabled: 0 0% 80%; /* #cccccc */
-		--action-primary-icon-default: 0 0% 100%; /* #ffffff */
-		--action-primary-icon-hovered: 0 0% 100%; /* #ffffff */
-		--action-primary-icon-pressed: 0 0% 100%; /* #ffffff */
-		--action-primary-icon-disabled: 0 0% 60%; /* #999999 */
+		--action-primary-default: #007bff;
+		--action-primary-hovered: #0056b3;
+		--action-primary-pressed: #003f7f;
+		--action-primary-disabled: #cccccc;
+		--action-primary-icon-default: #ffffff;
+		--action-primary-icon-hovered: #ffffff;
+		--action-primary-icon-pressed: #ffffff;
+		--action-primary-icon-disabled: #999999;
 
-		--action-white-default: 0 0% 100%; /* #ffffff */
-		--action-white-hovered: 0 0% 94.1%; /* #f0f0f0 */
-		--action-white-pressed: 0 0% 87.8%; /* #e0e0e0 */
-		--action-white-disabled: 0 0% 80%; /* #cccccc */
-		--action-white-icon-default: 0 0% 20%; /* #333333 */
-		--action-white-icon-hovered: 0 0% 20%; /* #333333 */
-		--action-white-icon-pressed: 0 0% 20%; /* #333333 */
-		--action-white-icon-disabled: 0 0% 60%; /* #999999 */
+		--action-white-default: #ffffff;
+		--action-white-hovered: #f0f0f0;
+		--action-white-pressed: #e0e0e0;
+		--action-white-disabled: #cccccc;
+		--action-white-icon-default: #333333;
+		--action-white-icon-hovered: #333333;
+		--action-white-icon-pressed: #333333;
+		--action-white-icon-disabled: #999999;
 
-		--action-success-default: 134.9 65.7% 39.2%; /* #28a745 */
-		--action-success-hovered: 134.8 66% 34.7%; /* #218838 */
-		--action-success-pressed: 135 66.1% 30.2%; /* #1e7e34 */
-		--action-success-disabled: 0 0% 80%; /* #cccccc */
-		--action-success-icon-default: 0 0% 100%; /* #ffffff */
-		--action-success-icon-hovered: 0 0% 100%; /* #ffffff */
-		--action-success-icon-pressed: 0 0% 100%; /* #ffffff */
-		--action-success-icon-disabled: 0 0% 60%; /* #999999 */
+		--action-success-default: #28a745;
+		--action-success-hovered: #218838;
+		--action-success-pressed: #1e7e34;
+		--action-success-disabled: #cccccc;
+		--action-success-icon-default: #ffffff;
+		--action-success-icon-hovered: #ffffff;
+		--action-success-icon-pressed: #ffffff;
+		--action-success-icon-disabled: #999999;
 
-		--action-warning-default: 45.2 100% 50%; /* #ffc107 */
-		--action-warning-hovered: 45.7 100% 44.1%; /* #e0a800 */
-		--action-warning-pressed: 46.4 100% 41.6%; /* #d39e00 */
-		--action-warning-disabled: 0 0% 80%; /* #cccccc */
-		--action-warning-icon-default: 0 0% 20%; /* #333333 */
-		--action-warning-icon-hovered: 0 0% 20%; /* #333333 */
-		--action-warning-icon-pressed: 0 0% 20%; /* #333333 */
-		--action-warning-icon-disabled: 0 0% 60%; /* #999999 */
+		--action-warning-default: #ffc107;
+		--action-warning-hovered: #e0a800;
+		--action-warning-pressed: #d39e00;
+		--action-warning-disabled: #cccccc;
+		--action-warning-icon-default: #333333;
+		--action-warning-icon-hovered: #333333;
+		--action-warning-icon-pressed: #333333;
+		--action-warning-icon-disabled: #999999;
 
-		--action-critical-default: 354 70.6% 53.9%; /* #dc3545 */
-		--action-critical-hovered: 353.8 70.6% 47.4%; /* #c82333 */
-		--action-critical-pressed: 353.7 70.7% 43.7%; /* #bd2130 */
-		--action-critical-disabled: 0 0% 80%; /* #cccccc */
-		--action-critical-icon-default: 0 0% 100%; /* #ffffff */
-		--action-critical-icon-hovered: 0 0% 100%; /* #ffffff */
-		--action-critical-icon-pressed: 0 0% 100%; /* #ffffff */
-		--action-critical-icon-disabled: 0 0% 60%; /* #999999 */
+		--action-critical-default: #dc3545;
+		--action-critical-hovered: #c82333;
+		--action-critical-pressed: #bd2130;
+		--action-critical-disabled: #cccccc;
+		--action-critical-icon-default: #ffffff;
+		--action-critical-icon-hovered: #ffffff;
+		--action-critical-icon-pressed: #ffffff;
+		--action-critical-icon-disabled: #999999;
 	}
 
 	.dark {
@@ -256,7 +256,7 @@
 html,
 body {
 	height: 100%;
-	font-family: "Space Mono", sans-serif;
+	font-family: Cairo, sans-serif;
 }
 
 body {
