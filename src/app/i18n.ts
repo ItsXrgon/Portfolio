@@ -31,18 +31,6 @@ i18n.use(initReactI18next).init({
 	},
 });
 
-// Check if language preference is stored in local storage
-const storedLanguage = localStorage.getItem("language");
-
-if (storedLanguage) {
-	i18n.changeLanguage(storedLanguage);
-	document.documentElement.lang = storedLanguage;
-}
-
-i18n.on("languageChanged", (lng: string) => {
-	localStorage.setItem("language", lng);
-});
-
 export function localiseNumber(number: number) {
 	return new Intl.NumberFormat(i18n.language).format(number);
 }

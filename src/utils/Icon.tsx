@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 interface IconProps extends React.HTMLAttributes<HTMLImageElement> {
@@ -29,7 +30,8 @@ export default function Icon({
 	}, [icon]);
 
 	return (
-		<img
+		<Image
+			alt={icon}
 			src={iconUrl}
 			draggable={draggable}
 			width={width}
