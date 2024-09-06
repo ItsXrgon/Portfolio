@@ -1,0 +1,43 @@
+{
+	"settings": {
+		"select_language": "Select Language",
+		"home": "Home",
+		"personalization": {
+			"personalization": "Personalization",
+			"personalization_description": "Change the look and feel of your device.",
+			"surface": "Surface",
+			"taskBar": "Taskbar",
+			"icon": "Icon",
+			"label": "Label",
+			"primary": "Primary",
+			"secondary": "Secondary",
+			"tertiary": "Tertiary",
+			"subdued": "Subdued",
+			"accent": "Accent",
+			"interactive": "Interactive",
+			"hover": "Hover",
+			"pressed": "Pressed"
+		},
+		"languageAndTime": {
+			"languageAndTime": "Language and Time",
+			"languageAndTime_description": "Change the language and time settings to match your preferences.",
+			"language": "Language",
+			"language_placeholder": "Select Language",
+			"timezone": "Timezone",
+			"timezone_placeholder": "Select Timezone"
+		},
+		"about": "About",
+		"contact": "Contact",
+		"settings": "Settings",
+		"exit": "Exit"
+	},
+	"context_menu": {
+		"maximize": "Maximize",
+		"minimize": "Minimize",
+		"restore": "Restore",
+		"pin_to_taskbar": "Pin to Taskbar",
+		"unpin_from_taskbar": "Unpin from Taskbar",
+		"open": "Open",
+		"close": "Close"
+	}
+}
