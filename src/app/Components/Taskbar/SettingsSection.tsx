@@ -2,7 +2,6 @@
 
 import { Settings } from "lucide-react";
 import { useCallback } from "react";
-import { useTranslation } from "react-i18next";
 
 import { openApp } from "@/app/stores/appsSlice";
 import { useAppDispatch } from "@/app/stores/hooks";
@@ -11,7 +10,6 @@ import Clock from "./SettingsSection/Clock/Clock";
 import LanguageSelector from "./SettingsSection/LanguageSelector";
 
 export default function SettingsSection() {
-	useTranslation();
 	const dispatch = useAppDispatch();
 
 	const handleOpenSettings = useCallback(() => {

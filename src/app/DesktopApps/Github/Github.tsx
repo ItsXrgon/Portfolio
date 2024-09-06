@@ -16,7 +16,7 @@ export default function Github() {
 
 	const { repos } = useRepositories();
 
-	const [time, setTime] = useState(new Date());
+	const [time, setTime] = useState<Date | undefined>();
 
 	useEffect(() => {
 		const interval = setInterval(() => {
@@ -78,7 +78,7 @@ export default function Github() {
 							<Label.Thin200>{profile?.location}</Label.Thin200>
 						</Flex>
 					)}
-					<Flex gap="3" align="center" className="flex-wrap">
+					<Flex gap="2" align="center" className="flex-wrap">
 						<Clock width={18} height={18} strokeWidth={2} />
 						<Label.Thin200>
 							{`${localeTimeFormatter(time, profile?.location)} 
@@ -95,7 +95,7 @@ export default function Github() {
 						<Label.Thin200></Label.Thin200>
 					</Flex>
 					{profile?.email && (
-						<Flex gap="3" align="center" className="flex-wrap">
+						<Flex gap="2" align="center" className="flex-wrap">
 							<Mail width={18} height={18} strokeWidth={2} />
 							<Label.Thin200 className="select-all">
 								{profile?.email}

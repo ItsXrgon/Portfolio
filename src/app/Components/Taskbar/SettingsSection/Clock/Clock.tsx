@@ -6,17 +6,12 @@ import {
 	DropdownMenuTrigger,
 } from "@/app/UIComponents/DropDownMenu";
 import Label from "@/app/UIComponents/Label";
-import {
-	formatDate,
-	localeDateFormatter,
-	localeTimeFormatter,
-} from "@/utils/formatting";
+import { localeDateFormatter, localeTimeFormatter } from "@/utils/formatting";
 
-import { localiseNumber } from "../../../../i18n";
-import "./Clock.css";
+import ClockPopup from "./ClockPopup";
 
 export default function Clock() {
-	const [time, setTime] = useState(new Date());
+	const [time, setTime] = useState<Date | undefined>();
 
 	useEffect(() => {
 		const interval = setInterval(() => {
@@ -25,19 +20,19 @@ export default function Clock() {
 		return () => clearInterval(interval);
 	}, []);
 
-	const dateDependency = useMemo(() => {
-		return formatDate(time, "DD");
+	const formattedDate = useMemo(() => {
+		return time ? localeDateFormatter(time) : "";
 	}, [time]);
 
-	const formattedDate = useMemo(() => {
-		return localeDateFormatter(time);
-	}, [dateDependency]);
+	const formattedTime = useMemo(() => {
+		return time ? localeTimeFormatter(time) : "";
+	}, [time]);
 
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger className="flex flex-col items-center rounded-lg px-3">
 				<Label.Mid300 className="text-taskbar-text">
-					{localeTimeFormatter(time)}
+					{formattedTime}
 				</Label.Mid300>
 				<Label.Mid300 className="text-taskbar-text">
 					{formattedDate}
@@ -47,38 +42,7 @@ export default function Clock() {
 				className="h-[320px] w-[320px]"
 				sideOffset={15}
 			>
-				<div className="clock">
-					<div
-						className="hour"
-						style={{
-							transform: `rotateZ(${time.getHours() * 30}deg)`,
-						}}
-					/>
-					<div
-						className="minute"
-						style={{
-							transform: `rotateZ(${time.getMinutes() * 6}deg)`,
-						}}
-					/>
-					<div
-						className="second"
-						style={{
-							transform: `rotateZ(${time.getSeconds() * 6}deg)`,
-						}}
-					/>
-					<span className="twelve">{localiseNumber(12)}</span>
-					<span className="one">{localiseNumber(1)}</span>
-					<span className="two">{localiseNumber(2)}</span>
-					<span className="three">{localiseNumber(3)}</span>
-					<span className="four">{localiseNumber(4)}</span>
-					<span className="five">{localiseNumber(5)}</span>
-					<span className="six">{localiseNumber(6)}</span>
-					<span className="seven">{localiseNumber(7)}</span>
-					<span className="eight">{localiseNumber(8)}</span>
-					<span className="nine">{localiseNumber(9)}</span>
-					<span className="ten">1{localiseNumber(0)}</span>
-					<span className="eleven">1{localiseNumber(1)}</span>
-				</div>
+				<ClockPopup time={time} />
 			</DropdownMenuContent>
 		</DropdownMenu>
 	);

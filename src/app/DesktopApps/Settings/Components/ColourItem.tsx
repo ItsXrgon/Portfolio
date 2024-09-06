@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 import ColourPickerPopup from "./ColourPicker";
@@ -6,12 +6,7 @@ import ColourPickerPopup from "./ColourPicker";
 export default function ColourItem({ path }: { path: string[] }) {
 	const { t } = useTranslation();
 
-	const [value, setValue] = useState(
-		getComputedStyle(document.body).getPropertyValue(`--${path.join("-")}`),
-	);
-
 	const handleColourChange = useCallback((path: string[], color: string) => {
-		setValue(color);
 		document.documentElement.style.setProperty(
 			`--${path.join("-")}`,
 			color,
@@ -34,7 +29,9 @@ export default function ColourItem({ path }: { path: string[] }) {
 				<div
 					className="flex h-8 w-80 items-center justify-center rounded-md border border-solid"
 					style={{
-						background: value,
+						background: getComputedStyle(
+							document.body,
+						).getPropertyValue(`--${path.join("-")}`),
 					}}
 				>
 					{getComputedStyle(document.body).getPropertyValue(
@@ -42,7 +39,9 @@ export default function ColourItem({ path }: { path: string[] }) {
 					)}
 				</div>
 				<ColourPickerPopup
-					color={value}
+					color={getComputedStyle(document.body).getPropertyValue(
+						`--${path.join("-")}`,
+					)}
 					setColour={(color: string) =>
 						handleColourChange(path, color)
 					}

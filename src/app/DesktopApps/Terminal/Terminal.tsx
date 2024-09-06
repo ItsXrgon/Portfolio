@@ -29,30 +29,27 @@ export default function Terminal() {
 		setPath("home");
 	}, [focusInput]);
 
-	const onKeyDown = useCallback(
-		(e: KeyboardEvent) => {
-			if (e.key === "Enter") {
-				setCommandHistory([...commandHistory, input]);
+	const onKeyDown = (e: KeyboardEvent) => {
+		if (e.key === "Enter") {
+			setCommandHistory([...commandHistory, input]);
+			setInput("");
+			setCursor(cursor + 1);
+			setOutputHistory([...outputHistory, ""]);
+		}
+		if (e.key === "ArrowUp") {
+			if (cursor === 0) return;
+			setInput(commandHistory[cursor - 1]);
+			setCursor(cursor - 1);
+		}
+		if (e.key === "ArrowDown") {
+			if (cursor === commandHistory.length - 1) {
 				setInput("");
+			} else {
+				setInput(commandHistory[cursor + 1]);
 				setCursor(cursor + 1);
-				setOutputHistory([...outputHistory, ""]);
 			}
-			if (e.key === "ArrowUp") {
-				if (cursor === 0) return;
-				setInput(commandHistory[cursor - 1]);
-				setCursor(cursor - 1);
-			}
-			if (e.key === "ArrowDown") {
-				if (cursor === commandHistory.length - 1) {
-					setInput("");
-				} else {
-					setInput(commandHistory[cursor + 1]);
-					setCursor(cursor + 1);
-				}
-			}
-		},
-		[cursor, commandHistory, input, setOutputHistory],
-	);
+		}
+	};
 
 	return (
 		<Flex

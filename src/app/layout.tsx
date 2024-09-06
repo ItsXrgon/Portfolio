@@ -10,7 +10,6 @@ import "../styles/global.css";
 //👇 Configure our font object
 const cairo = Cairo({
 	subsets: ["latin", "arabic", "latin-ext"],
-	display: "swap",
 });
 
 export const metadata: Metadata = {
