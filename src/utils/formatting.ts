@@ -1,4 +1,4 @@
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 const numberRegex = /\.0+$|(\.[0-9]*[1-9])0+$/;
 
 export const numberFormatter = (num: number, digits: number) => {
