@@ -130,7 +130,7 @@ export default function Window({ app, zIndex }: WindowProps) {
 		<Rnd
 			ref={rndRef}
 			className={`fixed ${isMaximized && "rounded-md"}`}
-			style={{ zIndex: dragging ? 999 : zIndex }}
+			style={{ zIndex: dragging ? 998 : zIndex }}
 			size={isMaximized ? { width: "100%", height: "100%" } : localSize}
 			position={isMaximized ? { x: 0, y: 0 } : localPosition}
 			onMouseDown={() => dispatch(pushToFront({ id: app.id }))}
@@ -139,6 +139,8 @@ export default function Window({ app, zIndex }: WindowProps) {
 			onDragStop={onDragStop}
 			dragHandleClassName="dragHandle"
 			enableResizing={!isMaximized}
+			minHeight={400}
+			minWidth={600}
 			bounds={"parent"}
 			onResize={onResize}
 			onResizeStop={onResizeStop}
@@ -154,12 +156,12 @@ export default function Window({ app, zIndex }: WindowProps) {
 					<div className="h-9 w-9">
 						<Icon icon={app.icon} />
 					</div>
-					<div className="flex items-center gap-2">
-						<div className="cursor-pointer text-window-header-icon-default hover:text-window-header-icon-hovered active:text-window-header-icon-pressed">
+					<div className="flex items-center">
+						<div className="cursor-pointer p-1 text-window-header-icon-default hover:text-window-header-icon-hovered active:text-window-header-icon-pressed">
 							<Minus size={24} onClick={handleMinimize} />
 						</div>
 						<div
-							className="cursor-pointer p-2 text-window-header-icon-default hover:text-window-header-icon-hovered active:text-window-header-icon-pressed"
+							className="cursor-pointer p-1 text-window-header-icon-default hover:text-window-header-icon-hovered active:text-window-header-icon-pressed"
 							onClick={() =>
 								isMaximized ? handleRestore() : handleMaximize()
 							}
@@ -171,7 +173,7 @@ export default function Window({ app, zIndex }: WindowProps) {
 							)}
 						</div>
 						<div
-							className="cursor-pointer p-2 text-window-header-icon-default hover:text-window-header-icon-hovered active:text-window-header-icon-pressed"
+							className="cursor-pointer p-1 text-window-header-icon-default hover:text-window-header-icon-hovered active:text-window-header-icon-pressed"
 							onClick={handleClose}
 						>
 							<X size={24} />

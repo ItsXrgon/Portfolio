@@ -6,7 +6,12 @@ interface IconProps extends React.HTMLAttributes<HTMLImageElement> {
 	height?: number;
 }
 
-export default function Icon({ icon, width, height, draggable }: IconProps) {
+export default function Icon({
+	icon,
+	width,
+	height,
+	draggable = false,
+}: IconProps) {
 	const [iconUrl, setIconUrl] = useState<string>("");
 
 	useEffect(() => {

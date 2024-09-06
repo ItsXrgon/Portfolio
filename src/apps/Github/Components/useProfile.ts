@@ -3,17 +3,16 @@ import { TGithubProfile } from "../../../types";
 
 export function useProfile() {
 	const {
-		data,
+		data: profile,
 		isLoading: isProfileLoading,
-		error: isProfileError,
+		isError: isProfileError,
 	} = useQuery("profile_data", () =>
-		fetch("https://api.github.com/users/itsXrgon").then(
-			(res) => res.json() as Promise<TGithubProfile>,
-		),
+		fetch("https://api.github.com/users/itsXrgon").then((res) => {
+			return res.ok
+				? (res.json() as Promise<TGithubProfile>)
+				: hardCodedProfile;
+		}),
 	);
-
-	const profile =
-		isProfileError || isProfileLoading || !data ? hardCodedProfile : data;
 
 	return {
 		profile,
@@ -43,11 +42,11 @@ const hardCodedProfile: TGithubProfile = {
 		"https://api.github.com/users/ItsXrgon/received_events",
 	type: "User",
 	site_admin: false,
-	name: "",
+	name: "Ali Koheil",
 	company: "",
 	blog: "",
 	location: "Egypt",
-	email: "",
+	email: "ali.koheil@gmail.com",
 	hireable: false,
 	bio: "Whatever",
 	twitter_username: "",

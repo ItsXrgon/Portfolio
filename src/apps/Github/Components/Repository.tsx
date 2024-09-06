@@ -3,6 +3,9 @@ import { TGithubRepo } from "../../../types";
 import Icon from "../../../utils/Icon";
 import { numberFormatter } from "../../../utils/formatting";
 import { useRepositoryLanguages } from "./useRepositoryLanguages";
+import Label from "../../../globalComponents/Label";
+import Flex from "../../../globalComponents/Flex";
+import { BookMarked, GitFork, Star } from "lucide-react";
 
 export default function Repository({
 	repository,
@@ -26,70 +29,68 @@ export default function Repository({
 	};
 
 	return (
-		<div>
-			<div className="border-border-default dark:border-border-dark bg-canvas-default dark:bg-canvas-dark flex h-44 w-full flex-col justify-between rounded-md border-[1px] p-4">
-				<div>
-					<div className="flex items-center gap-2">
-						<Icon icon="repo" width={20} height={20} />
-						<a
-							href={repository?.html_url}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="text-accent-default dark:text-accent-dark text-sm font-semibold hover:underline"
-							title={repository?.url}
-						>
-							<p className="leading-5">{repository?.name}</p>
-						</a>
-						<span className="border-border-default dark:border-border-dark text-muted-default dark:text-muted-dark rounded-full border-[1px] px-2 py-0.5 text-xs font-medium">
-							{getType()}
-						</span>
-					</div>
-					<p className="text-muted-default dark:text-muted-dark mt-2 text-xs leading-5">
-						{repository?.description}
-					</p>
-				</div>
-				<p className="flex flex-wrap items-center justify-between">
-					<div className="flex w-80 flex-wrap items-center gap-2">
-						{Object.keys(languages ?? {}).map((language) => (
-							<div className="flex items-center gap-1">
-								<span
-									className="h-3 w-3 rounded-full"
-									style={{
-										background: uniqolor(
-											languages?.[language],
-										).color,
-									}}
-								/>
-								<span className="text-muted-default dark:text-muted-dark text-xs">
-									{language}
-								</span>
-							</div>
-						))}
-					</div>
-					<div className="flex items-center gap-2">
-						<div className="flex items-center gap-1">
-							<Icon icon="star" width={20} height={20} />
-							<span className="text-muted-default dark:text-muted-dark text-xs leading-5">
-								{numberFormatter(
-									repository?.stargazers_count,
-									1,
-								)}
-							</span>
-						</div>
-						<a
-							href={repository?.forks_url}
-							className="flex items-center gap-1"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<Icon icon="fork" width={20} height={20} />
-							<span className="text-muted-default dark:text-muted-dark text-xs leading-5">
-								{numberFormatter(repository?.forks_count, 1)}
-							</span>
-						</a>
-					</div>
+		<Flex
+			isColumn
+			gap="10"
+			className="border-border-default min-h-44 w-full justify-between rounded-md border-[1px] p-4 text-white"
+		>
+			<Flex isColumn gap="1">
+				<Flex align="center" gap="2">
+					<BookMarked width={20} height={20} />
+					<a
+						href={repository?.html_url}
+						target="_blank"
+						rel="noopener noreferrer"
+						className="text-accent-default text-sm font-semibold hover:underline"
+						title={repository?.url}
+					>
+						<Label.Mid400 className="leading-5" variant="primary">
+							{repository?.name}
+						</Label.Mid400>
+					</a>
+					<span className="border-border-default text-muted-default rounded-full border-[1px] px-2 py-0.5 text-xs font-medium">
+						{getType()}
+					</span>
+				</Flex>
+				<p className="text-muted-default mt-2 text-xs leading-5">
+					{repository?.description}
 				</p>
-			</div>
-		</div>
+			</Flex>
+			<Flex
+				align="center"
+				justify="between"
+				gap="4"
+				className="flex-wrap"
+			>
+				<Flex gap="2" align="center" className="w-1/2 flex-wrap">
+					{Object.keys(languages ?? {}).map((language) => (
+						<div className="flex items-center gap-1">
+							<div
+								className="h-3 w-3 rounded-full"
+								style={{
+									background: uniqolor(languages?.[language])
+										.color,
+								}}
+							/>
+							<Label.Thin100>{language}</Label.Thin100>
+						</div>
+					))}
+				</Flex>
+				<Flex gap="2" align="center">
+					<Flex gap="1" align="center">
+						<Star width={18} height={18} color="#FFFFFF" />
+						<Label.Mid300>
+							{numberFormatter(repository?.stargazers_count, 1)}
+						</Label.Mid300>
+					</Flex>
+					<Flex gap="1" align="center">
+						<GitFork width={18} height={18} color="#FFFFFF" />
+						<Label.Mid300>
+							{numberFormatter(repository?.forks_count, 1)}
+						</Label.Mid300>
+					</Flex>
+				</Flex>
+			</Flex>
+		</Flex>
 	);
 }

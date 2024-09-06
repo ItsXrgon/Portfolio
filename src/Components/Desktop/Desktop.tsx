@@ -31,7 +31,8 @@ export default function Desktop() {
 
 	return (
 		<div
-			className="relative h-full w-full bg-desktop-background p-2"
+			className="relative w-full bg-desktop-background"
+			style={{ height: "calc(100% - 3.5rem)" }}
 			onSelectCapture={(e) => e.stopPropagation()}
 		>
 			<div className="grid grid-cols-20">{...gridElements}</div>

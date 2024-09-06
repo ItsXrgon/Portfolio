@@ -33,7 +33,7 @@ const justifyStyles = {
 	start: "justify-start",
 	end: "justify-end",
 	center: "justify-center",
-	beeen: "justify-beeen",
+	between: "justify-between",
 	around: "justify-around",
 };
 

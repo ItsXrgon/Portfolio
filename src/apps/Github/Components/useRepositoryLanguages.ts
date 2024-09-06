@@ -3,19 +3,16 @@ import { TGithubRepo, TGithubRepoLanguages } from "../../../types";
 
 export function useRepositoryLanguages(repository: TGithubRepo) {
 	const {
-		data,
+		data: languages,
 		isLoading: isLanguagesLoading,
-		error: isLanguagesError,
+		isError: isLanguagesError,
 	} = useQuery(`repos_languages_${repository?.node_id}`, () =>
-		fetch(repository?.languages_url).then(
-			(res) => res.json() as Promise<TGithubRepoLanguages>,
-		),
+		fetch(repository?.languages_url).then((res) => {
+			return res.ok
+				? (res.json() as Promise<TGithubRepoLanguages>)
+				: hardCodedLanguages[repository.node_id];
+		}),
 	);
-
-	const languages =
-		isLanguagesError || isLanguagesLoading || !data
-			? hardCodedLanguages[repository.node_id]
-			: data;
 
 	return {
 		languages,
@@ -27,13 +24,7 @@ export function useRepositoryLanguages(repository: TGithubRepo) {
 const hardCodedLanguages: Record<string, TGithubRepoLanguages> = {
 	R_kgDOJaUFqg: {
 		Dart: 47677,
-		CMake: 8752,
-		"C++": 4069,
 		HTML: 3063,
-		Swift: 1158,
-		C: 691,
-		Kotlin: 254,
-		"Objective-C": 38,
 	},
 	R_kgDOJmkWgw: {
 		Haskell: 14699,

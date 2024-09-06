@@ -3,18 +3,16 @@ import { TGithubRepo } from "../../../types";
 
 export function useRepositories() {
 	const {
-		data,
+		data: repos,
 		isLoading: isReposLoading,
-		error: isReposError,
+		isError: isReposError,
 	} = useQuery("repos_data", () =>
-		fetch("https://api.github.com/users/itsXrgon/repos").then(
-			(res) => res.json() as Promise<TGithubRepo[]>,
-		),
+		fetch("https://api.github.com/users/itsXrgon/repos").then((res) => {
+			return res.ok
+				? (res.json() as Promise<TGithubRepo[]>)
+				: hardCodedRepos;
+		}),
 	);
-
-	const repos: TGithubRepo[] =
-		isReposError || isReposLoading || !data ? hardCodedRepos : data;
-
 	return {
 		repos,
 		isReposLoading,

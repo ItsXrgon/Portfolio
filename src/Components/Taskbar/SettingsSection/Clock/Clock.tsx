@@ -11,6 +11,7 @@ import {
 	localeDateFormatter,
 	localeTimeFormatter,
 } from "../../../../utils/formatting";
+import Label from "../../../../globalComponents/Label";
 
 export default function Clock() {
 	const [time, setTime] = useState(new Date());
@@ -29,12 +30,12 @@ export default function Clock() {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger className="flex flex-col items-center rounded-lg px-3">
-				<label className="select-none text-sm text-taskbar-text">
+				<Label.Mid300 className="text-taskbar-text">
 					{localeTimeFormatter(time)}
-				</label>
-				<label className="select-none text-sm text-taskbar-text">
+				</Label.Mid300>
+				<Label.Mid300 className="text-taskbar-text">
 					{formattedDate}
-				</label>
+				</Label.Mid300>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent
 				className="h-[320px] w-[320px]"

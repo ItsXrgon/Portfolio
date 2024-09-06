@@ -5,6 +5,7 @@ import Icon from "../../utils/Icon";
 import { useAppDispatch } from "../../store/hooks";
 import { openApp } from "../../store/appsSlice";
 import { useRef } from "react";
+import Label from "../../globalComponents/Label";
 
 interface AppProps {
 	index: number;
@@ -44,7 +45,7 @@ export default function DesktopApp({ app }: AppProps): JSX.Element {
 			<div ref={ref} className="h-12 w-12">
 				<Icon icon={app.icon} />
 			</div>
-			<label className="text-md">{app.name}</label>
+			<Label.Thin300>{app.name}</Label.Thin300>
 		</div>
 	);
 }

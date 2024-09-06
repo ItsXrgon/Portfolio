@@ -1,7 +1,10 @@
+import Flex from "../../globalComponents/Flex";
+import Label from "../../globalComponents/Label";
 import { TGithubRepo } from "../../types";
 import Repository from "./Components/Repository";
 import { useProfile } from "./Components/useProfile";
 import { useRepositories } from "./Components/useRepositories";
+import { Clock, Mail, MapPin } from "lucide-react";
 
 export default function Github() {
 	const { profile } = useProfile();
@@ -9,19 +12,77 @@ export default function Github() {
 	const { repos } = useRepositories();
 
 	return (
-		<div className="flex overflow-y-scroll bg-white">
-			<div className="flex w-72 flex-col overflow-y-scroll">
+		<Flex gap="1" className="w-full overflow-y-scroll bg-black text-white">
+			<Flex
+				isColumn
+				gap="3"
+				align="center"
+				className="w-48 shrink-0 grow-0 overflow-y-scroll py-4"
+			>
 				<img
 					src={profile?.avatar_url}
 					alt="avatar"
-					className="h-20 w-20 rounded-full"
+					draggable={false}
+					className="h-28 w-28 rounded-full outline outline-white"
 				/>
-			</div>
-			<div className="flex flex-col overflow-y-scroll">
+				<Flex isColumn gap="1">
+					<Label.Big500>
+						<a
+							className="hover:underline"
+							href={profile?.html_url}
+							target="_blank"
+						>
+							{profile?.name || profile?.login}
+						</a>
+					</Label.Big500>
+					{profile?.name && (
+						<Label.Big300>{profile?.login}</Label.Big300>
+					)}
+				</Flex>
+				<Label.Mid200>{profile?.bio}</Label.Mid200>
+				<Flex gap="1" align="center" className="flex-wrap">
+					<Label.Thin200>
+						{profile?.followers} Followers
+					</Label.Thin200>
+					<div className="h-1 w-1 rounded-full bg-white" />
+					<Label.Thin200>
+						{profile?.following} Following
+					</Label.Thin200>
+				</Flex>
+				<Flex gap="2" isColumn align="start" className="flex-wrap">
+					{profile?.location && (
+						<Flex gap="3" align="center" className="flex-wrap">
+							<MapPin width={18} height={18} strokeWidth={2} />
+							<Label.Thin200>{profile?.location}</Label.Thin200>
+						</Flex>
+					)}
+					<Flex gap="3" align="center" className="flex-wrap">
+						<Clock width={18} height={18} strokeWidth={2} />
+						<Label.Thin200>
+							{new Date().toLocaleString("en-US", {
+								timeZone: "Africa/Cairo",
+								hour: "numeric",
+								minute: "numeric",
+								second: "numeric",
+							})}
+						</Label.Thin200>
+					</Flex>
+					{profile?.email && (
+						<Flex gap="3" align="center" className="flex-wrap">
+							<Mail width={18} height={18} strokeWidth={2} />
+							<Label.Thin200 className="select-all">
+								{profile?.email}
+							</Label.Thin200>
+						</Flex>
+					)}
+				</Flex>
+			</Flex>
+			<div className="h-full w-px bg-white" />
+			<Flex isColumn gap="4" className="w-full overflow-y-scroll p-1">
 				{repos?.map((repo: TGithubRepo) => (
 					<Repository repository={repo} key={repo?.node_id} />
 				))}
-			</div>
-		</div>
+			</Flex>
+		</Flex>
 	);
 }
