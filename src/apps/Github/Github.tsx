@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Flex from "../../globalComponents/Flex";
 import Label from "../../globalComponents/Label";
 import { TGithubRepo } from "../../types";
@@ -5,27 +6,36 @@ import Repository from "./Components/Repository";
 import { useProfile } from "./Components/useProfile";
 import { useRepositories } from "./Components/useRepositories";
 import { Clock, Mail, MapPin } from "lucide-react";
+import { localeTimeFormatter } from "../../utils/formatting";
 
 export default function Github() {
 	const { profile } = useProfile();
 
 	const { repos } = useRepositories();
 
+	const [time, setTime] = useState(new Date());
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setTime(new Date());
+		}, 1000);
+		return () => clearInterval(interval);
+	}, []);
+
 	return (
 		<Flex gap="1" className="w-full overflow-y-scroll bg-black text-white">
 			<Flex
 				isColumn
 				gap="3"
-				align="center"
-				className="w-48 shrink-0 grow-0 overflow-y-scroll py-4"
+				className="w-48 shrink-0 grow-0 overflow-y-scroll p-4"
 			>
-				<img
-					src={profile?.avatar_url}
-					alt="avatar"
-					draggable={false}
-					className="h-28 w-28 rounded-full outline outline-white"
-				/>
-				<Flex isColumn gap="1">
+				<Flex isColumn gap="1" align="center">
+					<img
+						src={profile?.avatar_url}
+						alt="avatar"
+						draggable={false}
+						className="h-28 w-28 rounded-full outline outline-white"
+					/>
 					<Label.Big500>
 						<a
 							className="hover:underline"
@@ -38,8 +48,8 @@ export default function Github() {
 					{profile?.name && (
 						<Label.Big300>{profile?.login}</Label.Big300>
 					)}
+					<Label.Mid200>{profile?.bio}</Label.Mid200>
 				</Flex>
-				<Label.Mid200>{profile?.bio}</Label.Mid200>
 				<Flex gap="1" align="center" className="flex-wrap">
 					<Label.Thin200>
 						{profile?.followers} Followers
@@ -49,7 +59,13 @@ export default function Github() {
 						{profile?.following} Following
 					</Label.Thin200>
 				</Flex>
-				<Flex gap="2" isColumn align="start" className="flex-wrap">
+				<Flex
+					gap="2"
+					isColumn
+					align="start"
+					justify="start"
+					className="flex-wrap"
+				>
 					{profile?.location && (
 						<Flex gap="3" align="center" className="flex-wrap">
 							<MapPin width={18} height={18} strokeWidth={2} />
@@ -59,13 +75,18 @@ export default function Github() {
 					<Flex gap="3" align="center" className="flex-wrap">
 						<Clock width={18} height={18} strokeWidth={2} />
 						<Label.Thin200>
-							{new Date().toLocaleString("en-US", {
-								timeZone: "Africa/Cairo",
-								hour: "numeric",
-								minute: "numeric",
-								second: "numeric",
-							})}
+							{`${localeTimeFormatter(time, profile?.location)} 
+								(${
+									new Intl.DateTimeFormat("en-US", {
+										timeZone: profile?.location,
+										timeZoneName: "short",
+									})
+										.format(new Date())
+										.split(" ")[1]
+								})
+							`}
 						</Label.Thin200>
+						<Label.Thin200></Label.Thin200>
 					</Flex>
 					{profile?.email && (
 						<Flex gap="3" align="center" className="flex-wrap">

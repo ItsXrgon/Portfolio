@@ -20,8 +20,9 @@ export const numberFormatter = (num: number, digits: number) => {
 		: "0";
 };
 
-export const localeTimeFormatter = (time: Date) => {
+export const localeTimeFormatter = (time: Date, timeZone?: string) => {
 	return Intl.DateTimeFormat("default", {
+		timeZone: timeZone,
 		hour: "numeric",
 		minute: "numeric",
 		second: "numeric",
