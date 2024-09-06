@@ -20,7 +20,7 @@ import {
 import { PinOff, Pin, X } from "lucide-react";
 import Icon from "../../utils/Icon";
 
-export default function DesktopAppContextMenu({
+export function DesktopAppContextMenu({
 	children,
 	appId,
 	extraOptions,

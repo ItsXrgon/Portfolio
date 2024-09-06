@@ -3,8 +3,8 @@ import { TApp } from "../../types";
 import DesktopApp from "./DesktopApp";
 import { useAppDispatch } from "../../store/hooks";
 import { relocateApp } from "../../store/appsSlice";
-import DesktopContextMenu from "../ContextMenus/DesktopContextMenu";
-import DesktopAppContextMenu from "../ContextMenus/DesktopAppContextMenu";
+import { DesktopContextMenu } from "../ContextMenus/DesktopContextMenu";
+import { DesktopAppContextMenu } from "../ContextMenus/DesktopAppContextMenu";
 
 interface DesktopGridSlotProps {
 	xCoordinate: number;

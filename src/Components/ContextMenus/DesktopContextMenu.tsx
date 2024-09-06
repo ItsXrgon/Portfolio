@@ -6,7 +6,7 @@ import {
 	ContextMenuTrigger,
 } from "../../globalComponents/ContextMenu";
 
-export default function DesktopContextMenu({
+export function DesktopContextMenu({
 	children,
 	extraOptions,
 }: {

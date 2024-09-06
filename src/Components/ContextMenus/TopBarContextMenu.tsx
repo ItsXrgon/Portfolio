@@ -17,7 +17,7 @@ import {
 } from "../../store/appsSlice";
 import { Maximize, Minimize, Minus, X } from "lucide-react";
 
-export default function TopBarContextMenu({
+export function TopBarContextMenu({
 	children,
 	extraOptions,
 	appId,

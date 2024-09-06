@@ -16,7 +16,7 @@ import {
 import { useAppDispatch } from "../../store/hooks";
 import { TWindow } from "../../types";
 import Icon from "../../utils/Icon";
-import TopBarContextMenu from "../ContextMenus/TopBarContextMenu";
+import { TopBarContextMenu } from "../ContextMenus/TopBarContextMenu";
 
 interface WindowProps {
 	app: TWindow;

@@ -19,7 +19,7 @@ import {
 import { Pin, PinOff, X } from "lucide-react";
 import Icon from "../../utils/Icon";
 
-export default function TaskbarAppContextMenu({
+export function TaskbarAppContextMenu({
 	children,
 	onClick,
 	extraOptions,
