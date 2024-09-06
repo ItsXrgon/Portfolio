@@ -18,7 +18,7 @@ export function useRepositories() {
 	});
 
 	return {
-		repos,
+		repos: repos || hardCodedRepos,
 		isReposLoading,
 		isReposError,
 	};

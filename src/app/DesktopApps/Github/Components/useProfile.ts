@@ -18,7 +18,7 @@ export function useProfile() {
 	});
 
 	return {
-		profile,
+		profile: profile || hardCodedProfile,
 		isProfileLoading,
 		isProfileError,
 	};

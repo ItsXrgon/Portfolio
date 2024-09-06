@@ -18,7 +18,7 @@ export function useRepositoryLanguages(repository: TGithubRepo) {
 	});
 
 	return {
-		languages,
+		languages: languages || hardCodedLanguages[repository.node_id],
 		isLanguagesLoading,
 		isLanguagesError,
 	};

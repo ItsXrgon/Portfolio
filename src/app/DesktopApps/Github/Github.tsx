@@ -34,7 +34,7 @@ export default function Github() {
 			>
 				<Flex isColumn gap="1" align="center">
 					<Image
-						src={profile?.avatar_url!}
+						src={profile.avatar_url}
 						alt="avatar"
 						draggable={false}
 						className="h-28 w-28 rounded-full outline outline-white"
