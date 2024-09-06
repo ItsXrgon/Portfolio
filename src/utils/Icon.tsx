@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
 interface IconProps extends React.HTMLAttributes<HTMLImageElement> {
@@ -16,7 +18,9 @@ export default function Icon({
 
 	useEffect(() => {
 		const loadImages = async () => {
-			const { default: url } = await import(`../apps/icons/${icon}.svg`);
+			const { default: url } = await import(
+				`../app/DesktopApps/icons/${icon}.svg`
+			);
 
 			setIconUrl(url);
 		};
