@@ -6,19 +6,6 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "../../../globalComponents/Accordion";
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "../../../globalComponents/Select";
-import { useSettingsDispatch, useSettingsSelector } from "../../../store/hooks";
-import {
-	selectActiveTheme,
-	selectThemes,
-	setActiveTheme,
-} from "../../../store/settingsSlice";
 import ColourItem from "../Components/ColourItem";
 import palette from "../../../palette";
 
@@ -26,16 +13,6 @@ type ColorObject = { [key: string]: string | ColorObject };
 
 export default function Personalization() {
 	const { t } = useTranslation();
-	const settingsDispatch = useSettingsDispatch();
-	const activeTheme = useSettingsSelector(selectActiveTheme);
-	const themes = useSettingsSelector(selectThemes);
-
-	const handleThemeChange = useCallback(
-		(themeName: string) => {
-			settingsDispatch(setActiveTheme(themeName));
-		},
-		[settingsDispatch],
-	);
 
 	const renderColorItems = useCallback(
 		(obj: ColorObject, path: string[] = []) => {
@@ -73,7 +50,7 @@ export default function Personalization() {
 
 	const colorItems = useMemo(
 		() => renderColorItems(palette),
-		[renderColorItems, activeTheme],
+		[renderColorItems],
 	);
 
 	return (
@@ -85,30 +62,6 @@ export default function Personalization() {
 				<p className="text-sm text-gray-500">
 					{t("settings.personalization.personalization_description")}
 				</p>
-			</div>
-			<div className="mb-4">
-				<label htmlFor="theme-select" className="mb-2 block">
-					Select Theme:
-				</label>
-				<Select
-					onValueChange={handleThemeChange}
-					value={activeTheme.name}
-				>
-					<SelectTrigger className="w-full rounded border p-2">
-						<SelectValue
-							placeholder={t(
-								"settings.languageAndTime.language_placeholder",
-							)}
-						/>
-					</SelectTrigger>
-					<SelectContent>
-						{themes?.map((theme) => (
-							<SelectItem key={theme.name} value={theme.name}>
-								{theme.name}
-							</SelectItem>
-						))}
-					</SelectContent>
-				</Select>
 			</div>
 			<Accordion type="multiple" className="w-full">
 				{colorItems}

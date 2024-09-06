@@ -1,11 +1,11 @@
 import uniqolor from "uniqolor";
 import { TGithubRepo } from "../../../types";
-import Icon from "../../../utils/Icon";
 import { numberFormatter } from "../../../utils/formatting";
 import { useRepositoryLanguages } from "./useRepositoryLanguages";
 import Label from "../../../globalComponents/Label";
 import Flex from "../../../globalComponents/Flex";
 import { BookMarked, GitFork, Star } from "lucide-react";
+import { useMemo } from "react";
 
 export default function Repository({
 	repository,
@@ -14,7 +14,7 @@ export default function Repository({
 }) {
 	const { languages } = useRepositoryLanguages(repository);
 
-	const getType = () => {
+	const type = useMemo(() => {
 		if (!repository?.private && repository?.is_template) {
 			return "Public template";
 		} else if (repository?.private && repository?.is_template) {
@@ -26,7 +26,7 @@ export default function Repository({
 		} else if (repository?.fork) {
 			return "Forked";
 		}
-	};
+	}, [repository?.private, repository?.is_template, repository?.fork]);
 
 	return (
 		<Flex
@@ -34,7 +34,7 @@ export default function Repository({
 			gap="10"
 			className="border-border-default min-h-44 w-full justify-between rounded-md border-[1px] p-4 text-white"
 		>
-			<Flex isColumn gap="1">
+			<Flex isColumn gap="3">
 				<Flex align="center" gap="2">
 					<BookMarked width={20} height={20} />
 					<a
@@ -48,13 +48,15 @@ export default function Repository({
 							{repository?.name}
 						</Label.Mid400>
 					</a>
-					<span className="border-border-default text-muted-default rounded-full border-[1px] px-2 py-0.5 text-xs font-medium">
-						{getType()}
-					</span>
+					<Flex
+						align="center"
+						justify="center"
+						className="border-border-default rounded-full border-[1px] px-2 py-0.5"
+					>
+						<Label.Mid200>{type}</Label.Mid200>
+					</Flex>
 				</Flex>
-				<p className="text-muted-default mt-2 text-xs leading-5">
-					{repository?.description}
-				</p>
+				<Label.Thin200>{repository?.description}</Label.Thin200>
 			</Flex>
 			<Flex
 				align="center"
@@ -68,8 +70,9 @@ export default function Repository({
 							<div
 								className="h-3 w-3 rounded-full"
 								style={{
-									background: uniqolor(languages?.[language])
-										.color,
+									background: uniqolor(
+										languages?.[language] ?? 0,
+									).color,
 								}}
 							/>
 							<Label.Thin100>{language}</Label.Thin100>

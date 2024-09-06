@@ -4,7 +4,8 @@ import Flex from "../../globalComponents/Flex";
 
 export default function Terminal() {
 	const [input, setInput] = useState("");
-	const [history, setHistory] = useState<string[]>([]);
+	const [commandHistory, setCommandHistory] = useState<string[]>([]);
+	const [outputHistory, setOutputHistory] = useState<string[]>([]);
 	const [cursor, setCursor] = useState(0);
 	const [fontColor, setFontColor] = useState("white");
 	const [path, setPath] = useState("home");
@@ -18,36 +19,37 @@ export default function Terminal() {
 	useEffect(() => {
 		focusInput();
 		setPath("home");
-		setFontColor("white");
 	}, []);
 
 	const onKeyDown = useCallback(
 		(e: KeyboardEvent) => {
 			if (e.key === "Enter") {
-				setHistory([...history, input]);
+				setCommandHistory([...commandHistory, input]);
 				setInput("");
 				setCursor(cursor + 1);
+				setOutputHistory([...outputHistory, ""]);
 			}
 			if (e.key === "ArrowUp") {
 				if (cursor === 0) return;
-				setInput(history[cursor - 1]);
+				setInput(commandHistory[cursor - 1]);
 				setCursor(cursor - 1);
 			}
 			if (e.key === "ArrowDown") {
-				if (cursor === history.length - 1) {
+				if (cursor === commandHistory.length - 1) {
 					setInput("");
 				} else {
-					setInput(history[cursor + 1]);
+					setInput(commandHistory[cursor + 1]);
 					setCursor(cursor + 1);
 				}
 			}
 		},
-		[cursor, history, input],
+		[cursor, commandHistory, input],
 	);
 
 	return (
-		<div
-			className="scrollbar-hidden w-full overflow-y-scroll bg-black p-1"
+		<Flex
+			isColumn
+			className="scrollbar-hidden w-full overflow-y-scroll bg-black p-1 text-white"
 			onClick={() => focusInput()}
 			style={{
 				color: fontColor,
@@ -59,25 +61,31 @@ export default function Terminal() {
 				<br />
 				enter "help" for a list of commands.
 			</Label.Mid200>
-			{history.map((line, index) => (
-				<div key={index}>{line}</div>
+			{commandHistory.map((line, index) => (
+				<>
+					<Label.Mid200 key={`command-${index}`}>{line}</Label.Mid200>
+					<Label.Mid200 key={`output-${index}`}>
+						{outputHistory[index]}
+					</Label.Mid200>
+					<div key={`space-${index}`} className="h-[14px]" />
+				</>
 			))}
-			<Flex isColumn gap="0">
+			<Flex isColumn>
 				<Flex gap="1">
 					<Label.Mid200>XrgOs</Label.Mid200>
 					<Label.Mid200>{`~${path}`}</Label.Mid200>
 				</Flex>
-				<Flex gap="2">
-					<Label.Mid200>$</Label.Mid200>
+				<Flex gap="2" align="center">
+					<Label.Mid200 className="self-end">$</Label.Mid200>
 					<input
 						ref={inputRef}
-						className="w-full border-0 border-none bg-transparent outline-none"
+						className="w-full border-0 border-none bg-transparent p-0 text-[14px] font-medium tracking-[-0.42px] outline-none"
 						value={input}
 						onChange={(e) => setInput(e.target.value)}
 						onKeyDown={(e) => onKeyDown(e.nativeEvent)}
 					/>
 				</Flex>
 			</Flex>
-		</div>
+		</Flex>
 	);
 }

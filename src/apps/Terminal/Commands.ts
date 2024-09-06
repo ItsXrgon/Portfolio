@@ -21,7 +21,7 @@ export default function getTerminalOuput(
 		case "color":
 			return switchColor(input, setFontColor);
 		default:
-			console.log(input)
+			console.log(input);
 			return `Command not found`;
 	}
 }
@@ -31,31 +31,6 @@ function switchColor(
 	setFontColor: (color: string) => void,
 ): string {
 	const color = input.split(" ")[1];
-	switch (color) {
-		case "red":
-			setFontColor("red");
-			break;
-		case "green":
-			setFontColor("green");
-			break;
-		case "blue":
-			setFontColor("blue");
-			break;
-		case "yellow":
-			setFontColor("yellow");
-			break;
-		case "purple":
-			setFontColor("purple");
-			break;
-		case "white":
-			setFontColor("white");
-			break;
-		case "black":
-			setFontColor("black");
-			break;
-		default:
-			setFontColor("white");
-			break;
-	}
+	setFontColor("white");
 	return `Font color changed to ${color}`;
 }

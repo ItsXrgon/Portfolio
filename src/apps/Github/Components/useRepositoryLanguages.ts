@@ -26,6 +26,12 @@ const hardCodedLanguages: Record<string, TGithubRepoLanguages> = {
 		Dart: 47677,
 		HTML: 3063,
 	},
+	R_kgDOK32naw: {
+		TypeScript: 150773,
+		CSS: 8102,
+		JavaScript: 2623,
+		HTML: 982,
+	},
 	R_kgDOJmkWgw: {
 		Haskell: 14699,
 	},

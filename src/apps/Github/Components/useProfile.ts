@@ -50,10 +50,10 @@ const hardCodedProfile: TGithubProfile = {
 	hireable: false,
 	bio: "Whatever",
 	twitter_username: "",
-	public_repos: 9,
+	public_repos: 10,
 	public_gists: 0,
 	followers: 19,
-	following: 25,
+	following: 22,
 	created_at: "2022-08-12T17:34:41Z",
-	updated_at: "2024-08-11T12:28:41Z",
+	updated_at: "2024-09-06T09:39:04Z",
 };

@@ -1,25 +1,21 @@
 import { useCallback, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useSettingsDispatch } from "../../../store/hooks";
 import ColourPickerPopup from "./ColourPicker";
-import { updateTheme } from "../../../store/settingsSlice";
 
 export default function ColourItem({ path }: { path: string[] }) {
 	const { t } = useTranslation();
-
-	const settingsDispatch = useSettingsDispatch();
 
 	const [value, setValue] = useState(
 		getComputedStyle(document.body).getPropertyValue(`--${path.join("-")}`),
 	);
 
-	const handleColourChange = useCallback(
-		(path: string[], color: string) => {
-			setValue(color);
-			settingsDispatch(updateTheme({ path, color }));
-		},
-		[settingsDispatch],
-	);
+	const handleColourChange = useCallback((path: string[], color: string) => {
+		setValue(color);
+		document.documentElement.style.setProperty(
+			`--${path.join("-")}`,
+			color,
+		);
+	}, []);
 
 	const key = useMemo(() => path[path.length - 1], [path]);
 
@@ -40,7 +36,9 @@ export default function ColourItem({ path }: { path: string[] }) {
 						background: value,
 					}}
 				>
-					{value}
+					{getComputedStyle(document.body).getPropertyValue(
+						`--${path.join("-")}`,
+					)}
 				</div>
 				<ColourPickerPopup
 					color={value}

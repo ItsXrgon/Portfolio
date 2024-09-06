@@ -51,7 +51,7 @@ interface FlexProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const Flex = memo(
-	tw.label<FlexProps>`
+	tw.div<FlexProps>`
 		${({ isColumn, gap, align, justify, className }) =>
 			twMerge(
 				"flex",
