@@ -9,7 +9,7 @@ import "../styles/global.css";
 
 //👇 Configure our font object
 const cairo = Cairo({
-	subsets: ["latin"],
+	subsets: ["latin", "arabic", "latin-ext"],
 	display: "swap",
 });
 

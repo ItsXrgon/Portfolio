@@ -37,6 +37,9 @@ export default function Github() {
 						src={profile.avatar_url}
 						alt="avatar"
 						draggable={false}
+						width={112}
+						height={112}
+						priority
 						className="h-28 w-28 rounded-full outline outline-white"
 					/>
 					<Label.Big500>
