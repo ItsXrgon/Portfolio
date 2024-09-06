@@ -24,7 +24,7 @@ export default function DesktopGridSlot({
 	const [, drop] = useDrop(
 		() => ({
 			accept: "APP",
-			drop(item: any) {
+			drop(item: { app: TApp }) {
 				if (
 					(item.app?.position.x === xCoordinate &&
 						item.app?.position.y === yCoordinate) ||

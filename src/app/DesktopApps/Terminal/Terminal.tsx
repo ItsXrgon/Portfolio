@@ -15,7 +15,7 @@ export default function Terminal() {
 	const [commandHistory, setCommandHistory] = useState<string[]>([]);
 	const [outputHistory, setOutputHistory] = useState<string[]>([]);
 	const [cursor, setCursor] = useState(0);
-	const [fontColor, setFontColor] = useState("white");
+	const [fontColor] = useState("white");
 	const [path, setPath] = useState("home");
 
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -27,7 +27,7 @@ export default function Terminal() {
 	useEffect(() => {
 		focusInput();
 		setPath("home");
-	}, []);
+	}, [focusInput]);
 
 	const onKeyDown = useCallback(
 		(e: KeyboardEvent) => {
@@ -51,7 +51,7 @@ export default function Terminal() {
 				}
 			}
 		},
-		[cursor, commandHistory, input],
+		[cursor, commandHistory, input, setOutputHistory],
 	);
 
 	return (

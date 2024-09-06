@@ -39,13 +39,13 @@ const labelLetterSpacing = {
 	700: `tracking-[-1.08px]`,
 };
 
-export type LabelVariantsEnum = keyof typeof labelVariants;
-export type LabelWeightsEnum = keyof typeof labelWeights;
-export type LabelTypographyEnum = keyof typeof labelSizes;
+type LabelVariantsEnum = keyof typeof labelVariants;
+type LabelWeightsEnum = keyof typeof labelWeights;
+type LabelTypographyEnum = keyof typeof labelSizes;
 
-export interface LabelProps extends React.HTMLAttributes<HTMLLabelElement> {
+interface LabelProps extends React.HTMLAttributes<HTMLLabelElement> {
 	children?: React.ReactNode;
-	variant: LabelVariantsEnum;
+	variant?: LabelVariantsEnum;
 	size: LabelTypographyEnum;
 	weight: LabelWeightsEnum;
 }
@@ -54,7 +54,7 @@ const BaseLabel = memo(
 	tw.label<LabelProps>`
 		${({ size, variant, weight, className }) =>
 			twMerge(
-				labelVariants[variant],
+				labelVariants[variant ?? "default"],
 				labelSizes[size],
 				labelWeights[weight],
 				labelLetterSpacing[size],
@@ -67,7 +67,7 @@ const TypographyWeights = ["Thin", "Mid", "Big"];
 
 const TypographyVariants = [100, 200, 300, 400, 500, 600, 700];
 
-export type LabelVariant = `${LabelWeightsEnum}${LabelTypographyEnum}`;
+type LabelVariant = `${LabelWeightsEnum}${LabelTypographyEnum}`;
 
 type LabelType = React.FC<LabelProps> & {
 	[key in LabelVariant]?: React.FC<Partial<LabelProps>>;
@@ -78,8 +78,12 @@ const Label = BaseLabel as LabelType;
 TypographyVariants.forEach((sizeKey) => {
 	TypographyWeights.forEach((weightKey) => {
 		const variant = `${weightKey}${sizeKey}` as LabelVariant;
-		Label[variant] = (props: any) => (
-			<BaseLabel {...props} weight={weightKey} size={sizeKey} />
+		Label[variant] = (props) => (
+			<BaseLabel
+				{...props}
+				weight={weightKey as LabelWeightsEnum}
+				size={sizeKey as LabelTypographyEnum}
+			/>
 		);
 	});
 });

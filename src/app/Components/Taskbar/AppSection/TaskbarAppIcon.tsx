@@ -7,7 +7,7 @@ import {
 	reOrderApps,
 } from "@/app/stores/appsSlice";
 import { useAppDispatch, useAppSelector } from "@/app/stores/hooks";
-import { TTaskbar } from "@/app/types";
+import { TApp, TTaskbar } from "@/app/types";
 import Icon from "@/utils/Icon";
 
 import { TaskbarAppContextMenu } from "../../ContextMenus/TaskbarAppContextMenu";
@@ -30,7 +30,7 @@ export function TaskbarAppIcon({
 		[dispatch],
 	);
 
-	const [{}, drag] = useDrag(() => ({
+	const [, drag] = useDrag(() => ({
 		type: "APPICON",
 		item: {
 			app: app,
@@ -44,11 +44,11 @@ export function TaskbarAppIcon({
 	const [, drop] = useDrop(
 		() => ({
 			accept: "APPICON",
-			hover(item: any) {
+			hover(item: { app: TApp }) {
 				if (item.app.id !== app.id) {
 					dispatch(
 						reOrderApps({
-							oldIndex: item.index,
+							oldIndex: item.app?.index ?? 0,
 							newIndex: index,
 						}),
 					);

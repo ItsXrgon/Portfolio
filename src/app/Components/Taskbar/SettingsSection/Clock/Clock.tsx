@@ -25,9 +25,13 @@ export default function Clock() {
 		return () => clearInterval(interval);
 	}, []);
 
+	const dateDependency = useMemo(() => {
+		return formatDate(time, "DD");
+	}, [time]);
+
 	const formattedDate = useMemo(() => {
 		return localeDateFormatter(time);
-	}, [formatDate(time, "DD")]);
+	}, [dateDependency]);
 
 	return (
 		<DropdownMenu>

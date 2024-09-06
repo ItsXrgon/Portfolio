@@ -2,6 +2,7 @@ import palette from "@/styles/palette";
 
 export type TApp = {
 	id: string;
+	index?: number;
 	name: string;
 	icon: string;
 	type: "app" | "folder";
