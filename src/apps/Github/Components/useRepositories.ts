@@ -13,9 +13,7 @@ export function useRepositories() {
 	);
 
 	const repos: TGithubRepo[] =
-		isReposError || isReposLoading || !data || data?.message
-			? hardCodedRepos
-			: data;
+		isReposError || isReposLoading || !data ? hardCodedRepos : data;
 
 	return {
 		repos,

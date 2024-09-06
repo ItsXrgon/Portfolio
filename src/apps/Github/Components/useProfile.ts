@@ -13,9 +13,7 @@ export function useProfile() {
 	);
 
 	const profile =
-		isProfileError || isProfileLoading || !data || data?.message
-			? hardCodedProfile
-			: data;
+		isProfileError || isProfileLoading || !data ? hardCodedProfile : data;
 
 	return {
 		profile,
