@@ -1,4 +1,5 @@
 import { Clock, Mail, MapPin } from "lucide-react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import Flex from "@/app/UIComponents/Flex";
@@ -32,8 +33,8 @@ export default function Github() {
 				className="w-48 shrink-0 grow-0 overflow-y-scroll p-4"
 			>
 				<Flex isColumn gap="1" align="center">
-					<img
-						src={profile?.avatar_url}
+					<Image
+						src={profile?.avatar_url!}
 						alt="avatar"
 						draggable={false}
 						className="h-28 w-28 rounded-full outline outline-white"

@@ -1,18 +1,13 @@
 "use client";
 
-import {
-	Github,
-	Maximize,
-	Minimize,
-	Minus,
-	Settings,
-	Terminal,
-	X,
-} from "lucide-react";
+import { Maximize, Minimize, Minus, X } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { DraggableData, Rnd } from "react-rnd";
 
 import About from "@/app/DesktopApps/About/About";
+import Github from "@/app/DesktopApps/Github/Github";
+import Settings from "@/app/DesktopApps/Settings/Settings";
+import Terminal from "@/app/DesktopApps/Terminal/Terminal";
 import {
 	closeApp,
 	maximizeApp,
