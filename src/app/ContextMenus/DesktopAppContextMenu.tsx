@@ -99,9 +99,9 @@ export function DesktopAppContextMenu({
 						onClick={handleOpen}
 					>
 						<div className="h-5 w-5">
-							<Icon icon={app?.icon ?? ""} />
+							<Icon icon={app.icon} />
 						</div>
-						{t("context_menu.open")} {app?.name}
+						{t("context_menu.open")} {app.name}
 					</ContextMenuItem>
 				)}
 				{window && (
@@ -110,7 +110,7 @@ export function DesktopAppContextMenu({
 						onClick={handleClose}
 					>
 						<X size={18} />
-						{t("context_menu.close")} {app?.name}
+						{t("context_menu.close")} {app.name}
 					</ContextMenuItem>
 				)}
 			</ContextMenuContent>

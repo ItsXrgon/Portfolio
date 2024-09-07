@@ -1,16 +1,16 @@
 import { useDrop } from "react-dnd";
 
+import { DesktopAppContextMenu, DesktopContextMenu } from "@/app/ContextMenus";
 import { relocateApp } from "@/app/stores/appsSlice";
 import { useAppDispatch } from "@/app/stores/hooks";
 import { TApp } from "@/app/types";
 
 import DesktopApp from "./DesktopApp";
-import { DesktopAppContextMenu, DesktopContextMenu } from "@/app/ContextMenus";
 
 interface DesktopGridSlotProps {
 	xCoordinate: number;
 	yCoordinate: number;
-	app?: TApp;
+	app: TApp;
 }
 
 export default function DesktopGridSlot({
@@ -25,8 +25,8 @@ export default function DesktopGridSlot({
 			accept: "APP",
 			drop(item: { app: TApp }) {
 				if (
-					(item.app?.position.x === xCoordinate &&
-						item.app?.position.y === yCoordinate) ||
+					(item.app.position.x === xCoordinate &&
+						item.app.position.y === yCoordinate) ||
 					!item.app
 				) {
 					return;

@@ -45,7 +45,7 @@ export function TaskbarAppIcon({
 				if (item.app.id !== app.id) {
 					dispatch(
 						reOrderApps({
-							oldIndex: item.app?.index ?? 0,
+							oldIndex: item.app.index ?? 0,
 							newIndex: index,
 						}),
 					);

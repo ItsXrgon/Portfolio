@@ -71,25 +71,25 @@ export function TopBarContextMenu({
 				<ContextMenuItem
 					className="flex items-center gap-3"
 					onClick={() => {
-						app?.windowState?.isMaximized
+						app.windowState?.isMaximized
 							? handleRestore()
 							: handleMaximize();
 					}}
-					disabled={app?.windowState?.isMaximized}
+					disabled={app.windowState?.isMaximized}
 				>
-					{app?.windowState?.isMaximized ? (
+					{app.windowState?.isMaximized ? (
 						<Minimize size={18} />
 					) : (
 						<Maximize size={18} />
 					)}
-					{app?.windowState?.isMaximized
+					{app.windowState?.isMaximized
 						? t("context_menu.restore")
 						: t("context_menu.maximize")}
 				</ContextMenuItem>
 				<ContextMenuItem
 					className="flex items-center gap-3"
 					onClick={handleMinimize}
-					disabled={app?.windowState?.isMinimized}
+					disabled={app.windowState?.isMinimized}
 				>
 					<Minus size={18} />
 					{t("context_menu.minimize")}

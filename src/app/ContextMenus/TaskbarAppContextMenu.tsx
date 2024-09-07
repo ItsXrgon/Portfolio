@@ -90,7 +90,7 @@ export function TaskbarAppContextMenu({
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className="w-56" sideOffset={15}>
 				{extraOptions && <DropdownMenuSeparator />}
-				{app?.pinned && (
+				{app.pinned && (
 					<DropdownMenuItem
 						className="flex items-center gap-3"
 						onClick={handleUnpin}
@@ -99,7 +99,7 @@ export function TaskbarAppContextMenu({
 						{t("context_menu.unpin_from_taskbar")}
 					</DropdownMenuItem>
 				)}
-				{!app?.pinned && (
+				{!app.pinned && (
 					<DropdownMenuItem
 						className="flex items-center gap-3"
 						onClick={handlePin}
@@ -113,8 +113,8 @@ export function TaskbarAppContextMenu({
 						className="flex items-center gap-3"
 						onClick={handleOpen}
 					>
-						<Icon icon={app?.icon} width={24} height={24} />
-						{t("context_menu.open")} {app?.name}
+						<Icon icon={app.icon} width={24} height={24} />
+						{t("context_menu.open")} {app.name}
 					</DropdownMenuItem>
 				)}
 				{window && (
@@ -123,7 +123,7 @@ export function TaskbarAppContextMenu({
 						onClick={handleClose}
 					>
 						<X width={24} height={24} />
-						{t("context_menu.close")} {app?.name}
+						{t("context_menu.close")} {app.name}
 					</DropdownMenuItem>
 				)}
 			</DropdownMenuContent>

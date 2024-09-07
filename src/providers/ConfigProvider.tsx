@@ -13,7 +13,7 @@ const ConfigProvider = ({ children }: { children: React.ReactNode }) => {
 			dispatch(updateTime());
 		}, 1000);
 		return () => clearInterval(interval);
-	}, []);
+	}, [dispatch]);
 
 	return (
 		<div className="h-full" onContextMenu={(e) => e.preventDefault()}>

@@ -314,18 +314,21 @@ export const selectWindows = (state: { apps: AppsState }) => state.apps.windows;
 export const selectTaskbar = (state: { apps: AppsState }) => state.apps.taskBar;
 
 export const selectAppById = (id: string) =>
-	createSelector([selectApps], (apps) => apps?.find((app) => app.id === id));
+	createSelector(
+		[selectApps],
+		(apps) => apps?.find((app) => app.id === id) ?? apps[0],
+	);
 
 export const selectWindowById = (id: string) =>
 	createSelector(
 		[selectWindows],
-		(windows) => windows?.find((app) => app.id === id),
+		(windows) => windows?.find((app) => app.id === id) ?? windows[0],
 	);
 
 export const selectTaskbarById = (id: string) =>
 	createSelector(
 		[selectTaskbar],
-		(taskBar) => taskBar?.find((app) => app.id === id),
+		(taskBar) => taskBar?.find((app) => app.id === id) ?? taskBar[0],
 	);
 
 export const isAppOpen = (id: string) =>
