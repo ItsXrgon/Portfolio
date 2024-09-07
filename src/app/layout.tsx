@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import { Metadata } from "next";
 import { Cairo } from "next/font/google";
 import React from "react";
@@ -26,6 +27,7 @@ export default function RootLayout({
 		<html lang="en" className={cairo.className}>
 			<body>
 				<div id="root">
+					<Analytics />
 					<React.StrictMode>
 						<ReactQueryProvider>
 							<ReduxProvider>{children}</ReduxProvider>

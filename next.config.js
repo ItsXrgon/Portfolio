@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	distDir: "./dist", // Changes the build output directory to `./dist/`.images: {
+	output: "./dist", // Changes the build output directory to `./dist/`.
+	distDir: "./dist", // Changes the build output directory to `./dist/`
 	images: {
 		remotePatterns: [
 			{
