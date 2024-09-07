@@ -30,7 +30,6 @@ export const localeTimeFormatter = (
 		timeZone: timeZone,
 		hour: "numeric",
 		minute: "numeric",
-		second: "numeric",
 	}).format(time);
 };
 

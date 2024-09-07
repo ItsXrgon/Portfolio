@@ -1,9 +1,9 @@
-const { fontFamily } = require("tailwindcss/defaultTheme");
 import palette from "./src/styles/palette";
+
+const { fontFamily } = require("tailwindcss/defaultTheme");
 
 /** @type {import('tailwindcss').Config} */
 export default {
-	darkMode: "class",
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
 		container: {

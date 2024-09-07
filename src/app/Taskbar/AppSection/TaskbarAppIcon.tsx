@@ -4,12 +4,14 @@ import { useDrag, useDrop } from "react-dnd";
 import { TaskbarAppContextMenu } from "@/app/ContextMenus";
 import {
 	handleTaskbarAppClick,
+	isAppMinimized,
 	isAppOpen,
 	reOrderApps,
 } from "@/app/stores/appsSlice";
 import { useAppDispatch, useAppSelector } from "@/app/stores/hooks";
 import { TApp, TTaskbar } from "@/app/types";
 import Icon from "@/utils/Icon";
+import { cn } from "@/utils/cn";
 
 export function TaskbarAppIcon({
 	app,
@@ -56,6 +58,7 @@ export function TaskbarAppIcon({
 	);
 
 	const isOpen = useAppSelector(isAppOpen(app.id));
+	const isMinimized = useAppSelector(isAppMinimized(app.id));
 
 	return (
 		<TaskbarAppContextMenu
@@ -66,8 +69,13 @@ export function TaskbarAppIcon({
 		>
 			<div
 				ref={(node) => drag(drop(node))}
-				className={`flex flex-col items-center justify-center rounded-sm p-1
-					${isOpen && "border-b-2 border-solid border-gray-500 shadow-lg"}`}
+				className={cn(
+					"bg-none rounded-sm p-1 bg-taskbar-app-background opacity-50",
+					isOpen && "bg-taskbar-app-open-background opacity-75",
+					isOpen &&
+						!isMinimized &&
+						"border-b-2 border-solid border-taskbar-app-open-indicator opacity-100",
+				)}
 				key={app.id}
 			>
 				<Icon icon={app.icon} width={40} height={40} />

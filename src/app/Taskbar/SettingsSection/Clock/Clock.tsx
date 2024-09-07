@@ -26,7 +26,7 @@ export default function Clock() {
 
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger className="flex flex-col items-center rounded-lg px-3">
+			<DropdownMenuTrigger className="flex flex-col items-center px-3">
 				<Label.Mid300 className="text-taskbar-text">
 					{formattedTime}
 				</Label.Mid300>

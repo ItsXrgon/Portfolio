@@ -58,9 +58,7 @@ export default function DesktopGridSlot({
 
 	return (
 		<DesktopAppContextMenu appId={app.id}>
-			<div className="flex h-24 flex-col items-center justify-center">
-				{app && <DesktopApp index={0} app={app} />}
-			</div>
+			<DesktopApp app={app} />
 		</DesktopAppContextMenu>
 	);
 }

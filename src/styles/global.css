@@ -41,8 +41,8 @@
 		/* Desktop */
 		--desktop-background: #4f7cac;
 		--desktop-app-background: #ffffff;
-		--desktop-app-text: #333333;
-		--desktop-app-hover-background: #e0e0e0;
+		--desktop-app-text: #ffffff;
+		--desktop-app-hover-background: #d0d0d0;
 		--desktop-app-hover-text: #111111;
 		--desktop-app-drag-background: #d0d0d0;
 		--desktop-app-drag-text: #000000;
@@ -50,11 +50,11 @@
 		/* Taskbar */
 		--taskbar-background: #222222;
 		--taskbar-border: #333333;
-		--taskbar-separator: #333333;
-		--taskbar-app-background: #333333;
-		--taskbar-app-open-background: #444444;
-		--taskbar-app-open-indicator: #ff4500;
-		--taskbar-app-drag-background: #555555;
+		--taskbar-separator: #ffffff;
+		--taskbar-app-background: #ffffff;
+		--taskbar-app-open-background: #ffffff;
+		--taskbar-app-open-indicator: #ff0000;
+		--taskbar-app-drag-background: #cfcfcf;
 		--taskbar-text: #ffffff;
 		--taskbar-icon: #ffffff;
 		--taskbar-clock-background: #000000;
@@ -68,9 +68,9 @@
 		--window-background: #f8f8f8;
 		--window-header-background: #0066cc;
 		--window-header-text: #ffffff;
-		--window-header-icon-default: #cccccc;
-		--window-header-icon-hovered: #ffffff;
-		--window-header-icon-pressed: #ff4500;
+		--window-header-icon-default: #ffffff;
+		--window-header-icon-hovered: #44474a;
+		--window-header-icon-pressed: #1a1c1d;
 
 		/* Button */
 		--action-primary-default: #007bff;
@@ -79,8 +79,8 @@
 		--action-primary-disabled: #cccccc;
 		--action-primary-icon-default: #ffffff;
 		--action-primary-icon-hovered: #ffffff;
-		--action-primary-icon-pressed: #ffffff;
-		--action-primary-icon-disabled: #999999;
+		--action-primary-icon-pressed: #44474a;
+		--action-primary-icon-disabled: #1a1c1d;
 
 		--action-white-default: #ffffff;
 		--action-white-hovered: #f0f0f0;
@@ -88,8 +88,8 @@
 		--action-white-disabled: #cccccc;
 		--action-white-icon-default: #333333;
 		--action-white-icon-hovered: #333333;
-		--action-white-icon-pressed: #333333;
-		--action-white-icon-disabled: #999999;
+		--action-white-icon-pressed: #44474a;
+		--action-white-icon-disabled: #1a1c1d;
 
 		--action-success-default: #28a745;
 		--action-success-hovered: #218838;
@@ -97,8 +97,8 @@
 		--action-success-disabled: #cccccc;
 		--action-success-icon-default: #ffffff;
 		--action-success-icon-hovered: #ffffff;
-		--action-success-icon-pressed: #ffffff;
-		--action-success-icon-disabled: #999999;
+		--action-success-icon-pressed: #44474a;
+		--action-success-icon-disabled: #1a1c1d;
 
 		--action-warning-default: #ffc107;
 		--action-warning-hovered: #e0a800;
@@ -106,8 +106,8 @@
 		--action-warning-disabled: #cccccc;
 		--action-warning-icon-default: #333333;
 		--action-warning-icon-hovered: #333333;
-		--action-warning-icon-pressed: #333333;
-		--action-warning-icon-disabled: #999999;
+		--action-warning-icon-pressed: #44474a;
+		--action-warning-icon-disabled: #1a1c1d;
 
 		--action-critical-default: #dc3545;
 		--action-critical-hovered: #c82333;
@@ -115,41 +115,8 @@
 		--action-critical-disabled: #cccccc;
 		--action-critical-icon-default: #ffffff;
 		--action-critical-icon-hovered: #ffffff;
-		--action-critical-icon-pressed: #ffffff;
-		--action-critical-icon-disabled: #999999;
-	}
-
-	.dark {
-		--background: 224 71% 4%;
-		--foreground: 213 31% 91%;
-
-		--muted: 223 47% 11%;
-		--muted-foreground: 215.4 16.3% 56.9%;
-
-		--accent: 216 34% 17%;
-		--accent-foreground: 210 40% 98%;
-
-		--popover: 224 71% 4%;
-		--popover-foreground: 215 20.2% 65.1%;
-
-		--border: 216 34% 17%;
-		--input: 216 34% 17%;
-
-		--card: 224 71% 4%;
-		--card-foreground: 213 31% 91%;
-
-		--primary: 210 40% 98%;
-		--primary-foreground: 222.2 47.4% 1.2%;
-
-		--secondary: 222.2 47.4% 11.2%;
-		--secondary-foreground: 210 40% 98%;
-
-		--destructive: 0 63% 31%;
-		--destructive-foreground: 210 40% 98%;
-
-		--ring: 216 34% 17%;
-
-		--radius: 0.5rem;
+		--action-critical-icon-pressed: #44474a;
+		--action-critical-icon-disabled: #1a1c1d;
 	}
 }
 

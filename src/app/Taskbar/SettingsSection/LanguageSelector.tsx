@@ -24,7 +24,7 @@ export default function LanguageSelector() {
 
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger className="rounded-lg px-3 py-2">
+			<DropdownMenuTrigger className="px-3 py-2">
 				<Globe2 className="text-taskbar-icon" />
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className="w-56" sideOffset={15}>
