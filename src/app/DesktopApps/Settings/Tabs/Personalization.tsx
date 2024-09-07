@@ -6,7 +6,8 @@ import {
 	AccordionContent,
 	AccordionItem,
 	AccordionTrigger,
-} from "@/app/UIComponents/Accordion";
+	Label,
+} from "@/app/UIComponents";
 import palette from "@/styles/palette";
 
 import ColourItem from "../Components/ColourItem";
@@ -34,10 +35,12 @@ export default function Personalization() {
 										: "0px",
 							}}
 						>
-							<AccordionTrigger className="text-base">
-								{t(`settings.personalization.${key}`, {
-									defaultValue: key,
-								})}
+							<AccordionTrigger>
+								<Label.Mid200>
+									{t(`settings.personalization.${key}`, {
+										defaultValue: key,
+									})}
+								</Label.Mid200>
 							</AccordionTrigger>
 							<AccordionContent className="flex flex-col gap-2">
 								{renderColorItems(value, currentPath)}
@@ -57,14 +60,6 @@ export default function Personalization() {
 
 	return (
 		<>
-			<div>
-				<h1 className="text-2xl font-bold">
-					{t("settings.personalization.personalization")}
-				</h1>
-				<p className="text-sm text-gray-500">
-					{t("settings.personalization.personalization_description")}
-				</p>
-			</div>
 			<Accordion type="multiple" className="w-full">
 				{colorItems}
 			</Accordion>

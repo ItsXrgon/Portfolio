@@ -2,9 +2,8 @@ import { Clock, Mail, MapPin } from "lucide-react";
 import Image from "next/image";
 import { useMemo } from "react";
 
-import Flex from "@/app/UIComponents/Flex";
-import Label from "@/app/UIComponents/Label";
-import { selectTime, selectTimeZone } from "@/app/stores/appsSlice";
+import { Flex, Label } from "@/app/UIComponents";
+import { selectTime } from "@/app/stores/appsSlice";
 import { useAppSelector } from "@/app/stores/hooks";
 import { TGithubRepo } from "@/app/types";
 import { localeTimeFormatter } from "@/utils/formatting";

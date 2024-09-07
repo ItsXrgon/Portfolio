@@ -1,7 +1,10 @@
+import { changeLanguage } from "i18next";
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 
 import {
+	Flex,
+	Label,
 	Select,
 	SelectContent,
 	SelectGroup,
@@ -9,15 +12,10 @@ import {
 	SelectLabel,
 	SelectTrigger,
 	SelectValue,
-} from "@/app/UIComponents/Select";
+} from "@/app/UIComponents";
+import i18n, { languageOptions, timeZoneOptions } from "@/app/i18n";
 import { changeTimeZone } from "@/app/stores/appsSlice";
 import { useAppDispatch } from "@/app/stores/hooks";
-
-import i18n, {
-	changeLanguage,
-	languageOptions,
-	timeZoneOptions,
-} from "../../../i18n";
 
 export default function TimeAndLanguage() {
 	const { t } = useTranslation();
@@ -32,19 +30,11 @@ export default function TimeAndLanguage() {
 
 	return (
 		<>
-			<div>
-				<h1 className="text-2xl font-bold">
-					{t("settings.languageAndTime.languageAndTime")}
-				</h1>
-				<p className="text-sm text-gray-500">
-					{t("settings.languageAndTime.languageAndTime_description")}
-				</p>
-			</div>
-			<div className="flex flex-col items-center justify-center gap-5">
-				<div className="flex w-full flex-col gap-2">
-					<label className="text-sm font-semibold">
+			<Flex isColumn className="items-center gap-5">
+				<Flex isColumn className="w-full gap-2">
+					<Label.Big300>
 						{t("settings.languageAndTime.language")}
-					</label>
+					</Label.Big300>
 					<Select
 						onValueChange={changeLanguage}
 						value={i18n.language}
@@ -67,11 +57,11 @@ export default function TimeAndLanguage() {
 							))}
 						</SelectContent>
 					</Select>
-				</div>
-				<div className="flex w-full flex-col gap-2">
-					<label className="text-sm font-semibold">
+				</Flex>
+				<Flex isColumn className="w-full gap-2">
+					<Label.Big300>
 						{t("settings.languageAndTime.timezone")}
-					</label>
+					</Label.Big300>
 					<Select onValueChange={handleTimezoneChange}>
 						<SelectTrigger>
 							<SelectValue
@@ -96,8 +86,8 @@ export default function TimeAndLanguage() {
 							))}
 						</SelectContent>
 					</Select>
-				</div>
-			</div>
+				</Flex>
+			</Flex>
 		</>
 	);
 }

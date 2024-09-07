@@ -40,6 +40,7 @@ export default function Window({ app, zIndex }: WindowProps) {
 	const rndRef = useRef<Rnd>(null);
 
 	const isMaximized = useMemo(() => app.windowState.isMaximized, [app]);
+	const isMinimized = useMemo(() => app.windowState.isMinimized, [app]);
 
 	useEffect(() => {
 		if (!isMaximized) {
@@ -132,8 +133,11 @@ export default function Window({ app, zIndex }: WindowProps) {
 	return (
 		<Rnd
 			ref={rndRef}
-			className={`fixed ${isMaximized && "rounded-md"}`}
-			style={{ zIndex: dragging ? 998 : zIndex }}
+			className="rounded-md"
+			style={{
+				zIndex: dragging ? 998 : zIndex,
+				display: isMinimized ? "none" : "inherit",
+			}}
 			size={isMaximized ? { width: "100%", height: "100%" } : localSize}
 			position={isMaximized ? { x: 0, y: 0 } : localPosition}
 			onMouseDown={() => dispatch(pushToFront({ id: app.id }))}

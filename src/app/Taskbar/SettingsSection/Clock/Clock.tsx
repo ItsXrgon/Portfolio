@@ -4,8 +4,8 @@ import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuTrigger,
-} from "@/app/UIComponents/DropDownMenu";
-import Label from "@/app/UIComponents/Label";
+	Label,
+} from "@/app/UIComponents";
 import { selectTime, selectTimeZone } from "@/app/stores/appsSlice";
 import { useAppSelector } from "@/app/stores/hooks";
 import { localeDateFormatter, localeTimeFormatter } from "@/utils/formatting";

@@ -1,4 +1,4 @@
-import Label from "@/app/UIComponents/Label";
+import { Label } from "@/app/UIComponents";
 
 import { SettingsTabs } from "../Settings";
 
@@ -17,7 +17,7 @@ export function TabListItem({
 }) {
 	return (
 		<div
-			className={`flex flex-col text-center justify-center h-full cursor-pointer items-center gap-2 border border-slate-400 p-2 hover:bg-slate-200 ${
+			className={`flex h-full cursor-pointer flex-col items-center justify-center gap-2 border border-slate-400 p-2 text-center hover:bg-slate-200 ${
 				tab === activeTab ? "bg-slate-200" : "bg-white"
 			}`}
 			onClick={() => setActiveTab(tab)}

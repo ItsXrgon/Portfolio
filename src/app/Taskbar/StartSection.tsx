@@ -1,4 +1,4 @@
-import Label from "@/app/UIComponents/Label";
+import { Label } from "@/app/UIComponents";
 
 export default function StartSection() {
 	return (

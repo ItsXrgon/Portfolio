@@ -311,10 +311,6 @@ export const selectApps = (state: { apps: AppsState }) => state.apps.apps;
 
 export const selectWindows = (state: { apps: AppsState }) => state.apps.windows;
 
-export const selectShownWindows = createSelector([selectWindows], (windows) =>
-	windows.filter((w) => !w.windowState?.isMinimized),
-);
-
 export const selectTaskbar = (state: { apps: AppsState }) => state.apps.taskBar;
 
 export const selectAppById = (id: string) =>

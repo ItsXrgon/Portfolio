@@ -1,8 +1,7 @@
 import { BookMarked, GitFork, Star } from "lucide-react";
 import uniqolor from "uniqolor";
 
-import Flex from "@/app/UIComponents/Flex";
-import Label from "@/app/UIComponents/Label";
+import { Flex, Label } from "@/app/UIComponents";
 import { TGithubRepo } from "@/app/types";
 import { numberFormatter } from "@/utils/formatting";
 

@@ -50,7 +50,7 @@ interface FlexProps extends React.HTMLAttributes<HTMLDivElement> {
 	justify?: FlexJustifyStyles;
 }
 
-const Flex = memo(
+export const Flex = memo(
 	tw.div<FlexProps>`
 		${({ isColumn, gap, align, justify, className }) =>
 			twMerge(
@@ -64,5 +64,3 @@ const Flex = memo(
 );
 
 Flex.displayName = "Flex";
-
-export default Flex;

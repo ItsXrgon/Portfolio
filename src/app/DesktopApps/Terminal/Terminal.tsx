@@ -1,8 +1,7 @@
 import { Roboto_Mono } from "next/font/google";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import Flex from "@/app/UIComponents/Flex";
-import Label from "@/app/UIComponents/Label";
+import { Flex, Label } from "@/app/UIComponents";
 
 //👇 Configure our font object
 const robotoMono = Roboto_Mono({

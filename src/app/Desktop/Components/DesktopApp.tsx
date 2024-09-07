@@ -3,7 +3,7 @@
 import type { DragSourceMonitor } from "react-dnd";
 import { useDrag } from "react-dnd";
 
-import Label from "@/app/UIComponents/Label";
+import { Label } from "@/app/UIComponents";
 import { openApp } from "@/app/stores/appsSlice";
 import { useAppDispatch } from "@/app/stores/hooks";
 import { TApp } from "@/app/types";
