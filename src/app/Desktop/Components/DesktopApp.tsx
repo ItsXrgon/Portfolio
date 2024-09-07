@@ -1,6 +1,5 @@
 "use client";
 
-import { useRef } from "react";
 import type { DragSourceMonitor } from "react-dnd";
 import { useDrag } from "react-dnd";
 
@@ -17,8 +16,6 @@ interface AppProps {
 
 export default function DesktopApp({ app }: AppProps): JSX.Element {
 	const dispatch = useAppDispatch();
-
-	const ref = useRef<HTMLDivElement>(null);
 
 	const [{ isDragging }, drag] = useDrag(() => ({
 		type: "APP",
@@ -45,9 +42,7 @@ export default function DesktopApp({ app }: AppProps): JSX.Element {
 				isDragging && "opacity-50"
 			}`}
 		>
-			<div ref={ref} className="h-12 w-12">
-				<Icon icon={app.icon} />
-			</div>
+			<Icon icon={app.icon} width={48} height={48} />
 			<Label.Thin300>{app.name}</Label.Thin300>
 		</div>
 	);

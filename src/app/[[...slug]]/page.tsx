@@ -1,8 +1,7 @@
-import CustomBehaviourProvider from "@/utils/providers/CustomBehaviourProvider";
-import DragAndDropProvider from "@/utils/providers/DragAndDropProvider";
-
-import Desktop from "../Components/Desktop/Desktop";
-import Taskbar from "../Components/Taskbar/Taskbar";
+import Desktop from "@/app/Desktop/Desktop";
+import Taskbar from "@/app/Taskbar/Taskbar";
+import ConfigProvider from "@/providers/ConfigProvider";
+import DragAndDropProvider from "@/providers/DragAndDropProvider";
 
 export function generateStaticParams() {
 	return [{ slug: [""] }];
@@ -11,10 +10,10 @@ export function generateStaticParams() {
 export default function Page() {
 	return (
 		<DragAndDropProvider>
-			<CustomBehaviourProvider>
+			<ConfigProvider>
 				<Desktop />
 				<Taskbar />
-			</CustomBehaviourProvider>
+			</ConfigProvider>
 		</DragAndDropProvider>
 	);
 }

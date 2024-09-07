@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 
 import {
@@ -9,21 +10,25 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/app/UIComponents/Select";
+import { changeTimeZone } from "@/app/stores/appsSlice";
+import { useAppDispatch } from "@/app/stores/hooks";
 
-import i18n, { languageOptions, timeZoneOptions } from "../../../i18n";
+import i18n, {
+	changeLanguage,
+	languageOptions,
+	timeZoneOptions,
+} from "../../../i18n";
 
 export default function TimeAndLanguage() {
 	const { t } = useTranslation();
+	const dispatch = useAppDispatch();
 
-	function handleLanguageChange(selectedOption: string) {
-		i18n.changeLanguage(selectedOption);
-		document.documentElement.lang = selectedOption;
-	}
-
-	function handleTimezoneChange(selectedOption: string) {
-		// Set the timezone
-		console.log(selectedOption);
-	}
+	const handleTimezoneChange = useCallback(
+		(selectedOption: string) => {
+			dispatch(changeTimeZone(selectedOption));
+		},
+		[dispatch],
+	);
 
 	return (
 		<>
@@ -41,7 +46,7 @@ export default function TimeAndLanguage() {
 						{t("settings.languageAndTime.language")}
 					</label>
 					<Select
-						onValueChange={handleLanguageChange}
+						onValueChange={changeLanguage}
 						value={i18n.language}
 					>
 						<SelectTrigger>
@@ -56,9 +61,6 @@ export default function TimeAndLanguage() {
 								<SelectItem
 									key={option.value}
 									value={option.value}
-									onClick={() =>
-										handleLanguageChange(option.value)
-									}
 								>
 									{option.label}
 								</SelectItem>
@@ -86,11 +88,6 @@ export default function TimeAndLanguage() {
 										<SelectItem
 											key={option.value}
 											value={option.value}
-											onClick={() =>
-												handleTimezoneChange(
-													option.value,
-												)
-											}
 										>
 											{option.label}
 										</SelectItem>

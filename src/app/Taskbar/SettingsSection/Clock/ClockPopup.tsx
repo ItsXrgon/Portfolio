@@ -1,6 +1,7 @@
 import React from "react";
 
-import { localiseNumber } from "../../../../i18n";
+import { localiseNumber } from "@/app/i18n";
+
 import "./Clock.css";
 
 export default function ClockPopup({ time }: { time?: Date }) {

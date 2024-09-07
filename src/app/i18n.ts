@@ -31,6 +31,10 @@ i18n.use(initReactI18next).init({
 	},
 });
 
+export function changeLanguage(language: string) {
+	i18n.changeLanguage(language);
+}
+
 export function localiseNumber(number: number) {
 	return new Intl.NumberFormat(i18n.language).format(number);
 }
@@ -46,55 +50,76 @@ export const timeZoneOptions = [
 	{
 		label: "North America",
 		options: [
-			{ value: "PST", label: "Pacific Standard Time (PST)" },
-			{ value: "MST", label: "Mountain Standard Time (MST)" },
-			{ value: "CST", label: "Central Standard Time (CST)" },
-			{ value: "EST", label: "Eastern Standard Time (EST)" },
-			{ value: "AST", label: "Atlantic Standard Time (AST)" },
-			{ value: "HST", label: "Hawaii Standard Time (HST)" },
+			{
+				value: "America/Los_Angeles",
+				label: "Pacific Standard Time (PST)",
+			},
+			{ value: "America/Denver", label: "Mountain Standard Time (MST)" },
+			{ value: "America/Chicago", label: "Central Standard Time (CST)" },
+			{ value: "America/New_York", label: "Eastern Standard Time (EST)" },
+			{ value: "America/Halifax", label: "Atlantic Standard Time (AST)" },
+			{ value: "Pacific/Honolulu", label: "Hawaii Standard Time (HST)" },
 		],
 	},
 	{
 		label: "Europe & Africa",
 		options: [
-			{ value: "GMT", label: "Greenwich Mean Time (GMT)" },
-			{ value: "CET", label: "Central European Time (CET)" },
-			{ value: "EET", label: "Eastern European Time (EET)" },
-			{ value: "WEST", label: "Western European Summer Time (WEST)" },
-			{ value: "CAT", label: "Central Africa Time (CAT)" },
-			{ value: "EAT", label: "East Africa Time (EAT)" },
+			{ value: "Etc/GMT", label: "Greenwich Mean Time (GMT)" },
+			{ value: "Europe/Berlin", label: "Central European Time (CET)" },
+			{ value: "Europe/Athens", label: "Eastern European Time (EET)" },
+			{
+				value: "Europe/Lisbon",
+				label: "Western European Summer Time (WEST)",
+			},
+			{ value: "Africa/Harare", label: "Central Africa Time (CAT)" },
+			{ value: "Africa/Nairobi", label: "East Africa Time (EAT)" },
 		],
 	},
 	{
 		label: "Asia",
 		options: [
-			{ value: "MSK", label: "Moscow Time (MSK)" },
-			{ value: "IST", label: "India Standard Time (IST)" },
-			{ value: "CST", label: "China Standard Time (CST)" },
-			{ value: "JST", label: "Japan Standard Time (JST)" },
-			{ value: "KST", label: "Korea Standard Time (KST)" },
-			{ value: "SGT", label: "Singapore Time (SGT)" },
+			{ value: "Europe/Moscow", label: "Moscow Time (MSK)" },
+			{ value: "Asia/Kolkata", label: "India Standard Time (IST)" },
+			{ value: "Asia/Shanghai", label: "China Standard Time (CST)" },
+			{ value: "Asia/Tokyo", label: "Japan Standard Time (JST)" },
+			{ value: "Asia/Seoul", label: "Korea Standard Time (KST)" },
+			{ value: "Asia/Singapore", label: "Singapore Time (SGT)" },
 		],
 	},
 	{
 		label: "Australia & Pacific",
 		options: [
-			{ value: "AEST", label: "Australian Eastern Standard Time (AEST)" },
-			{ value: "ACST", label: "Australian Central Standard Time (ACST)" },
-			{ value: "AWST", label: "Australian Western Standard Time (AWST)" },
-			{ value: "NZST", label: "New Zealand Standard Time (NZST)" },
-			{ value: "FJT", label: "Fiji Time (FJT)" },
+			{
+				value: "Australia/Sydney",
+				label: "Australian Eastern Standard Time (AEST)",
+			},
+			{
+				value: "Australia/Adelaide",
+				label: "Australian Central Standard Time (ACST)",
+			},
+			{
+				value: "Australia/Perth",
+				label: "Australian Western Standard Time (AWST)",
+			},
+			{
+				value: "Pacific/Auckland",
+				label: "New Zealand Standard Time (NZST)",
+			},
+			{ value: "Pacific/Fiji", label: "Fiji Time (FJT)" },
 		],
 	},
 	{
 		label: "South America",
 		options: [
-			{ value: "ART", label: "Argentina Time (ART)" },
-			{ value: "BOT", label: "Bolivia Time (BOT)" },
-			{ value: "BRT", label: "Brasilia Time (BRT)" },
-			{ value: "CLT", label: "Chile Standard Time (CLT)" },
-			{ value: "COT", label: "Colombia Time (COT)" },
-			{ value: "ECT", label: "Ecuador Time (ECT)" },
+			{
+				value: "America/Argentina/Buenos_Aires",
+				label: "Argentina Time (ART)",
+			},
+			{ value: "America/La_Paz", label: "Bolivia Time (BOT)" },
+			{ value: "America/Sao_Paulo", label: "Brasilia Time (BRT)" },
+			{ value: "America/Santiago", label: "Chile Standard Time (CLT)" },
+			{ value: "America/Bogota", label: "Colombia Time (COT)" },
+			{ value: "America/Guayaquil", label: "Ecuador Time (ECT)" },
 		],
 	},
 ];

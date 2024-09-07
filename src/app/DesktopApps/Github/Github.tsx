@@ -1,9 +1,11 @@
 import { Clock, Mail, MapPin } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 
 import Flex from "@/app/UIComponents/Flex";
 import Label from "@/app/UIComponents/Label";
+import { selectTime, selectTimeZone } from "@/app/stores/appsSlice";
+import { useAppSelector } from "@/app/stores/hooks";
 import { TGithubRepo } from "@/app/types";
 import { localeTimeFormatter } from "@/utils/formatting";
 
@@ -16,14 +18,20 @@ export default function Github() {
 
 	const { repos } = useRepositories();
 
-	const [time, setTime] = useState<Date | undefined>();
+	const time = useAppSelector(selectTime);
 
-	useEffect(() => {
-		const interval = setInterval(() => {
-			setTime(new Date());
-		}, 1000);
-		return () => clearInterval(interval);
-	}, []);
+	const formattedTime = useMemo(() => {
+		return time ? localeTimeFormatter(time, profile.location) : "";
+	}, [time, profile.location]);
+
+	const formattedTimeZone = useMemo(() => {
+		return new Intl.DateTimeFormat("en-US", {
+			timeZone: profile?.location,
+			timeZoneName: "short",
+		})
+			.format(new Date())
+			.split(" ")[1];
+	}, [profile.location]);
 
 	return (
 		<Flex gap="1" className="w-full overflow-y-scroll bg-black text-white">
@@ -78,22 +86,15 @@ export default function Github() {
 							<Label.Thin200>{profile?.location}</Label.Thin200>
 						</Flex>
 					)}
-					<Flex gap="2" align="center" className="flex-wrap">
-						<Clock width={18} height={18} strokeWidth={2} />
-						<Label.Thin200>
-							{`${localeTimeFormatter(time, profile?.location)} 
-								(${
-									new Intl.DateTimeFormat("en-US", {
-										timeZone: profile?.location,
-										timeZoneName: "short",
-									})
-										.format(new Date())
-										.split(" ")[1]
-								})
-							`}
-						</Label.Thin200>
-						<Label.Thin200></Label.Thin200>
-					</Flex>
+					{
+						<Flex gap="2" align="center" className="flex-wrap">
+							<Clock width={18} height={18} strokeWidth={2} />
+							<Label.Thin200>
+								{`${formattedTime} (${formattedTimeZone})`}
+							</Label.Thin200>
+							<Label.Thin200></Label.Thin200>
+						</Flex>
+					}
 					{profile?.email && (
 						<Flex gap="2" align="center" className="flex-wrap">
 							<Mail width={18} height={18} strokeWidth={2} />

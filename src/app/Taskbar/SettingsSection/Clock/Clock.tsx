@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 
 import {
 	DropdownMenu,
@@ -6,27 +6,23 @@ import {
 	DropdownMenuTrigger,
 } from "@/app/UIComponents/DropDownMenu";
 import Label from "@/app/UIComponents/Label";
+import { selectTime, selectTimeZone } from "@/app/stores/appsSlice";
+import { useAppSelector } from "@/app/stores/hooks";
 import { localeDateFormatter, localeTimeFormatter } from "@/utils/formatting";
 
 import ClockPopup from "./ClockPopup";
 
 export default function Clock() {
-	const [time, setTime] = useState<Date | undefined>();
-
-	useEffect(() => {
-		const interval = setInterval(() => {
-			setTime(new Date());
-		}, 1000);
-		return () => clearInterval(interval);
-	}, []);
+	const time = useAppSelector(selectTime);
+	const timeZone = useAppSelector(selectTimeZone);
 
 	const formattedDate = useMemo(() => {
-		return time ? localeDateFormatter(time) : "";
-	}, [time]);
+		return time ? localeDateFormatter(time, timeZone) : "";
+	}, [time, timeZone]);
 
 	const formattedTime = useMemo(() => {
-		return time ? localeTimeFormatter(time) : "";
-	}, [time]);
+		return time ? localeTimeFormatter(time, timeZone) : "";
+	}, [time, timeZone]);
 
 	return (
 		<DropdownMenu>

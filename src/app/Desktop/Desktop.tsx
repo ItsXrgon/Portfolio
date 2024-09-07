@@ -6,8 +6,8 @@ import { selectApps, selectShownWindows } from "@/app/stores/appsSlice";
 import { useAppSelector } from "@/app/stores/hooks";
 import { TApp, TWindow } from "@/app/types";
 
-import DesktopGridSlot from "./DesktopGridSlot";
-import Window from "./Window";
+import DesktopGridSlot from "./Components/DesktopGridSlot";
+import Window from "./Components/Window";
 
 export default function Desktop() {
 	const apps = useAppSelector(selectApps);

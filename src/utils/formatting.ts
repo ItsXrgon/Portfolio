@@ -21,7 +21,11 @@ export const numberFormatter = (num: number, digits: number) => {
 		: "0";
 };
 
-export const localeTimeFormatter = (time: Date, timeZone?: string) => {
+export const localeTimeFormatter = (
+	time: Date | string | undefined,
+	timeZone?: string,
+) => {
+	time = time ? new Date(time) : new Date();
 	return Intl.DateTimeFormat("default", {
 		timeZone: timeZone,
 		hour: "numeric",
@@ -30,8 +34,13 @@ export const localeTimeFormatter = (time: Date, timeZone?: string) => {
 	}).format(time);
 };
 
-export const localeDateFormatter = (time: Date) => {
+export const localeDateFormatter = (
+	time: Date | string | undefined,
+	timeZone?: string,
+) => {
+	time = time ? new Date(time) : new Date();
 	return Intl.DateTimeFormat("default", {
+		timeZone: timeZone,
 		year: "numeric",
 		month: "numeric",
 		day: "numeric",

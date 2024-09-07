@@ -95,7 +95,7 @@ export function TaskbarAppContextMenu({
 						className="flex items-center gap-3"
 						onClick={handleUnpin}
 					>
-						<PinOff size={18} />
+						<PinOff width={24} height={24} />
 						{t("context_menu.unpin_from_taskbar")}
 					</DropdownMenuItem>
 				)}
@@ -104,7 +104,7 @@ export function TaskbarAppContextMenu({
 						className="flex items-center gap-3"
 						onClick={handlePin}
 					>
-						<Pin size={18} />
+						<Pin width={24} height={24} />
 						{t("context_menu.pin_to_taskbar")}
 					</DropdownMenuItem>
 				)}
@@ -113,9 +113,7 @@ export function TaskbarAppContextMenu({
 						className="flex items-center gap-3"
 						onClick={handleOpen}
 					>
-						<div className="h-5 w-5">
-							<Icon icon={app?.icon ?? ""} />
-						</div>
+						<Icon icon={app?.icon} width={24} height={24} />
 						{t("context_menu.open")} {app?.name}
 					</DropdownMenuItem>
 				)}
@@ -124,7 +122,7 @@ export function TaskbarAppContextMenu({
 						className="flex items-center gap-3"
 						onClick={handleClose}
 					>
-						<X size={18} />
+						<X width={24} height={24} />
 						{t("context_menu.close")} {app?.name}
 					</DropdownMenuItem>
 				)}

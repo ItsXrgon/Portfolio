@@ -49,7 +49,7 @@ const hardCodedProfile: TGithubProfile = {
 	company: "",
 	blog: "",
 	location: "Egypt",
-	email: "ali.koheil@gmail.com",
+	email: "",
 	hireable: false,
 	bio: "Whatever",
 	twitter_username: "",

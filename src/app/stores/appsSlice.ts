@@ -6,6 +6,10 @@ export interface AppsState {
 	apps: TApp[];
 	windows: TWindow[];
 	taskBar: TTaskbar[];
+	config: {
+		timeZone: string;
+		time: string | undefined;
+	};
 }
 
 const initialState: AppsState = {
@@ -34,6 +38,10 @@ const initialState: AppsState = {
 	],
 	windows: [],
 	taskBar: [],
+	config: {
+		timeZone: "GMT",
+		time: undefined,
+	},
 };
 
 export const appsSlice = createSlice({
@@ -269,6 +277,12 @@ export const appsSlice = createSlice({
 				}
 			}
 		},
+		changeTimeZone(state, action: PayloadAction<string>) {
+			state.config.timeZone = action.payload;
+		},
+		updateTime(state) {
+			state.config.time = new Date().toString();
+		},
 	},
 });
 
@@ -289,6 +303,8 @@ export const {
 	relocateWindow,
 	pushToFront,
 	handleTaskbarAppClick,
+	changeTimeZone,
+	updateTime,
 } = appsSlice.actions;
 
 export const selectApps = (state: { apps: AppsState }) => state.apps.apps;
@@ -336,5 +352,11 @@ export const isAppPinned = (id: string) =>
 		[selectTaskbar],
 		(taskBar) => taskBar.findIndex((w) => w.id === id) !== -1,
 	);
+
+export const selectTimeZone = (state: { apps: AppsState }) =>
+	state.apps.config.timeZone;
+
+export const selectTime = (state: { apps: AppsState }) =>
+	state.apps.config.time ? new Date(state.apps.config.time) : undefined;
 
 export default appsSlice.reducer;

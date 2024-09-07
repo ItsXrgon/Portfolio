@@ -4,9 +4,8 @@ import { relocateApp } from "@/app/stores/appsSlice";
 import { useAppDispatch } from "@/app/stores/hooks";
 import { TApp } from "@/app/types";
 
-import { DesktopAppContextMenu } from "../ContextMenus/DesktopAppContextMenu";
-import { DesktopContextMenu } from "../ContextMenus/DesktopContextMenu";
 import DesktopApp from "./DesktopApp";
+import { DesktopAppContextMenu, DesktopContextMenu } from "@/app/ContextMenus";
 
 interface DesktopGridSlotProps {
 	xCoordinate: number;

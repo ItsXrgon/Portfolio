@@ -1,10 +1,13 @@
+import { ImageProps } from "next/image";
+
 import palette from "@/styles/palette";
+import { AppIcons } from "@/utils/Icon";
 
 export type TApp = {
 	id: string;
 	index?: number;
 	name: string;
-	icon: string;
+	icon: AppIcons;
 	type: "app" | "folder";
 	position: {
 		x: number;
@@ -15,7 +18,7 @@ export type TApp = {
 export type TWindow = {
 	id: string;
 	name: string;
-	icon: string;
+	icon: AppIcons;
 	type: "app" | "folder";
 	windowState: {
 		isMinimized: boolean;
@@ -35,7 +38,7 @@ export type TWindow = {
 export type TTaskbar = {
 	id: string;
 	name: string;
-	icon: string;
+	icon: AppIcons;
 	pinned: boolean;
 };
 
@@ -198,3 +201,7 @@ export type TGithubError = {
 	message: string;
 	documentation_url: string;
 };
+
+export interface IconProps extends Partial<ImageProps> {
+	icon: AppIcons;
+}

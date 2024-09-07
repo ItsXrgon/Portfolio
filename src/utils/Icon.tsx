@@ -1,13 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import github from "root/public/github.svg";
+import settings from "root/public/settings.svg";
+import terminal from "root/public/terminal.svg";
 
-interface IconProps extends React.HTMLAttributes<HTMLImageElement> {
-	icon: string;
-	width?: number;
-	height?: number;
-}
+import { IconProps } from "@/app/types";
+
+export const appIconsMap = {
+	github,
+	settings,
+	terminal,
+};
+export type AppIcons = keyof typeof appIconsMap;
 
 export default function Icon({
 	icon,
@@ -15,27 +20,13 @@ export default function Icon({
 	height,
 	draggable = false,
 }: IconProps) {
-	const [iconUrl, setIconUrl] = useState<string>("");
-
-	useEffect(() => {
-		const loadImages = async () => {
-			const { default: url } = await import(
-				`../app/DesktopApps/icons/${icon}.svg`
-			);
-
-			setIconUrl(url);
-		};
-
-		loadImages();
-	}, [icon]);
-
 	return (
 		<Image
 			alt={icon}
-			src={iconUrl}
+			src={appIconsMap[icon]}
 			draggable={draggable}
-			width={width}
-			height={height}
+			width={width || 24}
+			height={height || 24}
 		/>
 	);
 }

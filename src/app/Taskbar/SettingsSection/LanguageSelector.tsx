@@ -12,8 +12,7 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/app/UIComponents/DropDownMenu";
-
-import i18n, { languageOptions } from "../../../i18n";
+import i18n, { languageOptions } from "@/app/i18n";
 
 export default function LanguageSelector() {
 	const { t } = useTranslation();

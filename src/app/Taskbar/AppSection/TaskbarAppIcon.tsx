@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { useDrag, useDrop } from "react-dnd";
 
+import { TaskbarAppContextMenu } from "@/app/ContextMenus";
 import {
 	handleTaskbarAppClick,
 	isAppOpen,
@@ -10,15 +11,11 @@ import { useAppDispatch, useAppSelector } from "@/app/stores/hooks";
 import { TApp, TTaskbar } from "@/app/types";
 import Icon from "@/utils/Icon";
 
-import { TaskbarAppContextMenu } from "../../ContextMenus/TaskbarAppContextMenu";
-
 export function TaskbarAppIcon({
 	app,
-	ref,
 	index,
 }: {
 	app: TTaskbar;
-	ref: React.RefObject<HTMLDivElement>;
 	index: number;
 }) {
 	const dispatch = useAppDispatch();
@@ -73,9 +70,7 @@ export function TaskbarAppIcon({
 					${isOpen && "border-b-2 border-solid border-gray-500 shadow-lg"}`}
 				key={app.id}
 			>
-				<div className="h-10 w-10" ref={ref}>
-					<Icon icon={app.icon} />
-				</div>
+				<Icon icon={app.icon} width={40} height={40} />
 			</div>
 		</TaskbarAppContextMenu>
 	);

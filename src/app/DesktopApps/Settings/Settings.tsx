@@ -1,6 +1,8 @@
-import { Brush, Calendar, HomeIcon, Info } from "lucide-react";
+import { Brush, CalendarClock, HomeIcon, Info } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+
+import Flex from "@/app/UIComponents/Flex";
 
 import { TabListItem } from "./Components/TabListItem";
 import About from "./Tabs/About";
@@ -27,36 +29,36 @@ export default function Settings() {
 
 	return (
 		<>
-			<div className="flex max-w-[30%] flex-col bg-white shadow-lg">
+			<Flex isColumn className="w-40 shrink-0 grow-0 overflow-y-scroll">
 				<TabListItem
 					tab="Home"
-					icon={<HomeIcon size="1rem" />}
+					icon={<HomeIcon width={32} height={32} />}
 					label={t("settings.home")}
 					activeTab={activeTab}
 					setActiveTab={setActiveTab}
 				/>
 				<TabListItem
 					tab="Personalization"
-					icon={<Brush size="1rem" />}
+					icon={<Brush width={32} height={32} />}
 					label={t("settings.personalization.personalization")}
 					activeTab={activeTab}
 					setActiveTab={setActiveTab}
 				/>
 				<TabListItem
 					tab="TimeAndLanguage"
-					icon={<Calendar size="1rem" />}
+					icon={<CalendarClock width={32} height={32} />}
 					label={t("settings.languageAndTime.languageAndTime")}
 					activeTab={activeTab}
 					setActiveTab={setActiveTab}
 				/>
 				<TabListItem
 					tab="About"
-					icon={<Info size="1rem" />}
+					icon={<Info width={32} height={32} />}
 					label={t("settings.about")}
 					activeTab={activeTab}
 					setActiveTab={setActiveTab}
 				/>
-			</div>
+			</Flex>
 			<div className="flex w-full flex-col gap-5 overflow-y-scroll bg-white p-5">
 				{settingsTabsMap[activeTab as SettingsTabs]}
 			</div>

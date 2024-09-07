@@ -988,7 +988,7 @@ const hardCodedRepos: TGithubRepo[] = [
 		svn_url: "https://github.com/ItsXrgon/Portfolio",
 		homepage: "https://itsxrgon.vercel.app",
 		size: 664,
-		stargazers_count: 0,
+		stargazers_count: 2,
 		watchers_count: 0,
 		language: "TypeScript",
 		has_issues: true,

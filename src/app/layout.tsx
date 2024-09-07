@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import { Cairo } from "next/font/google";
 import React from "react";
 
-import ReactQueryProvider from "@/utils/providers/ReactQueryProvider";
-import ReduxProvider from "@/utils/providers/ReduxProvider";
+import ReactQueryProvider from "@/providers/ReactQueryProvider";
+import ReduxProvider from "@/providers/ReduxProvider";
 
 import "../styles/global.css";
 
@@ -24,9 +24,6 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en" className={cairo.className}>
-			<head>
-				<title>Xrgon Portfolio</title>
-			</head>
 			<body>
 				<div id="root">
 					<React.StrictMode>
