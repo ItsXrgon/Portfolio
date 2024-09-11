@@ -42,7 +42,7 @@
 		--desktop-background: #4f7cac;
 		--desktop-app-background: #ffffff;
 		--desktop-app-text: #ffffff;
-		--desktop-app-hover-background: #d0d0d0;
+		--desktop-app-hover-background: #d0d0d0a0;
 		--desktop-app-hover-text: #111111;
 		--desktop-app-drag-background: #d0d0d0;
 		--desktop-app-drag-text: #000000;
@@ -56,7 +56,9 @@
 		--taskbar-app-open-indicator: #ff0000;
 		--taskbar-app-drag-background: #cfcfcf;
 		--taskbar-text: #ffffff;
-		--taskbar-icon: #ffffff;
+		--taskbar-icon-default: #ffffff;
+		--taskbar-icon-hover: #d0d0d030;
+		--taskbar-icon-pressed: #d0d0d060;
 		--taskbar-clock-background: #000000;
 		--taskbar-clock-foreground: #ffffff;
 		--taskbar-clock-hands-hour: #ff4500;

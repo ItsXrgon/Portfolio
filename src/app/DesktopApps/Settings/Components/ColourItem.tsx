@@ -1,7 +1,10 @@
 import { useCallback, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { Flex } from "@/app/UIComponents";
+
 import ColourPickerPopup from "./ColourPicker";
+import { colorIsDark } from "@/utils/misc";
 
 export default function ColourItem({ path }: { path: string[] }) {
 	const { t } = useTranslation();
@@ -23,8 +26,10 @@ export default function ColourItem({ path }: { path: string[] }) {
 	const key = useMemo(() => path[path.length - 1], [path]);
 
 	return (
-		<div
-			className="ml-1 flex w-full items-center justify-between"
+		<Flex
+			className="ml-1"
+			align="center"
+			justify="between"
 			key={path.join("-")}
 		>
 			<div>
@@ -32,22 +37,25 @@ export default function ColourItem({ path }: { path: string[] }) {
 					defaultValue: key,
 				})}
 			</div>
-			<div className="flex gap-2">
-				<div
-					className="flex h-8 w-80 items-center justify-center rounded-md border border-solid"
+			<Flex gap="2">
+				<Flex
+					align="center"
+					justify="center"
+					className="h-8 w-80 rounded-md border border-solid"
 					style={{
 						background: colour,
+						color: colorIsDark(colour) ? "#FFFFFF" : "#000000",
 					}}
 				>
 					{colour}
-				</div>
+				</Flex>
 				<ColourPickerPopup
 					color={colour}
 					setColour={(color: string) =>
 						handleColourChange(path, color)
 					}
 				/>
-			</div>
-		</div>
+			</Flex>
+		</Flex>
 	);
 }

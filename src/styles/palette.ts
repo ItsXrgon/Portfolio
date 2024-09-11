@@ -29,7 +29,11 @@ const palette = {
 			},
 		},
 		text: "var(--taskbar-text)",
-		icon: "var(--taskbar-icon)",
+		icon: {
+			default: "var(--taskbar-icon-default)",
+			hover: "var(--taskbar-icon-hover)",
+			pressed: "var(--taskbar-icon-pressed)",
+		},
 		clock: {
 			background: "var(--taskbar-clock-background)",
 			foreground: "var(--taskbar-clock-foreground)",

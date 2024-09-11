@@ -62,14 +62,14 @@ export default function Settings() {
 					/>
 				))}
 			</Flex>
-			<div className="flex w-full flex-col gap-6 overflow-y-scroll bg-white p-4">
+			<div className="flex w-full flex-col gap-4 overflow-y-scroll bg-white p-4">
 				<Flex isColumn gap="1">
 					<Label.Big500>
 						{t(settingsTabsTitles[activeTab as SettingsTabs])}
 					</Label.Big500>
-					<Label.Mid300>
+					<Label.Mid400>
 						{t(settingsTabsSubtitles[activeTab as SettingsTabs])}
-					</Label.Mid300>
+					</Label.Mid400>
 				</Flex>
 				{settingsTabsMap[activeTab as SettingsTabs]}
 			</div>

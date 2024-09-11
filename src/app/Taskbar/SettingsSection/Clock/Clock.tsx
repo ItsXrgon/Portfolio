@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 
 import {
 	DropdownMenu,
@@ -8,6 +8,7 @@ import {
 } from "@/app/UIComponents";
 import { selectTime, selectTimeZone } from "@/app/stores/appsSlice";
 import { useAppSelector } from "@/app/stores/hooks";
+import { cn } from "@/utils/cn";
 import { localeDateFormatter, localeTimeFormatter } from "@/utils/formatting";
 
 import ClockPopup from "./ClockPopup";
@@ -15,6 +16,8 @@ import ClockPopup from "./ClockPopup";
 export default function Clock() {
 	const time = useAppSelector(selectTime);
 	const timeZone = useAppSelector(selectTimeZone);
+
+	const [open, setOpen] = useState(false);
 
 	const formattedDate = useMemo(() => {
 		return time ? localeDateFormatter(time, timeZone) : "";
@@ -25,8 +28,14 @@ export default function Clock() {
 	}, [time, timeZone]);
 
 	return (
-		<DropdownMenu>
-			<DropdownMenuTrigger className="flex flex-col items-center px-3">
+		<DropdownMenu open={open} onOpenChange={setOpen}>
+			<DropdownMenuTrigger
+				className={cn(
+					"flex flex-col items-center rounded-lg px-3",
+					"hover:bg-taskbar-icon-hover",
+					open && "bg-taskbar-icon-pressed",
+				)}
+			>
 				<Label.Mid300 className="text-taskbar-text">
 					{formattedTime}
 				</Label.Mid300>

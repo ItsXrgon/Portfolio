@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	output: "./dist", // Changes the build output directory to `./dist/`.
-	distDir: "./dist", // Changes the build output directory to `./dist/`
+	output: "export",
+	distDir: "./dist",
 	images: {
+		unoptimized: true,
 		remotePatterns: [
 			{
 				hostname: "avatars.githubusercontent.com",

@@ -1,14 +1,10 @@
 import i18n from "i18next";
+import ar from "public/locales/ar.json";
+import de from "public/locales/de.json";
+import en from "public/locales/en.json";
+import fr from "public/locales/fr.json";
 import { initReactI18next } from "react-i18next";
 
-import ar from "../locales/ar.json";
-import de from "../locales/de.json";
-import en from "../locales/en.json";
-import fr from "../locales/fr.json";
-
-// the translations
-// (tip move them in a JSON file and import   them,
-// or even better, manage them separated from your code: https://react.i18next.com/guides/multiple-translation-files)
 i18n.use(initReactI18next).init({
 	fallbackLng: "en",
 	lng: "en", // TODO: Change to browser language

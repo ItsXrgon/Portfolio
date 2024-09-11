@@ -35,7 +35,7 @@ export default function Desktop() {
 
 	return (
 		<div
-			className="relative w-full bg-desktop-background"
+			className="relative w-full bg-desktop-background h-full"
 			style={{ height: "calc(100% - 3.5rem)" }}
 			onSelectCapture={(e) => e.stopPropagation()}
 		>

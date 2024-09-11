@@ -16,6 +16,8 @@ const cairo = Cairo({
 export const metadata: Metadata = {
 	title: "itsXrgon",
 	description: "Browser OS to host my portfolio and other random stuff",
+	creator: "itsXrgon",
+	applicationName: "itsXrgon",
 };
 
 export default function RootLayout({

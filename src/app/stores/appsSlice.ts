@@ -66,12 +66,6 @@ export const appsSlice = createSlice({
 			const index = state.apps.findIndex(
 				(app) => app.id === action.payload.id,
 			);
-			if (
-				state.windows.findIndex((w) => w.id === action.payload.id) !==
-				-1
-			) {
-				return;
-			}
 
 			state.windows.push({
 				...state.apps[index],
@@ -87,7 +81,6 @@ export const appsSlice = createSlice({
 			const taskBarIndex = state.taskBar.findIndex(
 				(app) => app.id === action.payload.id,
 			);
-
 			if (taskBarIndex === -1) {
 				state.taskBar.push({
 					id: state.apps[index].id,

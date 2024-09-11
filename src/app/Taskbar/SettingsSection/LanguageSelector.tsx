@@ -13,6 +13,7 @@ import {
 	DropdownMenuTrigger,
 } from "@/app/UIComponents/DropDownMenu";
 import i18n, { languageOptions } from "@/app/i18n";
+import { cn } from "@/utils/cn";
 
 export default function LanguageSelector() {
 	const { t } = useTranslation();
@@ -24,8 +25,14 @@ export default function LanguageSelector() {
 
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger className="px-3 py-2">
-				<Globe2 className="text-taskbar-icon" />
+			<DropdownMenuTrigger
+				className={cn(
+					"rounded-lg p-3",
+					"hover:bg-taskbar-icon-hover",
+					"active:bg-taskbar-icon-pressed",
+				)}
+			>
+				<Globe2 className="text-taskbar-icon-default" />
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className="w-56" sideOffset={15}>
 				<DropdownMenuLabel>
