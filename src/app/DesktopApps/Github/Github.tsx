@@ -1,11 +1,11 @@
 import { Clock, Mail, MapPin } from "lucide-react";
-import Image from "next/image";
 import { useMemo } from "react";
 
 import { Flex, Label } from "@/app/UIComponents";
 import { selectTime } from "@/app/stores/appsSlice";
 import { useAppSelector } from "@/app/stores/hooks";
 import { TGithubRepo } from "@/app/types";
+import UIImage from "@/utils/Icon";
 import { localeTimeFormatter } from "@/utils/formatting";
 
 import Repository from "./Components/Repository";
@@ -40,7 +40,7 @@ export default function Github() {
 				className="w-48 shrink-0 grow-0 overflow-y-scroll p-4"
 			>
 				<Flex isColumn gap="1" align="center">
-					<Image
+					<UIImage
 						src={profile.avatar_url}
 						alt="avatar"
 						draggable={false}

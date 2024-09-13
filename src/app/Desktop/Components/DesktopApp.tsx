@@ -1,5 +1,3 @@
-"use client";
-
 import { useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 
@@ -7,7 +5,7 @@ import { Flex, Label } from "@/app/UIComponents";
 import { openApp } from "@/app/stores/appsSlice";
 import { useAppDispatch } from "@/app/stores/hooks";
 import { TApp } from "@/app/types";
-import Icon from "@/utils/Icon";
+import UIImage from "@/utils/Icon";
 import { cn } from "@/utils/cn";
 
 interface DesktopAppProps {
@@ -49,7 +47,7 @@ export default function DesktopApp({ app }: DesktopAppProps): JSX.Element {
 				{ "opacity-70 bg-desktop-app-drag-background ": isDragging },
 			)}
 		>
-			<Icon icon={app.icon} width={48} height={48} />
+			<UIImage icon={app.icon} width={48} height={48} />
 			<Label.Thin300>{app.name}</Label.Thin300>
 		</Flex>
 	);

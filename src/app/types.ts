@@ -200,5 +200,5 @@ export type TGithubError = {
 };
 
 export interface IconProps extends Partial<ImageProps> {
-	icon: AppIcons;
+	icon?: AppIcons;
 }

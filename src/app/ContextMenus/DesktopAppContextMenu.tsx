@@ -19,7 +19,7 @@ import {
 	unpinApp,
 } from "@/app/stores/appsSlice";
 import { useAppDispatch, useAppSelector } from "@/app/stores/hooks";
-import Icon from "@/utils/Icon";
+import UIImage from "@/utils/Icon";
 
 export function DesktopAppContextMenu({
 	children,
@@ -99,7 +99,7 @@ export function DesktopAppContextMenu({
 						onClick={handleOpen}
 					>
 						<div className="h-5 w-5">
-							<Icon icon={app.icon} />
+							<UIImage icon={app.icon} />
 						</div>
 						{t("context_menu.open")} {app.name}
 					</ContextMenuItem>

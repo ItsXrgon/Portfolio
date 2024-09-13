@@ -21,20 +21,26 @@ export default function DesktopGridSlot({
 		},
 	});
 
+	const GridSlotContent = (
+		<div
+			ref={setNodeRef}
+			className="flex h-24 flex-col items-center justify-center"
+		>
+			{app ? <DesktopApp app={app} /> : null}
+		</div>
+	);
+
 	if (!app) {
 		return (
 			<DesktopContextMenu key={position}>
-				<div
-					ref={setNodeRef}
-					className="flex h-24 flex-col items-center justify-center"
-				/>
+				{GridSlotContent}
 			</DesktopContextMenu>
 		);
 	}
 
 	return (
 		<DesktopAppContextMenu appId={app.id}>
-			<DesktopApp app={app} />
+			{GridSlotContent}
 		</DesktopAppContextMenu>
 	);
 }

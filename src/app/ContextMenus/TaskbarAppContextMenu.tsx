@@ -20,7 +20,7 @@ import {
 	unpinApp,
 } from "@/app/stores/appsSlice";
 import { useAppDispatch, useAppSelector } from "@/app/stores/hooks";
-import Icon from "@/utils/Icon";
+import UIImage from "@/utils/Icon";
 
 export function TaskbarAppContextMenu({
 	children,
@@ -113,7 +113,7 @@ export function TaskbarAppContextMenu({
 						className="flex items-center gap-3"
 						onClick={handleOpen}
 					>
-						<Icon icon={app.icon} width={24} height={24} />
+						<UIImage icon={app.icon} width={24} height={24} />
 						{t("context_menu.open")} {app.name}
 					</DropdownMenuItem>
 				)}

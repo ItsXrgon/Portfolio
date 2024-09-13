@@ -10,7 +10,7 @@ import {
 } from "@/app/stores/appsSlice";
 import { useAppDispatch, useAppSelector } from "@/app/stores/hooks";
 import { TTaskbar } from "@/app/types";
-import Icon from "@/utils/Icon";
+import UIImage from "@/utils/Icon";
 import { cn } from "@/utils/cn";
 
 export function TaskbarAppIcon({
@@ -68,7 +68,7 @@ export function TaskbarAppIcon({
 				)}
 				key={app.id}
 			>
-				<Icon icon={app.icon} width={40} height={40} />
+				<UIImage icon={app.icon} width={40} height={40} />
 			</div>
 		</TaskbarAppContextMenu>
 	);

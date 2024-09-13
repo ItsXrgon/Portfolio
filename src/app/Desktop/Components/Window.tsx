@@ -6,6 +6,7 @@ import { DraggableData, Rnd } from "react-rnd";
 
 import { TopBarContextMenu } from "@/app/ContextMenus";
 import About from "@/app/DesktopApps/About/About";
+import Curaflow from "@/app/DesktopApps/Curaflow/Curaflow";
 import Github from "@/app/DesktopApps/Github/Github";
 import Settings from "@/app/DesktopApps/Settings/Settings";
 import Terminal from "@/app/DesktopApps/Terminal/Terminal";
@@ -19,7 +20,7 @@ import {
 } from "@/app/stores/appsSlice";
 import { useAppDispatch } from "@/app/stores/hooks";
 import { TWindow } from "@/app/types";
-import Icon from "@/utils/Icon";
+import UIImage from "@/utils/Icon";
 
 interface WindowProps {
 	app: TWindow;
@@ -59,9 +60,11 @@ export default function Window({ app, zIndex }: WindowProps) {
 				return <Github />;
 			case "About":
 				return <About />;
+			case "Curaflow":
+				return <Curaflow />;
 			default:
 				return (
-					<div className="bg-black">
+					<div className="bg-black w-full">
 						<div className="text-white">
 							This is a default page!
 						</div>
@@ -160,7 +163,7 @@ export default function Window({ app, zIndex }: WindowProps) {
 						!isMaximized && "rounded-t-md"
 					}`}
 				>
-					<Icon icon={app.icon} width={36} height={36} />
+					<UIImage icon={app.icon} width={36} height={36} />
 					<div className="flex items-center">
 						<div className="cursor-pointer p-1 text-window-header-icon-default hover:text-window-header-icon-hovered active:text-window-header-icon-pressed">
 							<Minus size={24} onClick={handleMinimize} />
