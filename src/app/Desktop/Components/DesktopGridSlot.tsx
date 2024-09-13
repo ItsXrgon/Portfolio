@@ -1,55 +1,31 @@
-import { useDrop } from "react-dnd";
+import { useDroppable } from "@dnd-kit/core";
 
 import { DesktopAppContextMenu, DesktopContextMenu } from "@/app/ContextMenus";
-import { relocateApp } from "@/app/stores/appsSlice";
-import { useAppDispatch } from "@/app/stores/hooks";
 import { TApp } from "@/app/types";
 
 import DesktopApp from "./DesktopApp";
 
 interface DesktopGridSlotProps {
-	xCoordinate: number;
-	yCoordinate: number;
-	app: TApp;
+	position: number;
+	app?: TApp;
 }
 
 export default function DesktopGridSlot({
-	xCoordinate,
-	yCoordinate,
+	position,
 	app,
 }: DesktopGridSlotProps): JSX.Element {
-	const dispatch = useAppDispatch();
-
-	const [, drop] = useDrop(
-		() => ({
-			accept: "APP",
-			drop(item: { app: TApp }) {
-				if (
-					(item.app.position.x === xCoordinate &&
-						item.app.position.y === yCoordinate) ||
-					!item.app
-				) {
-					return;
-				}
-				dispatch(
-					relocateApp({
-						app: item.app,
-						position: {
-							x: xCoordinate,
-							y: yCoordinate,
-						},
-					}),
-				);
-			},
-		}),
-		[],
-	);
+	const { setNodeRef } = useDroppable({
+		id: position,
+		data: {
+			type: "desktop-grid-slot",
+		},
+	});
 
 	if (!app) {
 		return (
-			<DesktopContextMenu key={`${xCoordinate}-${yCoordinate}`}>
+			<DesktopContextMenu key={position}>
 				<div
-					ref={drop}
+					ref={setNodeRef}
 					className="flex h-24 flex-col items-center justify-center"
 				/>
 			</DesktopContextMenu>

@@ -7,7 +7,7 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+		"lint": "next lint",
 		"pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\"",
 		"preview": "vite preview"
 	},
@@ -31,10 +31,15 @@
 		]
 	},
 	"dependencies": {
+		"@vercel/speed-insights": "^1.0.12",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1"
 	},
 	"devDependencies": {
+		"@dnd-kit/core": "^6.1.0",
+		"@dnd-kit/sortable": "^8.0.0",
+		"@dnd-kit/utilities": "^3.2.2",
+		"@eslint/js": "^9.10.0",
 		"@next/eslint-plugin-next": "^14.2.9",
 		"@radix-ui/react-accordion": "^1.2.0",
 		"@radix-ui/react-context-menu": "^2.2.1",
@@ -58,15 +63,16 @@
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.1",
 		"dayjs": "^1.11.13",
-		"eslint": "^9.10.0",
+		"eslint": "8.57.0",
+		"eslint-config-next": "14.2.11",
+		"eslint-plugin-react": "^7.36.1",
+		"globals": "^15.9.0",
 		"i18next": "^23.15.1",
 		"lucide-react": "^0.439.0",
 		"next": "^14.2.9",
 		"postcss": "^8.4.45",
 		"prettier": "^3.3.3",
 		"prettier-plugin-tailwindcss": "^0.6.6",
-		"react-dnd": "^16.0.1",
-		"react-dnd-html5-backend": "^16.0.1",
 		"react-i18next": "^15.0.1",
 		"react-redux": "^9.1.2",
 		"react-rnd": "^10.4.12",
@@ -77,6 +83,7 @@
 		"tailwindcss": "^3.4.10",
 		"tailwindcss-animate": "^1.0.7",
 		"typescript": "^5.6.2",
+		"typescript-eslint": "^8.5.0",
 		"uniqolor": "^1.1.1"
 	}
 }

@@ -1,10 +1,15 @@
 "use client";
 
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
+import { DndContext, DndContextProps } from "@dnd-kit/core";
+import React from "react";
 
-const DragAndDropProvider = ({ children }: { children: React.ReactNode }) => {
-	return <DndProvider backend={HTML5Backend}>{children}</DndProvider>;
+const DragAndDropProvider = ({
+	children,
+	DndContextProps,
+}: React.PropsWithChildren<{
+	DndContextProps: DndContextProps;
+}>) => {
+	return <DndContext {...DndContextProps}>{children}</DndContext>;
 };
 
 export default DragAndDropProvider;

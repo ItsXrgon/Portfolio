@@ -14,7 +14,7 @@ export default function General() {
 					>
 						Github Repository
 					</a>
-					. I'm always looking to improve and fix any issues that may
+					. I`m always looking to improve and fix any issues that may
 					arise.
 				</Label.Mid300>
 			</Flex>

@@ -2,9 +2,9 @@ import { useCallback, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Flex } from "@/app/UIComponents";
+import { colorIsDark } from "@/utils/misc";
 
 import ColourPickerPopup from "./ColourPicker";
-import { colorIsDark } from "@/utils/misc";
 
 export default function ColourItem({ path }: { path: string[] }) {
 	const { t } = useTranslation();

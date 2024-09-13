@@ -1,3 +1,4 @@
+import { arrayMove } from "@dnd-kit/sortable";
 import { PayloadAction, createSelector, createSlice } from "@reduxjs/toolkit";
 
 import { TApp, TTaskbar, TWindow } from "@/app/types";
@@ -18,21 +19,21 @@ const initialState: AppsState = {
 			id: "0",
 			name: "Terminal",
 			icon: "terminal",
-			position: { x: 0, y: 0 },
+			position: 0,
 			type: "app",
 		},
 		{
 			id: "1",
 			name: "Github",
 			icon: "github",
-			position: { x: 1, y: 0 },
+			position: 1,
 			type: "app",
 		},
 		{
 			id: "2",
 			name: "Settings",
 			icon: "settings",
-			position: { x: 2, y: 0 },
+			position: 2,
 			type: "app",
 		},
 	],
@@ -171,28 +172,26 @@ export const appsSlice = createSlice({
 				newIndex: number;
 			}>,
 		) {
-			const { oldIndex, newIndex } = action.payload;
-			const [removed] = state.apps.splice(oldIndex, 1);
-			state.apps.splice(newIndex, 0, removed);
+			state.taskBar = arrayMove(
+				state.taskBar,
+				action.payload.oldIndex,
+				action.payload.newIndex,
+			);
 		},
 		relocateApp(
 			state,
 			action: PayloadAction<{
-				app: TApp;
-				position: { x: number; y: number };
+				id: string;
+				position: number;
 			}>,
 		) {
-			const { app, position } = action.payload;
+			const { id, position } = action.payload;
 			if (
-				state.apps.filter(
-					(app) =>
-						app.position.x === position.x &&
-						app.position.y === position.y,
-				).length > 0
+				state.apps.filter((app) => app.position === position).length > 0
 			) {
 				return;
 			}
-			const index = state.apps.findIndex((a) => a.id === app.id);
+			const index = state.apps.findIndex((a) => a.id === id);
 			state.apps[index].position = position;
 		},
 		relocateWindow(

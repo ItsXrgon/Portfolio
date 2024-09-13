@@ -1,7 +1,7 @@
 "use client";
 
-import type { DragSourceMonitor } from "react-dnd";
-import { useDrag } from "react-dnd";
+import { useDraggable } from "@dnd-kit/core";
+import { CSS } from "@dnd-kit/utilities";
 
 import { Flex, Label } from "@/app/UIComponents";
 import { openApp } from "@/app/stores/appsSlice";
@@ -17,19 +17,21 @@ interface DesktopAppProps {
 export default function DesktopApp({ app }: DesktopAppProps): JSX.Element {
 	const dispatch = useAppDispatch();
 
-	const [{ isDragging }, drag] = useDrag(() => ({
-		type: "APP",
-		item: {
-			app: app,
-		},
-		collect: (monitor: DragSourceMonitor) => ({
-			isDragging: monitor.isDragging(),
-		}),
-	}));
+	const { setNodeRef, isDragging, attributes, listeners, transform } =
+		useDraggable({
+			id: app.id,
+			attributes: {
+				role: "desktop-app",
+			},
+		});
+
+	const style = {
+		transform: CSS.Transform.toString(transform),
+	};
 
 	return (
 		<Flex
-			ref={drag}
+			ref={setNodeRef}
 			onDoubleClick={() => {
 				dispatch(
 					openApp({
@@ -37,13 +39,14 @@ export default function DesktopApp({ app }: DesktopAppProps): JSX.Element {
 					}),
 				);
 			}}
-			role="dragabbleBox"
-			draggable
+			{...attributes}
+			{...listeners}
+			style={style}
 			isColumn
 			className={cn(
 				"h-24 w-20 items-center justify-center gap-1 text-desktop-app-text cursor-pointer",
 				"hover:bg-desktop-app-hover-background hover:text-desktop-app-hover-text",
-				isDragging && "opacity-50 bg-desktop-app-drag-background ",
+				{ "opacity-70 bg-desktop-app-drag-background ": isDragging },
 			)}
 		>
 			<Icon icon={app.icon} width={48} height={48} />

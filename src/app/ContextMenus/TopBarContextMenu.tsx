@@ -64,17 +64,21 @@ export function TopBarContextMenu({
 		);
 	}, [dispatch, appId]);
 
+	const handleMinMaxClick = useCallback(() => {
+		if (app.windowState?.isMaximized) {
+			handleRestore();
+		} else {
+			handleMaximize();
+		}
+	}, [app.windowState?.isMaximized, handleMaximize, handleRestore]);
+
 	return (
 		<ContextMenu>
 			<ContextMenuTrigger>{children}</ContextMenuTrigger>
 			<ContextMenuContent className="w-64">
 				<ContextMenuItem
 					className="flex items-center gap-3"
-					onClick={() => {
-						app.windowState?.isMaximized
-							? handleRestore()
-							: handleMaximize();
-					}}
+					onClick={handleMinMaxClick}
 					disabled={app.windowState?.isMaximized}
 				>
 					{app.windowState?.isMaximized ? (

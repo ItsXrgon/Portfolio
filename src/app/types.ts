@@ -9,10 +9,7 @@ export type TApp = {
 	name: string;
 	icon: AppIcons;
 	type: "app" | "folder";
-	position: {
-		x: number;
-		y: number;
-	};
+	position: number;
 };
 
 export type TWindow = {
