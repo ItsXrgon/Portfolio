@@ -1,5 +1,5 @@
 import { useDraggable } from "@dnd-kit/core";
-import { CSS } from "@dnd-kit/utilities";
+import { CSS, Transform } from "@dnd-kit/utilities";
 
 import { Flex, Label } from "@/app/UIComponents";
 import { openApp } from "@/app/stores/appsSlice";
@@ -24,7 +24,11 @@ export default function DesktopApp({ app }: DesktopAppProps): JSX.Element {
 		});
 
 	const style = {
-		transform: CSS.Transform.toString(transform),
+		transform: CSS.Transform.toString({
+			...transform,
+			scaleX: 1,
+			scaleY: 1,
+		} as Transform),
 	};
 
 	return (
