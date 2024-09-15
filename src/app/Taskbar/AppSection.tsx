@@ -1,4 +1,10 @@
-import { DragEndEvent, useDroppable } from "@dnd-kit/core";
+import {
+	DragEndEvent,
+	PointerSensor,
+	useDroppable,
+	useSensor,
+	useSensors,
+} from "@dnd-kit/core";
 import { rectSortingStrategy } from "@dnd-kit/sortable";
 
 import { reOrderApps, selectTaskbar } from "@/app/stores/appsSlice";
@@ -34,9 +40,17 @@ export default function AppSection() {
 		}
 	};
 
+	const sensors = useSensors(
+		useSensor(PointerSensor, {
+			activationConstraint: {
+				distance: 8,
+			},
+		}),
+	);
+
 	return (
 		<div ref={setNodeRef} className="flex flex-row gap-3">
-			<DragAndDropProvider DndContextProps={{ onDragEnd }}>
+			<DragAndDropProvider DndContextProps={{ onDragEnd, sensors }}>
 				<SortableContextProvider
 					SortableContextProps={{
 						items: apps,

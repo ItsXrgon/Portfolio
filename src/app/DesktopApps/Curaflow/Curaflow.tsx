@@ -140,7 +140,8 @@ export default function Curaflow() {
 							className="text-blue-500 underline"
 						>
 							Ammarmbe (Github)
-						</a>{" "}
+						</a>
+						.
 					</Label.Mid300>
 				</Flex>
 				<Flex isColumn gap="1">

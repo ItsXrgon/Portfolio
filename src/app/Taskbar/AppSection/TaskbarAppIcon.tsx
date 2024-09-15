@@ -1,12 +1,14 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 
 import { TaskbarAppContextMenu } from "@/app/ContextMenus";
 import {
-	handleTaskbarAppClick,
 	isAppMinimized,
 	isAppOpen,
+	minimizeApp,
+	openApp,
+	unMinimizeApp,
 } from "@/app/stores/appsSlice";
 import { useAppDispatch, useAppSelector } from "@/app/stores/hooks";
 import { TTaskbar } from "@/app/types";
@@ -22,12 +24,32 @@ export function TaskbarAppIcon({
 }) {
 	const dispatch = useAppDispatch();
 
-	const onAppIconClick = useCallback(
-		(app: TTaskbar) => {
-			dispatch(handleTaskbarAppClick(app));
-		},
-		[dispatch],
-	);
+	const isOpen = useAppSelector(isAppOpen(app.id));
+	const isMinimized = useAppSelector(isAppMinimized(app.id));
+
+	const onAppIconClick = useCallback(() => {
+		if (isOpen) {
+			if (isMinimized) {
+				dispatch(
+					unMinimizeApp({
+						id: app.id,
+					}),
+				);
+			} else {
+				dispatch(
+					minimizeApp({
+						id: app.id,
+					}),
+				);
+			}
+		} else {
+			dispatch(
+				openApp({
+					id: app.id,
+				}),
+			);
+		}
+	}, [dispatch, app, isOpen, isMinimized]);
 
 	const { attributes, listeners, setNodeRef, transform, transition } =
 		useSortable({
@@ -38,27 +60,22 @@ export function TaskbarAppIcon({
 			},
 		});
 
-	const style = {
-		transform: CSS.Transform.toString(transform),
-		transition,
-	};
-
-	const isOpen = useAppSelector(isAppOpen(app.id));
-	const isMinimized = useAppSelector(isAppMinimized(app.id));
+	const style = useMemo(() => {
+		return {
+			transform: CSS.Transform.toString(transform),
+			transition,
+		};
+	}, [transform, transition]);
 
 	return (
-		<TaskbarAppContextMenu
-			appId={app.id}
-			onClick={() => {
-				onAppIconClick(app);
-			}}
-		>
+		<TaskbarAppContextMenu appId={app.id}>
 			<div
 				ref={setNodeRef}
 				id={app.id}
-				{...attributes}
 				{...listeners}
+				{...attributes}
 				style={style}
+				onClick={() => onAppIconClick()}
 				className={cn(
 					"bg-none rounded-sm p-1 bg-taskbar-app-background opacity-50",
 					isOpen && "bg-taskbar-app-open-background opacity-75",

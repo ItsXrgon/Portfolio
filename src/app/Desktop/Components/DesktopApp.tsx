@@ -1,9 +1,10 @@
 import { useDraggable } from "@dnd-kit/core";
 import { CSS, Transform } from "@dnd-kit/utilities";
+import { useCallback } from "react";
 
 import { Flex, Label } from "@/app/UIComponents";
-import { openApp } from "@/app/stores/appsSlice";
-import { useAppDispatch } from "@/app/stores/hooks";
+import { isAppOpen, openApp, unMinimizeApp } from "@/app/stores/appsSlice";
+import { useAppDispatch, useAppSelector } from "@/app/stores/hooks";
 import { TApp } from "@/app/types";
 import UIImage from "@/utils/Icon";
 import { cn } from "@/utils/cn";
@@ -31,16 +32,28 @@ export default function DesktopApp({ app }: DesktopAppProps): JSX.Element {
 		} as Transform),
 	};
 
+	const isOpen = useAppSelector(isAppOpen(app.id));
+
+	const onDoubleClick = useCallback(() => {
+		if (isOpen) {
+			dispatch(
+				unMinimizeApp({
+					id: app.id,
+				}),
+			);
+		} else {
+			dispatch(
+				openApp({
+					id: app.id,
+				}),
+			);
+		}
+	}, [dispatch, app, isOpen]);
+
 	return (
 		<Flex
 			ref={setNodeRef}
-			onDoubleClick={() => {
-				dispatch(
-					openApp({
-						id: app.id,
-					}),
-				);
-			}}
+			onDoubleClick={onDoubleClick}
 			{...attributes}
 			{...listeners}
 			style={style}

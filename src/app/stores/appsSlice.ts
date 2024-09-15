@@ -48,7 +48,7 @@ const initialState: AppsState = {
 	taskBar: [],
 	config: {
 		timeZone: "GMT",
-		time: undefined,
+		time: "",
 	},
 };
 
@@ -230,51 +230,8 @@ export const appsSlice = createSlice({
 			state.windows = [
 				...state.windows.slice(0, index),
 				...state.windows.slice(index + 1),
-				{
-					...state.windows[index],
-					windowState: {
-						...state.windows[index].windowState,
-						isMinimized: false,
-					},
-				},
+				state.windows[index],
 			];
-		},
-		handleTaskbarAppClick(state, action: PayloadAction<TTaskbar>) {
-			const index = state.windows.findIndex(
-				(app) => app.id === action.payload.id,
-			);
-			if (index === -1) {
-				state.windows.push({
-					...action.payload,
-					type: "app",
-					windowState: {
-						isMaximized: false,
-						isMinimized: false,
-						zIndex: 0,
-						position: { x: 350, y: 150 },
-						size: { width: 800, height: 400 },
-					},
-				});
-			} else {
-				if (state.windows[index].windowState?.isMinimized) {
-					state.windows = [
-						...state.windows.slice(0, index),
-						...state.windows.slice(index + 1),
-						{
-							...state.windows[index],
-							windowState: {
-								...state.windows[index].windowState,
-								isMinimized: false,
-							},
-						},
-					];
-				} else {
-					state.windows[index].windowState = {
-						...state.windows[index].windowState!,
-						isMinimized: true,
-					};
-				}
-			}
 		},
 		changeTimeZone(state, action: PayloadAction<string>) {
 			state.config.timeZone = action.payload;
@@ -301,7 +258,6 @@ export const {
 	relocateApp,
 	relocateWindow,
 	pushToFront,
-	handleTaskbarAppClick,
 	changeTimeZone,
 	updateTime,
 } = appsSlice.actions;
@@ -339,10 +295,7 @@ export const isAppOpen = (id: string) =>
 export const isAppMinimized = (id: string) =>
 	createSelector(
 		[selectWindows],
-		(windows) =>
-			windows.findIndex(
-				(w) => w.id === id && w.windowState?.isMinimized,
-			) !== -1,
+		(windows) => windows.find((w) => w.id === id)?.windowState?.isMinimized,
 	);
 
 export const isAppPinned = (id: string) =>

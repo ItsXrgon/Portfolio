@@ -133,6 +133,14 @@ export default function Window({ app, zIndex }: WindowProps) {
 		dispatch(closeApp({ id: app.id }));
 	}, [dispatch, app.id]);
 
+	const handleMinMax = useCallback(() => {
+		if (isMaximized) {
+			handleRestore();
+		} else {
+			handleMaximize();
+		}
+	}, [isMaximized, handleMaximize, handleRestore]);
+
 	return (
 		<Rnd
 			ref={rndRef}
@@ -170,9 +178,7 @@ export default function Window({ app, zIndex }: WindowProps) {
 						</div>
 						<div
 							className="cursor-pointer p-1 text-window-header-icon-default hover:text-window-header-icon-hovered active:text-window-header-icon-pressed"
-							onClick={() =>
-								isMaximized ? handleRestore() : handleMaximize()
-							}
+							onClick={handleMinMax}
 						>
 							{isMaximized ? (
 								<Minimize size={24} />
