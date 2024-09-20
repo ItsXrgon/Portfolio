@@ -73,8 +73,12 @@ export function DesktopAppContextMenu({
 		<ContextMenu>
 			<ContextMenuTrigger>{children}</ContextMenuTrigger>
 			<ContextMenuContent className="w-64">
-				{extraOptions && <ContextMenuSeparator />}
-				{extraOptions}
+				{extraOptions && (
+					<>
+						{extraOptions}
+						<ContextMenuSeparator />
+					</>
+				)}
 				{taskBarApp?.pinned && (
 					<ContextMenuItem
 						className="flex items-center gap-3"

@@ -89,7 +89,12 @@ export function TaskbarAppContextMenu({
 				{children}
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className="w-56" sideOffset={15}>
-				{extraOptions && <DropdownMenuSeparator />}
+				{extraOptions && (
+					<>
+						{extraOptions}
+						<DropdownMenuSeparator />
+					</>
+				)}
 				{app.pinned && (
 					<DropdownMenuItem
 						className="flex items-center gap-3"

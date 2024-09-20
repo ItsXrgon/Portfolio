@@ -26,6 +26,7 @@ export function TaskbarAppIcon({
 
 	const isOpen = useAppSelector(isAppOpen(app.id));
 	const isMinimized = useAppSelector(isAppMinimized(app.id));
+	const isPinned = app.pinned;
 
 	const onAppIconClick = useCallback(() => {
 		if (isOpen) {
@@ -78,10 +79,9 @@ export function TaskbarAppIcon({
 				onClick={() => onAppIconClick()}
 				className={cn(
 					"bg-none rounded-sm p-1 bg-taskbar-app-background opacity-50",
-					isOpen && "bg-taskbar-app-open-background opacity-75",
-					isOpen &&
-						!isMinimized &&
-						"border-b-2 border-solid border-taskbar-app-open-indicator opacity-100",
+					isOpen && "bg-taskbar-app-open-background opacity-100",
+					(isOpen || isPinned) &&
+						"border-b-2 border-solid border-taskbar-app-open-indicator",
 				)}
 				key={app.id}
 			>

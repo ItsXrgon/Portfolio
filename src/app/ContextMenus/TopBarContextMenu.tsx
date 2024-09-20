@@ -98,8 +98,12 @@ export function TopBarContextMenu({
 					<Minus size={18} />
 					{t("context_menu.minimize")}
 				</ContextMenuItem>
-				{extraOptions && <ContextMenuSeparator />}
-				{extraOptions}
+				{extraOptions && (
+					<>
+						{extraOptions}
+						<ContextMenuSeparator />
+					</>
+				)}
 				<ContextMenuSeparator />
 				<ContextMenuItem
 					className="flex items-center gap-3"

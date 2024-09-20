@@ -200,10 +200,19 @@ export const appsSlice = createSlice({
 			}
 		},
 		unpinApp(state, action: PayloadAction<{ id: string }>) {
-			const index = state.taskBar.findIndex(
+			const windowIndex = state.windows.findIndex(
 				(app) => app.id === action.payload.id,
 			);
-			state.taskBar[index].pinned = false;
+			if (windowIndex === -1) {
+				state.taskBar = state.taskBar.filter(
+					(app) => app.id !== action.payload.id,
+				);
+			} else {
+				const index = state.taskBar.findIndex(
+					(app) => app.id === action.payload.id,
+				);
+				state.taskBar[index].pinned = false;
+			}
 		},
 		removeApp(state, action: PayloadAction<TApp>) {
 			state.apps = state.apps.filter(
