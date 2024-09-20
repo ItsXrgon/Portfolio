@@ -52,11 +52,12 @@ interface FlexProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export const Flex = memo(
 	tw.div<FlexProps>`
-		${({ isColumn, gap, align, justify, className }) =>
+		${({ isColumn, gap, align, justify, className, isWrapped }) =>
 			twMerge(
 				"flex",
 				isColumn && "flex-col",
 				gapSizes[gap ?? "0"],
+				isWrapped && "flex-wrap",
 				alignStyles[align ?? "stretch"],
 				justifyStyles[justify ?? "start"],
 				className,

@@ -11,6 +11,7 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/app/UIComponents/DropDownMenu";
+import UIImage from "@/app/UIComponents/UIImage";
 import {
 	closeApp,
 	openApp,
@@ -20,7 +21,6 @@ import {
 	unpinApp,
 } from "@/app/stores/appsSlice";
 import { useAppDispatch, useAppSelector } from "@/app/stores/hooks";
-import UIImage from "@/utils/UIImage";
 
 export function TaskbarAppContextMenu({
 	children,

@@ -3,10 +3,10 @@ import { CSS, Transform } from "@dnd-kit/utilities";
 import { useCallback } from "react";
 
 import { Flex, Label } from "@/app/UIComponents";
+import UIImage from "@/app/UIComponents/UIImage";
 import { isAppOpen, openApp, unMinimizeApp } from "@/app/stores/appsSlice";
 import { useAppDispatch, useAppSelector } from "@/app/stores/hooks";
 import { TApp } from "@/app/types";
-import UIImage from "@/utils/UIImage";
 import { cn } from "@/utils/cn";
 
 interface DesktopAppProps {
@@ -59,7 +59,7 @@ export default function DesktopApp({ app }: DesktopAppProps): JSX.Element {
 			style={style}
 			isColumn
 			className={cn(
-				"h-24 w-20 items-center justify-center gap-1 text-desktop-app-text cursor-pointer text-center",
+				"h-full w-full p-2 items-center gap-1 text-desktop-app-text cursor-pointer text-center",
 				"hover:bg-desktop-app-hover-background hover:text-desktop-app-hover-text",
 				{ "opacity-70 bg-desktop-app-drag-background ": isDragging },
 			)}

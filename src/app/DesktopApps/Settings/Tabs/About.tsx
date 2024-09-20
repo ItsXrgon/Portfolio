@@ -1,3 +1,12 @@
+import {
+	NextjsOriginal,
+	ReactOriginal,
+	ReduxOriginal,
+	TailwindcssOriginal,
+	TypescriptOriginal,
+	VercelOriginal,
+} from "devicons-react";
+
 import { Flex, Label } from "@/app/UIComponents";
 
 export default function About() {
@@ -74,12 +83,40 @@ export default function About() {
 						The Settings App's only interesting feature is the Theme
 						update feature. For that I used tailwind config to read
 						CSS variables that I can change on the fly. The theme
-						accordions are dynamically generated from the Palette JS
-						object that I have as the default theme so updating that
-						auto updates the theme options. I just have to update
-						the CSS variables to match any new ones added in the
-						palette.
+						inputs are dynamically generated from a palette JSON
+						object which serves as the default theme so updating that
+						auto updates the theme options. I just have to manually
+						create a CSS variable for every palette.
 					</Label.Mid300>
+				</Flex>
+			</Flex>
+			<Flex isColumn gap="2">
+				<Label.Big400>Tech stack</Label.Big400>
+				<Flex isWrapped gap="4">
+					<Flex gap="1" align="center">
+						<TypescriptOriginal size={48} />
+						<Label.Mid400>TypeScript</Label.Mid400>
+					</Flex>
+					<Flex gap="1" align="center">
+						<NextjsOriginal size={48} />
+						<Label.Mid400>NEXT.js</Label.Mid400>
+					</Flex>
+					<Flex gap="1" align="center">
+						<ReactOriginal size={48} />
+						<Label.Mid400>React</Label.Mid400>
+					</Flex>
+					<Flex gap="1" align="center" className="">
+						<TailwindcssOriginal size={48} />
+						<Label.Mid400>Tailwind</Label.Mid400>
+					</Flex>
+					<Flex gap="1" align="center" className="">
+						<ReduxOriginal size={48} />
+						<Label.Mid400>Redux</Label.Mid400>
+					</Flex>
+					<Flex gap="1" align="center" className="">
+						<VercelOriginal size={48} />
+						<Label.Mid400>Vercel</Label.Mid400>
+					</Flex>
 				</Flex>
 			</Flex>
 			<Flex isColumn gap="1">

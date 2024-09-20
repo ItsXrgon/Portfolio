@@ -3,6 +3,9 @@ import { PayloadAction, createSelector, createSlice } from "@reduxjs/toolkit";
 
 import { TApp, TTaskbar, TWindow } from "@/app/types";
 
+export const rowCount = 7;
+export const columnCount = 16;
+
 export interface AppsState {
 	apps: TApp[];
 	windows: TWindow[];
@@ -19,35 +22,63 @@ const initialState: AppsState = {
 			id: "0",
 			name: "Terminal",
 			icon: "terminal",
-			position: 0,
+			position: columnCount * 0,
 			type: "app",
 		},
 		{
 			id: "1",
 			name: "Github",
 			icon: "github",
-			position: 20,
+			position: columnCount * 1,
 			type: "app",
 		},
 		{
 			id: "2",
 			name: "Settings",
 			icon: "settings",
-			position: 40,
+			position: columnCount * 2,
 			type: "app",
 		},
 		{
 			id: "3",
 			name: "Curaflow",
 			icon: "curaflow",
-			position: 60,
+			position: columnCount * 3,
 			type: "app",
 		},
 		{
 			id: "4",
-			name: "MUC",
+			name: "Multi Unit Converter",
 			icon: "multi_unit_converter",
-			position: 80,
+			position: columnCount * 4,
+			type: "app",
+		},
+		{
+			id: "5",
+			name: "Xrbot - Discord Bot",
+			icon: "xrbot",
+			position: columnCount * 5,
+			type: "app",
+		},
+		{
+			id: "6",
+			name: "User purge - Discord Bot",
+			icon: "user_purge",
+			position: columnCount * 6,
+			type: "app",
+		},
+		{
+			id: "7",
+			name: "Haskell Chess Game",
+			icon: "haskell_chess_game",
+			position: 1,
+			type: "app",
+		},
+		{
+			id: "8",
+			name: "Check Calculator",
+			icon: "check_calculator",
+			position: 1 + columnCount * 1,
 			type: "app",
 		},
 	],

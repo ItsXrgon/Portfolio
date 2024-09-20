@@ -3,7 +3,13 @@
 import { DragEndEvent } from "@dnd-kit/core";
 import { useMemo } from "react";
 
-import { relocateApp, selectApps, selectWindows } from "@/app/stores/appsSlice";
+import {
+	columnCount,
+	relocateApp,
+	rowCount,
+	selectApps,
+	selectWindows,
+} from "@/app/stores/appsSlice";
 import { useAppDispatch, useAppSelector } from "@/app/stores/hooks";
 import { TApp, TWindow } from "@/app/types";
 import DragAndDropProvider from "@/providers/DragAndDropProvider";
@@ -11,8 +17,6 @@ import DragAndDropProvider from "@/providers/DragAndDropProvider";
 import DesktopGridSlot from "./Components/DesktopGridSlot";
 import Window from "./Components/Window";
 
-const rowCount = 8;
-const columnCount = 20;
 const rows = Array.from({ length: rowCount }, (_, i) => i);
 const columns = Array.from({ length: columnCount }, (_, i) => i);
 
@@ -66,7 +70,15 @@ export default function Desktop() {
 			onSelectCapture={(e) => e.stopPropagation()}
 		>
 			<DragAndDropProvider DndContextProps={{ onDragEnd }}>
-				<div className="grid grid-cols-20">{...gridElements}</div>
+				<div
+					className="grid"
+					style={{
+						gridTemplateColumns: `repeat(${columnCount}, 1fr)`,
+						gridTemplateRows: `repeat(${rowCount}, 1fr)`,
+					}}
+				>
+					{...gridElements}
+				</div>
 			</DragAndDropProvider>
 			{windows.map((app: TWindow, index: number) => (
 				<Window app={app} zIndex={index} key={app.id} />

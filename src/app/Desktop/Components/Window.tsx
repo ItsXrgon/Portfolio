@@ -6,11 +6,15 @@ import { DraggableData, Rnd } from "react-rnd";
 
 import { TopBarContextMenu } from "@/app/ContextMenus";
 import About from "@/app/DesktopApps/About/About";
+import CheckCalculator from "@/app/DesktopApps/CheckCalculator/CheckCalculator";
 import Curaflow from "@/app/DesktopApps/Curaflow/Curaflow";
 import Github from "@/app/DesktopApps/Github/Github";
+import HaskellChessGame from "@/app/DesktopApps/HaskellChessGame/HaskellChessGame";
 import MUC from "@/app/DesktopApps/MUC/MUC";
 import Settings from "@/app/DesktopApps/Settings/Settings";
 import Terminal from "@/app/DesktopApps/Terminal/Terminal";
+import Xrbot from "@/app/DesktopApps/Xrbot/Xrbot";
+import UIImage from "@/app/UIComponents/UIImage";
 import {
 	closeApp,
 	maximizeApp,
@@ -21,7 +25,6 @@ import {
 } from "@/app/stores/appsSlice";
 import { useAppDispatch } from "@/app/stores/hooks";
 import { TWindow } from "@/app/types";
-import UIImage from "@/utils/UIImage";
 
 interface WindowProps {
 	app: TWindow;
@@ -35,6 +38,9 @@ const AppsMap = {
 	Settings,
 	Terminal,
 	MUC,
+	"Xrbot - Discord Bot": Xrbot,
+	"Haskell Chess Game": HaskellChessGame,
+	"Check Calculator": CheckCalculator,
 };
 
 export default function Window({ app, zIndex }: WindowProps) {

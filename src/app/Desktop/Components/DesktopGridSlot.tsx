@@ -1,9 +1,14 @@
 import { useDroppable } from "@dnd-kit/core";
 
+
+
 import { DesktopAppContextMenu, DesktopContextMenu } from "@/app/ContextMenus";
 import { TApp } from "@/app/types";
 
+
+
 import DesktopApp from "./DesktopApp";
+
 
 interface DesktopGridSlotProps {
 	position: number;
@@ -24,7 +29,7 @@ export default function DesktopGridSlot({
 	const GridSlotContent = (
 		<div
 			ref={setNodeRef}
-			className="flex h-24 flex-col items-center justify-center"
+			className="flex h-full w-full flex-col items-center justify-center"
 		>
 			{app ? <DesktopApp app={app} /> : null}
 		</div>

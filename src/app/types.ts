@@ -1,7 +1,7 @@
 import { ImageProps } from "next/image";
 
+import { AppIcons } from "@/app/UIComponents/UIImage";
 import palette from "@/styles/palette";
-import { AppIcons } from "@/utils/UIImage";
 
 export type TApp = {
 	id: string;

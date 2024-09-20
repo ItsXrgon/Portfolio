@@ -1,7 +1,17 @@
+import {
+	ElectronOriginal,
+	ExpressOriginal,
+	JavascriptOriginal,
+	NextjsOriginal,
+	NodejsOriginal,
+	ReactOriginal,
+	TailwindcssOriginal,
+	TypescriptOriginal,
+} from "devicons-react";
 import React from "react";
 
 import { Flex, Label } from "@/app/UIComponents";
-import UIImage from "@/utils/UIImage";
+import UIImage from "@/app/UIComponents/UIImage";
 
 export default function Curaflow() {
 	return (
@@ -35,7 +45,7 @@ export default function Curaflow() {
 					<br />
 				</Label.Mid300>
 			</Flex>
-			<Flex isColumn gap="2" align="center">
+			<Flex isColumn gap="2" align="center" isWrapped>
 				<UIImage icon="curaflow_hero_en" width={1000} height={1000} />
 				<UIImage icon="curaflow_hero_ar" width={1000} height={1000} />
 			</Flex>
@@ -152,6 +162,51 @@ export default function Curaflow() {
 						from the backend and was processed and transformed to be
 						displayed in the charts.
 					</Label.Mid300>
+				</Flex>
+			</Flex>
+			<Flex isColumn gap="2">
+				<Label.Big400>Tech stack</Label.Big400>
+				<Flex isColumn gap="2">
+					<Label.Big300>Backend</Label.Big300>
+					<Flex isWrapped gap="4">
+						<Flex gap="1" align="center">
+							<JavascriptOriginal size={48} />
+							<Label.Mid400>JavaScript</Label.Mid400>
+						</Flex>
+						<Flex gap="1" align="center">
+							<NodejsOriginal size={48} />
+							<Label.Mid400>Nodejs</Label.Mid400>
+						</Flex>
+						<Flex gap="1" align="center">
+							<ExpressOriginal size={48} />
+							<Label.Mid400>Express.js</Label.Mid400>
+						</Flex>
+					</Flex>
+				</Flex>
+				<Flex isColumn gap="2">
+					<Label.Big300>Frontend</Label.Big300>
+					<Flex isWrapped gap="4">
+						<Flex gap="1" align="center">
+							<TypescriptOriginal size={48} />
+							<Label.Mid400>TypeScript</Label.Mid400>
+						</Flex>
+						<Flex gap="1" align="center">
+							<NextjsOriginal size={48} />
+							<Label.Mid400>NEXT.js</Label.Mid400>
+						</Flex>
+						<Flex gap="1" align="center" className="">
+							<ElectronOriginal size={48} />
+							<Label.Mid400>Electron</Label.Mid400>
+						</Flex>
+						<Flex gap="1" align="center">
+							<ReactOriginal size={48} />
+							<Label.Mid400>React</Label.Mid400>
+						</Flex>
+						<Flex gap="1" align="center" className="">
+							<TailwindcssOriginal size={48} />
+							<Label.Mid400>Tailwind</Label.Mid400>
+						</Flex>
+					</Flex>
 				</Flex>
 			</Flex>
 		</Flex>

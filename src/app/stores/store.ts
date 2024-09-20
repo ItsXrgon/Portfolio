@@ -17,6 +17,7 @@ export const store = configureStore({
 	},
 });
 export const persistor = persistStore(store);
+persistor.purge();
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;

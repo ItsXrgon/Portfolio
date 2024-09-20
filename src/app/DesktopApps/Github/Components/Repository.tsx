@@ -37,13 +37,8 @@ export default function Repository({
 				</Flex>
 				<Label.Thin200>{repository?.description}</Label.Thin200>
 			</Flex>
-			<Flex
-				align="center"
-				justify="between"
-				gap="4"
-				className="flex-wrap"
-			>
-				<Flex gap="2" align="center" className="w-1/2 flex-wrap">
+			<Flex align="center" justify="between" gap="4" isWrapped>
+				<Flex gap="2" align="center" isWrapped className="w-1/2">
 					{Object.keys(languages ?? {}).map((language) => (
 						<div className="flex items-center gap-1" key={language}>
 							<div

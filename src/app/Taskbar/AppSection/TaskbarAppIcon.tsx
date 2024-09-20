@@ -3,6 +3,7 @@ import { CSS } from "@dnd-kit/utilities";
 import { useCallback, useMemo } from "react";
 
 import { TaskbarAppContextMenu } from "@/app/ContextMenus";
+import UIImage from "@/app/UIComponents/UIImage";
 import {
 	isAppMinimized,
 	isAppOpen,
@@ -12,7 +13,6 @@ import {
 } from "@/app/stores/appsSlice";
 import { useAppDispatch, useAppSelector } from "@/app/stores/hooks";
 import { TTaskbar } from "@/app/types";
-import UIImage from "@/utils/UIImage";
 import { cn } from "@/utils/cn";
 
 export function TaskbarAppIcon({

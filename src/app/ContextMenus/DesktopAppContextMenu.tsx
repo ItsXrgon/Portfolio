@@ -9,6 +9,7 @@ import {
 	ContextMenuSeparator,
 	ContextMenuTrigger,
 } from "@/app/UIComponents/ContextMenu";
+import UIImage from "@/app/UIComponents/UIImage";
 import {
 	closeApp,
 	openApp,
@@ -19,7 +20,6 @@ import {
 	unpinApp,
 } from "@/app/stores/appsSlice";
 import { useAppDispatch, useAppSelector } from "@/app/stores/hooks";
-import UIImage from "@/utils/UIImage";
 
 export function DesktopAppContextMenu({
 	children,
