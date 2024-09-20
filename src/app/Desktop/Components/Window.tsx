@@ -8,6 +8,7 @@ import { TopBarContextMenu } from "@/app/ContextMenus";
 import About from "@/app/DesktopApps/About/About";
 import Curaflow from "@/app/DesktopApps/Curaflow/Curaflow";
 import Github from "@/app/DesktopApps/Github/Github";
+import MUC from "@/app/DesktopApps/MUC/MUC";
 import Settings from "@/app/DesktopApps/Settings/Settings";
 import Terminal from "@/app/DesktopApps/Terminal/Terminal";
 import {
@@ -20,12 +21,21 @@ import {
 } from "@/app/stores/appsSlice";
 import { useAppDispatch } from "@/app/stores/hooks";
 import { TWindow } from "@/app/types";
-import UIImage from "@/utils/Icon";
+import UIImage from "@/utils/UIImage";
 
 interface WindowProps {
 	app: TWindow;
 	zIndex: number;
 }
+
+const AppsMap = {
+	About,
+	Curaflow,
+	Github,
+	Settings,
+	Terminal,
+	MUC,
+};
 
 export default function Window({ app, zIndex }: WindowProps) {
 	const dispatch = useAppDispatch();
@@ -51,26 +61,16 @@ export default function Window({ app, zIndex }: WindowProps) {
 	}, [app.windowState.size, app.windowState.position, isMaximized]);
 
 	function renderApp() {
-		switch (app.name) {
-			case "Terminal":
-				return <Terminal />;
-			case "Settings":
-				return <Settings />;
-			case "Github":
-				return <Github />;
-			case "About":
-				return <About />;
-			case "Curaflow":
-				return <Curaflow />;
-			default:
-				return (
-					<div className="bg-black w-full">
-						<div className="text-white">
-							This is a default page!
-						</div>
-					</div>
-				);
+		if (AppsMap[app.name as keyof typeof AppsMap]) {
+			const Component = AppsMap[app.name as keyof typeof AppsMap];
+			return <Component />;
 		}
+
+		return (
+			<div className="bg-black w-full">
+				<div className="text-white">This is a default page!</div>
+			</div>
+		);
 	}
 
 	const onDragStart = useCallback(() => {

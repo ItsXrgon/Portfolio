@@ -43,6 +43,13 @@ const initialState: AppsState = {
 			position: 60,
 			type: "app",
 		},
+		{
+			id: "4",
+			name: "MUC",
+			icon: "multi_unit_converter",
+			position: 80,
+			type: "app",
+		},
 	],
 	windows: [],
 	taskBar: [],

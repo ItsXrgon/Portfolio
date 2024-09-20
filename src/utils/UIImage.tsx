@@ -1,11 +1,13 @@
 import Image from "next/image";
 import curaflow from "root/public/assets/appicons/curaflow.png";
 import github from "root/public/assets/appicons/github.svg";
+import multi_unit_converter from "root/public/assets/appicons/multi-unit-converter.svg";
 import settings from "root/public/assets/appicons/settings.svg";
 import terminal from "root/public/assets/appicons/terminal.svg";
 import curaflow_hero_ar from "root/public/assets/curaflow/curaflow-ar-hero.png";
 import curaflow_hero_en from "root/public/assets/curaflow/curaflow-en-hero.png";
 import curaflow_title from "root/public/assets/curaflow/curaflow-logo.svg";
+import multi_unit_converter_logo from "root/public/assets/multiunitconverter/multi-unit-converter_logo.svg";
 
 import { IconProps } from "@/app/types";
 
@@ -13,6 +15,8 @@ export const appIconsMap = {
 	github,
 	settings,
 	terminal,
+	multi_unit_converter,
+	multi_unit_converter_logo,
 	curaflow,
 	curaflow_title,
 	curaflow_hero_ar,

@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Flex, Label } from "@/app/UIComponents";
-import UIImage from "@/utils/Icon";
+import UIImage from "@/utils/UIImage";
 
 export default function Curaflow() {
 	return (

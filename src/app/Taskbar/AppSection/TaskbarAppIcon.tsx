@@ -12,7 +12,7 @@ import {
 } from "@/app/stores/appsSlice";
 import { useAppDispatch, useAppSelector } from "@/app/stores/hooks";
 import { TTaskbar } from "@/app/types";
-import UIImage from "@/utils/Icon";
+import UIImage from "@/utils/UIImage";
 import { cn } from "@/utils/cn";
 
 export function TaskbarAppIcon({

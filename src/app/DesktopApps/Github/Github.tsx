@@ -5,7 +5,7 @@ import { Flex, Label } from "@/app/UIComponents";
 import { selectTime } from "@/app/stores/appsSlice";
 import { useAppSelector } from "@/app/stores/hooks";
 import { TGithubRepo } from "@/app/types";
-import UIImage from "@/utils/Icon";
+import UIImage from "@/utils/UIImage";
 import { localeTimeFormatter } from "@/utils/formatting";
 
 import Repository from "./Components/Repository";

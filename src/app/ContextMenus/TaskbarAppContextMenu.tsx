@@ -20,7 +20,7 @@ import {
 	unpinApp,
 } from "@/app/stores/appsSlice";
 import { useAppDispatch, useAppSelector } from "@/app/stores/hooks";
-import UIImage from "@/utils/Icon";
+import UIImage from "@/utils/UIImage";
 
 export function TaskbarAppContextMenu({
 	children,
