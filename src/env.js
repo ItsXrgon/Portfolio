@@ -3,7 +3,6 @@ import { z } from "zod";
 
 export const env = createEnv({
 	server: {
-		DATABASE_URL: z.string().url(),
 		POSTGRES_URL_NON_POOLING: z.string().url(),
 		POSTGRES_USER: z.string(),
 		POSTGRES_HOST: z.string(),
@@ -25,7 +24,6 @@ export const env = createEnv({
 		NEXT_PUBLIC_PORT: z.string().optional(),
 	},
 	runtimeEnv: {
-		DATABASE_URL: process.env.DATABASE_URL,
 		POSTGRES_URL_NON_POOLING: process.env.POSTGRES_URL_NON_POOLING,
 		POSTGRES_USER: process.env.POSTGRES_USER,
 		POSTGRES_HOST: process.env.POSTGRES_HOST,
