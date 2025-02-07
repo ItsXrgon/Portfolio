@@ -5,11 +5,11 @@ import {
 	DropdownMenuContent,
 	DropdownMenuTrigger,
 	Label,
-} from "@/app/UIComponents";
-import { selectTime, selectTimeZone } from "@/app/stores/appsSlice";
-import { useAppSelector } from "@/app/stores/hooks";
-import { cn } from "@/utils/cn";
-import { localeDateFormatter, localeTimeFormatter } from "@/utils/formatting";
+} from "@/components/ui";
+import { localeDateFormatter, localeTimeFormatter } from "@/lib/formatting";
+import { cn } from "@/lib/utils";
+import { selectTime, selectTimeZone } from "@/store/appsSlice";
+import { useAppSelector } from "@/store/hooks";
 
 import ClockPopup from "./ClockPopup";
 

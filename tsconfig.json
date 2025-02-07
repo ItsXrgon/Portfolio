@@ -1,40 +1,46 @@
 {
 	"compilerOptions": {
-		"target": "ES2020",
-		"useDefineForClassFields": true,
-		"lib": ["ES2020", "DOM", "DOM.Iterable"],
-		"module": "ESNext",
 		"esModuleInterop": true,
 		"skipLibCheck": true,
-		"moduleResolution": "bundler",
-		"allowImportingTsExtensions": true,
+		"target": "es2022",
+		"allowJs": true,
 		"resolveJsonModule": true,
+		"moduleDetection": "force",
 		"isolatedModules": true,
-		"noEmit": true,
-		"jsx": "preserve",
+
+		/* Strictness */
 		"strict": true,
+		"noUncheckedIndexedAccess": true,
+		"checkJs": true,
+		"noErrorTruncation": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
-		"noFallthroughCasesInSwitch": true,
-		"allowJs": true,
 		"forceConsistentCasingInFileNames": true,
+
+		/* Bundled projects */
+		"lib": ["dom", "dom.iterable", "ES2022"],
+		"noEmit": true,
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"jsx": "preserve",
+		"plugins": [{ "name": "next" }],
 		"incremental": true,
-		"plugins": [
-			{
-				"name": "next"
-			}
-		],
+
+		"baseUrl": ".",
 		"paths": {
 			"@/*": ["./src/*"],
 			"root/*": ["./*"],
-			"public/*": ["./public/*"],
+			"public/*": ["./public/*"]
 		}
 	},
 	"include": [
-		"./src",
-		"./dist/types/**/*.ts",
-		"./next-env.d.ts",
+		".eslintrc.cjs",
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		"**/*.cjs",
+		"**/*.js",
 		".next/types/**/*.ts"
 	],
-	"exclude": ["./node_modules"]
+	"exclude": ["node_modules"]
 }

@@ -10,8 +10,7 @@ import {
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "@/app/UIComponents/DropDownMenu";
-import UIImage from "@/app/UIComponents/UIImage";
+} from "@/components/ui/DropDownMenu";
 import {
 	closeApp,
 	openApp,
@@ -19,8 +18,9 @@ import {
 	selectTaskbarById,
 	selectWindowById,
 	unpinApp,
-} from "@/app/stores/appsSlice";
-import { useAppDispatch, useAppSelector } from "@/app/stores/hooks";
+} from "@/store/appsSlice";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { Image } from "@/components/ui";
 
 export function TaskbarAppContextMenu({
 	children,
@@ -72,6 +72,10 @@ export function TaskbarAppContextMenu({
 		);
 	}, [dispatch, appId]);
 
+	if (!app) {
+		return null;
+	}
+
 	return (
 		<DropdownMenu
 			open={isOpen}
@@ -118,7 +122,7 @@ export function TaskbarAppContextMenu({
 						className="flex items-center gap-3"
 						onClick={handleOpen}
 					>
-						<UIImage icon={app.icon} width={24} height={24} />
+						<Image icon={app.icon} width={24} height={24} />
 						{t("context_menu.open")} {app.name}
 					</DropdownMenuItem>
 				)}

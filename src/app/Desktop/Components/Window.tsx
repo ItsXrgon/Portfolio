@@ -4,17 +4,18 @@ import { Maximize, Minimize, Minus, X } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { DraggableData, Rnd } from "react-rnd";
 
+import About from "@/app/Apps/About/About";
+import CheckCalculator from "@/app/Apps/CheckCalculator/CheckCalculator";
+import Curaflow from "@/app/Apps/Curaflow/Curaflow";
+import Github from "@/app/Apps/Github/Github";
+import HaskellChessGame from "@/app/Apps/HaskellChessGame/HaskellChessGame";
+import MUC from "@/app/Apps/MUC/MUC";
+import Settings from "@/app/Apps/Settings/Settings";
+import Terminal from "@/app/Apps/Terminal/Terminal";
+import Xrbot from "@/app/Apps/Xrbot/Xrbot";
 import { TopBarContextMenu } from "@/app/ContextMenus";
-import About from "@/app/DesktopApps/About/About";
-import CheckCalculator from "@/app/DesktopApps/CheckCalculator/CheckCalculator";
-import Curaflow from "@/app/DesktopApps/Curaflow/Curaflow";
-import Github from "@/app/DesktopApps/Github/Github";
-import HaskellChessGame from "@/app/DesktopApps/HaskellChessGame/HaskellChessGame";
-import MUC from "@/app/DesktopApps/MUC/MUC";
-import Settings from "@/app/DesktopApps/Settings/Settings";
-import Terminal from "@/app/DesktopApps/Terminal/Terminal";
-import Xrbot from "@/app/DesktopApps/Xrbot/Xrbot";
-import UIImage from "@/app/UIComponents/UIImage";
+import { TWindow } from "@/app/types";
+import { Image } from "@/components/ui";
 import {
 	closeApp,
 	maximizeApp,
@@ -22,9 +23,8 @@ import {
 	pushToFront,
 	relocateWindow,
 	unMaximizeApp,
-} from "@/app/stores/appsSlice";
-import { useAppDispatch } from "@/app/stores/hooks";
-import { TWindow } from "@/app/types";
+} from "@/store/appsSlice";
+import { useAppDispatch } from "@/store/hooks";
 
 interface WindowProps {
 	app: TWindow;
@@ -177,7 +177,7 @@ export default function Window({ app, zIndex }: WindowProps) {
 						!isMaximized && "rounded-t-md"
 					}`}
 				>
-					<UIImage icon={app.icon} width={36} height={36} />
+					<Image icon={app.icon} width={36} height={36} />
 					<div className="flex items-center">
 						<div className="cursor-pointer p-1 text-window-header-icon-default hover:text-window-header-icon-hovered active:text-window-header-icon-pressed">
 							<Minus size={24} onClick={handleMinimize} />

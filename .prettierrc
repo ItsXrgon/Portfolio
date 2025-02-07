@@ -10,5 +10,6 @@
 	],
 	"importOrder": ["^@/(.*)$", "^[./]"],
 	"importOrderSeparation": true,
-	"importOrderSortSpecifiers": true
+	"importOrderSortSpecifiers": true,
+	"tailwindConfig": "./tailwind.config.ts"
 }

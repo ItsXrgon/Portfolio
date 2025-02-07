@@ -8,15 +8,15 @@ import {
 	ContextMenuItem,
 	ContextMenuSeparator,
 	ContextMenuTrigger,
-} from "@/app/UIComponents/ContextMenu";
+} from "@/components/ui/ContextMenu";
 import {
 	closeApp,
 	maximizeApp,
 	minimizeApp,
 	selectWindowById,
 	unMaximizeApp,
-} from "@/app/stores/appsSlice";
-import { useAppDispatch, useAppSelector } from "@/app/stores/hooks";
+} from "@/store/appsSlice";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 
 export function TopBarContextMenu({
 	children,

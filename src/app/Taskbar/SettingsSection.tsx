@@ -3,15 +3,11 @@
 import { Settings } from "lucide-react";
 import { useCallback } from "react";
 
-import {
-	openApp,
-	selectWindowById,
-	unMinimizeApp,
-} from "@/app/stores/appsSlice";
-import { useAppDispatch, useAppSelector } from "@/app/stores/hooks";
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/utils";
+import { openApp, selectWindowById, unMinimizeApp } from "@/store/appsSlice";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 
-import { Flex } from "../UIComponents";
+import { Flex } from "@/components/ui";
 import Clock from "./SettingsSection/Clock/Clock";
 import LanguageSelector from "./SettingsSection/LanguageSelector";
 

@@ -3,17 +3,17 @@ import { CSS } from "@dnd-kit/utilities";
 import { useCallback, useMemo } from "react";
 
 import { TaskbarAppContextMenu } from "@/app/ContextMenus";
-import UIImage from "@/app/UIComponents/UIImage";
+import { TTaskbar } from "@/app/types";
+import { Image } from "@/components/ui";
+import { cn } from "@/lib/utils";
 import {
 	isAppMinimized,
 	isAppOpen,
 	minimizeApp,
 	openApp,
 	unMinimizeApp,
-} from "@/app/stores/appsSlice";
-import { useAppDispatch, useAppSelector } from "@/app/stores/hooks";
-import { TTaskbar } from "@/app/types";
-import { cn } from "@/utils/cn";
+} from "@/store/appsSlice";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 
 export function TaskbarAppIcon({
 	app,
@@ -85,7 +85,7 @@ export function TaskbarAppIcon({
 				)}
 				key={app.id}
 			>
-				<UIImage icon={app.icon} width={40} height={40} />
+				<Image icon={app.icon} width={40} height={40} />
 			</div>
 		</TaskbarAppContextMenu>
 	);

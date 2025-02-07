@@ -7,10 +7,10 @@ import {
 } from "@dnd-kit/core";
 import { rectSortingStrategy } from "@dnd-kit/sortable";
 
-import { reOrderApps, selectTaskbar } from "@/app/stores/appsSlice";
-import { useAppDispatch, useAppSelector } from "@/app/stores/hooks";
 import DragAndDropProvider from "@/providers/DragAndDropProvider";
 import SortableContextProvider from "@/providers/SortableContextProvider";
+import { reOrderApps, selectTaskbar } from "@/store/appsSlice";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 
 import { TaskbarAppIcon } from "./AppSection/TaskbarAppIcon";
 

@@ -3,16 +3,16 @@
 import { DragEndEvent } from "@dnd-kit/core";
 import { useMemo } from "react";
 
+import { TApp, TWindow } from "@/app/types";
+import DragAndDropProvider from "@/providers/DragAndDropProvider";
 import {
 	columnCount,
 	relocateApp,
 	rowCount,
 	selectApps,
 	selectWindows,
-} from "@/app/stores/appsSlice";
-import { useAppDispatch, useAppSelector } from "@/app/stores/hooks";
-import { TApp, TWindow } from "@/app/types";
-import DragAndDropProvider from "@/providers/DragAndDropProvider";
+} from "@/store/appsSlice";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 
 import DesktopGridSlot from "./Components/DesktopGridSlot";
 import Window from "./Components/Window";

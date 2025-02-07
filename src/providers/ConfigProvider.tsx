@@ -2,8 +2,8 @@
 
 import { useEffect } from "react";
 
-import { updateTime } from "@/app/stores/appsSlice";
-import { useAppDispatch } from "@/app/stores/hooks";
+import { updateTime } from "@/store/appsSlice";
+import { useAppDispatch } from "@/store/hooks";
 
 const ConfigProvider = ({ children }: { children: React.ReactNode }) => {
 	const dispatch = useAppDispatch();

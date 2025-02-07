@@ -1,6 +1,6 @@
 import { ImageProps } from "next/image";
 
-import { AppIcons } from "@/app/UIComponents/UIImage";
+import { AppIcons } from "@/components/ui/Image";
 import palette from "@/styles/palette";
 
 export type TApp = {
@@ -8,15 +8,16 @@ export type TApp = {
 	index?: number;
 	name: string;
 	icon: AppIcons;
-	type: "app" | "folder";
+	type: "app" | "directory";
 	position: number;
+	parentDirectory: string;
 };
 
 export type TWindow = {
 	id: string;
 	name: string;
 	icon: AppIcons;
-	type: "app" | "folder";
+	type: "app" | "directory";
 	windowState: {
 		isMinimized: boolean;
 		isMaximized: boolean;
@@ -39,8 +40,8 @@ export type TTaskbar = {
 	pinned: boolean;
 };
 
-export type TFolder = TApp & {
-	type: "folder";
+export type TDirectory = TApp & {
+	type: "directory";
 	children: TApp[];
 };
 

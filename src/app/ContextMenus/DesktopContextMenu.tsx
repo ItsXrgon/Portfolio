@@ -8,7 +8,7 @@ import {
 	ContextMenuItem,
 	ContextMenuSeparator,
 	ContextMenuTrigger,
-} from "@/app/UIComponents/ContextMenu";
+} from "@/components/ui/ContextMenu";
 
 export function DesktopContextMenu({
 	children,

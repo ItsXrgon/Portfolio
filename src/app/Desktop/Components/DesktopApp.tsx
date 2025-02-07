@@ -2,12 +2,11 @@ import { useDraggable } from "@dnd-kit/core";
 import { CSS, Transform } from "@dnd-kit/utilities";
 import { useCallback } from "react";
 
-import { Flex, Label } from "@/app/UIComponents";
-import UIImage from "@/app/UIComponents/UIImage";
-import { isAppOpen, openApp, unMinimizeApp } from "@/app/stores/appsSlice";
-import { useAppDispatch, useAppSelector } from "@/app/stores/hooks";
 import { TApp } from "@/app/types";
-import { cn } from "@/utils/cn";
+import { Flex, Image, Label } from "@/components/ui";
+import { cn } from "@/lib/utils";
+import { isAppOpen, openApp, unMinimizeApp } from "@/store/appsSlice";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 
 interface DesktopAppProps {
 	app: TApp;
@@ -64,7 +63,7 @@ export default function DesktopApp({ app }: DesktopAppProps): JSX.Element {
 				{ "opacity-70 bg-desktop-app-drag-background ": isDragging },
 			)}
 		>
-			<UIImage icon={app.icon} width={48} height={48} />
+			<Image icon={app.icon} width={48} height={48} />
 			<Label.Thin300>{app.name}</Label.Thin300>
 		</Flex>
 	);

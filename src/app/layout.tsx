@@ -4,16 +4,11 @@ import { Metadata } from "next";
 import { Cairo } from "next/font/google";
 import React from "react";
 
-
-
 import ConfigProvider from "@/providers/ConfigProvider";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import ReduxProvider from "@/providers/ReduxProvider";
 
-
-
 import "../styles/global.css";
-
 
 //👇 Configure our font object
 const cairo = Cairo({

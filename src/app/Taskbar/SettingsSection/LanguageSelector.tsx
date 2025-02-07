@@ -3,6 +3,7 @@
 import { Globe2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
+import i18n, { languageOptions } from "@/app/i18n";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -11,9 +12,8 @@ import {
 	DropdownMenuRadioItem,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "@/app/UIComponents/DropDownMenu";
-import i18n, { languageOptions } from "@/app/i18n";
-import { cn } from "@/utils/cn";
+} from "@/components/ui/DropDownMenu";
+import { cn } from "@/lib/utils";
 
 export default function LanguageSelector() {
 	const { t } = useTranslation();

@@ -17,6 +17,7 @@ dist-ssr
 next-env.d.ts
 dist
 out
+.env
 
 # Editor directories and files
 .vscode/*
@@ -28,3 +29,4 @@ out
 *.njsproj
 *.sln
 *.sw?
+.vercel

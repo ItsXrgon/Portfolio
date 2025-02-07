@@ -2,14 +2,14 @@ import { Pin, PinOff, X } from "lucide-react";
 import { ReactNode, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 
+import { Image } from "@/components/ui";
 import {
 	ContextMenu,
 	ContextMenuContent,
 	ContextMenuItem,
 	ContextMenuSeparator,
 	ContextMenuTrigger,
-} from "@/app/UIComponents/ContextMenu";
-import UIImage from "@/app/UIComponents/UIImage";
+} from "@/components/ui/ContextMenu";
 import {
 	closeApp,
 	openApp,
@@ -18,8 +18,8 @@ import {
 	selectTaskbarById,
 	selectWindowById,
 	unpinApp,
-} from "@/app/stores/appsSlice";
-import { useAppDispatch, useAppSelector } from "@/app/stores/hooks";
+} from "@/store/appsSlice";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 
 export function DesktopAppContextMenu({
 	children,
@@ -69,6 +69,10 @@ export function DesktopAppContextMenu({
 		);
 	}, [dispatch, appId]);
 
+	if (!app) {
+		return null;
+	}
+
 	return (
 		<ContextMenu>
 			<ContextMenuTrigger>{children}</ContextMenuTrigger>
@@ -103,7 +107,7 @@ export function DesktopAppContextMenu({
 						onClick={handleOpen}
 					>
 						<div className="h-5 w-5">
-							<UIImage icon={app.icon} />
+							<Image icon={app.icon} />
 						</div>
 						{t("context_menu.open")} {app.name}
 					</ContextMenuItem>
