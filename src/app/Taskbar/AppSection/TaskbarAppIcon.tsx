@@ -85,7 +85,7 @@ export function TaskbarAppIcon({
 				)}
 				key={app.id}
 			>
-				<Image icon={app.icon} width={40} height={40} />
+				<Image icon={app.icon} width={40} height={40} alt="" />
 			</div>
 		</TaskbarAppContextMenu>
 	);

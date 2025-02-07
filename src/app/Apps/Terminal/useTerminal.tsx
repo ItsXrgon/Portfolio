@@ -16,7 +16,7 @@ export function useTerminal() {
 	const [path, setPath] = useState("/");
 
 	function getTerminalOutput(input: string) {
-		const [command, ...args] = input.split(" ");
+		const [command] = input.split(" ");
 
 		if (command in terminalCommands) {
 			return terminalCommands[

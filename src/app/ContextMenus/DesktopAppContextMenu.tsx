@@ -107,7 +107,7 @@ export function DesktopAppContextMenu({
 						onClick={handleOpen}
 					>
 						<div className="h-5 w-5">
-							<Image icon={app.icon} />
+							<Image icon={app.icon} alt="" />
 						</div>
 						{t("context_menu.open")} {app.name}
 					</ContextMenuItem>

@@ -177,7 +177,7 @@ export default function Window({ app, zIndex }: WindowProps) {
 						!isMaximized && "rounded-t-md"
 					}`}
 				>
-					<Image icon={app.icon} width={36} height={36} />
+					<Image icon={app.icon} width={36} height={36} alt="" />
 					<div className="flex items-center">
 						<div className="cursor-pointer p-1 text-window-header-icon-default hover:text-window-header-icon-hovered active:text-window-header-icon-pressed">
 							<Minus size={24} onClick={handleMinimize} />

@@ -39,7 +39,7 @@ export default function HaskellChessGame() {
 					the king in check.
 					<br />
 					The app also supports visualizing the board using the
-					terminal, and moving pieces by inputting the piece's
+					terminal, and moving pieces by inputting the piece&apos;s
 					position and the desired position.
 				</Label.Mid300>
 			</Flex>

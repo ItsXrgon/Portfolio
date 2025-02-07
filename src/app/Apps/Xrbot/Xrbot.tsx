@@ -6,7 +6,7 @@ import {
 } from "devicons-react";
 import React from "react";
 
-import { Flex, Label, Image} from "@/components/ui";
+import { Flex, Image, Label } from "@/components/ui";
 
 export default function Xrbot() {
 	return (
@@ -35,8 +35,18 @@ export default function Xrbot() {
 				</Label.Mid300>
 			</Flex>
 			<Flex gap="2" justify="around" align="center" isWrapped>
-				<Image icon="xrbot_tic_tac_toe" width={500} height={500} />
-				<Image icon="xrbot_flag_guesser" width={500} height={500} />
+				<Image
+					icon="xrbot_tic_tac_toe"
+					width={500}
+					height={500}
+					alt=""
+				/>
+				<Image
+					icon="xrbot_flag_guesser"
+					width={500}
+					height={500}
+					alt=""
+				/>
 			</Flex>
 			<Flex isColumn gap="1">
 				<Label.Big400>Features</Label.Big400>
@@ -59,9 +69,9 @@ export default function Xrbot() {
 				<Label.Big400>How does this work?</Label.Big400>
 				<Label.Mid300>
 					The bot is hosted on Replit and is always online using the
-					Replit's Uptime feature. The bot is made using Discord.py
-					and is hosted on a Flask server to provide the uptime
-					service.
+					Replit&apos;s Uptime feature. The bot is made using
+					Discord.py and is hosted on a Flask server to provide the
+					uptime service.
 					<br />
 					The bot uses Channel IDs to identify the channels that the
 					games are ongoing on, allowing multiple games to be played

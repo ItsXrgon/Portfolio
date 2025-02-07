@@ -31,7 +31,7 @@ export default function Terminal() {
 	useEffect(() => {
 		focusInput();
 		setPath("home");
-	}, [focusInput]);
+	}, [focusInput, setPath]);
 
 	return (
 		<Flex
@@ -46,7 +46,7 @@ export default function Terminal() {
 			<Label.Mid200>
 				You are currently in the {path} directory.
 				<br />
-				enter "help" for a list of commands.
+				enter &quot;help&quot; for a list of commands.
 			</Label.Mid200>
 			{commandHistory.map((line, index) => (
 				<>

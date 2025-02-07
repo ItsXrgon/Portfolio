@@ -16,8 +16,8 @@ export default function About() {
 				<Label.Big400>Why I made this?</Label.Big400>
 				<Label.Mid300>
 					I wanted to make a Portfolio site that was more than just a
-					landing page with a few images and links. The "I'm not like
-					other girls" kind of Portfolio. <br />
+					landing page with a few images and links. The &quot;I&apos;m not like
+					other girls&quot; kind of Portfolio. <br />
 					So I made this. A Desktop Environment that is a Portfolio
 					site but also a bit more than that.
 				</Label.Mid300>
@@ -35,7 +35,7 @@ export default function About() {
 						>
 							here
 						</a>
-						. But if you're interested in the details, here they
+						. But if you&apos;re interested in the details, here they
 						are:
 					</Label.Mid300>
 				</Flex>
@@ -80,7 +80,7 @@ export default function About() {
 				<Flex isColumn gap="1">
 					<Label.Big300>Settings (You are here!)</Label.Big300>
 					<Label.Mid300>
-						The Settings App's only interesting feature is the Theme
+						The Settings App&apos;s only interesting feature is the Theme
 						update feature. For that I used tailwind config to read
 						CSS variables that I can change on the fly. The theme
 						inputs are dynamically generated from a palette JSON
@@ -123,7 +123,7 @@ export default function About() {
 				<Label.Big400>Font</Label.Big400>
 				<Label.Mid300>
 					The font used is Cairo, a Google Font. Not hard to guess why
-					I chose it considering where I'm from.
+					I chose it considering where I&apos;m from.
 				</Label.Mid300>
 			</Flex>
 		</Flex>

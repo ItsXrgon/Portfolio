@@ -20,14 +20,14 @@ export default function Curaflow() {
 			className="w-full gap-4 overflow-y-scroll bg-white p-4"
 		>
 			<Flex isColumn gap="4">
-				<Image icon="curaflow_title" width={200} height={200} />
+				<Image icon="curaflow_title" width={200} height={200} alt="" />
 				<Label.Mid300>
 					CRMS for the clinics, it helps the clinics to manage their
 					patients, appointments, employees, and medical records. The
 					system also provides a dashboard for the clinic owner to
-					monitor the clinic's performance and the employees'
-					performance with the ability to generate reports and view
-					statistics.
+					monitor the clinic&apos;s performance and the
+					employees&apos; performance with the ability to generate
+					reports and view statistics.
 					<br />
 					<br />
 					This was made with{" "}
@@ -45,17 +45,27 @@ export default function Curaflow() {
 				</Label.Mid300>
 			</Flex>
 			<Flex isColumn gap="2" align="center" isWrapped>
-				<Image icon="curaflow_hero_en" width={1000} height={1000} />
-				<Image icon="curaflow_hero_ar" width={1000} height={1000} />
+				<Image
+					icon="curaflow_hero_en"
+					width={1000}
+					height={1000}
+					alt=""
+				/>
+				<Image
+					icon="curaflow_hero_ar"
+					width={1000}
+					height={1000}
+					alt=""
+				/>
 			</Flex>
 			<Flex isColumn gap="2">
 				<Label.Big400>Status</Label.Big400>
 				<Label.Mid300>
 					This project is completed and delivered to the client, and
 					the system is currently in use by the clinic and maintained
-					by the us but is not open-sourced due to the client's
-					request so we can't provide a live demo or a repository for
-					this project.
+					by the us but is not open-sourced due to the client&apos;s
+					request so we can&apos;t provide a live demo or a repository
+					for this project.
 				</Label.Mid300>
 			</Flex>
 			<Flex isColumn gap="2">
@@ -65,13 +75,13 @@ export default function Curaflow() {
 					<Label.Mid300>
 						- Add, Edit, Delete Patients
 						<br />
-						- View Patient's Medical Records
+						- View Patient&apos;s Medical Records
 						<br />
-						- View Patient's Appointments
+						- View Patient&apos;s Appointments
 						<br />
-						- View Patient's Prescriptions
+						- View Patient&apos;s Prescriptions
 						<br />
-						- View and manage Patient's Invoices and Payments
+						- View and manage Patient&apos;s Invoices and Payments
 						<br />
 					</Label.Mid300>
 				</Flex>
@@ -84,11 +94,12 @@ export default function Curaflow() {
 						<br />
 						- Cancel or fast forward appointments
 						<br />
-						- Fill in the patient's medical record during the
+						- Fill in the patient&apos;s medical record during the
 						appointment
 						<br />
 						- Fill custom forms during the appointment (e.g. Patient
-						data form) to be saved in the patient's medical record
+						data form) to be saved in the patient&apos;s medical
+						record
 						<br />
 					</Label.Mid300>
 				</Flex>
@@ -115,8 +126,8 @@ export default function Curaflow() {
 				<Flex isColumn gap="1">
 					<Label.Big300>Admin</Label.Big300>
 					<Label.Mid300>
-						- View charts and statistics for the clinic's
-						performance and the employees' performance.
+						- View charts and statistics for the clinic&apos;s
+						performance and the employees&apos; performance.
 						<br />
 						- Create, Edit, Delete forms to be filled during the
 						appointment.

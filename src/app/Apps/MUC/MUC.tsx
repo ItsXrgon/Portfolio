@@ -28,6 +28,7 @@ export default function MUC() {
 						icon="multi_unit_converter_logo"
 						width={200}
 						height={200}
+						alt=""
 					/>
 				</a>
 			</Flex>
@@ -86,10 +87,10 @@ export default function MUC() {
 			<Flex isColumn gap="2">
 				<Label.Big400>How does this work?</Label.Big400>
 				<Label.Mid300>
-					Website is boring, let's talk about the library. The library
-					works by parsing the input string and extracting the units
-					and values, using a regex pattern that can detect units
-					using their aliases to ensure no unit is missed.
+					Website is boring, let&apos;s talk about the library. The
+					library works by parsing the input string and extracting the
+					units and values, using a regex pattern that can detect
+					units using their aliases to ensure no unit is missed.
 					<br />
 					The units are then converted to their respective selected
 					output unit using conversion factors stored in the library.

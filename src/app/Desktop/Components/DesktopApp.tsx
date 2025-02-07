@@ -63,7 +63,7 @@ export default function DesktopApp({ app }: DesktopAppProps): JSX.Element {
 				{ "opacity-70 bg-desktop-app-drag-background ": isDragging },
 			)}
 		>
-			<Image icon={app.icon} width={48} height={48} />
+			<Image icon={app.icon} width={48} height={48} alt="" />
 			<Label.Thin300>{app.name}</Label.Thin300>
 		</Flex>
 	);

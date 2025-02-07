@@ -4,6 +4,7 @@ import { Pin, PinOff, X } from "lucide-react";
 import { ReactNode, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { Image } from "@/components/ui";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -20,7 +21,6 @@ import {
 	unpinApp,
 } from "@/store/appsSlice";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { Image } from "@/components/ui";
 
 export function TaskbarAppContextMenu({
 	children,
@@ -122,7 +122,7 @@ export function TaskbarAppContextMenu({
 						className="flex items-center gap-3"
 						onClick={handleOpen}
 					>
-						<Image icon={app.icon} width={24} height={24} />
+						<Image icon={app.icon} width={24} height={24} alt="" />
 						{t("context_menu.open")} {app.name}
 					</DropdownMenuItem>
 				)}
