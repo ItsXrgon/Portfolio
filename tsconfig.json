@@ -30,7 +30,8 @@
 		"paths": {
 			"@/*": ["./src/*"],
 			"root/*": ["./*"],
-			"public/*": ["./public/*"]
+			"public/*": ["./public/*"],
+			"@assets/*": ["./public/assets/*"]
 		}
 	},
 	"include": [

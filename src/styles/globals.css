@@ -1,0 +1,354 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+	--color-chart-1: var(--chart-1);
+	--color-chart-2: var(--chart-2);
+	--color-chart-3: var(--chart-3);
+	--color-chart-4: var(--chart-4);
+	--color-chart-5: var(--chart-5);
+	--color-sidebar: var(--sidebar);
+	--color-sidebar-foreground: var(--sidebar-foreground);
+	--color-sidebar-primary: var(--sidebar-primary);
+	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+	--color-sidebar-accent: var(--sidebar-accent);
+	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+	--color-sidebar-border: var(--sidebar-border);
+	--color-sidebar-ring: var(--sidebar-ring);
+
+	--color-desktop-background: var(--desktop-background);
+	--color-desktop-app-background: var(--desktop-app-background);
+	--color-desktop-app-text: var(--desktop-app-text);
+	--color-desktop-app-hover-background: var(--desktop-app-hover-background);
+	--color-desktop-app-hover-text: var(--desktop-app-hover-text);
+	--color-desktop-app-drag-background: var(--desktop-app-drag-background);
+	--color-desktop-app-drag-text: var(--desktop-app-drag-text);
+	--color-taskbar-background: var(--taskbar-background);
+	--color-taskbar-border: var(--taskbar-border);
+	--color-taskbar-separator: var(--taskbar-separator);
+	--color-taskbar-app-background: var(--taskbar-app-background);
+	--color-taskbar-app-open-background: var(--taskbar-app-open-background);
+	--color-taskbar-app-open-indicator: var(--taskbar-app-open-indicator);
+	--color-taskbar-app-drag-background: var(--taskbar-app-drag-background);
+	--color-taskbar-text: var(--taskbar-text);
+	--color-taskbar-icon-default: var(--taskbar-icon-default);
+	--color-taskbar-icon-hover: var(--taskbar-icon-hover);
+	--color-taskbar-icon-pressed: var(--taskbar-icon-pressed);
+	--color-taskbar-clock-background: var(--taskbar-clock-background);
+	--color-taskbar-clock-foreground: var(--taskbar-clock-foreground);
+	--color-taskbar-clock-hands-hour: var(--taskbar-clock-hands-hour);
+	--color-taskbar-clock-hands-minute: var(--taskbar-clock-hands-minute);
+	--color-taskbar-clock-hands-second: var(--taskbar-clock-hands-second);
+	--color-taskbar-clock-number: var(--taskbar-clock-number);
+	--color-window-background: var(--window-background);
+	--color-window-header-background: var(--window-header-background);
+	--color-window-header-text: var(--window-header-text);
+	--color-window-header-icon-default: var(--window-header-icon-default);
+	--color-window-header-icon-hovered: var(--window-header-icon-hovered);
+	--color-window-header-icon-pressed: var(--window-header-icon-pressed);
+	--color-action-primary-default: var(--action-primary-default);
+	--color-action-primary-hovered: var(--action-primary-hovered);
+	--color-action-primary-pressed: var(--action-primary-pressed);
+	--color-action-primary-disabled: var(--action-primary-disabled);
+	--color-action-primary-icon-default: var(--action-primary-icon-default);
+	--color-action-primary-icon-hovered: var(--action-primary-icon-hovered);
+	--color-action-primary-icon-pressed: var(--action-primary-icon-pressed);
+	--color-action-primary-icon-disabled: var(--action-primary-icon-disabled);
+	--color-action-white-default: var(--action-white-default);
+	--color-action-white-hovered: var(--action-white-hovered);
+	--color-action-white-pressed: var(--action-white-pressed);
+	--color-action-white-disabled: var(--action-white-disabled);
+	--color-action-white-icon-default: var(--action-white-icon-default);
+	--color-action-white-icon-hovered: var(--action-white-icon-hovered);
+	--color-action-white-icon-pressed: var(--action-white-icon-pressed);
+	--color-action-white-icon-disabled: var(--action-white-icon-disabled);
+	--color-action-success-default: var(--action-success-default);
+	--color-action-success-hovered: var(--action-success-hovered);
+	--color-action-success-pressed: var(--action-success-pressed);
+	--color-action-success-disabled: var(--action-success-disabled);
+	--color-action-success-icon-default: var(--action-success-icon-default);
+	--color-action-success-icon-hovered: var(--action-success-icon-hovered);
+	--color-action-success-icon-pressed: var(--action-success-icon-pressed);
+	--color-action-success-icon-disabled: var(--action-success-icon-disabled);
+	--color-action-warning-default: var(--action-warning-default);
+	--color-action-warning-hovered: var(--action-warning-hovered);
+	--color-action-warning-pressed: var(--action-warning-pressed);
+	--color-action-warning-disabled: var(--action-warning-disabled);
+	--color-action-warning-icon-default: var(--action-warning-icon-default);
+	--color-action-warning-icon-hovered: var(--action-warning-icon-hovered);
+	--color-action-warning-icon-pressed: var(--action-warning-icon-pressed);
+	--color-action-warning-icon-disabled: var(--action-warning-icon-disabled);
+	--color-action-critical-default: var(--action-critical-default);
+	--color-action-critical-hovered: var(--action-critical-hovered);
+	--color-action-critical-pressed: var(--action-critical-pressed);
+	--color-action-critical-disabled: var(--action-critical-disabled);
+	--color-action-critical-icon-default: var(--action-critical-icon-default);
+	--color-action-critical-icon-hovered: var(--action-critical-icon-hovered);
+	--color-action-critical-icon-pressed: var(--action-critical-icon-pressed);
+	--color-action-critical-icon-disabled: var(--action-critical-icon-disabled);
+}
+
+:root {
+	--radius: 0.625rem;
+	--background: oklch(1 0 0);
+	--foreground: oklch(0.145 0 0);
+	--card: oklch(1 0 0);
+	--card-foreground: oklch(0.145 0 0);
+	--popover: oklch(1 0 0);
+	--popover-foreground: oklch(0.145 0 0);
+	--primary: oklch(0.205 0 0);
+	--primary-foreground: oklch(0.985 0 0);
+	--secondary: oklch(0.97 0 0);
+	--secondary-foreground: oklch(0.205 0 0);
+	--muted: oklch(0.97 0 0);
+	--muted-foreground: oklch(0.556 0 0);
+	--accent: oklch(0.97 0 0);
+	--accent-foreground: oklch(0.205 0 0);
+	--destructive: oklch(0.577 0.245 27.325);
+	--border: oklch(0.922 0 0);
+	--input: oklch(0.922 0 0);
+	--ring: oklch(0.708 0 0);
+	--chart-1: oklch(0.646 0.222 41.116);
+	--chart-2: oklch(0.6 0.118 184.704);
+	--chart-3: oklch(0.398 0.07 227.392);
+	--chart-4: oklch(0.828 0.189 84.429);
+	--chart-5: oklch(0.769 0.188 70.08);
+	--sidebar: oklch(0.985 0 0);
+	--sidebar-foreground: oklch(0.145 0 0);
+	--sidebar-primary: oklch(0.205 0 0);
+	--sidebar-primary-foreground: oklch(0.985 0 0);
+	--sidebar-accent: oklch(0.97 0 0);
+	--sidebar-accent-foreground: oklch(0.205 0 0);
+	--sidebar-border: oklch(0.922 0 0);
+	--sidebar-ring: oklch(0.708 0 0);
+
+	/* Desktop */
+	--desktop-background: #4f7cac;
+	--desktop-app-background: #ffffff;
+	--desktop-app-text: #ffffff;
+	--desktop-app-hover-background: #d0d0d0a0;
+	--desktop-app-hover-text: #111111;
+	--desktop-app-drag-background: #d0d0d0;
+	--desktop-app-drag-text: #000000;
+
+	/* Taskbar */
+	--taskbar-background: #222222;
+	--taskbar-border: #333333;
+	--taskbar-separator: #ffffff;
+	--taskbar-app-background: #ffffff;
+	--taskbar-app-open-background: #ffffff;
+	--taskbar-app-open-indicator: #ff0000;
+	--taskbar-app-drag-background: #cfcfcf;
+	--taskbar-text: #ffffff;
+	--taskbar-icon-default: #ffffff;
+	--taskbar-icon-hover: #d0d0d030;
+	--taskbar-icon-pressed: #d0d0d060;
+	--taskbar-clock-background: #000000;
+	--taskbar-clock-foreground: #ffffff;
+	--taskbar-clock-hands-hour: #ff4500;
+	--taskbar-clock-hands-minute: #ffffff;
+	--taskbar-clock-hands-second: #ff4500;
+	--taskbar-clock-number: #000000;
+
+	/* Window */
+	--window-background: #f8f8f8;
+	--window-header-background: #0066cc;
+	--window-header-text: #ffffff;
+	--window-header-icon-default: #ffffff;
+	--window-header-icon-hovered: #44474a;
+	--window-header-icon-pressed: #1a1c1d;
+
+	/* Button */
+	--action-primary-default: #007bff;
+	--action-primary-hovered: #0056b3;
+	--action-primary-pressed: #003f7f;
+	--action-primary-disabled: #cccccc;
+	--action-primary-icon-default: #ffffff;
+	--action-primary-icon-hovered: #ffffff;
+	--action-primary-icon-pressed: #44474a;
+	--action-primary-icon-disabled: #1a1c1d;
+
+	--action-white-default: #ffffff;
+	--action-white-hovered: #f0f0f0;
+	--action-white-pressed: #e0e0e0;
+	--action-white-disabled: #cccccc;
+	--action-white-icon-default: #333333;
+	--action-white-icon-hovered: #333333;
+	--action-white-icon-pressed: #44474a;
+	--action-white-icon-disabled: #1a1c1d;
+
+	--action-success-default: #28a745;
+	--action-success-hovered: #218838;
+	--action-success-pressed: #1e7e34;
+	--action-success-disabled: #cccccc;
+	--action-success-icon-default: #ffffff;
+	--action-success-icon-hovered: #ffffff;
+	--action-success-icon-pressed: #44474a;
+	--action-success-icon-disabled: #1a1c1d;
+
+	--action-warning-default: #ffc107;
+	--action-warning-hovered: #e0a800;
+	--action-warning-pressed: #d39e00;
+	--action-warning-disabled: #cccccc;
+	--action-warning-icon-default: #333333;
+	--action-warning-icon-hovered: #333333;
+	--action-warning-icon-pressed: #44474a;
+	--action-warning-icon-disabled: #1a1c1d;
+
+	--action-critical-default: #dc3545;
+	--action-critical-hovered: #c82333;
+	--action-critical-pressed: #bd2130;
+	--action-critical-disabled: #cccccc;
+	--action-critical-icon-default: #ffffff;
+	--action-critical-icon-hovered: #ffffff;
+	--action-critical-icon-pressed: #44474a;
+	--action-critical-icon-disabled: #1a1c1d;
+}
+
+.dark {
+	--background: oklch(0.145 0 0);
+	--foreground: oklch(0.985 0 0);
+	--card: oklch(0.205 0 0);
+	--card-foreground: oklch(0.985 0 0);
+	--popover: oklch(0.205 0 0);
+	--popover-foreground: oklch(0.985 0 0);
+	--primary: oklch(0.922 0 0);
+	--primary-foreground: oklch(0.205 0 0);
+	--secondary: oklch(0.269 0 0);
+	--secondary-foreground: oklch(0.985 0 0);
+	--muted: oklch(0.269 0 0);
+	--muted-foreground: oklch(0.708 0 0);
+	--accent: oklch(0.269 0 0);
+	--accent-foreground: oklch(0.985 0 0);
+	--destructive: oklch(0.704 0.191 22.216);
+	--border: oklch(1 0 0 / 10%);
+	--input: oklch(1 0 0 / 15%);
+	--ring: oklch(0.556 0 0);
+	--chart-1: oklch(0.488 0.243 264.376);
+	--chart-2: oklch(0.696 0.17 162.48);
+	--chart-3: oklch(0.769 0.188 70.08);
+	--chart-4: oklch(0.627 0.265 303.9);
+	--chart-5: oklch(0.645 0.246 16.439);
+	--sidebar: oklch(0.205 0 0);
+	--sidebar-foreground: oklch(0.985 0 0);
+	--sidebar-primary: oklch(0.488 0.243 264.376);
+	--sidebar-primary-foreground: oklch(0.985 0 0);
+	--sidebar-accent: oklch(0.269 0 0);
+	--sidebar-accent-foreground: oklch(0.985 0 0);
+	--sidebar-border: oklch(1 0 0 / 10%);
+	--sidebar-ring: oklch(0.556 0 0);
+
+	/* Desktop */
+	--desktop-background: #4f7cac;
+	--desktop-app-background: #ffffff;
+	--desktop-app-text: #ffffff;
+	--desktop-app-hover-background: #d0d0d0a0;
+	--desktop-app-hover-text: #111111;
+	--desktop-app-drag-background: #d0d0d0;
+	--desktop-app-drag-text: #000000;
+
+	/* Taskbar */
+	--taskbar-background: #222222;
+	--taskbar-border: #333333;
+	--taskbar-separator: #ffffff;
+	--taskbar-app-background: #ffffff;
+	--taskbar-app-open-background: #ffffff;
+	--taskbar-app-open-indicator: #ff0000;
+	--taskbar-app-drag-background: #cfcfcf;
+	--taskbar-text: #ffffff;
+	--taskbar-icon-default: #ffffff;
+	--taskbar-icon-hover: #d0d0d030;
+	--taskbar-icon-pressed: #d0d0d060;
+	--taskbar-clock-background: #000000;
+	--taskbar-clock-foreground: #ffffff;
+	--taskbar-clock-hands-hour: #ff4500;
+	--taskbar-clock-hands-minute: #ffffff;
+	--taskbar-clock-hands-second: #ff4500;
+	--taskbar-clock-number: #000000;
+
+	/* Window */
+	--window-background: #f8f8f8;
+	--window-header-background: #0066cc;
+	--window-header-text: #ffffff;
+	--window-header-icon-default: #ffffff;
+	--window-header-icon-hovered: #44474a;
+	--window-header-icon-pressed: #1a1c1d;
+
+	/* Button */
+	--action-primary-default: #007bff;
+	--action-primary-hovered: #0056b3;
+	--action-primary-pressed: #003f7f;
+	--action-primary-disabled: #cccccc;
+	--action-primary-icon-default: #ffffff;
+	--action-primary-icon-hovered: #ffffff;
+	--action-primary-icon-pressed: #44474a;
+	--action-primary-icon-disabled: #1a1c1d;
+
+	--action-white-default: #ffffff;
+	--action-white-hovered: #f0f0f0;
+	--action-white-pressed: #e0e0e0;
+	--action-white-disabled: #cccccc;
+	--action-white-icon-default: #333333;
+	--action-white-icon-hovered: #333333;
+	--action-white-icon-pressed: #44474a;
+	--action-white-icon-disabled: #1a1c1d;
+
+	--action-success-default: #28a745;
+	--action-success-hovered: #218838;
+	--action-success-pressed: #1e7e34;
+	--action-success-disabled: #cccccc;
+	--action-success-icon-default: #ffffff;
+	--action-success-icon-hovered: #ffffff;
+	--action-success-icon-pressed: #44474a;
+	--action-success-icon-disabled: #1a1c1d;
+
+	--action-warning-default: #ffc107;
+	--action-warning-hovered: #e0a800;
+	--action-warning-pressed: #d39e00;
+	--action-warning-disabled: #cccccc;
+	--action-warning-icon-default: #333333;
+	--action-warning-icon-hovered: #333333;
+	--action-warning-icon-pressed: #44474a;
+	--action-warning-icon-disabled: #1a1c1d;
+
+	--action-critical-default: #dc3545;
+	--action-critical-hovered: #c82333;
+	--action-critical-pressed: #bd2130;
+	--action-critical-disabled: #cccccc;
+	--action-critical-icon-default: #ffffff;
+	--action-critical-icon-hovered: #ffffff;
+	--action-critical-icon-pressed: #44474a;
+	--action-critical-icon-disabled: #1a1c1d;
+}
+
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+}

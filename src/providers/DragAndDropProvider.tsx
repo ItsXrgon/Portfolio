@@ -1,12 +1,12 @@
 "use client";
 
 import { DndContext, DndContextProps } from "@dnd-kit/core";
-import React from "react";
+import { PropsWithChildren } from "react";
 
 const DragAndDropProvider = ({
 	children,
 	DndContextProps,
-}: React.PropsWithChildren<{
+}: PropsWithChildren<{
 	DndContextProps: DndContextProps;
 }>) => {
 	return <DndContext {...DndContextProps}>{children}</DndContext>;

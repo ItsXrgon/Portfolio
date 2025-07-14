@@ -1,15 +1,9 @@
-import Desktop from "@/app/Desktop/Desktop";
-import Taskbar from "@/app/Taskbar/Taskbar";
+import Desktop from "@/app/_components/Desktop/Desktop";
 
 export function generateStaticParams() {
 	return [{ slug: [""] }];
 }
 
 export default function Page() {
-	return (
-		<>
-			<Desktop />
-			<Taskbar />
-		</>
-	);
+	return <Desktop />;
 }

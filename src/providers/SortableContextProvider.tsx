@@ -1,12 +1,12 @@
 "use client";
 
 import { SortableContext, SortableContextProps } from "@dnd-kit/sortable";
-import React from "react";
+import { PropsWithChildren } from "react";
 
 const SortableContextProvider = ({
 	children,
 	SortableContextProps,
-}: React.PropsWithChildren<{
+}: PropsWithChildren<{
 	SortableContextProps: Omit<SortableContextProps, "children">;
 }>) => {
 	return (

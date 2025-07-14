@@ -1,14 +1,31 @@
-"use server";
-
 import dayjs from "dayjs";
 
-const defaultFallback = "---";
-
-function formatDate(
+/**
+ * The format function type
+ * @param date - The date to format
+ * @param fallback - The fallback value
+ * @param options - The options for the date format
+ * @returns The formatted date
+ */
+type formatFunction = (
 	date: string | Date | null | undefined,
 	fallback?: string,
 	options?: Intl.DateTimeFormatOptions & { locale?: Intl.LocalesArgument },
-): string {
+) => string;
+
+/**
+ * The default fallback value
+ */
+const defaultFallback = "---";
+
+/**
+ * Base function to format the date
+ * @param date - The date to format
+ * @param fallback - The fallback value
+ * @param options - The options for the date format
+ * @returns The formatted date
+ */
+const formatDate: formatFunction = (date, fallback, options) => {
 	if (!date) {
 		return fallback ?? defaultFallback;
 	}
@@ -25,38 +42,44 @@ function formatDate(
 	} catch {
 		return fallback ?? defaultFallback;
 	}
-}
+};
 
-export async function formatLocaleDate(
-	date: string | Date | null | undefined,
-	fallback?: string,
-	options?: Intl.DateTimeFormatOptions & { locale?: Intl.LocalesArgument },
-) {
-	return formatDate(date, fallback, {
+/**
+ * Format the date to the locale date format
+ * @param date - The date to format
+ * @param fallback - The fallback value
+ * @param options - The options for the date format
+ * @returns The formatted date
+ */
+export const formatLocaleDate: formatFunction = (date, fallback, options) =>
+	formatDate(date, fallback, {
 		dateStyle: "medium",
 		...options,
 	});
-}
 
-export async function formatLocaleTime(
-	date: string | Date | null | undefined,
-	fallback?: string,
-	options?: Intl.DateTimeFormatOptions & { locale?: Intl.LocalesArgument },
-) {
-	return formatDate(date, fallback, {
+/**
+ * Format the date to the locale time format
+ * @param date - The date to format
+ * @param fallback - The fallback value
+ * @param options - The options for the date format
+ * @returns The formatted date
+ */
+export const formatLocaleTime: formatFunction = (date, fallback, options) =>
+	formatDate(date, fallback, {
 		timeStyle: "short",
 		...options,
 	});
-}
 
-export async function formatLocaleDateTime(
-	date: string | Date | null | undefined,
-	fallback?: string,
-	options?: Intl.DateTimeFormatOptions & { locale?: Intl.LocalesArgument },
-) {
-	return formatDate(date, fallback, {
+/**
+ * Format the date to the locale date and time format
+ * @param date - The date to format
+ * @param fallback - The fallback value
+ * @param options - The options for the date format
+ * @returns The formatted date
+ */
+export const formatLocaleDateTime: formatFunction = (date, fallback, options) =>
+	formatDate(date, fallback, {
 		dateStyle: "medium",
 		timeStyle: "short",
 		...options,
 	});
-}

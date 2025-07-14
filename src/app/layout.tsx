@@ -4,13 +4,12 @@ import { Metadata } from "next";
 import { Cairo } from "next/font/google";
 import React from "react";
 
-import ConfigProvider from "@/providers/ConfigProvider";
+import Taskbar from "@/app/_components/Taskbar/Taskbar";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import ReduxProvider from "@/providers/ReduxProvider";
 
-import "../styles/global.css";
+import "../styles/globals.css";
 
-//👇 Configure our font object
 const cairo = Cairo({
 	subsets: ["latin", "arabic", "latin-ext"],
 });
@@ -36,7 +35,14 @@ export default function RootLayout({
 					<React.StrictMode>
 						<ReactQueryProvider>
 							<ReduxProvider>
-								<ConfigProvider>{children}</ConfigProvider>
+								<main
+									style={{
+										height: "calc(100vh - 3.5rem)",
+									}}
+								>
+									{children}
+								</main>
+								<Taskbar />
 							</ReduxProvider>
 						</ReactQueryProvider>
 					</React.StrictMode>

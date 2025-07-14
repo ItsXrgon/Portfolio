@@ -1,4 +1,9 @@
-export function colorIsDark(bgColor: string): boolean {
+/**
+ * Check if the color is dark
+ * @param bgColor - The color to check
+ * @returns True if the color is dark, false otherwise
+ */
+export function isColorDark(bgColor: string): boolean {
 	const color = bgColor.substring(1, 7);
 	const r = parseInt(color.substring(0, 2), 16); // hexToR
 	const g = parseInt(color.substring(2, 4), 16); // hexToG
@@ -10,6 +15,7 @@ export function colorIsDark(bgColor: string): boolean {
 		}
 		return Math.pow((col + 0.055) / 1.055, 2.4);
 	});
-	const L = 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+	const L =
+		0.2126 * (c[0] ?? 0) + 0.7152 * (c[1] ?? 0) + 0.0722 * (c[2] ?? 0);
 	return L <= 0.179;
 }

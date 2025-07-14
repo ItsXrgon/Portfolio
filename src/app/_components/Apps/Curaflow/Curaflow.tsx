@@ -1,0 +1,224 @@
+import {
+	ElectronOriginal,
+	ExpressOriginal,
+	JavascriptOriginal,
+	NextjsOriginal,
+	NodejsOriginal,
+	ReactOriginal,
+	TailwindcssOriginal,
+	TypescriptOriginal,
+} from "devicons-react";
+import React from "react";
+
+import { Flex, Image, Label } from "@/components";
+
+export default function Curaflow() {
+	return (
+		<Flex
+			isColumn
+			gap="3"
+			className="w-full gap-4 overflow-y-scroll bg-white p-4"
+		>
+			<Flex isColumn gap="4">
+				<Image icon="curaflow_title" width={200} height={200} alt="" />
+				<Label.Mid300>
+					CRMS for the clinics, it helps the clinics to manage their
+					patients, appointments, employees, and medical records. The
+					system also provides a dashboard for the clinic owner to
+					monitor the clinic&apos;s performance and the
+					employees&apos; performance with the ability to generate
+					reports and view statistics.
+					<br />
+					<br />
+					This was made with{" "}
+					<a
+						href="https://github.com/ammarmbe"
+						target="_blank"
+						className="text-blue-500 underline"
+					>
+						Ammarmbe (Github)
+					</a>{" "}
+					as a commisioned project for a clinic in Egypt, called 60+
+					Seniors clinic which shares the logo of this app for that
+					reason.
+					<br />
+				</Label.Mid300>
+			</Flex>
+			<Flex isColumn gap="2" align="center" isWrapped>
+				<Image
+					icon="curaflow_hero_en"
+					width={1000}
+					height={1000}
+					alt=""
+				/>
+				<Image
+					icon="curaflow_hero_ar"
+					width={1000}
+					height={1000}
+					alt=""
+				/>
+			</Flex>
+			<Flex isColumn gap="2">
+				<Label.Big400>Status</Label.Big400>
+				<Label.Mid300>
+					This project is completed and delivered to the client, and
+					the system is currently in use by the clinic and maintained
+					by the us but is not open-sourced due to the client&apos;s
+					request so we can&apos;t provide a live demo or a repository
+					for this project.
+				</Label.Mid300>
+			</Flex>
+			<Flex isColumn gap="2">
+				<Label.Big400>Features by category</Label.Big400>
+				<Flex isColumn gap="1">
+					<Label.Big300>Patients</Label.Big300>
+					<Label.Mid300>
+						- Add, Edit, Delete Patients
+						<br />
+						- View Patient&apos;s Medical Records
+						<br />
+						- View Patient&apos;s Appointments
+						<br />
+						- View Patient&apos;s Prescriptions
+						<br />
+						- View and manage Patient&apos;s Invoices and Payments
+						<br />
+					</Label.Mid300>
+				</Flex>
+				<Flex isColumn gap="1">
+					<Label.Big300>Appointments</Label.Big300>
+					<Label.Mid300>
+						- Add, Edit, Delete Appointments
+						<br />
+						- View Appointments by Date, Patient, or Employee
+						<br />
+						- Cancel or fast forward appointments
+						<br />
+						- Fill in the patient&apos;s medical record during the
+						appointment
+						<br />
+						- Fill custom forms during the appointment (e.g. Patient
+						data form) to be saved in the patient&apos;s medical
+						record
+						<br />
+					</Label.Mid300>
+				</Flex>
+				<Flex isColumn gap="1">
+					<Label.Big300>Employees</Label.Big300>
+					<Label.Mid300>
+						- Add, Edit, Delete Employees
+						<br />
+						- View Employees by Role or Department (e.g. Doctors, or
+						Customer Service)
+						<br />
+						- Create a schedule for the employees with ability to
+						add overtime or vacation.
+						<br />
+						- Create an account with custom role and permissions for
+						each employee and track their activity.
+						<br />
+						- Create a list of medical services and nested
+						categories and assign the services to the doctors with
+						the ability to add different prices for each doctor.
+						<br />
+					</Label.Mid300>
+				</Flex>
+				<Flex isColumn gap="1">
+					<Label.Big300>Admin</Label.Big300>
+					<Label.Mid300>
+						- View charts and statistics for the clinic&apos;s
+						performance and the employees&apos; performance.
+						<br />
+						- Create, Edit, Delete forms to be filled during the
+						appointment.
+						<br />
+						- Send bulk SMSs or Emails to patients or a subset of
+						patients based on filters.
+						<br />
+						- View calendar for the appointments and the employees
+						to track their schedule.
+						<br />
+						- Send announcements to all employees or a subset of
+						them based on filters.
+						<br />
+						- Customise system settings.
+						<br />
+					</Label.Mid300>
+				</Flex>
+			</Flex>
+			<Flex isColumn gap="2">
+				<Label.Big400>How we made this?</Label.Big400>
+				<Flex isColumn gap="1">
+					<Label.Big300>General</Label.Big300>
+					<Label.Mid300>
+						We used React and TS for the frontend and Node.js for
+						the backend, the database was NeonDB. The frontend was
+						made with TailwindCSS and designed with Figma by{" "}
+						<a
+							href="https://github.com/ammarmbe"
+							target="_blank"
+							className="text-blue-500 underline"
+						>
+							Ammarmbe (Github)
+						</a>
+						.
+					</Label.Mid300>
+				</Flex>
+				<Flex isColumn gap="1">
+					<Label.Big300>Analytics</Label.Big300>
+					<Label.Mid300>
+						We used Apache Echarts for the charts and statistics
+						with customised themes and designs. The data was fetched
+						from the backend and was processed and transformed to be
+						displayed in the charts.
+					</Label.Mid300>
+				</Flex>
+			</Flex>
+			<Flex isColumn gap="2">
+				<Label.Big400>Tech stack</Label.Big400>
+				<Flex isColumn gap="2">
+					<Label.Big300>Backend</Label.Big300>
+					<Flex isWrapped gap="4">
+						<Flex gap="1" align="center">
+							<JavascriptOriginal size={48} />
+							<Label.Mid400>JavaScript</Label.Mid400>
+						</Flex>
+						<Flex gap="1" align="center">
+							<NodejsOriginal size={48} />
+							<Label.Mid400>Nodejs</Label.Mid400>
+						</Flex>
+						<Flex gap="1" align="center">
+							<ExpressOriginal size={48} />
+							<Label.Mid400>Express.js</Label.Mid400>
+						</Flex>
+					</Flex>
+				</Flex>
+				<Flex isColumn gap="2">
+					<Label.Big300>Frontend</Label.Big300>
+					<Flex isWrapped gap="4">
+						<Flex gap="1" align="center">
+							<TypescriptOriginal size={48} />
+							<Label.Mid400>TypeScript</Label.Mid400>
+						</Flex>
+						<Flex gap="1" align="center">
+							<NextjsOriginal size={48} />
+							<Label.Mid400>NEXT.js</Label.Mid400>
+						</Flex>
+						<Flex gap="1" align="center" className="">
+							<ElectronOriginal size={48} />
+							<Label.Mid400>Electron</Label.Mid400>
+						</Flex>
+						<Flex gap="1" align="center">
+							<ReactOriginal size={48} />
+							<Label.Mid400>React</Label.Mid400>
+						</Flex>
+						<Flex gap="1" align="center" className="">
+							<TailwindcssOriginal size={48} />
+							<Label.Mid400>Tailwind</Label.Mid400>
+						</Flex>
+					</Flex>
+				</Flex>
+			</Flex>
+		</Flex>
+	);
+}
