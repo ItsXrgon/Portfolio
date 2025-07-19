@@ -1,57 +1,64 @@
-import { HaskellOriginal } from "devicons-react";
-import React from "react";
+import { useRef } from "react";
 
-import { Flex, Label } from "@/components";
+import { Flex } from "@/components";
+
+import AppHeader from "./AppHeader";
+import Chessboard from "./Chessboard";
+import Section from "./Section";
+import "./index.css";
 
 export default function HaskellChessGame() {
+	const ref = useRef<HTMLDivElement | null>(null);
 	return (
-		<Flex
-			isColumn
-			gap="3"
-			className="w-full gap-4 overflow-y-scroll bg-white p-4"
+		<div
+			className="w-full h-full relative bg-white font-chess chessboard-scrollbar rounded-lg overflow-hidden"
+			ref={ref}
 		>
-			<Flex isColumn gap="2">
-				<Label.Big400>What is this?</Label.Big400>
-				<Label.Mid300>
-					Chess game made with Haskell as a univeristy project, The
-					app supports visualizing the chess board, moving a piece
-					according to its movement rules, and suggesting possible
-					legal moves for any piece on the board. Find it here{" "}
+			<Chessboard appRef={ref} />
+			<Flex
+				isColumn
+				gap="4"
+				className="w-full h-full p-4 overflow-y-auto chessboard-scrollbar relative"
+			>
+				<AppHeader />
+				<Section title="Introduction">
+					This project is a chess engine written in Haskell,
+					demonstrating the power and elegance of functional
+					programming in game AI.
+				</Section>
+				<Section title="How It Works">
+					The engine uses a 2D array to represent the chess board,
+					with pieces represented by characters (P, N, B, R, Q, K). It
+					uses recursive functions to find all possible legal moves,
+					ensuring moves are within bounds, not blocked, and don’t put
+					the king in check. The board can be visualized in the
+					terminal, and moves are made by inputting positions.
+				</Section>
+				<Section title="Why Haskell?">
+					Haskell was chosen for its strong type system,
+					expressiveness, and suitability for recursive
+					algorithms—making it ideal for implementing chess logic.
+				</Section>
+				<Section title="Challenges & Solutions">
+					Handling move legality and check detection in a purely
+					functional way was challenging, but Haskell’s features made
+					it manageable and elegant.
+				</Section>
+				<Section title="Results & Performance">
+					The engine efficiently evaluates positions and implements
+					minimax with alpha-beta pruning. It’s a demonstration of
+					functional programming applied to classic game AI.
+				</Section>
+				<Section title="Links & Resources">
 					<a
 						href="https://github.com/ItsXrgon/Haskell-Chess-Game"
 						target="_blank"
 						className="text-blue-500 underline"
 					>
-						here
+						View on GitHub
 					</a>
-					.
-				</Label.Mid300>
+				</Section>
 			</Flex>
-			<Flex isColumn gap="2">
-				<Label.Big400>How does this work?</Label.Big400>
-				<Label.Mid300>
-					The app uses a 2D array to represent the chess board, and
-					the pieces are represented by P, N, B, R, Q and K
-					characters. The app uses a recursive function to find all
-					possible legal moves for a piece on the board, checking if
-					the move is within the bounds of the board, if the move is
-					not blocked by another piece, and if the move is not putting
-					the king in check.
-					<br />
-					The app also supports visualizing the board using the
-					terminal, and moving pieces by inputting the piece&apos;s
-					position and the desired position.
-				</Label.Mid300>
-			</Flex>
-			<Flex isColumn gap="2">
-				<Label.Big400>Tech stack</Label.Big400>
-				<Flex isWrapped gap="4">
-					<Flex gap="1" align="center">
-						<HaskellOriginal size={48} />
-						<Label.Mid400>Haskell</Label.Mid400>
-					</Flex>
-				</Flex>
-			</Flex>
-		</Flex>
+		</div>
 	);
 }

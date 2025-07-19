@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Figurine&display=swap");
+
+.font-chess {
+	font-family: "Figurine", "Share Tech Mono", "monospace";
+}
+
+.chessboard-scrollbar ::-webkit-scrollbar {
+	width: 12px;
+	height: 12px;
+}
+.chessboard-scrollbar ::-webkit-scrollbar-thumb {
+	background: linear-gradient(135deg, #5e5086 60%, #2563eb 100%);
+	border-radius: 8px;
+	box-shadow:
+		0 0 8px 2px #5e508633,
+		0 0 4px 1px #2563eb33,
+		0 0 8px 2px #b5886355;
+	border: 2px dashed #f0d9b5;
+}
+.chessboard-scrollbar ::-webkit-scrollbar-track {
+	background: #f0d9b5;
+	border-radius: 8px;
+}
+.chessboard-scrollbar ::-webkit-scrollbar-corner {
+	background: #b58863;
+}
+
+/* Firefox */
+.chessboard-scrollbar * {
+	scrollbar-width: thin;
+	scrollbar-color: #5e5086 #f0d9b5;
+}
+
+.chessboard-scrollbar.dark ::-webkit-scrollbar-thumb {
+	background: linear-gradient(135deg, #5e5086 60%, #2563eb 100%);
+	box-shadow:
+		0 0 12px 2px #5e508633,
+		0 0 8px 2px #2563eb33,
+		0 0 12px 2px #b5886355;
+	border: 2px dashed #f0d9b5;
+}
+.chessboard-scrollbar.dark ::-webkit-scrollbar-track {
+	background: #b58863;
+}
+.chessboard-scrollbar.dark ::-webkit-scrollbar-corner {
+	background: #5e5086;
+}
+
+.chessboard-scrollbar.dark * {
+	scrollbar-color: #5e5086 #b58863;
+}
+
+.font-cyberpunk {
+	font-family: "Share Tech Mono", "Orbitron", "monospace";
+}
