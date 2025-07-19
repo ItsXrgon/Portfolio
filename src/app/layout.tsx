@@ -3,14 +3,13 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Metadata } from "next";
 import { Cairo } from "next/font/google";
 import Head from "next/head";
-import React from "react";
+import React, { ReactNode } from "react";
 
 import Taskbar from "@/app/_components/Taskbar/Taskbar";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import ReduxProvider from "@/providers/ReduxProvider";
 
 import "../styles/globals.css";
-import Desktop from "./_components/Desktop/Desktop";
 
 const cairo = Cairo({
 	subsets: ["latin", "arabic", "latin-ext"],
@@ -23,7 +22,7 @@ export const metadata: Metadata = {
 	applicationName: "itsXrgon",
 };
 
-export default function RootLayout() {
+export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
 		<html lang="en" className={cairo.className}>
 			<Head>
@@ -77,7 +76,7 @@ export default function RootLayout() {
 										height: "calc(100vh - 4rem)",
 									}}
 								>
-									<Desktop />
+									{children}
 								</main>
 								<Taskbar />
 							</ReduxProvider>

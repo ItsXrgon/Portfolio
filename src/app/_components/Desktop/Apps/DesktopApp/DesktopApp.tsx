@@ -2,7 +2,8 @@ import { useDraggable } from "@dnd-kit/core";
 import { CSS, Transform } from "@dnd-kit/utilities";
 import { useCallback, useMemo } from "react";
 
-import { Flex, Image, Label } from "@/components";
+import { Flex, Label } from "@/components";
+import { AppIcon } from "@/components/AppIcon";
 import { cn } from "@/lib/utils";
 import { useApp, useWindow, useWindowManagement } from "@/store/hooks";
 
@@ -42,6 +43,10 @@ export default function DesktopApp({ appId }: { appId: string }) {
 		}
 	}, [isWindowOpen, unMinimizeWindow, openWindow]);
 
+	if (!app) {
+		return null;
+	}
+
 	return (
 		<Flex
 			ref={setNodeRef}
@@ -59,9 +64,9 @@ export default function DesktopApp({ appId }: { appId: string }) {
 			{...attributes}
 			{...listeners}
 		>
-			<Image icon={app?.icon} width={48} height={48} alt="" />
+			<AppIcon icon={app.icon} width={48} height={48} alt="" />
 			<Label size="sm" weight="Normal" className="text-center">
-				{app?.name}
+				{app.name}
 			</Label>
 		</Flex>
 	);
