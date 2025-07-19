@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap");
+
+.font-muc {
+	font-family: "JetBrains Mono", "Fira Code", "Consolas", monospace;
+}
+
+.muc-scrollbar ::-webkit-scrollbar {
+	width: 12px;
+	height: 12px;
+}
+.muc-scrollbar ::-webkit-scrollbar-thumb {
+	background: linear-gradient(135deg, #4f46e5 60%, #6366f1 100%);
+	border-radius: 8px;
+	box-shadow:
+		0 0 8px 2px #4f46e533,
+		0 0 4px 1px #6366f133,
+		0 0 8px 2px #0d948855;
+	border: 2px solid #e0e7ff;
+}
+.muc-scrollbar ::-webkit-scrollbar-track {
+	background: #f8fafc;
+	border-radius: 8px;
+}
+.muc-scrollbar ::-webkit-scrollbar-corner {
+	background: #e0e7ff;
+}
+
+/* Firefox */
+.muc-scrollbar * {
+	scrollbar-width: thin;
+	scrollbar-color: #4f46e5 #f8fafc;
+}
+
+.muc-scrollbar.dark ::-webkit-scrollbar-thumb {
+	background: linear-gradient(135deg, #6366f1 60%, #0d9488 100%);
+	box-shadow:
+		0 0 12px 2px #6366f133,
+		0 0 8px 2px #0d948833,
+		0 0 12px 2px #f9731655;
+	border: 2px solid #0d9488;
+}
+.muc-scrollbar.dark ::-webkit-scrollbar-track {
+	background: #1e293b;
+}
+.muc-scrollbar.dark ::-webkit-scrollbar-corner {
+	background: #6366f1;
+}
+
+.muc-scrollbar.dark * {
+	scrollbar-color: #4f46e5 #1e293b;
+}

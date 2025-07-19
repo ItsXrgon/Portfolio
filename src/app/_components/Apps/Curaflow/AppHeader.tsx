@@ -1,3 +1,5 @@
+import curaflow_title from "@assets/curaflow/curaflow-logo.svg";
+
 import { Flex, Image, Label } from "@/components";
 
 export default function AppHeader() {
@@ -7,7 +9,12 @@ export default function AppHeader() {
 			gap="4"
 			className="mb-6 p-6 bg-gradient-to-r from-blue-50 to-sky-50 rounded-xl border border-blue-100 shadow-sm"
 		>
-			<Image icon="curaflow_title" width={200} height={200} alt="" />
+			<Image
+				src={curaflow_title}
+				width={200}
+				height={200}
+				alt="Curaflow Logo"
+			/>
 			<Flex isColumn gap="2">
 				<Label
 					size="2xl"

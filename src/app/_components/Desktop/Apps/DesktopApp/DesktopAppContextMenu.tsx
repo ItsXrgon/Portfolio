@@ -4,7 +4,7 @@ import { Pin, PinOff, X } from "lucide-react";
 import { PropsWithChildren, ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 
-import { Image } from "@/components";
+import { AppIcon } from "@/components/AppIcon";
 import {
 	ContextMenu,
 	ContextMenuContent,
@@ -86,9 +86,11 @@ export function DesktopAppContextMenu({
 						className="flex items-center gap-3"
 						onClick={openWindow}
 					>
-						<div className="h-5 w-5">
-							<Image icon={app.icon} alt="" />
-						</div>
+						<AppIcon
+							icon={app.icon}
+							className="h-5 w-5"
+							alt={app.name}
+						/>
 						{t("context_menu.open")} {app.name}
 					</ContextMenuItem>
 				)}

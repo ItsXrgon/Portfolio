@@ -22,7 +22,7 @@
 /* Firefox */
 .curaflow-scrollbar * {
 	scrollbar-width: thin;
-	scrollbar-color: #38bdf8 #f0f9ff;
+	scrollbar-color: #38bdf8 #ffff;
 }
 
 .curaflow-scrollbar.dark ::-webkit-scrollbar-thumb {
@@ -42,8 +42,4 @@
 
 .curaflow-scrollbar.dark * {
 	scrollbar-color: #38bdf8 #183153;
-}
-
-.font-cyberpunk {
-	font-family: "Share Tech Mono", "Orbitron", "monospace";
 }

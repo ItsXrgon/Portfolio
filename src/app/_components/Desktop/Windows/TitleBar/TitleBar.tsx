@@ -7,7 +7,8 @@ import {
 	useState,
 } from "react";
 
-import { Flex, Image, Label } from "@/components";
+import { Flex, Label } from "@/components";
+import { AppIcon } from "@/components/AppIcon";
 import { useWindow, useWindowManagement } from "@/store";
 
 import Close from "./Buttons/Close";
@@ -83,7 +84,7 @@ export default function TitleBar({
 					!isMaximized && "rounded-t-md"
 				}`}
 			>
-				<Image
+				<AppIcon
 					icon={window.icon}
 					width={32}
 					height={32}

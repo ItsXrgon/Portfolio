@@ -10,6 +10,7 @@ import "./index.css";
 
 export default function HaskellChessGame() {
 	const ref = useRef<HTMLDivElement | null>(null);
+
 	return (
 		<div
 			className="w-full h-full relative bg-white font-chess chessboard-scrollbar rounded-lg overflow-hidden"
@@ -19,7 +20,7 @@ export default function HaskellChessGame() {
 			<Flex
 				isColumn
 				gap="10"
-				className="w-full h-full p-10 overflow-y-auto chessboard-scrollbar relative"
+				className="w-full h-full p-14 overflow-y-auto chessboard-scrollbar relative"
 			>
 				<AppHeader />
 				<Section title="Project Overview">

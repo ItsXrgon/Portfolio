@@ -3,7 +3,8 @@ import { CSS } from "@dnd-kit/utilities";
 import { motion } from "framer-motion";
 import { useCallback, useMemo } from "react";
 
-import { Flex, Image } from "@/components";
+import { Flex } from "@/components";
+import { AppIcon } from "@/components/AppIcon";
 import { useTaskbarApp, useWindow, useWindowManagement } from "@/store/hooks";
 
 import { TaskbarAppContextMenu } from "./TaskbarAppContextMenu";
@@ -105,11 +106,11 @@ export function TaskbarAppIcon({
 					}}
 					style={{ display: "flex", zIndex: 10 }}
 				>
-					<Image
+					<AppIcon
 						icon={taskbarApp.icon}
 						width={40}
 						height={40}
-						alt=""
+						alt={taskbarApp.name}
 					/>
 				</motion.div>
 				{isWindowOpen && (

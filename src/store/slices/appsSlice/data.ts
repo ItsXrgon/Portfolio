@@ -55,11 +55,4 @@ export const initialApps: Record<string, DesktopApp> = {
 		position: 6, // First column, seventh row (col 0, row 6)
 		parentDirectory: "/",
 	},
-	"8": {
-		id: "8",
-		name: "Check Calculator",
-		icon: "check_calculator",
-		position: 7, // First column, eighth row (col 0, row 7)
-		parentDirectory: "/",
-	},
 } as const;

@@ -1,12 +1,11 @@
 // import About from "@/app/_components/Apps/About/About";
-// import CheckCalculator from "@/app/_components/Apps/CheckCalculator/CheckCalculator";
 import Curaflow from "@/app/_components/Apps/Curaflow/Curaflow";
 import Github from "@/app/_components/Apps/Github/Github";
 import HaskellChessGame from "@/app/_components/Apps/HaskellChessGame/HaskellChessGame";
-// import MUC from "@/app/_components/Apps/MUC/MUC";
+import MUC from "@/app/_components/Apps/MUC/MUC";
 import Settings from "@/app/_components/Apps/Settings/Settings";
 import Terminal from "@/app/_components/Apps/Terminal/Terminal";
-// import Xrbot from "@/app/_components/Apps/Xrbot/Xrbot";
+import Xrbot from "@/app/_components/Apps/Xrbot/Xrbot";
 import { useWindow } from "@/store";
 
 const AppsMap = {
@@ -14,10 +13,9 @@ const AppsMap = {
 	Curaflow,
 	Github,
 	Settings,
-	// MUC,
-	// "Xrbot - Discord Bot": Xrbot,
+	"Multi Unit Converter": MUC,
+	"Xrbot - Discord Bot": Xrbot,
 	"Haskell Chess Game": HaskellChessGame,
-	// "Check Calculator": CheckCalculator,
 	Terminal,
 };
 

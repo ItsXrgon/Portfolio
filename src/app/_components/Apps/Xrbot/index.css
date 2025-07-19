@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+.font-xrbot {
+	font-family: "Inter", "Whitney", "Helvetica Neue", Arial, sans-serif;
+}
+
+.xrbot-scrollbar ::-webkit-scrollbar {
+	width: 12px;
+	height: 12px;
+}
+
+.xrbot-scrollbar ::-webkit-scrollbar-thumb {
+	background: linear-gradient(135deg, #5865f2 60%, #57f287 100%);
+	border-radius: 8px;
+	box-shadow:
+		0 0 8px 2px #5865f233,
+		0 0 4px 1px #57f28733,
+		0 0 8px 2px #fee75c55;
+	border: 2px solid #23272a;
+}
+
+.xrbot-scrollbar ::-webkit-scrollbar-track {
+	background: #2c2f33;
+	border-radius: 8px;
+}
+
+.xrbot-scrollbar ::-webkit-scrollbar-corner {
+	background: #23272a;
+}
+
+/* Firefox */
+.xrbot-scrollbar * {
+	scrollbar-width: thin;
+	scrollbar-color: #5865f2 #2c2f33;
+}
+
+.xrbot-scrollbar.dark ::-webkit-scrollbar-thumb {
+	background: linear-gradient(135deg, #5865f2 60%, #57f287 100%);
+	box-shadow:
+		0 0 12px 2px #5865f233,
+		0 0 8px 2px #57f28733,
+		0 0 12px 2px #fee75c55;
+	border: 2px solid #23272a;
+}
+
+.xrbot-scrollbar.dark ::-webkit-scrollbar-track {
+	background: #2c2f33;
+}
+
+.xrbot-scrollbar.dark ::-webkit-scrollbar-corner {
+	background: #23272a;
+}
+
+.xrbot-scrollbar.dark * {
+	scrollbar-color: #5865f2 #2c2f33;
+}
