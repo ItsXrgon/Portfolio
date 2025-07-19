@@ -1,6 +1,5 @@
-import React, { memo } from "react";
+import React from "react";
 import { twMerge } from "tailwind-merge";
-import tw from "tailwind-styled-components";
 
 const labelVariants = {
 	primary: "text-text-primary-default",
@@ -14,29 +13,47 @@ const labelVariants = {
 };
 
 const labelSizes = {
-	100: "text-[12px]",
-	200: "text-[14px]",
-	300: "text-[16px]",
-	400: "text-[20px]",
-	500: "text-[24px]",
-	600: "text-[28px]",
-	700: "text-[36px]",
+	xs: "text-xs",
+	sm: "text-sm",
+	md: "text-md",
+	lg: "text-lg",
+	xl: "text-xl",
+	"2xl": "text-2xl",
+	"3xl": "text-3xl",
+	"4xl": "text-4xl",
+	"5xl": "text-5xl",
+	"6xl": "text-6xl",
+	"7xl": "text-7xl",
+	"8xl": "text-8xl",
+	"9xl": "text-9xl",
 };
 
 const labelWeights = {
-	Thin: "font-normal",
-	Mid: "font-medium",
-	Big: "font-bold",
+	Thin: "font-thin",
+	ExtraLight: "font-extralight",
+	Light: "font-light",
+	Normal: "font-normal",
+	Medium: "font-medium",
+	SemiBold: "font-semibold",
+	Bold: "font-bold",
+	ExtraBold: "font-extrabold",
+	Black: "font-black",
 };
 
 const labelLetterSpacing = {
-	100: `tracking-[-0.36px]`,
-	200: `tracking-[-0.42px]`,
-	300: `tracking-[-0.48px]`,
-	400: `tracking-[-0.6px]`,
-	500: `tracking-[-0.72px]`,
-	600: `tracking-[-0.84px]`,
-	700: `tracking-[-1.08px]`,
+	xs: "tracking-tight", // -0.02em
+	sm: "tracking-tight", // -0.02em
+	md: "tracking-normal", // 0em
+	lg: "tracking-normal", // 0em
+	xl: "tracking-wide", // 0.02em
+	"2xl": "tracking-wider", // 0.04em
+	"3xl": "tracking-wider", // 0.04em
+	"4xl": "tracking-widest", // 0.1em
+	"5xl": "tracking-widest", // 0.1em
+	"6xl": "tracking-widest", // 0.1em
+	"7xl": "tracking-widest", // 0.1em
+	"8xl": "tracking-widest", // 0.1em
+	"9xl": "tracking-widest", // 0.1em
 };
 
 type LabelVariantsEnum = keyof typeof labelVariants;
@@ -44,49 +61,29 @@ type LabelWeightsEnum = keyof typeof labelWeights;
 type LabelTypographyEnum = keyof typeof labelSizes;
 
 interface LabelProps extends React.HTMLAttributes<HTMLLabelElement> {
-	children?: React.ReactNode;
 	variant?: LabelVariantsEnum;
-	size: LabelTypographyEnum;
-	weight: LabelWeightsEnum;
+	size?: LabelTypographyEnum;
+	weight?: LabelWeightsEnum;
 }
 
-const BaseLabel = memo(
-	tw.label<LabelProps>`
-		${({ size, variant, weight, className }) =>
-			twMerge(
-				labelVariants[variant ?? "default"],
-				labelSizes[size],
-				labelWeights[weight],
-				labelLetterSpacing[size],
-				"leading-[140%]",
-				className,
-			)}`,
-);
-
-const TypographyWeights = ["Thin", "Mid", "Big"];
-const TypographyVariants = [100, 200, 300, 400, 500, 600, 700];
-
-type LabelVariant = `${LabelWeightsEnum}${LabelTypographyEnum}`;
-
-type LabelType = React.FC<LabelProps> & {
-	[key in LabelVariant]?: React.FC<Partial<LabelProps>>;
-};
-
-const Label = BaseLabel as LabelType;
-
-TypographyVariants.forEach((sizeKey) => {
-	TypographyWeights.forEach((weightKey) => {
-		const variant = `${weightKey}${sizeKey}` as LabelVariant;
-		Label[variant] = (props) => (
-			<BaseLabel
-				{...props}
-				weight={weightKey as LabelWeightsEnum}
-				size={sizeKey as LabelTypographyEnum}
-			/>
-		);
-	});
-});
-
-export default Label as React.FC<LabelProps> & {
-	[key in LabelVariant]: React.FC<Partial<LabelProps>>;
+export const Label: React.FC<LabelProps> = ({
+	children,
+	variant = "default",
+	size = "md",
+	weight = "Normal",
+	className,
+	...rest
+}) => {
+	const mergedClassName = twMerge(
+		labelVariants[variant],
+		labelSizes[size],
+		labelWeights[weight],
+		labelLetterSpacing[size],
+		className,
+	);
+	return (
+		<label className={mergedClassName} {...rest}>
+			{children}
+		</label>
+	);
 };

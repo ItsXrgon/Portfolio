@@ -1,6 +1,5 @@
-import React, { memo } from "react";
+import React, { forwardRef, memo } from "react";
 import { twMerge } from "tailwind-merge";
-import tw from "tailwind-styled-components";
 
 const gapSizes = {
 	"0": "gap-0",
@@ -51,17 +50,34 @@ interface FlexProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Flex = memo(
-	tw.div<FlexProps>`
-		${({ isColumn, gap, align, justify, className, isWrapped }) =>
-			twMerge(
-				"flex",
-				isColumn && "flex-col",
-				gapSizes[gap ?? "0"],
-				isWrapped && "flex-wrap",
-				alignStyles[align ?? "stretch"],
-				justifyStyles[justify ?? "start"],
-				className,
-			)}`,
+	forwardRef<HTMLDivElement, FlexProps>(function Flex(
+		{
+			children,
+			isWrapped = false,
+			isColumn = false,
+			gap = "0",
+			align = "stretch",
+			justify = "start",
+			className,
+			...rest
+		},
+		ref,
+	) {
+		const mergedClassName = twMerge(
+			"flex",
+			isColumn && "flex-col",
+			gapSizes[gap],
+			isWrapped && "flex-wrap",
+			alignStyles[align],
+			justifyStyles[justify],
+			className,
+		);
+		return (
+			<div ref={ref} className={mergedClassName} {...rest}>
+				{children}
+			</div>
+		);
+	}),
 );
 
 Flex.displayName = "Flex";

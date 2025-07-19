@@ -7,6 +7,7 @@ export * from "./useTaskbarAppManagement";
 export * from "./useTaskbarApps";
 export * from "./useTaskbarAppsIds";
 export * from "./useTaskbarManagement";
+export * from "./useVisibleWindowsIds";
 export * from "./useWindow";
 export * from "./useWindowManagement";
 export * from "./useWindows";

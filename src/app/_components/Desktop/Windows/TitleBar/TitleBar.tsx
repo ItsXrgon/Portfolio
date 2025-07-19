@@ -1,4 +1,4 @@
-import React, {
+import {
 	Dispatch,
 	SetStateAction,
 	useCallback,
@@ -7,7 +7,7 @@ import React, {
 	useState,
 } from "react";
 
-import { Flex, Image } from "@/components";
+import { Flex, Image, Label } from "@/components";
 import { useWindow, useWindowManagement } from "@/store";
 
 import Close from "./Buttons/Close";
@@ -79,12 +79,26 @@ export default function TitleBar({
 	return (
 		<TitleBarContextMenu appId={window.id}>
 			<div
-				className={`dragHandle flex flex-row items-center justify-between bg-window-header-background px-2 py-1 text-window-header-text ${
+				className={`dragHandle flex flex-row h-9 overflow-hidden relative items-center justify-between bg-window-header-background text-window-header-text ${
 					!isMaximized && "rounded-t-md"
 				}`}
 			>
-				<Image icon={window.icon} width={36} height={36} alt="" />
-				<Flex align="center">
+				<Image
+					icon={window.icon}
+					width={32}
+					height={32}
+					alt={window.name}
+					className="ml-1"
+					onContextMenu={(e) => e.stopPropagation()}
+				/>
+				<Label className="absolute left-1/2 -translate-x-1/2">
+					{window.name}
+				</Label>
+				<Flex
+					align="center"
+					className="h-full"
+					onContextMenu={(e) => e.stopPropagation()}
+				>
 					<Minimize windowId={windowId} />
 					<Restore handleMinMax={handleMinMax} windowId={windowId} />
 					<Close windowId={windowId} />

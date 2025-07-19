@@ -10,9 +10,8 @@ export default function Taskbar(): JSX.Element {
 	return (
 		<footer>
 			<Flex
-				align="center"
 				justify="between"
-				className="fixed bottom-0 left-0 z-[999] h-14 w-full border border-taskbar-border bg-taskbar-background px-3"
+				className="fixed bottom-0 left-0 z-[999] h-16 w-full border border-taskbar-border bg-taskbar-background px-3 py-1"
 			>
 				<StartSection />
 				<AppSection />

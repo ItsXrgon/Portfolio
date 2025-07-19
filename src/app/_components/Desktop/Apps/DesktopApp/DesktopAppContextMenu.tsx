@@ -59,18 +59,18 @@ export function DesktopAppContextMenu({
 				{isPinned ? (
 					<ContextMenuItem
 						className="flex items-center gap-3"
-						onClick={pinToTaskbar}
-					>
-						<Pin size={18} />
-						{t("context_menu.pin_to_taskbar")}
-					</ContextMenuItem>
-				) : (
-					<ContextMenuItem
-						className="flex items-center gap-3"
 						onClick={unpinFromTaskbar}
 					>
 						<PinOff size={18} />
 						{t("context_menu.unpin_from_taskbar")}
+					</ContextMenuItem>
+				) : (
+					<ContextMenuItem
+						className="flex items-center gap-3"
+						onClick={pinToTaskbar}
+					>
+						<Pin size={18} />
+						{t("context_menu.pin_to_taskbar")}
 					</ContextMenuItem>
 				)}
 				{isWindowOpen ? (

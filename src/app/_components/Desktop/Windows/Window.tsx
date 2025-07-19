@@ -8,12 +8,7 @@ import { useWindow, useWindowManagement } from "@/store";
 import Content from "./Content/Content";
 import TitleBar from "./TitleBar/TitleBar";
 
-interface WindowProps {
-	windowId: string;
-	zIndex: number;
-}
-
-export default function Window({ windowId, zIndex }: WindowProps) {
+export default function Window({ windowId }: { windowId: string }) {
 	const window = useWindow(windowId)!;
 
 	const [dragging, setDragging] = useState(false);
@@ -64,9 +59,8 @@ export default function Window({ windowId, zIndex }: WindowProps) {
 	return (
 		<Rnd
 			ref={rndRef}
-			className="rounded-md"
 			style={{
-				zIndex: dragging ? 998 : zIndex,
+				zIndex: dragging ? 998 : window.zIndex,
 				display: isMinimized ? "none" : "inherit",
 			}}
 			size={isMaximized ? { width: "100%", height: "100%" } : localSize}
@@ -77,8 +71,8 @@ export default function Window({ windowId, zIndex }: WindowProps) {
 			onDragStop={onDragStop}
 			dragHandleClassName="dragHandle"
 			enableResizing={!isMaximized}
-			minHeight={400}
-			minWidth={600}
+			minHeight={600}
+			minWidth={800}
 			bounds={"parent"}
 			onResize={onResize}
 			onResizeStop={onResizeStop}
@@ -93,11 +87,11 @@ export default function Window({ windowId, zIndex }: WindowProps) {
 				setLocalSize={setLocalSize}
 			/>
 			<div
-				className="flex"
+				className="bg-window-header-background p-1 pt-0"
 				style={{
 					height: isMaximized
-						? "calc(100% - 37px)"
-						: localSize.height - 37,
+						? "calc(100% - 36px)"
+						: localSize.height - 36,
 					width: "100%",
 				}}
 			>

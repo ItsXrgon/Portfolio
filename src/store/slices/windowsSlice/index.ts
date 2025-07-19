@@ -13,6 +13,11 @@ export {
 	default as windowsReducer,
 } from "./slice";
 
-export { selectWindow, selectWindows, selectWindowsIds } from "./selectors";
+export {
+	selectVisibleWindowsIds,
+	selectWindow,
+	selectWindows,
+	selectWindowsIds,
+} from "./selectors";
 
 export { default } from "./slice";

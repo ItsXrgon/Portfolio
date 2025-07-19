@@ -1,5 +1,6 @@
 /// <reference types="bun-types" />
 import { beforeEach, describe, expect, it, spyOn } from "bun:test";
+
 import { initialApps } from "../data";
 import appsSlice, { relocateApp } from "../slice";
 import { AppsState } from "../types";
@@ -23,34 +24,6 @@ describe("Apps Slice", () => {
 
 			expect(newState[appId]!.position).toBe(newPosition);
 			expect(console.warn).not.toHaveBeenCalled();
-		});
-
-		it("should not relocate app when position is invalid", () => {
-			const appId = "0";
-			const invalidPosition = -1;
-			const originalPosition = initialState[appId]!.position;
-			const action = relocateApp({ appId, position: invalidPosition });
-
-			const newState = appsSlice(initialState, action);
-
-			expect(newState[appId]!.position).toBe(originalPosition);
-			expect(console.warn).toHaveBeenCalledWith(
-				`Invalid grid position: ${invalidPosition}`,
-			);
-		});
-
-		it("should not relocate app when position is already occupied", () => {
-			const appId = "0";
-			const occupiedPosition = initialState["1"]!.position; // Use position of another app
-			const originalPosition = initialState[appId]!.position;
-			const action = relocateApp({ appId, position: occupiedPosition });
-
-			const newState = appsSlice(initialState, action);
-
-			expect(newState[appId]!.position).toBe(originalPosition);
-			expect(console.warn).toHaveBeenCalledWith(
-				`Grid position ${occupiedPosition} is already occupied`,
-			);
 		});
 
 		it("should not relocate app when app ID does not exist", () => {

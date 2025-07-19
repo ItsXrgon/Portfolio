@@ -20,3 +20,11 @@ export const selectWindowsIds = createSelector(
 
 export const selectWindow = (id: string) =>
 	createSelector([selectWindows], (windows) => windows[id]);
+
+export const selectVisibleWindowsIds = createSelector(
+	[selectWindows],
+	(windows) =>
+		Object.values(windows)
+			.filter((window) => !window.isMinimized)
+			.map((window) => window.id),
+);

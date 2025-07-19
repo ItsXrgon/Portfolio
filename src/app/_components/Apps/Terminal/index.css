@@ -1,0 +1,51 @@
+.terminal-font {
+	color: #39ff14;
+	font-family: "Fira Mono", "Consolas", monospace;
+	box-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+}
+
+.terminal-scrollbar ::-webkit-scrollbar {
+	width: 12px;
+	height: 12px;
+}
+.terminal-scrollbar ::-webkit-scrollbar-thumb {
+	background: linear-gradient(135deg, #39ff14 60%, #00ffea 100%);
+	border-radius: 8px;
+	box-shadow:
+		0 0 8px 2px #39ff1433,
+		0 0 4px 1px #00ffea33,
+		0 0 8px 2px #fde04755;
+	border: 2px dashed #fef9c2;
+}
+.terminal-scrollbar ::-webkit-scrollbar-track {
+	background: #101415;
+	border-radius: 8px;
+}
+.terminal-scrollbar ::-webkit-scrollbar-corner {
+	background: #181c1f;
+}
+
+/* Firefox */
+.terminal-scrollbar * {
+	scrollbar-width: thin;
+	scrollbar-color: #39ff14 #101415;
+}
+
+.terminal-scrollbar.dark ::-webkit-scrollbar-thumb {
+	background: linear-gradient(135deg, #39ff14 60%, #00ffea 100%);
+	box-shadow:
+		0 0 12px 2px #39ff1433,
+		0 0 8px 2px #00ffea33,
+		0 0 12px 2px #fde04755;
+	border: 2px dashed #fef9c2;
+}
+.terminal-scrollbar.dark ::-webkit-scrollbar-track {
+	background: #101415;
+}
+.terminal-scrollbar.dark ::-webkit-scrollbar-corner {
+	background: #181c1f;
+}
+
+.terminal-scrollbar.dark * {
+	scrollbar-color: #39ff14 #101415;
+}

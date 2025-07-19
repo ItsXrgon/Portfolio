@@ -1,74 +1,79 @@
+import { motion } from "framer-motion";
 import { BookMarked, GitFork, Star } from "lucide-react";
-import uniqolor from "uniqolor";
 
 import { Flex, Label } from "@/components";
-import { useFormatNumber } from "@/lib/formatting/number";
-import { TGithubRepo } from "@/lib/types";
+import { TGithubRepo } from "@/lib/apis/types";
 
-import { useRepositoryLanguages } from "./useRepositoryLanguages";
+import RespositoryLanguages from "./RespositoryLanguages";
 
 export default function Repository({
 	repository,
 }: {
 	repository: TGithubRepo;
 }) {
-	const { languages } = useRepositoryLanguages(repository);
-	const { formatNumber } = useFormatNumber();
-
 	return (
-		<Flex
-			isColumn
-			gap="10"
-			className="border-border-default min-h-44 w-full justify-between rounded-md border-[1px] p-4 text-white"
+		<motion.div
+			initial={{ opacity: 0, y: 24, scale: 0.95 }}
+			animate={{ opacity: 1, y: 0, scale: 1 }}
+			exit={{ opacity: 0, y: 24, scale: 0.95 }}
+			transition={{
+				duration: 0.1,
+				ease: "easeOut",
+			}}
+			whileHover={{
+				boxShadow: "0 0 32px 4px #ff00cc99, 0 0 16px 2px #0ff0fc99",
+				scale: 1.03,
+				zIndex: 20,
+			}}
+			style={{
+				willChange: "transform, box-shadow",
+				overflow: "visible",
+			}}
+			className="min-h-44 w-full flex flex-col justify-between rounded-2xl border-2 border-[#0ff0fc] bg-[#0f0026]/70 backdrop-blur-md shadow-[0_0_24px_2px_#0ff0fc33] p-5 text-[#f8f8ff] font-cyberpunk transition-all duration-300 hover:shadow-[0_0_32px_8px_#ff00cc99] hover:border-[#ff00cc] will-change-[box-shadow,border-color] gap-4"
 			key={repository?.node_id}
 		>
-			<Flex isColumn gap="2">
+			<Flex align="center" justify="between" gap="2" isWrapped>
 				<Flex align="center" gap="2">
-					<BookMarked width={20} height={20} />
-					<a
-						href={repository?.html_url}
-						target="_blank"
-						rel="noopener noreferrer"
-						className="text-accent-default text-sm font-semibold hover:underline"
-					>
-						<Label.Mid400 className="leading-5" variant="primary">
+					<BookMarked
+						width={22}
+						height={22}
+						className="text-[#0ff0fc] drop-shadow-cyberpunk"
+					/>
+					{repository?.html_url && (
+						<a
+							href={repository.html_url}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="text-[#0ff0fc] text-lg font-bold font-cyberpunk hover:underline drop-shadow-cyberpunk"
+						>
 							{repository?.name}
-						</Label.Mid400>
-					</a>
+						</a>
+					)}
 				</Flex>
-				<Label.Thin200>{repository?.description}</Label.Thin200>
-			</Flex>
-			<Flex align="center" justify="between" gap="4" isWrapped>
-				<Flex gap="2" align="center" isWrapped className="w-1/2">
-					{Object.keys(languages ?? {}).map((language) => (
-						<div className="flex items-center gap-1" key={language}>
-							<div
-								className="h-3 w-3 rounded-full"
-								style={{
-									background: uniqolor(
-										languages?.[language] ?? 0,
-									).color,
-								}}
-							/>
-							<Label.Thin100>{language}</Label.Thin100>
-						</div>
-					))}
-				</Flex>
-				<Flex gap="2" align="center">
-					<Flex gap="1" align="center">
-						<Star width={18} height={18} color="#FFFFFF" />
-						<Label.Mid300>
-							{formatNumber(repository?.stargazers_count, 1)}
-						</Label.Mid300>
+				<Flex align="center" gap="4">
+					<Flex align="center" gap="1">
+						<Star width={18} height={18} color="#0ff0fc" />
+						<span className="text-[#0ff0fc] font-cyberpunk text-sm">
+							{repository?.stargazers_count}
+						</span>
 					</Flex>
-					<Flex gap="1" align="center">
-						<GitFork width={18} height={18} color="#FFFFFF" />
-						<Label.Mid300>
-							{formatNumber(repository?.forks_count, 1)}
-						</Label.Mid300>
+					<Flex align="center" gap="1">
+						<GitFork width={18} height={18} color="#ff00cc" />
+						<Label
+							size="sm"
+							className="text-[#ff00cc] font-cyberpunk"
+						>
+							{repository?.forks_count}
+						</Label>
 					</Flex>
 				</Flex>
 			</Flex>
-		</Flex>
+			{repository?.description && (
+				<p className="text-[#f8f8ffcc] text-sm mb-2 line-clamp-2 font-cyberpunk drop-shadow-cyberpunk">
+					{repository.description}
+				</p>
+			)}
+			<RespositoryLanguages repo={repository} />
+		</motion.div>
 	);
 }

@@ -1,5 +1,7 @@
 import { useDroppable } from "@dnd-kit/core";
 
+import { useGridManagement } from "@/store";
+
 import { DesktopContextMenu } from "../DesktopContextMenu";
 import DesktopApp from "./DesktopApp/DesktopApp";
 import { DesktopAppContextMenu } from "./DesktopApp/DesktopAppContextMenu";
@@ -9,13 +11,10 @@ import { DesktopAppContextMenu } from "./DesktopApp/DesktopAppContextMenu";
  * If an app is present, it renders the app with its context menu.
  * If no app is present, it renders an empty slot with a context menu.
  */
-export default function DesktopGridSlot({
-	position,
-	appId,
-}: {
-	position: number;
-	appId: string | undefined;
-}) {
+export default function DesktopGridSlot({ position }: { position: number }) {
+	const { getAppByPosition } = useGridManagement();
+	const appId = getAppByPosition(position);
+	
 	const { setNodeRef } = useDroppable({
 		id: position,
 		data: {
@@ -26,22 +25,14 @@ export default function DesktopGridSlot({
 	if (!appId) {
 		return (
 			<DesktopContextMenu key={position}>
-				<div
-					ref={setNodeRef}
-					className="flex h-full w-full flex-col items-center justify-center"
-				/>
+				<div ref={setNodeRef} className="h-full w-full" />
 			</DesktopContextMenu>
 		);
 	}
 
 	return (
 		<DesktopAppContextMenu appId={appId}>
-			<div
-				ref={setNodeRef}
-				className="flex h-full w-full flex-col items-center justify-center"
-			>
-				<DesktopApp appId={appId} />
-			</div>
+			<DesktopApp appId={appId} />
 		</DesktopAppContextMenu>
 	);
 }

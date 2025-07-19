@@ -6,17 +6,15 @@ import {
 	TailwindcssOriginal,
 	TypescriptOriginal,
 } from "devicons-react";
-import React from "react";
 
-import { Flex, Label } from "@/components";
-import { Image } from "@/components";
+import { Flex, Image, Label } from "@/components";
 
 export default function MUC() {
 	return (
 		<Flex
 			isColumn
 			gap="3"
-			className="w-full gap-4 overflow-y-scroll bg-white p-4"
+			className="w-full gap-4 overflow-y-auto bg-white p-4"
 		>
 			<Flex gap="20" align="center">
 				<a
@@ -33,8 +31,8 @@ export default function MUC() {
 				</a>
 			</Flex>
 			<Flex isColumn gap="2">
-				<Label.Big400>What is this?</Label.Big400>
-				<Label.Mid300>
+				<Label>What is this?</Label>
+				<Label>
 					NPM library that you can find{" "}
 					<a
 						href="https://www.npmjs.com/package/multi-unit-converter/"
@@ -82,11 +80,11 @@ export default function MUC() {
 						website
 					</a>
 					.
-				</Label.Mid300>
+				</Label>
 			</Flex>
 			<Flex isColumn gap="2">
-				<Label.Big400>How does this work?</Label.Big400>
-				<Label.Mid300>
+				<Label>How does this work?</Label>
+				<Label>
 					Website is boring, let&apos;s talk about the library. The
 					library works by parsing the input string and extracting the
 					units and values, using a regex pattern that can detect
@@ -94,41 +92,41 @@ export default function MUC() {
 					<br />
 					The units are then converted to their respective selected
 					output unit using conversion factors stored in the library.
-				</Label.Mid300>
+				</Label>
 			</Flex>
 			<Flex isColumn gap="2">
-				<Label.Big400>Tech stack</Label.Big400>
+				<Label>Tech stack</Label>
 				<Flex isColumn gap="2">
-					<Label.Big300>Library</Label.Big300>
+					<Label>Library</Label>
 					<Flex isWrapped gap="4">
 						<Flex gap="1" align="center">
 							<JavascriptOriginal size={48} />
-							<Label.Mid400>JavaScript</Label.Mid400>
+							<Label>JavaScript</Label>
 						</Flex>
 						<Flex gap="1" align="center">
 							<JestPlain size={48} />
-							<Label.Mid400>Jest</Label.Mid400>
+							<Label>Jest</Label>
 						</Flex>
 					</Flex>
 				</Flex>
 				<Flex isColumn gap="2">
-					<Label.Big300>Website</Label.Big300>
+					<Label>Website</Label>
 					<Flex isWrapped gap="4">
 						<Flex gap="1" align="center">
 							<TypescriptOriginal size={48} />
-							<Label.Mid400>TypeScript</Label.Mid400>
+							<Label>TypeScript</Label>
 						</Flex>
 						<Flex gap="1" align="center">
 							<NextjsOriginal size={48} />
-							<Label.Mid400>NEXT.js</Label.Mid400>
+							<Label>NEXT.js</Label>
 						</Flex>
 						<Flex gap="1" align="center">
 							<ReactOriginal size={48} />
-							<Label.Mid400>React</Label.Mid400>
+							<Label>React</Label>
 						</Flex>
 						<Flex gap="1" align="center" className="">
 							<TailwindcssOriginal size={48} />
-							<Label.Mid400>Tailwind</Label.Mid400>
+							<Label>Tailwind</Label>
 						</Flex>
 					</Flex>
 				</Flex>

@@ -100,13 +100,3 @@ export interface DesktopWindow {
 		height: number;
 	};
 }
-
-/**
- * The payload for a window action
- */
-export interface WindowActionPayload {
-	/**
-	 * The ID of the window
-	 */
-	windowId: string;
-}

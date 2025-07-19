@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
 import { Pin, PinOff, X } from "lucide-react";
 import { PropsWithChildren, ReactNode, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -21,7 +22,6 @@ import {
 
 export function TaskbarAppContextMenu({
 	children,
-	onClick,
 	extraOptions,
 	appId,
 }: PropsWithChildren<{
@@ -35,7 +35,7 @@ export function TaskbarAppContextMenu({
 	const isWindowOpen = !!window;
 	const app = useTaskbarApp(appId);
 	const isPinned = app?.pinned;
-	const [isOpen, setOpen] = useState(false);
+	const [open, setOpen] = useState(false);
 	const { pinToTaskbar, unpinFromTaskbar } = useTaskbarAppManagement(appId);
 	const { openWindow, closeWindow } = useWindowManagement(appId);
 
@@ -45,7 +45,7 @@ export function TaskbarAppContextMenu({
 
 	return (
 		<DropdownMenu
-			open={isOpen}
+			open={open}
 			onOpenChange={() => {
 				setOpen(false);
 			}}
@@ -55,52 +55,72 @@ export function TaskbarAppContextMenu({
 					e.preventDefault();
 					setOpen(true);
 				}}
-				onClick={onClick}
+				asChild
 			>
 				{children}
 			</DropdownMenuTrigger>
-			<DropdownMenuContent className="w-56" sideOffset={15}>
-				{extraOptions && (
-					<>
-						{extraOptions}
-						<DropdownMenuSeparator />
-					</>
-				)}
-				{isPinned ? (
-					<DropdownMenuItem
-						className="flex items-center gap-3"
-						onClick={unpinFromTaskbar}
-					>
-						<PinOff width={24} height={24} />
-						{t("context_menu.unpin_from_taskbar")}
-					</DropdownMenuItem>
-				) : (
-					<DropdownMenuItem
-						className="flex items-center gap-3"
-						onClick={pinToTaskbar}
-					>
-						<Pin width={24} height={24} />
-						{t("context_menu.pin_to_taskbar")}
-					</DropdownMenuItem>
-				)}
-				{isWindowOpen ? (
-					<DropdownMenuItem
-						className="flex items-center gap-3"
-						onClick={closeWindow}
-					>
-						<X width={24} height={24} />
-						{t("context_menu.close")} {app.name}
-					</DropdownMenuItem>
-				) : (
-					<DropdownMenuItem
-						className="flex items-center gap-3"
-						onClick={openWindow}
-					>
-						<Image icon={app.icon} width={24} height={24} alt="" />
-						{t("context_menu.open")} {app.name}
-					</DropdownMenuItem>
-				)}
-			</DropdownMenuContent>
+			<AnimatePresence>
+				<DropdownMenuContent sideOffset={10} asChild>
+					{open && (
+						<motion.div
+							initial={{ height: 0, opacity: 0 }}
+							animate={{ height: "auto", opacity: 1 }}
+							exit={{ height: 0, opacity: 0 }}
+							transition={{
+								type: "tween",
+								duration: 0.15,
+							}}
+							className="w-56"
+						>
+							{extraOptions && (
+								<>
+									{extraOptions}
+									<DropdownMenuSeparator />
+								</>
+							)}
+							{isPinned ? (
+								<DropdownMenuItem
+									className="flex items-center gap-3"
+									onClick={unpinFromTaskbar}
+								>
+									<PinOff width={24} height={24} />
+									{t("context_menu.unpin_from_taskbar")}
+								</DropdownMenuItem>
+							) : (
+								<DropdownMenuItem
+									className="flex items-center gap-3"
+									onClick={pinToTaskbar}
+								>
+									<Pin width={24} height={24} />
+									{t("context_menu.pin_to_taskbar")}
+								</DropdownMenuItem>
+							)}
+							{isWindowOpen ? (
+								<DropdownMenuItem
+									className="flex items-center gap-3"
+									onClick={closeWindow}
+								>
+									<X width={24} height={24} />
+									{t("context_menu.close")} {app.name}
+								</DropdownMenuItem>
+							) : (
+								<DropdownMenuItem
+									className="flex items-center gap-3"
+									onClick={openWindow}
+								>
+									<Image
+										icon={app.icon}
+										width={24}
+										height={24}
+										alt=""
+									/>
+									{t("context_menu.open")} {app.name}
+								</DropdownMenuItem>
+							)}
+						</motion.div>
+					)}
+				</DropdownMenuContent>
+			</AnimatePresence>
 		</DropdownMenu>
 	);
 }

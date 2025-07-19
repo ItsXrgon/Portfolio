@@ -1,7 +1,7 @@
 "use client";
 
 import { Minus } from "lucide-react";
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 
 import { useWindowManagement } from "@/store";
 
@@ -13,8 +13,8 @@ export default function Minimize({ windowId }: { windowId: string }) {
 	}, [minimizeWindow]);
 
 	return (
-		<div className="cursor-pointer p-1 text-window-header-icon-default hover:text-window-header-icon-hovered active:text-window-header-icon-pressed">
+		<button className="cursor-pointer h-full px-2 text-window-header-icon-default hover:bg-white/60 hover:backdrop-blur-md active:bg-white/90">
 			<Minus size={24} onClick={handleMinimize} />
-		</div>
+		</button>
 	);
 }

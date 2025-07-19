@@ -7,6 +7,7 @@ import {
 } from "@dnd-kit/core";
 import { rectSortingStrategy } from "@dnd-kit/sortable";
 
+import { Flex } from "@/components";
 import DragAndDropProvider from "@/providers/DragAndDropProvider";
 import SortableContextProvider from "@/providers/SortableContextProvider";
 import { useTaskbarAppsIds, useTaskbarManagement } from "@/store/hooks";
@@ -43,7 +44,7 @@ export default function AppSection() {
 	);
 
 	return (
-		<div ref={setNodeRef} className="flex flex-row gap-3">
+		<Flex gap="3" ref={setNodeRef}>
 			<DragAndDropProvider DndContextProps={{ onDragEnd, sensors }}>
 				<SortableContextProvider
 					SortableContextProps={{
@@ -60,6 +61,6 @@ export default function AppSection() {
 					))}
 				</SortableContextProvider>
 			</DragAndDropProvider>
-		</div>
+		</Flex>
 	);
 }

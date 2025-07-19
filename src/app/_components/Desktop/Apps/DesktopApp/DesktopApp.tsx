@@ -48,16 +48,21 @@ export default function DesktopApp({ appId }: { appId: string }) {
 			onDoubleClick={onDoubleClick}
 			style={style}
 			isColumn
+			align="center"
+			justify="start"
+			gap="2"
 			className={cn(
-				"h-full w-full p-2 items-center gap-1 text-desktop-app-text cursor-pointer text-center",
-				"hover:bg-desktop-app-hover-background hover:text-desktop-app-hover-text",
+				"h-[90%] shrink-0 grow-0 w-[90%] px-2 py-4 text-desktop-app-text cursor-pointer",
+				"hover:bg-white/60 hover:backdrop-blur-md rounded-sm hover:text-desktop-app-hover-text",
 				{ "opacity-70 bg-desktop-app-drag-background ": isDragging },
 			)}
 			{...attributes}
 			{...listeners}
 		>
 			<Image icon={app?.icon} width={48} height={48} alt="" />
-			<Label.Thin300>{app?.name}</Label.Thin300>
+			<Label size="sm" weight="Normal" className="text-center">
+				{app?.name}
+			</Label>
 		</Flex>
 	);
 }

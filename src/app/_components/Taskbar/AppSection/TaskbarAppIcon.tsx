@@ -1,12 +1,13 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { motion } from "framer-motion";
 import { useCallback, useMemo } from "react";
 
-import { Image } from "@/components";
-import { cn } from "@/lib/utils";
+import { Flex, Image } from "@/components";
 import { useTaskbarApp, useWindow, useWindowManagement } from "@/store/hooks";
 
 import { TaskbarAppContextMenu } from "./TaskbarAppContextMenu";
+import { useTaskbarAppAnimation } from "./useTaskbarAppAnimation";
 
 export function TaskbarAppIcon({
 	appId,
@@ -20,8 +21,9 @@ export function TaskbarAppIcon({
 	const window = useWindow(appId);
 	const taskbarApp = useTaskbarApp(appId);
 	const isWindowOpen = !!window;
-	const isMinimized = window?.isMinimized;
-	const isPinned = taskbarApp?.pinned;
+	const isMinimized = !!window?.isMinimized;
+
+	const animateProps = useTaskbarAppAnimation(isWindowOpen, isMinimized);
 
 	const onAppIconClick = useCallback(() => {
 		if (isWindowOpen) {
@@ -63,26 +65,76 @@ export function TaskbarAppIcon({
 
 	return (
 		<TaskbarAppContextMenu appId={appId}>
-			<div
+			<Flex
 				key={appId}
 				ref={setNodeRef}
-				id={appId}
+				id={`taskbar-app-${appId}`}
 				style={style}
 				onClick={() => onAppIconClick()}
-				className={cn(
-					"bg-none rounded-sm p-1 bg-taskbar-app-background opacity-50",
-					{
-						"bg-taskbar-app-open-background opacity-100":
-							isWindowOpen,
-						"border-b-2 border-solid border-taskbar-app-open-indicator":
-							isWindowOpen || isPinned,
-					},
-				)}
+				isColumn
+				align="center"
+				gap="1"
+				className="items-center py-2 px-1 rounded-sm relative overflow-hidden cursor-pointer"
 				{...listeners}
 				{...attributes}
 			>
-				<Image icon={taskbarApp.icon} width={40} height={40} alt="" />
-			</div>
+				{!isMinimized && isWindowOpen && (
+					<motion.div
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
+						transition={{ duration: 0.18 }}
+						className="absolute inset-0 rounded-md bg-white/60 backdrop-blur-md border border-white/30 shadow-md z-0"
+					/>
+				)}
+				<motion.div
+					key={
+						isWindowOpen && !isMinimized
+							? `open-${appId}`
+							: isMinimized
+								? `minimized-${appId}`
+								: `closed-${appId}`
+					}
+					initial={{ scale: 1, y: 0 }}
+					animate={animateProps}
+					transition={{
+						duration: 0.38,
+						times: [0, 0.3, 0.7, 1],
+						type: "tween",
+						ease: "easeInOut",
+					}}
+					style={{ display: "flex", zIndex: 10 }}
+				>
+					<Image
+						icon={taskbarApp.icon}
+						width={40}
+						height={40}
+						alt=""
+					/>
+				</motion.div>
+				{isWindowOpen && (
+					<motion.div
+						initial={false}
+						animate={{
+							width: isMinimized ? 12 : 24,
+							backgroundColor: isMinimized ? "#aaa" : "#ef4444", // gray-400 or red-500
+							opacity: 1,
+						}}
+						exit={{ opacity: 0 }}
+						transition={{
+							type: "spring",
+							stiffness: 300,
+							damping: 25,
+						}}
+						className="absolute left-1/2 -translate-x-1/2"
+						style={{
+							height: 4,
+							borderRadius: 2,
+							bottom: -2,
+						}}
+					/>
+				)}
+			</Flex>
 		</TaskbarAppContextMenu>
 	);
 }

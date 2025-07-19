@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { DesktopApp, WindowActionPayload } from "../../types";
-import { WindowsState } from "./types";
+import { DesktopApp } from "../../types";
+import { WindowActionPayload, WindowsState } from "./types";
 import { createWindow, getNextZIndex, validatePosition } from "./utils";
 
 const initialState: WindowsState = {};
@@ -40,7 +40,6 @@ export const windowsSlice = createSlice({
 			}
 
 			window.isMinimized = true;
-			window.isMaximized = false;
 		},
 		unMinimizeWindow(state, action: PayloadAction<WindowActionPayload>) {
 			const { windowId } = action.payload;

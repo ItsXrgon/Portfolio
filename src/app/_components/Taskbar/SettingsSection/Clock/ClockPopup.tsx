@@ -1,29 +1,26 @@
-import React from "react";
-
 import { useFormatNumber } from "@/lib/formatting/number";
 
 import "./Clock.css";
 
-export default function ClockPopup({ time }: { time?: Date }) {
+export default function ClockPopup({ time }: { time: Date }) {
 	const { formatNumber } = useFormatNumber();
-	if (!time) return <></>;
 
 	return (
-		<div className="clock">
+		<div className="clock h-[320px] w-[320px]">
 			<div
-				className="hour"
+				className="hour_hand"
 				style={{
 					transform: `rotateZ(${time.getHours() * 30}deg)`,
 				}}
 			/>
 			<div
-				className="minute"
+				className="min_hand"
 				style={{
 					transform: `rotateZ(${time.getMinutes() * 6}deg)`,
 				}}
 			/>
 			<div
-				className="second"
+				className="sec_hand"
 				style={{
 					transform: `rotateZ(${time.getSeconds() * 6}deg)`,
 				}}
@@ -38,8 +35,8 @@ export default function ClockPopup({ time }: { time?: Date }) {
 			<span className="seven">{formatNumber(7)}</span>
 			<span className="eight">{formatNumber(8)}</span>
 			<span className="nine">{formatNumber(9)}</span>
-			<span className="ten">1{formatNumber(0)}</span>
-			<span className="eleven">1{formatNumber(1)}</span>
+			<span className="ten">{formatNumber(10)}</span>
+			<span className="eleven">{formatNumber(11)}</span>
 		</div>
 	);
 }

@@ -5,7 +5,6 @@ import haskell_chess_game from "@assets/appicons/haskell_chess_game.svg";
 import multi_unit_converter from "@assets/appicons/multi-unit-converter.svg";
 import settings from "@assets/appicons/settings.svg";
 import terminal from "@assets/appicons/terminal.svg";
-import user_purge from "@assets/appicons/user_purge.png";
 import xrbot from "@assets/appicons/xrbot.png";
 import curaflow_hero_ar from "@assets/curaflow/curaflow-ar-hero.png";
 import curaflow_hero_en from "@assets/curaflow/curaflow-en-hero.png";
@@ -28,7 +27,6 @@ export const appIconsMap = {
 	curaflow_hero_ar,
 	curaflow_hero_en,
 	xrbot,
-	user_purge,
 	xrbot_flag_guesser,
 	xrbot_tic_tac_toe,
 	haskell_chess_game,

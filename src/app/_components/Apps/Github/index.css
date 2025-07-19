@@ -1,0 +1,47 @@
+.cyberpunk-scrollbar ::-webkit-scrollbar {
+	width: 12px;
+	height: 12px;
+}
+.cyberpunk-scrollbar ::-webkit-scrollbar-thumb {
+	background: linear-gradient(135deg, #0ff0fc 40%, #ff00cc 100%);
+	border-radius: 8px;
+	box-shadow:
+		0 0 8px 2px #0ff0fc99,
+		0 0 4px 1px #ff00cc99;
+	border: 2px solid #1a0033;
+}
+.cyberpunk-scrollbar ::-webkit-scrollbar-track {
+	background: #0f0026;
+	border-radius: 8px;
+}
+.cyberpunk-scrollbar ::-webkit-scrollbar-corner {
+	background: #1a0033;
+}
+
+/* Firefox */
+.cyberpunk-scrollbar * {
+	scrollbar-width: thin;
+	scrollbar-color: #0ff0fc #1a0033;
+}
+
+.cyberpunk-scrollbar.dark ::-webkit-scrollbar-thumb {
+	background: linear-gradient(135deg, #0ff0fc 40%, #ff00cc 100%);
+	box-shadow:
+		0 0 12px 2px #0ff0fc99,
+		0 0 8px 2px #ff00cc99;
+	border: 2px solid #0f0026;
+}
+.cyberpunk-scrollbar.dark ::-webkit-scrollbar-track {
+	background: #1a0033;
+}
+.cyberpunk-scrollbar.dark ::-webkit-scrollbar-corner {
+	background: #0f0026;
+}
+
+.cyberpunk-scrollbar.dark * {
+	scrollbar-color: #0ff0fc #1a0033;
+}
+
+.font-cyberpunk {
+	font-family: "Share Tech Mono", "Orbitron", "monospace";
+}

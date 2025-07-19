@@ -2,10 +2,9 @@ import { DesktopApp, DesktopWindow } from "@/store/types";
 
 import { WindowsState } from "./types";
 
-// Constants
 export const WINDOW_CONFIG = {
 	DEFAULT_POSITION: { x: 350, y: 150 },
-	DEFAULT_SIZE: { width: 800, height: 500 },
+	DEFAULT_SIZE: { width: 600, height: 600 },
 	MIN_SIZE: { width: 400, height: 300 },
 	MAX_SIZE: { width: 1920, height: 1080 },
 } as const;
@@ -18,7 +17,6 @@ export const validatePosition = (position: { x: number; y: number }) => {
 	return true;
 };
 
-// State utility functions
 export const createWindowState = () => ({
 	isMaximized: false,
 	isMinimized: false,
@@ -34,11 +32,11 @@ export const createWindow = (app: DesktopApp): DesktopWindow => ({
 	...createWindowState(),
 });
 
-// Z-index management
 export const getNextZIndex = (state: WindowsState): number => {
 	const maxZIndex = Math.max(
 		0,
 		...Object.values(state).map((window) => window.zIndex ?? 0),
 	);
+	console.log(maxZIndex);
 	return maxZIndex + 1;
 };
