@@ -33,7 +33,7 @@ export const appIconsMap = {
 export type AppIcons = keyof typeof appIconsMap;
 
 export interface AppIconProps extends Omit<ImageProps, "src"> {
-	icon?: AppIcons;
+	icon: AppIcons;
 }
 
 export function AppIcon({
