@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap");
+
+.font-sketchy {
+	font-family: "Architects Daughter", cursive;
+}
+
+.blueprint-scrollbar ::-webkit-scrollbar {
+	width: 12px;
+	height: 12px;
+}
+.blueprint-scrollbar ::-webkit-scrollbar-thumb {
+	background: linear-gradient(135deg, #2563eb 60%, #1e40af 100%);
+	border-radius: 8px;
+	box-shadow:
+		0 0 8px 2px #2563eb33,
+		0 0 4px 1px #60a5fa33,
+		0 0 8px 2px #fde04755;
+	border: 2px dashed #fef9c2;
+}
+.blueprint-scrollbar ::-webkit-scrollbar-track {
+	background: #183153;
+	border-radius: 8px;
+}
+.blueprint-scrollbar ::-webkit-scrollbar-corner {
+	background: #e0e7ef;
+}
+
+/* Firefox */
+.blueprint-scrollbar * {
+	scrollbar-width: thin;
+	scrollbar-color: #fef9c2 #183153;
+}
+
+.blueprint-scrollbar.dark ::-webkit-scrollbar-thumb {
+	background: linear-gradient(135deg, #2563eb 60%, #1e40af 100%);
+	box-shadow:
+		0 0 12px 2px #2563eb33,
+		0 0 8px 2px #60a5fa33,
+		0 0 12px 2px #fde04755;
+	border: 2px dashed #fef9c2;
+}
+.blueprint-scrollbar.dark ::-webkit-scrollbar-track {
+	background: #183153;
+}
+.blueprint-scrollbar.dark ::-webkit-scrollbar-corner {
+	background: #1e40af;
+}
+
+.blueprint-scrollbar.dark * {
+	scrollbar-color: #fef9c2 #183153;
+}
+
+.font-cyberpunk {
+	font-family: "Share Tech Mono", "Orbitron", "monospace";
+}

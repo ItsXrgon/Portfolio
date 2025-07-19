@@ -25,7 +25,9 @@ export function TabListItem({
 			onClick={() => setActiveTab(tab)}
 		>
 			{icon}
-			<Label.Big300>{label}</Label.Big300>
+			<Label size="md" weight="Bold">
+				{label}
+			</Label>
 		</div>
 	);
 }
