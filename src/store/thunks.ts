@@ -8,7 +8,15 @@ import { RootState } from "./store";
 // Thunk to open an app
 export const openApp = createAsyncThunk(
 	"apps/openApp",
-	async (appId: string, { dispatch, getState }) => {
+	async (
+		payload: {
+			appId: string;
+			screenWidth: number;
+			screenHeight: number;
+		},
+		{ dispatch, getState },
+	) => {
+		const { appId, screenWidth, screenHeight } = payload;
 		const state = getState() as RootState;
 		const app = selectApp(appId)(state);
 
@@ -17,8 +25,8 @@ export const openApp = createAsyncThunk(
 			return;
 		}
 
-		// Open window in windows slice
-		dispatch(openWindow({ appId, app }));
+		// Open window in windows slice with responsive sizing
+		dispatch(openWindow({ appId, app, screenWidth, screenHeight }));
 
 		// Add to taskbar in taskbar slice
 		dispatch(addToTaskbar({ appId, app, pinned: false }));

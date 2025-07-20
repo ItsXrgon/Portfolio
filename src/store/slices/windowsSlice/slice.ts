@@ -1,7 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { DesktopApp } from "../../types";
-import { WindowActionPayload, WindowsState } from "./types";
+import { OpenWindowPayload, WindowActionPayload, WindowsState } from "./types";
 import { createWindow, getNextZIndex, validatePosition } from "./utils";
 
 const initialState: WindowsState = {};
@@ -10,17 +9,14 @@ export const windowsSlice = createSlice({
 	name: "windows",
 	initialState,
 	reducers: {
-		openWindow(
-			state,
-			action: PayloadAction<{ appId: string; app: DesktopApp }>,
-		) {
-			const { appId, app } = action.payload;
+		openWindow(state, action: PayloadAction<OpenWindowPayload>) {
+			const { appId, app, screenWidth, screenHeight } = action.payload;
 
 			if (state[appId]) {
 				return;
 			}
 
-			const Window = createWindow(app);
+			const Window = createWindow(app, screenWidth, screenHeight);
 			Window.zIndex = getNextZIndex(state);
 
 			state[appId] = Window;

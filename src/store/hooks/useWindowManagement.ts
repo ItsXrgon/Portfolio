@@ -1,5 +1,7 @@
 import { useCallback, useMemo } from "react";
 
+import { useScreenSize } from "@/hooks";
+
 import { useAppDispatch } from "../store";
 import { closeApp as closeAppThunk, openApp as openAppThunk } from "../thunks";
 import { useWindow } from "./useWindow";
@@ -13,6 +15,7 @@ import { useWindow } from "./useWindow";
 export function useWindowManagement(windowId: string) {
 	const dispatch = useAppDispatch();
 	const window = useWindow(windowId);
+	const { width: screenWidth, height: screenHeight } = useScreenSize();
 
 	const isMaximized = useMemo(() => window?.isMaximized, [window]);
 
@@ -20,8 +23,8 @@ export function useWindowManagement(windowId: string) {
 	 * Open the window
 	 */
 	const openWindow = useCallback(() => {
-		dispatch(openAppThunk(windowId));
-	}, [dispatch, windowId]);
+		dispatch(openAppThunk({ appId: windowId, screenWidth, screenHeight }));
+	}, [dispatch, screenHeight, screenWidth, windowId]);
 
 	/**
 	 * Close the window

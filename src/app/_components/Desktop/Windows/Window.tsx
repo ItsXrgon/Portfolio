@@ -7,6 +7,7 @@ import { useWindow, useWindowManagement } from "@/store";
 
 import Content from "./Content/Content";
 import TitleBar from "./TitleBar/TitleBar";
+import { useResponsiveWindow } from "./useResponsiveWindow";
 
 export default function Window({ windowId }: { windowId: string }) {
 	const window = useWindow(windowId)!;
@@ -19,6 +20,14 @@ export default function Window({ windowId }: { windowId: string }) {
 	const { bringToFront, relocateWindow } = useWindowManagement(windowId);
 	const isMaximized = useMemo(() => window.isMaximized, [window]);
 	const isMinimized = useMemo(() => window.isMinimized, [window]);
+
+	const { responsiveConfig } = useResponsiveWindow({
+		windowId,
+		localPosition,
+		localSize,
+		setLocalPosition,
+		setLocalSize,
+	});
 
 	useEffect(() => {
 		if (!isMaximized) {
@@ -71,13 +80,14 @@ export default function Window({ windowId }: { windowId: string }) {
 			onDragStop={onDragStop}
 			dragHandleClassName="dragHandle"
 			enableResizing={!isMaximized}
-			minHeight={600}
-			minWidth={800}
+			minHeight={responsiveConfig.MIN_SIZE.height}
+			minWidth={responsiveConfig.MIN_SIZE.width}
 			bounds={"parent"}
 			onResize={onResize}
 			onResizeStop={onResizeStop}
 			key={window.id}
 			disableDragging={isMaximized}
+			className="shadow-lg"
 		>
 			<TitleBar
 				windowId={window.id}
