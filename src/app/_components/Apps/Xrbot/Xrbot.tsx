@@ -19,7 +19,6 @@ export default function Xrbot() {
 				gap="6"
 				className="w-full h-full overflow-y-auto bg-gradient-to-br from-[#2C2F33] to-[#23272A] p-6 rounded-xl shadow-2xl border border-[#5865F2]/20 font-xrbot xrbot-scrollbar"
 			>
-				{/* Header Section */}
 				<Flex isColumn gap="4" className="text-center">
 					<Flex align="center" justify="center" gap="3">
 						<div className="w-12 h-12 bg-gradient-to-br from-[#5865F2] to-[#57F287] rounded-full flex items-center justify-center">
@@ -28,7 +27,11 @@ export default function Xrbot() {
 							</span>
 						</div>
 						<div>
-							<Label className="text-2xl font-bold text-white mb-1">
+							<Label
+								size="2xl"
+								weight="Bold"
+								className="text-white"
+							>
 								Xrbot
 							</Label>
 							<Flex align="center" gap="2" justify="center">
@@ -57,7 +60,11 @@ export default function Xrbot() {
 
 				{/* Screenshots Section */}
 				<Flex isColumn gap="4">
-					<Label className="text-xl font-semibold text-white flex items-center gap-2">
+					<Label
+						size="lg"
+						weight="Bold"
+						className="text-white flex items-center gap-2"
+					>
 						<span>🎮</span>
 						Game Screenshots
 					</Label>
@@ -94,10 +101,12 @@ export default function Xrbot() {
 						</div>
 					</Flex>
 				</Flex>
-
-				{/* Features Section */}
 				<Flex isColumn gap="4">
-					<Label className="text-xl font-semibold text-white flex items-center gap-2">
+					<Label
+						size="lg"
+						weight="Bold"
+						className="text-white flex items-center gap-2"
+					>
 						<span>⚡</span>
 						Features
 					</Label>
@@ -144,10 +153,12 @@ export default function Xrbot() {
 						</div>
 					</Flex>
 				</Flex>
-
-				{/* How It Works Section */}
 				<Flex isColumn gap="4">
-					<Label className="text-xl font-semibold text-white flex items-center gap-2">
+					<Label
+						size="lg"
+						weight="Bold"
+						className="text-white flex items-center gap-2"
+					>
 						<span>🔧</span>
 						How It Works
 					</Label>
@@ -179,10 +190,12 @@ export default function Xrbot() {
 						</Label>
 					</div>
 				</Flex>
-
-				{/* Tech Stack Section */}
 				<Flex isColumn gap="4">
-					<Label className="text-xl font-semibold text-white flex items-center gap-2">
+					<Label
+						size="lg"
+						weight="Bold"
+						className="text-white flex items-center gap-2"
+					>
 						<span>💻</span>
 						Tech Stack
 					</Label>
@@ -293,10 +306,12 @@ export default function Xrbot() {
 						</div>
 					</Flex>
 				</Flex>
-
-				{/* Project Status */}
 				<Flex isColumn gap="4">
-					<Label className="text-xl font-semibold text-white flex items-center gap-2">
+					<Label
+						size="lg"
+						weight="Bold"
+						className="text-white flex items-center gap-2"
+					>
 						<span>📊</span>
 						Project Status
 					</Label>
