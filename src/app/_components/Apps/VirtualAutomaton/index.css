@@ -1,0 +1,58 @@
+.font-automaton {
+	font-family: serif;
+}
+
+.paper-bg {
+	background:
+		linear-gradient(to right, #e2e8f0 1px, transparent 1px),
+		linear-gradient(to bottom, #e2e8f0 1px, transparent 1px);
+	background-size: 40px 40px;
+	background-color: #f8fafc;
+}
+
+.automaton-scrollbar ::-webkit-scrollbar {
+	width: 12px;
+	height: 12px;
+}
+
+.automaton-scrollbar ::-webkit-scrollbar-thumb {
+	background: linear-gradient(135deg, #2563eb 60%, #0ea5e9 100%);
+	border-radius: 8px;
+	box-shadow:
+		0 0 8px 2px #2563eb33,
+		0 0 4px 1px #0ea5e933,
+		0 0 8px 2px #38bdf855;
+	border: 2px dashed #e0e7ef;
+}
+.automaton-scrollbar ::-webkit-scrollbar-track {
+	background: #e0e7ef;
+	border-radius: 8px;
+}
+.automaton-scrollbar ::-webkit-scrollbar-corner {
+	background: #2563eb;
+}
+
+/* Firefox */
+.automaton-scrollbar * {
+	scrollbar-width: thin;
+	scrollbar-color: #2563eb #e0e7ef;
+}
+
+.automaton-scrollbar.dark ::-webkit-scrollbar-thumb {
+	background: linear-gradient(135deg, #2563eb 60%, #0ea5e9 100%);
+	box-shadow:
+		0 0 12px 2px #2563eb33,
+		0 0 8px 2px #0ea5e933,
+		0 0 12px 2px #38bdf855;
+	border: 2px dashed #e0e7ef;
+}
+.automaton-scrollbar.dark ::-webkit-scrollbar-track {
+	background: #1e293b;
+}
+.automaton-scrollbar.dark ::-webkit-scrollbar-corner {
+	background: #2563eb;
+}
+
+.automaton-scrollbar.dark * {
+	scrollbar-color: #2563eb #1e293b;
+}

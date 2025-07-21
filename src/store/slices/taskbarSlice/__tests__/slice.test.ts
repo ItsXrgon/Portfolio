@@ -23,7 +23,6 @@ describe("Taskbar Slice", () => {
 			name: "Test App",
 			icon: "github",
 			position: 0,
-			parentDirectory: "/",
 		};
 	});
 
@@ -78,7 +77,7 @@ describe("Taskbar Slice", () => {
 
 			const newState = taskbarSlice(existingState, action);
 
-			expect(newState["test-app"]).toEqual(existingState["test-app"]);
+			expect(newState["test-app"]).toEqual(existingState["test-app"]!);
 		});
 	});
 
@@ -114,7 +113,7 @@ describe("Taskbar Slice", () => {
 
 			const newState = taskbarSlice(existingState, action);
 
-			expect(newState["test-app"]).toEqual(existingState["test-app"]);
+			expect(newState["test-app"]).toEqual(existingState["test-app"]!);
 		});
 
 		it("should remove pinned app with force", () => {
@@ -186,7 +185,7 @@ describe("Taskbar Slice", () => {
 
 			const newState = taskbarSlice(existingState, action);
 
-			expect(newState["test-app"]).toEqual(existingState["test-app"]);
+			expect(newState["test-app"]).toEqual(existingState["test-app"]!);
 		});
 	});
 
@@ -230,7 +229,7 @@ describe("Taskbar Slice", () => {
 
 			const newState = taskbarSlice(existingState, action);
 
-			expect(newState["test-app"]).toEqual(existingState["test-app"]);
+			expect(newState["test-app"]).toEqual(existingState["test-app"]!);
 		});
 	});
 

@@ -27,7 +27,6 @@ describe("Windows Slice", () => {
 			name: "Test App",
 			icon: "github",
 			position: 0,
-			parentDirectory: "/",
 		};
 		// Mock console.warn to avoid noise in tests
 		spyOn(console, "warn").mockImplementation(() => {});
@@ -38,6 +37,8 @@ describe("Windows Slice", () => {
 			const action = openWindow({
 				appId: "test-app",
 				app: mockDesktopApp,
+				screenWidth: 1920,
+				screenHeight: 1080,
 			});
 
 			const newState = windowsSlice(initialState, action);
@@ -68,11 +69,13 @@ describe("Windows Slice", () => {
 			const action = openWindow({
 				appId: "test-app",
 				app: mockDesktopApp,
+				screenWidth: 1920,
+				screenHeight: 1080,
 			});
 
 			const newState = windowsSlice(existingState, action);
 
-			expect(newState["test-app"]).toEqual(existingState["test-app"]);
+			expect(newState["test-app"]).toEqual(existingState["test-app"]!);
 		});
 
 		it("should assign correct z-index for multiple windows", () => {
@@ -92,6 +95,8 @@ describe("Windows Slice", () => {
 			const action = openWindow({
 				appId: "test-app",
 				app: mockDesktopApp,
+				screenWidth: 1920,
+				screenHeight: 1080,
 			});
 
 			const newState = windowsSlice(existingState, action);
@@ -462,6 +467,8 @@ describe("Windows Slice", () => {
 				openWindow({
 					appId: "test-app",
 					app: mockDesktopApp,
+					screenWidth: 1920,
+					screenHeight: 1080,
 				}),
 			);
 
@@ -481,6 +488,8 @@ describe("Windows Slice", () => {
 				openWindow({
 					appId: "app1",
 					app: { ...mockDesktopApp, id: "app1" },
+					screenWidth: 1920,
+					screenHeight: 1080,
 				}),
 			);
 
@@ -489,6 +498,8 @@ describe("Windows Slice", () => {
 				openWindow({
 					appId: "app2",
 					app: { ...mockDesktopApp, id: "app2" },
+					screenWidth: 1920,
+					screenHeight: 1080,
 				}),
 			);
 

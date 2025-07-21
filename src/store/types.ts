@@ -1,4 +1,4 @@
-import { AppIcons } from "@/components";
+import { AppIcons } from "@/components/AppIcon";
 
 /**
  * A desktop app
@@ -20,7 +20,6 @@ export interface DesktopApp {
 	 * The position of the app on the desktop
 	 */
 	position: number;
-	parentDirectory: string;
 }
 
 /**

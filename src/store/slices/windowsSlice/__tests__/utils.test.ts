@@ -5,7 +5,6 @@ import { DesktopApp } from "@/store/types";
 
 import { WindowsState } from "../types";
 import {
-	BASE_WINDOW_CONFIG,
 	createWindow,
 	createWindowState,
 	getNextZIndex,
@@ -230,9 +229,7 @@ describe("Windows Utils", () => {
 			expect(result.isMaximized).toBe(false);
 			expect(result.isMinimized).toBe(false);
 			expect(result.zIndex).toBe(0);
-			expect(result.position).toEqual(
-				BASE_WINDOW_CONFIG.DEFAULT_POSITION,
-			);
+			expect(result.position).toEqual({ x: 200, y: 100 });
 			// Size should be responsive based on screen dimensions
 			expect(result.size.width).toBe(600); // Desktop default
 			expect(result.size.height).toBe(600);
@@ -252,11 +249,10 @@ describe("Windows Utils", () => {
 			name: "Test App",
 			icon: "github",
 			position: 0,
-			parentDirectory: "/",
 		};
 
 		it("should create responsive window with screen dimensions", () => {
-			const result = createWindow(mockApp, 1000, 800);
+			const result = createWindow(mockApp, 1920, 1080);
 
 			expect(result.id).toBe("test-app");
 			expect(result.name).toBe("Test App");
@@ -264,11 +260,9 @@ describe("Windows Utils", () => {
 			expect(result.isMaximized).toBe(false);
 			expect(result.isMinimized).toBe(false);
 			expect(result.zIndex).toBe(0);
-			expect(result.position).toEqual(
-				BASE_WINDOW_CONFIG.DEFAULT_POSITION,
-			);
-			expect(result.size.width).toBe(600); // Desktop default
-			expect(result.size.height).toBe(600);
+			expect(result.position).toEqual({ x: 460, y: 140 });
+			expect(result.size.width).toBe(1000); // XL default
+			expect(result.size.height).toBe(800); // XL default
 		});
 
 		it("should preserve app properties", () => {
@@ -277,7 +271,6 @@ describe("Windows Utils", () => {
 				name: "Custom App",
 				icon: "settings",
 				position: 5,
-				parentDirectory: "/custom",
 			};
 
 			const result = createWindow(customApp, 1000, 800);
