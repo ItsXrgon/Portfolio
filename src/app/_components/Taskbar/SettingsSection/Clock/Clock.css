@@ -13,7 +13,7 @@
 }
 
 .clock::after {
-	background: #aaa;
+	background: var(--taskbar-clock-background);
 	content: "";
 	width: 12px;
 	height: 12px;
@@ -23,14 +23,14 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	border: 2px solid #fff;
+	border: 2px solid var(--taskbar-clock-foreground);
 }
 
 .hour_hand {
 	position: absolute;
 	width: 6px;
 	height: 60px;
-	background: #222;
+	background: var(--taskbar-clock-hands-hour);
 	top: 30%;
 	left: 49%;
 	transform-origin: bottom;
@@ -40,7 +40,7 @@
 	position: absolute;
 	width: 4px;
 	height: 80px;
-	background: #444;
+	background: var(--taskbar-clock-hands-minute);
 	top: 22.5%;
 	left: 49%;
 	transform-origin: bottom;
@@ -50,7 +50,7 @@
 	position: absolute;
 	width: 2px;
 	height: 118px;
-	background: red;
+	background: var(--taskbar-clock-hands-second);
 	top: 10.5%;
 	left: 50%;
 	transform-origin: bottom;

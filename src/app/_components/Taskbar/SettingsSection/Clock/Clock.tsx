@@ -36,18 +36,10 @@ export default function Clock() {
 						open && "bg-white/60 backdrop-blur-md",
 					)}
 				>
-					<Label
-						size="md"
-						weight="Medium"
-						className="text-taskbar-text"
-					>
+					<Label size="md" weight="Medium">
 						{formatLocaleTime(time)}
 					</Label>
-					<Label
-						size="md"
-						weight="Medium"
-						className="text-taskbar-text"
-					>
+					<Label size="md" weight="Medium">
 						{formatLocaleDate(time)}
 					</Label>
 				</Button>

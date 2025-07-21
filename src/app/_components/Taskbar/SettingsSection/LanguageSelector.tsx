@@ -33,12 +33,11 @@ export default function LanguageSelector() {
 			<DropdownMenuTrigger asChild>
 				<Button
 					className={cn(
-						"h-full bg-transparent",
-						"hover:bg-white/60 hover:backdrop-blur-md",
-						open && "bg-white/60 backdrop-blur-md",
+						"h-full bg-transparent hover:bg-white/60 hover:backdrop-blur-md text-taskbar-icon-default hover:text-taskbar-icon-hover active:text-taskbar-icon-pressed",
+						open && "bg-white/60",
 					)}
 				>
-					<Globe2 className="text-taskbar-icon-default size-6" />
+					<Globe2 className="size-6" />
 				</Button>
 			</DropdownMenuTrigger>
 			<AnimatePresence>

@@ -20,11 +20,11 @@ export default function SettingsButton() {
 	}, [openWindow, settings?.isMinimized, unMinimizeWindow]);
 	return (
 		<Button
-			className="h-full bg-transparent hover:bg-white/60 hover:backdrop-blur-md"
+			className="h-full bg-transparent hover:bg-white/60 hover:backdrop-blur-md text-taskbar-icon-default hover:text-taskbar-icon-hover active:text-taskbar-icon-pressed"
 			onClick={handleOpenSettings}
-            ref={buttonRef}
+			ref={buttonRef}
 		>
-			<Settings className="text-taskbar-icon-default size-6" />
+			<Settings className="size-6" />
 		</Button>
 	);
 }

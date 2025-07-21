@@ -97,7 +97,7 @@ export default function Window({ windowId }: { windowId: string }) {
 				setLocalSize={setLocalSize}
 			/>
 			<div
-				className="bg-window-header-background p-1 pt-0"
+				className="bg-window-frame p-1 pt-0"
 				style={{
 					height: isMaximized
 						? "calc(100% - 36px)"

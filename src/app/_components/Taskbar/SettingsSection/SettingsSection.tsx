@@ -10,9 +10,7 @@ export default function SettingsSection() {
 	return (
 		<Flex align="center" gap="1">
 			<Clock />
-			<div className="h-8 w-px bg-taskbar-separator" />
 			<LanguageSelector />
-			<div className="h-8 w-px bg-taskbar-separator" />
 			<SettingsButton />
 		</Flex>
 	);

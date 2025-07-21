@@ -9,6 +9,7 @@ import {
 
 import { Flex, Label } from "@/components";
 import { AppIcon } from "@/components/AppIcon";
+import { cn } from "@/lib/utils";
 import { useWindow, useWindowManagement } from "@/store";
 
 import Close from "./Buttons/Close";
@@ -79,10 +80,15 @@ export default function TitleBar({
 
 	return (
 		<TitleBarContextMenu appId={window.id}>
-			<div
-				className={`dragHandle flex flex-row h-9 overflow-hidden relative items-center justify-between bg-window-header-background text-window-header-text ${
-					!isMaximized && "rounded-t-md"
-				}`}
+			<Flex
+				align="center"
+				justify="between"
+				className={cn(
+					"dragHandle h-9 overflow-hidden relative bg-window-frame text-window-header-text",
+					{
+						"rounded-t-md": !isMaximized,
+					},
+				)}
 			>
 				<AppIcon
 					icon={window.icon}
@@ -104,7 +110,7 @@ export default function TitleBar({
 					<Restore handleMinMax={handleMinMax} windowId={windowId} />
 					<Close windowId={windowId} />
 				</Flex>
-			</div>
+			</Flex>
 		</TitleBarContextMenu>
 	);
 }

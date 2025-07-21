@@ -65,7 +65,7 @@ export default function DesktopApp({ appId }: { appId: string }) {
 			{...listeners}
 		>
 			<AppIcon icon={app.icon} width={48} height={48} alt="" />
-			<Label size="sm" weight="Normal" className="text-center">
+			<Label size="sm" weight="Normal" className="text-center text-desktop-text">
 				{app.name}
 			</Label>
 		</Flex>

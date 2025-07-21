@@ -1,24 +1,14 @@
 const palette = {
 	desktop: {
 		background: "var(--desktop-background)",
-		app: {
-			background: "var(--desktop-app-background)",
-			text: "var(--desktop-app-text)",
-		},
+		text: "var(--desktop-text)",
 	},
 	taskbar: {
 		background: "var(--taskbar-background)",
 		border: "var(--taskbar-border)",
-		separator: "var(--taskbar-separator)",
-		app: {
-			background: "var(--taskbar-app-background)",
-			open: {
-				background: "var(--taskbar-app-open-background)",
-				indicator: "var(--taskbar-app-open-indicator)",
-			},
-			drag: {
-				background: "var(--taskbar-app-drag-background)",
-			},
+		indicator: {
+			open: "var(--taskbar-app-indicator-open)",
+			minimised: "var(--taskbar-app-indicator-minimised)",
 		},
 		text: "var(--taskbar-text)",
 		icon: {
@@ -38,9 +28,8 @@ const palette = {
 		},
 	},
 	window: {
-		background: "var(--window-background)",
+		frame: "var(--window-frame)",
 		header: {
-			background: "var(--window-header-background)",
 			text: "var(--window-header-text)",
 			icon: {
 				default: "var(--window-header-icon-default)",

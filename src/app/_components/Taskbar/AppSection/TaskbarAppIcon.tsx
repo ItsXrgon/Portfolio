@@ -118,7 +118,9 @@ export function TaskbarAppIcon({
 						initial={false}
 						animate={{
 							width: isMinimized ? 12 : 24,
-							backgroundColor: isMinimized ? "#aaa" : "#ef4444", // gray-400 or red-500
+							backgroundColor: isMinimized
+								? "var(--taskbar-indicator-minimised)"
+								: "var(--taskbar-indicator-open)",
 							opacity: 1,
 						}}
 						exit={{ opacity: 0 }}
