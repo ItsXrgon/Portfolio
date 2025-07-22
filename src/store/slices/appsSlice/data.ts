@@ -50,8 +50,8 @@ export const initialApps: Record<string, DesktopApp> = {
 	},
 	"8": {
 		id: "8",
-		name: "Virtual Automaton",
-		icon: "virtual_automaton",
+		name: "Virtual Automata",
+		icon: "virtual_automata",
 		position: 7, // First column, eighth row (col 0, row 7)
 	},
 } as const;

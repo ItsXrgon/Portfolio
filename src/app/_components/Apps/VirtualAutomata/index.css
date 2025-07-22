@@ -1,4 +1,4 @@
-.font-automaton {
+.font-automata {
 	font-family: serif;
 }
 
@@ -10,12 +10,12 @@
 	background-color: #f8fafc;
 }
 
-.automaton-scrollbar ::-webkit-scrollbar {
+.automata-scrollbar ::-webkit-scrollbar {
 	width: 12px;
 	height: 12px;
 }
 
-.automaton-scrollbar ::-webkit-scrollbar-thumb {
+.automata-scrollbar ::-webkit-scrollbar-thumb {
 	background: linear-gradient(135deg, #2563eb 60%, #0ea5e9 100%);
 	border-radius: 8px;
 	box-shadow:
@@ -24,21 +24,21 @@
 		0 0 8px 2px #38bdf855;
 	border: 2px dashed #e0e7ef;
 }
-.automaton-scrollbar ::-webkit-scrollbar-track {
+.automata-scrollbar ::-webkit-scrollbar-track {
 	background: #e0e7ef;
 	border-radius: 8px;
 }
-.automaton-scrollbar ::-webkit-scrollbar-corner {
+.automata-scrollbar ::-webkit-scrollbar-corner {
 	background: #2563eb;
 }
 
 /* Firefox */
-.automaton-scrollbar * {
+.automata-scrollbar * {
 	scrollbar-width: thin;
 	scrollbar-color: #2563eb #e0e7ef;
 }
 
-.automaton-scrollbar.dark ::-webkit-scrollbar-thumb {
+.automata-scrollbar.dark ::-webkit-scrollbar-thumb {
 	background: linear-gradient(135deg, #2563eb 60%, #0ea5e9 100%);
 	box-shadow:
 		0 0 12px 2px #2563eb33,
@@ -46,13 +46,13 @@
 		0 0 12px 2px #38bdf855;
 	border: 2px dashed #e0e7ef;
 }
-.automaton-scrollbar.dark ::-webkit-scrollbar-track {
+.automata-scrollbar.dark ::-webkit-scrollbar-track {
 	background: #1e293b;
 }
-.automaton-scrollbar.dark ::-webkit-scrollbar-corner {
+.automata-scrollbar.dark ::-webkit-scrollbar-corner {
 	background: #2563eb;
 }
 
-.automaton-scrollbar.dark * {
+.automata-scrollbar.dark * {
 	scrollbar-color: #2563eb #1e293b;
 }

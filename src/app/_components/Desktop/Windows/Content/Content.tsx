@@ -5,7 +5,7 @@ import HaskellChessGame from "@/app/_components/Apps/HaskellChessGame/HaskellChe
 import MUC from "@/app/_components/Apps/MUC/MUC";
 import Settings from "@/app/_components/Apps/Settings/Settings";
 import Terminal from "@/app/_components/Apps/Terminal/Terminal";
-import VirtualAutomaton from "@/app/_components/Apps/VirtualAutomaton/VirtualAutomaton";
+import VirtualAutomata from "@/app/_components/Apps/VirtualAutomata/VirtualAutomata";
 import Xrbot from "@/app/_components/Apps/Xrbot/Xrbot";
 import { useWindow } from "@/store";
 
@@ -18,7 +18,7 @@ const AppsMap = {
 	"Xrbot - Discord Bot": Xrbot,
 	"Haskell Chess Game": HaskellChessGame,
 	Terminal,
-	"Virtual Automaton": VirtualAutomaton,
+	"Virtual Automata": VirtualAutomata,
 };
 
 export default function Content({ windowId }: { windowId: string }) {

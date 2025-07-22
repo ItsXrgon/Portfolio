@@ -4,7 +4,7 @@ import haskell_chess_game from "@assets/appicons/haskell-chess-game.png";
 import multi_unit_converter from "@assets/appicons/multi-unit-converter.svg";
 import settings from "@assets/appicons/settings.svg";
 import terminal from "@assets/appicons/terminal.svg";
-import virtual_automaton from "@assets/appicons/virtual-automaton.png";
+import virtual_automata from "@assets/appicons/virtual-automata.png";
 import xrbot from "@assets/appicons/xrbot.png";
 import NextImage, { ImageProps } from "next/image";
 
@@ -16,7 +16,7 @@ export const appIconsMap = {
 	curaflow,
 	xrbot,
 	haskell_chess_game,
-	virtual_automaton,
+	virtual_automata,
 };
 export type AppIcons = keyof typeof appIconsMap;
 
