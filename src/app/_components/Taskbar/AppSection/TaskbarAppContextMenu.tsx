@@ -5,7 +5,7 @@ import { Pin, PinOff, X } from "lucide-react";
 import { PropsWithChildren, ReactNode, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { Image } from "@/components";
+import { AppIcon } from "@/components/AppIcon";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -108,7 +108,7 @@ export function TaskbarAppContextMenu({
 									className="flex items-center gap-3"
 									onClick={openWindow}
 								>
-									<Image
+									<AppIcon
 										icon={app.icon}
 										width={24}
 										height={24}
