@@ -4,7 +4,7 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
-		"build": "next build",
+		"build": "node scripts/generate-release.js && next build",
 		"check": "next lint && tsc --noEmit",
 		"dev": "next dev --turbo",
 		"lint": "next lint",
@@ -12,6 +12,7 @@
 		"format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
 		"format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
 		"preview": "next build && next start",
+		"release": "node scripts/generate-release.js",
 		"start": "next start",
 		"typecheck": "tsc --noEmit"
 	},
