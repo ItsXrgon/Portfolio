@@ -21,9 +21,11 @@ const reducers = combineReducers({
 const persistConfig = {
 	key: "root",
 	storage,
-	version: 1,
+	version: 2,
 	serialize: true,
 	debounce: 1000,
+	// Disable migrations
+	migrate: () => Promise.resolve(undefined),
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);

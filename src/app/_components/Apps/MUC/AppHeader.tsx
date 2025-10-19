@@ -1,5 +1,3 @@
-import multi_unit_converter from "@assets/appicons/multi-unit-converter.svg";
-
 import { Flex, Image, Label } from "@/components";
 
 export default function AppHeader() {
@@ -12,7 +10,7 @@ export default function AppHeader() {
 		>
 			<Flex align="center" gap="4">
 				<Image
-					src={multi_unit_converter}
+					src="/assets/appicons/multi-unit-converter.svg"
 					width={80}
 					height={80}
 					alt="Multi Unit Converter Logo"

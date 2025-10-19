@@ -1,22 +1,14 @@
-import curaflow from "@assets/appicons/curaflow.png";
-import github from "@assets/appicons/github.svg";
-import haskell_chess_game from "@assets/appicons/haskell-chess-game.png";
-import multi_unit_converter from "@assets/appicons/multi-unit-converter.svg";
-import settings from "@assets/appicons/settings.svg";
-import terminal from "@assets/appicons/terminal.svg";
-import virtual_automata from "@assets/appicons/virtual-automata.png";
-import xrbot from "@assets/appicons/xrbot.png";
 import NextImage, { ImageProps } from "next/image";
 
 export const appIconsMap = {
-	github,
-	settings,
-	terminal,
-	multi_unit_converter,
-	curaflow,
-	xrbot,
-	haskell_chess_game,
-	virtual_automata,
+	github: "/assets/appicons/github.svg",
+	settings: "/assets/appicons/settings.svg",
+	terminal: "/assets/appicons/terminal.svg",
+	multi_unit_converter: "/assets/appicons/multi-unit-converter.svg",
+	curaflow: "/assets/appicons/curaflow.png",
+	xrbot: "/assets/appicons/xrbot.png",
+	haskell_chess_game: "/assets/appicons/haskell-chess-game.png",
+	virtual_automata: "/assets/appicons/virtual-automata.png",
 };
 export type AppIcons = keyof typeof appIconsMap;
 

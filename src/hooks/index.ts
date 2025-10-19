@@ -1,4 +1,3 @@
-export { useMediaQuery } from "./useMediaQuery";
 export {
 	RESPONSIVE_BREAKPOINTS,
 	useResponsiveBreakpoints,

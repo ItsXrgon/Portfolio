@@ -18,6 +18,7 @@ next-env.d.ts
 dist
 out
 .env
+sentry.properties
 
 # Editor directories and files
 .vscode/*

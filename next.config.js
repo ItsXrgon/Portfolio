@@ -9,6 +9,14 @@ const nextConfig = {
 			},
 		],
 	},
+	webpack: (config) => {
+		// Handle SVG files as static assets
+		config.module.rules.push({
+			test: /\.svg$/,
+			type: "asset/resource",
+		});
+		return config;
+	},
 };
 
 export default nextConfig;
